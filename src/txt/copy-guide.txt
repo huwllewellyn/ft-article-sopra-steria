@@ -1,0 +1,390 @@
+Sopra Steria X FT
+Scrolly draft FINAL CLEAN FOR BUILD
+
+
+Key for build:
+
+
+Highlighted = pull-quote
+Review the bold and add hyperlinks
+Data points labelled
+	
+
+
+
+Proposed headline
+Digital disruption diaries: what if Europe’s networks went dark?
+
+
+Proposed standfirst
+Three hypothetical stories expose how cyber attacks could swiftly disrupt and destabilise daily life – and explore the solutions and measures required to protect our most critical systems 
+
+
+Flashing lights warning: the following content contains small glitch effects that may affect those with photosensitive epilepsy
+
+
+Main body 
+One click. 
+
+
+That is all it takes to bring down networks, disrupt lives and cause a cascade of harm in today’s hyper-connected world. 
+
+
+Against this backdrop, what could happen if three key European industries – energy, finance and transport – came under fire? And what solutions exist to protect society in this new age of digital warfare? 
+________________
+
+
+
+
+Chapter one: energy 
+Tuesday
+
+
+>When vital infrastructure is held hostage by hacktivists
+
+
+Tuesday
+Oslo, Norway
+The sun sets early in December, and by mid-afternoon the city is slipping into darkness. As workers wrap up for the day, the grid that keeps Norway – and several neighbouring countries – running begins to falter.
+
+
+
+
+* 4:45pm - A lead engineer at one of Norway’s top energy companies logs in for the evening shift and is immediately locked out of the grid’s control system. 
+Something is seriously wrong. 
+* 5:00pm - Remotely, a hacktivist group is in the process of systematically taking out the smart grids of the country’s leading energy providers via a distributed denial-of-service attack. 
+By targeting smart meters, they are overwhelming the central servers that power the grids. 
+* 5:10pm – Across town, the CTO of a prominent investment firm is ready to leave for the day. 
+She presses the elevator button on the 14th floor of the company’s building, but nothing happens.
+Moments later, the entire floor is plunged into darkness.
+* 5:15pm – Outside, the city’s skyline no longer shines brightly. Mobile and internet services are down.
+People across Oslo start to panic.
+
+
+An evolving threat landscape
+
+
+Energy powers everything.
+
+
+But as energy networks become “smarter”, with automated load balancing, remote sensors and increasing reliance on digital infrastructure, cyber criminals can find novel ways of exploiting cracks in the system. 
+
+
+Data point 1:
+
+
+Cyber attacks doubled between 2020 and 2022 in Europe’s power sector, with 
+
+
+48 attacks on Europe’s energy infrastructure
+
+
+in 2022, according to Eurelectric[a], a federation for the European electricity industry. 
+
+
+  
+
+	
+
+Sopra Steria, a technology and consulting company that provides cybersecurity services, identified in its State of Cybersecurity 2025 report that Advanced Persistent Threat (APT) groups are increasingly collaborating with cyber criminals, particularly on destructive attacks.
+
+
+“Historically, cyber attacks have been high-consequence and low-frequency. When you get hacktivists and criminals who are able to target operational technology and who understand how to do it, you eventually get high-consequence, high-frequency events ” 
+* Robert M Lee, leading expert in operational technology security, CEO of Dragos
+
+
+ The city is plunged into darkness
+
+
+* 5:20pm – As the grid’s automated load balancers struggle to cope with the intensity of a sustained attack, safety shutdowns are being triggered across energy grids, causing blackouts. 
+* 5:30pm – Workers use phone torches to find their way to the stairwell and towards the lobby.
+Confusion is widespread; every building is impacted.
+* 7:00pm – C-suite executives across the various energy firms are struggling to get a sense of the impact as internal systems, including monitoring tools, have been compromised. Engineers no longer have real-time visibility.  
+
+
+Operating while under attack
+
+
+Most of the investment in cybersecurity in the energy sector has gone into prevention rather than visibility and monitoring. This presents challenges for root-cause analysis and improving prevention strategies, explains Lee. 
+
+
+“Energy systems being as complex as they are, it is much more difficult to know what actually happened”
+* Robert M Lee, leading expert in operational technology security, CEO of Dragos
+
+
+Europe’s policymakers are starting to recognise the risks. In 2025, the European Commission signed a €36mn agreement with the EU’s Agency for Cybersecurity (ENISA) to administer a reserve that can be used by critical sectors – including energy – to support the response and recovery from cyber incidents.
+
+
+“Critical operators are moving toward defensible architectures where there’s an assumption that breaches will occur” 
+* Jørgen Rørvik, Director of Cybersecurity and Connectivity, Sopra Steria Nordics
+
+
+Defensible architectures[b] can include breaking the grid into “islands”, which can distribute power locally, to prevent cascading failures, or building a parallel network for monitoring and management to prevent loss of visibility, Rørvik says.
+
+
+“Within this architecture, essential assets can continue functioning, even while under sustained attack” 
+* Jørgen Rørvik, Director of Cybersecurity and Connectivity, Sopra Steria Nordics
+
+
+
+
+Work continues through the night
+
+
+* 8:00pm – Policymakers, emergency services and cybersecurity experts gather to implement emergency procedures.
+* 02:00am – Cyber experts work with internet service providers to divert malicious traffic and implement recovery protocols.
+* 08:00am – Power has returned, but public services reel from the human and financial cost of this major incident.
+
+
+ The solutions
+* State-led cyber defence policies
+* Regular penetration testing and threat simulations
+* 24/7 Security Operation Centres with real-time monitoring
+* Cross-sector coordination across energy, telecoms and media
+* A threat-driven approach beyond compliance
+	
+
+________________
+
+
+
+
+Chapter two: financial services 
+
+
+>How a single email could crash a continent’s payment systems
+
+
+Thursday 
+Madrid, Spain
+
+
+In Madrid, a single phishing email [c]sets off a chain reaction that brings payment systems to a standstill.
+
+
+It begins quietly, with a distracted employee and a convincingly urgent email. 
+Within hours, an issue at a local supermarket in Madrid escalates into a multi-million-euro crisis, with malware spreading from one store to thousands and damage reaching far beyond one retailer.
+
+
+* 12:00pm – A stressed store manager clicks a link to a lookalike inventory portal in an “urgent” email from a supposed HQ executive.
+* 12:20pm – Cyber attackers can now traverse the network and deploy malware to the retailer’s POS system.
+Sensitive payment data is sent in batches to an external server.
+* 1:05pm –  Concerned about the email chain, the store manager contacts the IT help desk.
+* 1:35pm – As the malware overloads resources, payment systems across stores fail.
+* 2:00pm – The help desk is flooded with reports from stores experiencing outages.
+
+
+When human behaviour becomes the entry point
+
+
+Today’s phishing attacks are meticulous – they mimic corporate tone, structure and urgency. An employee’s decision to trust an email while under pressure provides the attackers with everything they need to prowl the network and access a vulnerable system.
+
+
+Artificial intelligence (AI) enables attackers to craft flawless, personalised phishing emails free of spelling errors or awkward phrasing.
+
+
+AI enables them to use real-time company data and social media to make each message convincingly authentic. “Entire campaigns are being run by machines – targeting the right person, at the right time, with the right message,” says Arsenio Pérez Gavira, Cybersecurity Manager at Sopra Steria Spain. 
+
+
+“Defending against this demands adaptive defences powered by the same intelligence, capable of detecting patterns and responding in real time”
+* Arsenio Pérez Gavira, Cybersecurity Manager, Sopra Steria Spain
+
+
+Around 60 per cent of all cyber security incidents reported by customers to Sopra Steria’s clients were phishing-related. 
+
+
+To prevent these attacks, organisations must train staff with scenario-based and department-specific simulations to respond to attacks in real time.
+
+
+Data point 2:
+41 per cent is the approximate amount of organisations that suffered a material incident in the past 12 months, and say it was caused by a third party, according to the World Economic Forum’s 2024 Cybersecurity Outlook[d].
+  
+
+	
+
+From a company breach to major disruption
+* 3:00pm – All of the retailer’s stores close as payments and inventory systems fail.
+* 4:30pm – Internal forensics reveals loyalty card and e-receipt data were compromised.
+* 6:30pm – The first media reports break as customers report phishing attacks.
+
+
+When systems connect, failure is exponential
+The attack exposes the fragility of interconnected systems. Attackers launch fresh intrusions from the breach, while banks compound the disruption with tightened security that leads consumer spending to grind to a halt. 
+
+
+The cost of these attacks is high: both financially and in terms of customer trust. 
+
+
+In 2025, UK retailer Marks & Spencer estimated that there had been a £300mn hit to profits following a cyber incident that stole customer data and disrupted operations and product availability.
+
+
+“With everything being connected, or wanting to be connected to every other system, firms must examine their architecture and make sure there aren’t any security gaps,” says Stefan Garczynski, Managing Security Architect at Sopra Steria.
+
+
+“A zero-trust architecture eliminates the ability for attackers to traverse the network, by ensuring authentication is always required and nothing is trusted automatically”
+* Stefan Garczynski, Managing Security Architect, Sopra Steria 
+
+
+The next day
+* 7:00am – It emerges that supplier credentials were exploited.
+Other European retailers are targeted.
+* 2:00pm – Banks introduce tighter fraud checks.
+
+
+ The solutions
+* Zero-trust architecture  
+* Network segmentation 
+* Targeted phishing training 
+* Supplier security checks 
+* AI-driven threat monitoring 
+* Cross-sector drills 
+	
+
+
+
+________________
+
+
+
+
+Chapter three - Transport
+
+
+> How hidden vulnerabilities grind a country’s transport network to a halt
+
+
+Monday
+Port of Dover, UK
+
+
+At a major UK port, logistics drivers prepare for the day ahead while commuters gather at stations across the country. But just as the morning rush begins, unexpected glitches creep into navigation systems – this is the first sign of a broader attack targeting transport nationwide.
+
+
+* 8:00am – A driver taps the first delivery address for the day into his sat-nav, only for the screen to freeze.
+He keeps tapping, but nothing displays.
+* 8:15am – Others in the depot face similar issues and management wonders why vans aren’t moving.
+Thousands of pounds of revenue could be lost from a late departure. 
+* 9:00am – A foreign hacker group is using a technique called GPS jamming to block signals and interfere with the GPS network, disrupting travel in the UK.
+
+
+Hackers exploit emerging vulnerabilities
+
+
+While the Global Positioning System (GPS) has been a trusted navigation system since the mid-1990s, it’s far from invulnerable. 
+
+
+
+
+“Jamming can block the signals, while spoofing tricks systems into misreading locations”
+* Fabien Lecoq, Cybersecurity Director, Sopra Steria
+
+
+Transport is the second most targeted sector in the EU, with the majority of attacks concentrated in air and logistics.
+
+
+Data point 3:
+EU Transport Sector Cyber Incidents (2025)
+Air transport 58.4% Logistics 20.8%
+Source: ENISA 2025 Report[e]
+  
+
+	
+
+“Aircraft, ground systems and even airport gates are now deeply interconnected. This creates new vulnerabilities: imagine someone disrupting digital flight‑planning systems during peak travel or manipulating airport operational networks” 
+* Stefan Garczynski, Managing Security Architect, Sopra Steria
+
+
+When disruption crosses borders
+* 12:00pm – The driver makes deliveries, albeit at a slower pace, using maps and institutional knowledge.
+* 3:00pm – Over the radio, news breaks about a disruption to a UK military jet carrying an MP over Russian airspace. Early reports suggest it was a GPS disturbance.
+* 3:30pm – UK airports implement additional security measures, delaying arrivals and departures.
+
+
+Seeking security in digital sovereignty 
+Europe’s reliance on GPS – a US-owned satellite service – poses a strategic risk in times of global tension. 
+
+
+13 EU member states have already called on the European Commission to accelerate the deployment of interference-resistant Global Navigation Satellite System (GNSS) technologies to accelerate Europe’s digital sovereignty. 
+
+
+Julia Carver, an assistant professor focusing on Europe’s cybersecurity policy and strategic affairs at Leiden University, explains that the EU’s vision of digital sovereignty emphasises self-determination. 
+
+
+“Europe wants to choose its digital vendors and set the regulations and parameters for how its digital devices are used. It also wants to have greater control over personal and non-personal data”
+* Julia Carver, Assistant Professor, Leiden University
+
+
+But from a legal perspective, digital sovereignty is tricky.
+“Digital sovereignty sounds compelling, but, in legal terms, it goes in many directions,” says Elaine Fahey, Professor of EU Law at City St George’s, University of London. “It’s rooted in internal market law, while the threats themselves are cross-border.”
+
+
+“That’s the paradox of the digital era; the EU has limited powers, yet it faces limitless, transboundary risks”
+* Elaine Fahey, Professor of EU Law, City St George’s, University of London 
+
+
+Chaos continues into the evening
+* 6:00pm – Drivers are told they will need to work overtime to recoup the company’s revenue losses.
+* 7:00pm – As the driver heads home, his usual train is delayed by two hours.
+* 7:30pm – A news alert says trains have been cancelled and delayed due to a coordinated attack on the Wi-Fi networks at UK train stations.
+Cyber analysts believe a foreign entity is behind the travel chaos throughout the country.  
+
+
+ The solutions
+* Expanding European investment in GNSS
+* Manufacturing critical GPS and satellite components
+* Promoting EU-developed navigation software and apps
+* Zero-trust architectures
+	
+
+
+
+________________
+
+
+
+
+The lesson is clear
+
+
+The lesson is clear: cyber threats do not respect borders, digital or physical.
+
+
+From corrupted payment infrastructure in Madrid to a disrupted transport network throughout the UK and blackouts in Oslo, these hypothetical scenarios show how quickly disruption could ripple across Europe’s daily life – crossing industries and countries in hours, sometimes minutes.
+
+
+The sophistication of these attacks demands an equally sophisticated response, but this cyber resilience cannot be built in silos.
+
+
+These cases highlight why a multifaceted, cross-border and cross-sector approach to cyber security is required in today’s hyper-connected society.
+
+
+The future will belong not to the best-defended sector, but to the best-coordinated network.
+
+
+“It’s no longer a case of if an attack will happen, but when. To stay ahead of threats evolving in both complexity and scale, Europe must act not just with urgency, but with unity”
+* Fabien Lecoq, Cybersecurity Director, Sopra Steria
+
+
+CTA: X
+
+
+Article word count: 2190 words
+
+
+
+
+
+
+
+
+	FT STUDIO
+	
+
+	 
+
+
+[a]Don't include hyperlink
+[b]Note different in figma, this is a new addition
+[c]Lucie note: quietly removed here, different to figma
+[d]Don't include hyperlink
+[e]Don't include a hyperlink
