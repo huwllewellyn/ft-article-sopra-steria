@@ -1,12 +1,15 @@
 import "./App.css";
 import styled from "styled-components";
 import IntroSection from "./components/IntroSection";
+import WarningSection from "./components/WarningSection";
+import OneClickSection from "./components/OneClickSection";
+import IntroTextSection from "./components/IntroTextSection";
 import TabNavigation from "./components/TabNavigation";
 import {
     EnergyChapter,
     FinanceChapter,
     TransportChapter,
-    ConclusionSection
+    ConclusionSection,
 } from "./components/chapters";
 import { useState, useRef, useEffect } from "react";
 
@@ -49,13 +52,16 @@ function App() {
     useEffect(() => {
         const handleScroll = () => {
             const scrollPosition = window.scrollY + 200;
-            
+
             chapterRefs.current.forEach((ref, index) => {
                 if (ref) {
                     const offsetTop = ref.offsetTop;
                     const offsetBottom = offsetTop + ref.offsetHeight;
-                    
-                    if (scrollPosition >= offsetTop && scrollPosition < offsetBottom) {
+
+                    if (
+                        scrollPosition >= offsetTop &&
+                        scrollPosition < offsetBottom
+                    ) {
                         setActiveTab(index);
                     }
                 }
@@ -69,25 +75,28 @@ function App() {
     return (
         <AppContainer>
             <IntroSection />
-            
+            <WarningSection />
+            <OneClickSection />
+            <IntroTextSection />
+
             <TabNavigation
                 tabs={tabs}
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
             />
-            
-            <ChapterContainer ref={el => chapterRefs.current[0] = el}>
+
+            <ChapterContainer ref={(el) => (chapterRefs.current[0] = el)}>
                 <EnergyChapter />
             </ChapterContainer>
-            
-            <ChapterContainer ref={el => chapterRefs.current[1] = el}>
+
+            <ChapterContainer ref={(el) => (chapterRefs.current[1] = el)}>
                 <FinanceChapter />
             </ChapterContainer>
-            
-            <ChapterContainer ref={el => chapterRefs.current[2] = el}>
+
+            <ChapterContainer ref={(el) => (chapterRefs.current[2] = el)}>
                 <TransportChapter />
             </ChapterContainer>
-            
+
             <ConclusionSection />
         </AppContainer>
     );

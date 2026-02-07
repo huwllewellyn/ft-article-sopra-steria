@@ -5,21 +5,13 @@ import { media } from "../utils/breakpoints";
 const Container = styled.section`
     width: 100%;
     min-height: 100vh;
-    padding: 120px 40px 80px;
     background: #0d1117;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     position: relative;
     overflow: hidden;
-
-    ${media.mobile(`
-        padding: 100px 20px 60px;
-    `)}
 `;
 
-// Placeholder for background image - will be replaced with actual asset
 const BackgroundOverlay = styled.div`
     position: absolute;
     inset: 0;
@@ -33,36 +25,85 @@ const BackgroundOverlay = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-    max-width: 1100px;
-    width: 100%;
+    position: relative;
     z-index: 2;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 110px 80px 40px;
     display: flex;
     flex-direction: column;
-    min-height: 60vh;
-    justify-content: space-between;
+    gap: 47px;
+    flex: 1;
+    text-transform: uppercase;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+
+    ${media.tablet(`
+        padding: 80px 40px 30px;
+        gap: 30px;
+    `)}
 
     ${media.mobile(`
-        min-height: 70vh;
+        padding: 80px 20px 30px;
+        gap: 30px;
     `)}
 `;
 
-const TopContent = styled.div`
-    text-align: left;
+const MainRow = styled.div`
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex: 1;
+
+    ${media.mobile(`
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 60px;
+    `)}
 `;
 
-const BottomContent = styled.div`
+const LeftColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 630px;
+    min-height: 580px;
+
+    ${media.tablet(`
+        width: 50%;
+        min-height: 450px;
+    `)}
+
+    ${media.mobile(`
+        width: 100%;
+        min-height: auto;
+        gap: 40px;
+    `)}
+`;
+
+const RightColumn = styled.div`
+    width: 494px;
     text-align: right;
+
+    ${media.tablet(`
+        width: 45%;
+    `)}
+
+    ${media.mobile(`
+        width: 100%;
+        text-align: left;
+    `)}
 `;
 
 const MainTitle = styled(motion.h1)`
-    font-family: freight-big-pro, Georgia, serif;
-    font-size: 72px;
-    font-weight: 400;
-    color: #E8D44D;
-    line-height: 1.05;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 74px;
+    font-weight: 500;
+    color: #f7ff95;
+    line-height: 0.85;
     margin: 0;
     text-transform: uppercase;
-    letter-spacing: -1px;
 
     ${media.tablet(`
         font-size: 56px;
@@ -74,11 +115,11 @@ const MainTitle = styled(motion.h1)`
 `;
 
 const BigQuestion = styled(motion.h2)`
-    font-family: freight-big-pro, Georgia, serif;
-    font-size: 72px;
-    font-weight: 400;
-    color: #E8D44D;
-    line-height: 1.1;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 74px;
+    font-weight: 500;
+    color: #f7ff95;
+    line-height: 0.85;
     margin: 0;
     text-transform: uppercase;
 
@@ -88,44 +129,35 @@ const BigQuestion = styled(motion.h2)`
 
     ${media.mobile(`
         font-size: 36px;
+        line-height: 0.9;
     `)}
 `;
 
 const Standfirst = styled(motion.p)`
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    max-width: 500px;
-    margin: 32px 0 0 0;
-    text-align: left;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 1.3;
+    max-width: 411px;
+    margin: 0;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
 
     ${media.mobile(`
-        font-size: 14px;
+        font-size: 15px;
         max-width: 100%;
     `)}
 `;
 
-const ScrollIndicator = styled(motion.div)`
-    position: absolute;
-    bottom: 40px;
-    left: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 11px;
+const ScrollIndicator = styled(motion.p)`
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fbfbfb;
+    letter-spacing: 0.14px;
+    line-height: 1.35;
+    margin: 0;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    z-index: 2;
-
-    ${media.mobile(`
-        left: 20px;
-        bottom: 30px;
-    `)}
 `;
 
 const containerVariants = {
@@ -150,44 +182,48 @@ export default function IntroSection() {
         <Container>
             <BackgroundOverlay />
             <ContentWrapper>
-                <TopContent>
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        variants={containerVariants}
-                    >
-                        <MainTitle variants={itemVariants}>
-                            Digital<br />
-                            Disruption<br />
-                            Diaries:
-                        </MainTitle>
-                        <Standfirst variants={itemVariants}>
-                            Three hypothetical stories expose how cyber attacks could swiftly disrupt and destabilise daily life – and explore the solutions and measures required to protect our most critical systems
-                        </Standfirst>
-                    </motion.div>
-                </TopContent>
-                <BottomContent>
-                    <motion.div
-                        initial="hidden"
-                        animate="visible"
-                        variants={containerVariants}
-                    >
-                        <BigQuestion variants={itemVariants}>
-                            What<br />
-                            if Europe's<br />
-                            networks<br />
-                            went dark?
-                        </BigQuestion>
-                    </motion.div>
-                </BottomContent>
+                <MainRow>
+                    <LeftColumn>
+                        <motion.div
+                            initial="hidden"
+                            animate="visible"
+                            variants={containerVariants}
+                        >
+                            <MainTitle variants={itemVariants}>
+                                Digital disruption diaries:
+                            </MainTitle>
+                        </motion.div>
+                        <motion.div
+                            initial="hidden"
+                            animate="visible"
+                            variants={containerVariants}
+                        >
+                            <Standfirst variants={itemVariants}>
+                                Three hypothetical stories expose how cyber attacks could swiftly disrupt and destabilise daily life – and explore the solutions and measures required to protect our most critical systems
+                            </Standfirst>
+                        </motion.div>
+                    </LeftColumn>
+                    <RightColumn>
+                        <motion.div
+                            initial="hidden"
+                            animate="visible"
+                            variants={containerVariants}
+                        >
+                            <BigQuestion variants={itemVariants}>
+                                what<br />
+                                if Europe's networks went dark?
+                            </BigQuestion>
+                        </motion.div>
+                    </RightColumn>
+                </MainRow>
+                <ScrollIndicator
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 1.5, duration: 0.5 }}
+                >
+                    scroll to explore
+                </ScrollIndicator>
             </ContentWrapper>
-            <ScrollIndicator
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.5, duration: 0.5 }}
-            >
-                <span>Scroll to explore</span>
-            </ScrollIndicator>
         </Container>
     );
 }
