@@ -1,72 +1,61 @@
 import styled from "styled-components";
 import { media } from "../utils/breakpoints";
 
-const TAB_COLORS = {
-    energy: "#E8D44D",
-    finance: "#4A9FD4",
-    transport: "#4CAF50",
-};
-
 const NavContainer = styled.nav`
     position: sticky;
     top: 40px;
     z-index: 100;
-    background: rgba(13, 17, 23, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    
-    @media (max-width: 767px) {
+    background: rgba(19, 19, 19, 0.5);
+    backdrop-filter: blur(4px);
+    padding: 8px 240px 12px;
+
+    ${media.tablet(`
+        padding: 8px 80px 12px;
+    `)}
+
+    ${media.mobile(`
         top: 65px;
-    }
+        padding: 8px 20px 12px;
+    `)}
 `;
 
 const TabList = styled.div`
     display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
+    align-items: center;
     justify-content: center;
+    gap: 167px;
+
+    ${media.tablet(`
+        gap: 80px;
+    `)}
+
+    ${media.mobile(`
+        gap: 40px;
+    `)}
 `;
 
 const TabButton = styled.button`
-    flex: 1;
-    max-width: 400px;
-    padding: 16px 24px;
     background: transparent;
-    color: ${props => props.$active ? '#fff' : 'rgba(255, 255, 255, 0.6)'};
+    color: ${props => props.$active ? '#ffffff' : 'rgba(255, 255, 255, 0.5)'};
     border: none;
     cursor: pointer;
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 14px;
-    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 19px;
+    font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.3s ease;
-    position: relative;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0;
+    width: 90px;
+    transition: color 0.3s ease;
 
     &:hover {
-        color: #fff;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: ${props => props.$active ? '100%' : '0'};
-        height: 3px;
-        background: ${props => props.$activeColor || '#E8D44D'};
-        transition: width 0.3s ease;
-    }
-
-    &:hover::after {
-        width: 100%;
+        color: #ffffff;
     }
 
     ${media.mobile(`
-        padding: 12px 8px;
-        font-size: 11px;
-        letter-spacing: 1px;
+        font-size: 15px;
+        width: auto;
     `)}
 `;
 
@@ -78,7 +67,6 @@ export default function TabNavigation({ tabs, activeTab, onTabChange }) {
                     <TabButton
                         key={tab.id}
                         $active={activeTab === index}
-                        $activeColor={TAB_COLORS[tab.id]}
                         onClick={() => onTabChange(index)}
                     >
                         {tab.label}

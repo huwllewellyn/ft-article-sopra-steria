@@ -1,81 +1,55 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 import { media } from "../../utils/breakpoints";
 
 const Container = styled(motion.div)`
-    text-align: left;
-    margin-bottom: 48px;
-
-    ${media.mobile(`
-        margin-bottom: 32px;
-    `)}
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 `;
 
-const ChapterLabel = styled.div`
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 14px;
+const ChapterLabel = styled.p`
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 3px;
-    color: ${props => props.$color || "rgba(255, 255, 255, 0.6)"};
-    margin-bottom: 8px;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0;
+    max-width: 408px;
 
     ${media.mobile(`
-        font-size: 12px;
-        letter-spacing: 2px;
+        font-size: 20px;
     `)}
 `;
 
-const TabLabel = styled.div`
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: ${props => props.$accentColor || "#FFD700"};
-    display: inline-block;
-    padding: 4px 8px;
-    border: 1px solid ${props => props.$accentColor || "#FFD700"};
-    margin-bottom: 16px;
+const blink = keyframes`
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+`;
 
-    ${media.mobile(`
-        font-size: 12px;
-    `)}
+const CursorBlock = styled.div`
+    width: 20px;
+    height: 4px;
+    background: #ffffff;
+    animation: ${blink} 1s step-end infinite;
+    margin: 4px 0;
 `;
 
 const Subtitle = styled.h2`
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 20px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px;
     font-weight: 400;
-    color: ${props => props.$color || "rgba(255, 255, 255, 0.9)"};
-    line-height: 1.4;
-    margin: 0 0 24px 0;
-    max-width: 600px;
+    text-transform: uppercase;
+    color: #ffffff;
+    line-height: 1.3;
+    margin: 0;
+    max-width: 408px;
 
     ${media.mobile(`
-        font-size: 17px;
+        font-size: 20px;
     `)}
-`;
-
-const Meta = styled.div`
-    font-family: "dm-sans", "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    color: ${props => props.$color || "rgba(255, 255, 255, 0.7)"};
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-
-    ${media.mobile(`
-        font-size: 14px;
-        gap: 12px;
-    `)}
-`;
-
-const MetaItem = styled.span`
-    display: flex;
-    align-items: center;
-    gap: 6px;
 `;
 
 const containerVariants = {
@@ -100,16 +74,12 @@ const itemVariants = {
 
 /**
  * ChapterIntro Component
- * Chapter header with label, tab name, subtitle, day and location
+ * Chapter header with label, blinking cursor, and subtitle
  *
  * @param {string} chapter - Chapter label (e.g., "CHAPTER_ONE")
- * @param {string} tab - Tab/category name (e.g., "ENERGY")
  * @param {string} subtitle - Chapter subtitle/title
- * @param {string} day - Day of the week
- * @param {string} location - Location name
- * @param {string} accentColor - Accent color for tab label
  */
-export default function ChapterIntro({ chapter, tab, subtitle, day, location, accentColor }) {
+export default function ChapterIntro({ chapter, subtitle }) {
     return (
         <Container
             initial="hidden"
@@ -121,17 +91,10 @@ export default function ChapterIntro({ chapter, tab, subtitle, day, location, ac
                 <ChapterLabel>{chapter}</ChapterLabel>
             </motion.div>
             <motion.div variants={itemVariants}>
-                <TabLabel $accentColor={accentColor}>{tab}</TabLabel>
+                <CursorBlock />
             </motion.div>
             <motion.div variants={itemVariants}>
-                <Subtitle>{subtitle}</Subtitle>
-            </motion.div>
-            <motion.div variants={itemVariants}>
-                <Meta>
-                    {day && <MetaItem>{day}</MetaItem>}
-                    {day && location && <MetaItem>•</MetaItem>}
-                    {location && <MetaItem>{location}</MetaItem>}
-                </Meta>
+                <Subtitle>&gt; {subtitle}</Subtitle>
             </motion.div>
         </Container>
     );

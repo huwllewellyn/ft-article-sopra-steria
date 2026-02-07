@@ -1,0 +1,7 @@
+export { default as NarrativeSlide } from "./NarrativeSlide";
+export { default as EditorialSlide } from "./EditorialSlide";
+export { default as FullBleedImage } from "./FullBleedImage";
+export { default as DataGridSlide } from "./DataGridSlide";
+export { default as SectionHeadingBar } from "./SectionHeadingBar";
+export { default as SlideQuote } from "./SlideQuote";
+export { default as TimestampBadge } from "./TimestampBadge";
