@@ -21,7 +21,7 @@ const Container = styled.div`
  *
  * @param {string|Object} animations - Either a filename/path string (paths constructed automatically)
  *   or an object mapping breakpoints to animation paths
- *   Example string: "AXA_Scrolly_DP01.json" or "/lottie/AXA_Scrolly_DP01.json"
+ *   Example string: "Scrolly_DP01.json" or "/lottie/Scrolly_DP01.json"
  *   Example object: { mobile: "/lottie/mobile/anim.json", tablet: "/lottie/tablet/anim.json", desktop: "/lottie/desktop/anim.json" }
  * @param {Object} heights - Object mapping breakpoints to heights (optional, defaults to auto)
  *   Example: { mobile: "300px", tablet: "400px", desktop: "600px" }

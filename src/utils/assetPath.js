@@ -2,7 +2,7 @@ const basePath = import.meta.env.BASE_URL;
 
 /**
  * Resolve asset path with proper base path handling
- * Works in both dev (/) and production (/ft-article-axa/)
+ * Works in both dev (/) and production (/ft-article-sopra-steria/)
  */
 export function getAssetPath(path) {
   // Remove leading slash if present to avoid double slashes

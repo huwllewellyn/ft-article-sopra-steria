@@ -37,7 +37,7 @@ const StickyContainer = styled.div`
  * The animation's width and height are calculated based on its aspect ratio from animationDimensions.json.
  *
  * @param {string|Object} animations - Animation identifier (required)
- *   String: "AXA_Scrolly_DP02.json" - uses the same animation for all breakpoints
+ *   String: "Scrolly_DP02.json" - uses the same animation for all breakpoints
  *   Object: { mobile: "/lottie/mobile/anim.json", tablet: "/lottie/tablet/anim.json", desktop: "/lottie/desktop/anim.json" }
  * @param {string} trackHeight - Height of the scrollable track area (optional, default: "4000px")
  * @param {string} headerHeight - Height of the page header to avoid overlap (optional, default: "60px")
@@ -129,7 +129,7 @@ export default function LottieScrolljack({
 
                 if (typeof animations === "string") {
                     // If animations is a string, extract the filename without extension
-                    // e.g., "AXA_Scrolly_DP02.json" -> "AXA_Scrolly_DP02"
+                    // e.g., "Scrolly_DP02.json" -> "Scrolly_DP02"
                     animationName = animations
                         .split("/")
                         .pop()

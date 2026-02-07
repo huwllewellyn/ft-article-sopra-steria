@@ -20,7 +20,7 @@ This project uses the FT's partner content HTML template as the base shell, with
 ## Project Structure
 
 ```
-ft-article-axa/
+ft-article-sopra-steria/
 ├── src/
 │   ├── App.jsx              # Main app component containing all sections
 │   ├── main.jsx             # React entry point (mounts App to DOM)
@@ -147,7 +147,7 @@ npm run deploy
 This will:
 1. Build the project (`npm run build`)
 2. Deploy the dist folder to the `gh-pages` branch
-3. GitHub Pages serves changes at: `https://huwllewellyn.github.io/ft-article-axa`
+3. GitHub Pages serves changes at: `https://casper-codes.github.io/ft-article-sopra-steria`
 
 **Sharing with stakeholders:**
 Send the GitHub Pages link for design review before final S3 deployment.
