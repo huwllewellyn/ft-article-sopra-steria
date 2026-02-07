@@ -12,24 +12,26 @@ import SlideQuote from "../slides/SlideQuote";
 
 const VIDEOS = {
     osloCityscape: "/videos/ch1/ch1_1.mp4",
-    hackerScene: "/videos/ch1/ch1_2_desktop.mp4",
-    globe: "/videos/ch1/ch1_3.mp4",
-    elevator: "/videos/ch1/ch1_4.mp4",
+    hackerScene: "/videos/ch1/ch1_2-2.mp4",
+    globe: "/videos/ch1/ch1_2-2.mp4",
+    elevator: "/videos/ch1/ch1_2-2.mp4",
     signalLost: "/videos/ch1/ch1_5.mp4",
     glitchyCityscape: "/videos/ch1/ch1_6.mp4",
     womanScreens: "/videos/ch1/ch1_7.mp4",
     escalator: "/videos/ch1/ch1_8.mp4",
+    dataPoint: "/videos/ch1/dp1_desktop.mp4",
 };
 
 const POSTERS = {
     osloCityscape: "/videos/posters/ch1/ch1_1.jpg",
-    hackerScene: "/videos/posters/ch1/ch1_2_desktop.jpg",
-    globe: "/videos/posters/ch1/ch1_3.jpg",
-    elevator: "/videos/posters/ch1/ch1_4.jpg",
+    hackerScene: "/videos/posters/ch1/ch1_2-2.jpg",
+    globe: "/videos/posters/ch1/ch1_2-2.jpg",
+    elevator: "/videos/posters/ch1/ch1_2-2.jpg",
     signalLost: "/videos/posters/ch1/ch1_5.jpg",
     glitchyCityscape: "/videos/posters/ch1/ch1_6.jpg",
     womanScreens: "/videos/posters/ch1/ch1_7.jpg",
     escalator: "/videos/posters/ch1/ch1_8.jpg",
+    dataPoint: "/videos/posters/ch1/dp1_desktop.jpg",
 };
 
 const Chapter = styled.div`
@@ -240,7 +242,11 @@ export default function EnergyChapter() {
             </EditorialSlide>
 
             {/* S8 — Cyber attacks data grid */}
-            <DataGridSlide sectionTitle="AN EVOLVING THREAT LANDSCAPE">
+            <DataGridSlide
+                sectionTitle="AN EVOLVING THREAT LANDSCAPE"
+                backgroundVideo={VIDEOS.dataPoint}
+                poster={POSTERS.dataPoint}
+            >
                 <DataCallout>
                     <p>
                         Cyber attacks <strong>doubled</strong> between 2020 and
@@ -403,6 +409,8 @@ export default function EnergyChapter() {
             <DataGridSlide
                 sectionTitle="THE SOLUTIONS"
                 headingColor="#fff"
+                backgroundVideo={VIDEOS.dataPoint}
+                poster={POSTERS.dataPoint}
             >
                 <SolutionBoxes>
                     <SolutionBox>

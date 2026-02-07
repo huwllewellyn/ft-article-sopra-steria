@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
+import { getAssetPath } from "../../utils/assetPath";
 import SectionHeadingBar from "./SectionHeadingBar";
 
 const Slide = styled.section`
@@ -10,6 +11,15 @@ const Slide = styled.section`
     flex-direction: column;
     position: relative;
     overflow: hidden;
+`;
+
+const BackgroundVideo = styled.video`
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
 `;
 
 const GridOverlay = styled.div`
@@ -59,9 +69,16 @@ const ContentArea = styled.div`
     }
 `;
 
-export default function DataGridSlide({ sectionTitle, headingColor, gridColor, children }) {
+export default function DataGridSlide({ sectionTitle, headingColor, gridColor, backgroundVideo, poster, children }) {
     return (
         <Slide>
+            {backgroundVideo && (
+                <BackgroundVideo
+                    src={getAssetPath(backgroundVideo)}
+                    poster={poster ? getAssetPath(poster) : undefined}
+                    autoPlay loop muted playsInline
+                />
+            )}
             <GridOverlay $gridColor={gridColor} />
             <SectionHeadingBar color={headingColor}>{sectionTitle}</SectionHeadingBar>
             <ContentArea>{children}</ContentArea>

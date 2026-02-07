@@ -21,6 +21,7 @@ const VIDEOS = {
     satellite: "/videos/ch3/ch3_6.mp4",
     mapDark: "/videos/ch3/ch3_7.mp4",
     trainStation: "/videos/ch3/ch3_8.mp4",
+    dataPoint: "/videos/ch3/dp3_desktop.mp4",
 };
 
 const POSTERS = {
@@ -32,6 +33,7 @@ const POSTERS = {
     satellite: "/videos/posters/ch3/ch3_6.jpg",
     mapDark: "/videos/posters/ch3/ch3_7.jpg",
     trainStation: "/videos/posters/ch3/ch3_8.jpg",
+    dataPoint: "/videos/posters/ch3/dp3_desktop.jpg",
 };
 
 const Chapter = styled.div`
@@ -243,6 +245,8 @@ export default function TransportChapter() {
                 sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                 headingColor={ACCENT}
                 gridColor={GRID_COLOR}
+                backgroundVideo={VIDEOS.dataPoint}
+                poster={POSTERS.dataPoint}
             >
                 <DataCallout>
                     <p>
@@ -443,6 +447,8 @@ export default function TransportChapter() {
                 sectionTitle="THE SOLUTIONS"
                 headingColor={ACCENT}
                 gridColor={GRID_COLOR}
+                backgroundVideo={VIDEOS.dataPoint}
+                poster={POSTERS.dataPoint}
             >
                 <SolutionBoxes>
                     <SolutionBox>
