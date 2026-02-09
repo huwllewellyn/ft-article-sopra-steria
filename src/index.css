@@ -27,3 +27,8 @@ body {
   color: inherit;
   text-decoration: inherit;
 }
+
+/* Keep share tether above sticky slides */
+.pc__share {
+  z-index: 1001 !important;
+}

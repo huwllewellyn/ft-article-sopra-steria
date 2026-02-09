@@ -17,6 +17,7 @@ const AppContainer = styled.div``;
 
 const ChapterContainer = styled.div`
     scroll-margin-top: 60px;
+    isolation: isolate;
 `;
 
 // Tab configuration for navigation
