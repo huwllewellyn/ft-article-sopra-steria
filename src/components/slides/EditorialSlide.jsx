@@ -27,16 +27,24 @@ const ContentArea = styled.div`
     `)}
 
     p {
-        font-family: 'Space Mono', monospace;
-        font-size: 21px;
+        font-family: 'logic-monospace', monospace;
+        font-size: 24px;
+        font-weight: 500;
         line-height: 1.35;
-        letter-spacing: -0.84px;
+        letter-spacing: -0.96px;
         color: #000;
         margin: 0 0 16px;
         text-align: center;
 
+        ${media.tablet(`
+            font-size: 21px;
+            letter-spacing: -0.84px;
+        `)}
+
         ${media.mobile(`
-            font-size: 16px;
+            font-size: 19px;
+            letter-spacing: -0.76px;
+            color: #222;
         `)}
     }
 

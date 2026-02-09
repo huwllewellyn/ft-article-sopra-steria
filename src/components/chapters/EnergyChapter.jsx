@@ -267,6 +267,7 @@ export default function EnergyChapter() {
             <StickySlide appearInPlace>
                 <DataGridSlide
                     sectionTitle="AN EVOLVING THREAT LANDSCAPE"
+                    backgroundColor="#f7ff95"
                     backgroundVideo={VIDEOS.dataPoint}
                     poster={POSTERS.dataPoint}
                 >
@@ -459,6 +460,7 @@ export default function EnergyChapter() {
                 <DataGridSlide
                     sectionTitle="THE SOLUTIONS"
                     headingColor="#fff"
+                    backgroundColor="#f7ff95"
                     backgroundVideo={VIDEOS.dataPoint}
                     poster={POSTERS.dataPoint}
                 >

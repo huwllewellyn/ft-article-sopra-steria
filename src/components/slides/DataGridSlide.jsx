@@ -5,8 +5,8 @@ import SectionHeadingBar from "./SectionHeadingBar";
 
 const Slide = styled.section`
     min-height: 100vh;
-    background: #0d1117;
-    color: #fff;
+    background: ${({ $bg }) => $bg || '#0d1117'};
+    color: #000;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -51,16 +51,19 @@ const ContentArea = styled.div`
     `)}
 
     p {
-        font-family: 'Space Mono', monospace;
-        font-size: 21px;
-        line-height: 1.35;
-        letter-spacing: -0.84px;
-        color: #fff;
+        font-family: 'logic-monospace', monospace;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.25;
+        letter-spacing: -0.96px;
+        color: #000;
         margin: 0 0 16px;
         text-align: center;
 
         ${media.mobile(`
-            font-size: 16px;
+            font-size: 19px;
+            letter-spacing: -0.76px;
+            line-height: 1.35;
         `)}
     }
 
@@ -69,9 +72,9 @@ const ContentArea = styled.div`
     }
 `;
 
-export default function DataGridSlide({ sectionTitle, headingColor, gridColor, backgroundVideo, poster, children }) {
+export default function DataGridSlide({ sectionTitle, headingColor, gridColor, backgroundVideo, poster, backgroundColor, children }) {
     return (
-        <Slide>
+        <Slide $bg={backgroundColor}>
             {backgroundVideo && (
                 <BackgroundVideo
                     src={getAssetPath(backgroundVideo)}

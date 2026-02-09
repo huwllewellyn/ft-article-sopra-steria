@@ -466,6 +466,7 @@ export default function FinanceChapter() {
             <StickySlide appearInPlace><DataGridSlide
                 sectionTitle="THE SOLUTIONS"
                 headingColor={ACCENT}
+                backgroundColor={ACCENT}
                 gridColor={GRID_COLOR}
             >
                 <SolutionBoxes>

@@ -75,16 +75,24 @@ const TimestampWrapper = styled.div`
 
 const Heading = styled.h2`
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 42px;
+    font-size: 30px;
     font-weight: 500;
     color: #fff;
     text-transform: uppercase;
     margin: 0 0 16px;
-    line-height: 0.85;
+    line-height: 1.2;
     letter-spacing: 0;
+    background: #000;
+    padding: 4px 8px;
+    width: fit-content;
+
+    ${media.tablet(`
+        font-size: 25px;
+    `)}
 
     ${media.mobile(`
-        font-size: 20px;
+        font-size: 21px;
+        line-height: 1.3;
     `)}
 `;
 
@@ -93,15 +101,22 @@ const Body = styled.div`
 
     p {
         font-family: 'logic-monospace', monospace;
-        font-size: 19px;
-        font-weight: 500;
+        font-size: 24px;
+        font-weight: 400;
         line-height: 1.35;
-        letter-spacing: -0.04em;
-        color: #fff;
+        letter-spacing: -0.96px;
+        color: #ebebeb;
         margin: 0 0 16px;
+        background: #000;
+        padding: 4px 8px;
+        display: inline;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
 
         ${media.mobile(`
-            font-size: 16px;
+            font-size: 19px;
+            font-weight: 500;
+            letter-spacing: -0.76px;
         `)}
     }
 

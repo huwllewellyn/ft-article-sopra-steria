@@ -11,16 +11,22 @@ const Container = styled(motion.div)`
 
 const ChapterLabel = styled.p`
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 500;
     text-transform: uppercase;
     color: #ffffff;
     line-height: 1.2;
     margin: 0;
     max-width: 408px;
+    background: #000;
+    padding: 4px 8px;
+
+    ${media.tablet(`
+        font-size: 25px;
+    `)}
 
     ${media.mobile(`
-        font-size: 20px;
+        font-size: 21px;
     `)}
 `;
 
@@ -39,16 +45,22 @@ const CursorBlock = styled.div`
 
 const Subtitle = styled.h2`
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 24px;
+    font-size: 30px;
     font-weight: 400;
     text-transform: uppercase;
     color: #ffffff;
     line-height: 1.3;
     margin: 0;
     max-width: 408px;
+    background: #000;
+    padding: 4px 8px;
+
+    ${media.tablet(`
+        font-size: 25px;
+    `)}
 
     ${media.mobile(`
-        font-size: 20px;
+        font-size: 21px;
     `)}
 `;
 

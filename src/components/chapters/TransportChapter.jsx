@@ -80,16 +80,19 @@ const DataCallout = styled.div`
     max-width: 600px;
 
     p {
-        font-family: 'Space Mono', monospace;
-        font-size: 27px;
-        line-height: 1.35;
-        letter-spacing: -0.54px;
-        color: #fff;
+        font-family: 'logic-monospace', monospace;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 1.25;
+        letter-spacing: -0.96px;
+        color: #000;
         text-transform: uppercase;
         margin: 0 0 16px;
 
         ${media.mobile(`
-            font-size: 20px;
+            font-size: 19px;
+            letter-spacing: -0.76px;
+            line-height: 1.35;
         `)}
     }
 `;
@@ -245,6 +248,7 @@ export default function TransportChapter() {
             <StickySlide appearInPlace><DataGridSlide
                 sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                 headingColor={ACCENT}
+                backgroundColor={ACCENT}
                 gridColor={GRID_COLOR}
                 backgroundVideo={VIDEOS.dataPoint}
                 poster={POSTERS.dataPoint}
@@ -447,6 +451,7 @@ export default function TransportChapter() {
             <StickySlide appearInPlace><DataGridSlide
                 sectionTitle="THE SOLUTIONS"
                 headingColor={ACCENT}
+                backgroundColor={ACCENT}
                 gridColor={GRID_COLOR}
                 backgroundVideo={VIDEOS.dataPoint}
                 poster={POSTERS.dataPoint}

@@ -16,13 +16,17 @@ const Bar = styled.div`
 `;
 
 const Title = styled.span`
-    font-family: "Space Mono", monospace;
+    font-family: 'logic-monospace', monospace;
     font-weight: 700;
-    font-size: 21px;
+    font-size: 24px;
     text-transform: uppercase;
     color: ${({ $color }) => $color || "#f7ff95"};
-    letter-spacing: -0.84px;
+    line-height: 1.24;
     text-align: center;
+
+    ${media.mobile(`
+        font-size: 19px;
+    `)}
 `;
 
 export default function SectionHeadingBar({ children, color }) {
