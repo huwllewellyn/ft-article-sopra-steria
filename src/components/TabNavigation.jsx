@@ -2,8 +2,10 @@ import styled from "styled-components";
 import { media } from "../utils/breakpoints";
 
 const NavContainer = styled.nav`
-    position: sticky;
-    top: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
     background: rgba(19, 19, 19, 0.5);
     backdrop-filter: blur(4px);
@@ -14,7 +16,6 @@ const NavContainer = styled.nav`
     `)}
 
     ${media.mobile(`
-        top: 65px;
         padding: 8px 20px 12px;
     `)}
 `;

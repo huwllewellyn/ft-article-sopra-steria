@@ -75,12 +75,13 @@ const TimestampWrapper = styled.div`
 
 const Heading = styled.h2`
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 24px;
+    font-size: 42px;
     font-weight: 500;
     color: #fff;
     text-transform: uppercase;
     margin: 0 0 16px;
-    line-height: 1.2;
+    line-height: 0.85;
+    letter-spacing: 0;
 
     ${media.mobile(`
         font-size: 20px;
@@ -91,10 +92,11 @@ const Body = styled.div`
     max-width: 600px;
 
     p {
-        font-family: 'Space Mono', monospace;
-        font-size: 21px;
+        font-family: 'logic-monospace', monospace;
+        font-size: 19px;
+        font-weight: 500;
         line-height: 1.35;
-        letter-spacing: -0.84px;
+        letter-spacing: -0.04em;
         color: #fff;
         margin: 0 0 16px;
 

@@ -36,7 +36,7 @@ const ContentWrapper = styled.div`
     gap: 47px;
     flex: 1;
     text-transform: uppercase;
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-weight: 500;
 
     ${media.tablet(`
@@ -97,11 +97,12 @@ const RightColumn = styled.div`
 `;
 
 const MainTitle = styled(motion.h1)`
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 74px;
     font-weight: 500;
     color: #f7ff95;
     line-height: 0.85;
+    letter-spacing: 0;
     margin: 0;
     text-transform: uppercase;
 
@@ -115,7 +116,7 @@ const MainTitle = styled(motion.h1)`
 `;
 
 const BigQuestion = styled(motion.h2)`
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 74px;
     font-weight: 500;
     color: #f7ff95;
@@ -134,7 +135,7 @@ const BigQuestion = styled(motion.h2)`
 `;
 
 const Standfirst = styled(motion.p)`
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     font-size: 17px;
     font-weight: 500;
     color: #ffffff;
@@ -150,7 +151,7 @@ const Standfirst = styled(motion.p)`
 `;
 
 const ScrollIndicator = styled(motion.p)`
-    font-family: 'Space Mono', monospace;
+    font-family: "Space Mono", monospace;
     font-size: 14px;
     font-weight: 500;
     color: #fbfbfb;
@@ -164,8 +165,8 @@ const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: { staggerChildren: 0.15, delayChildren: 0.3 }
-    }
+        transition: { staggerChildren: 0.15, delayChildren: 0.3 },
+    },
 };
 
 const itemVariants = {
@@ -173,8 +174,8 @@ const itemVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.8, ease: "easeOut" }
-    }
+        transition: { duration: 0.8, ease: "easeOut" },
+    },
 };
 
 export default function IntroSection() {
@@ -199,7 +200,11 @@ export default function IntroSection() {
                             variants={containerVariants}
                         >
                             <Standfirst variants={itemVariants}>
-                                Three hypothetical stories expose how cyber attacks could swiftly disrupt and destabilise daily life – and explore the solutions and measures required to protect our most critical systems
+                                Three hypothetical stories expose how cyber
+                                attacks could swiftly disrupt and destabilise
+                                daily life – and explore the solutions and
+                                measures required to protect our most critical
+                                systems
                             </Standfirst>
                         </motion.div>
                     </LeftColumn>
@@ -210,7 +215,8 @@ export default function IntroSection() {
                             variants={containerVariants}
                         >
                             <BigQuestion variants={itemVariants}>
-                                what<br />
+                                what
+                                <br />
                                 if Europe's networks went dark?
                             </BigQuestion>
                         </motion.div>
