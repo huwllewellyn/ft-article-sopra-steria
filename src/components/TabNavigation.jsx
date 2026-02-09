@@ -6,7 +6,7 @@ const NavContainer = styled.nav`
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 100;
+    z-index: 1000;
     background: rgba(19, 19, 19, 0.5);
     backdrop-filter: blur(4px);
     padding: 8px 240px 12px;
