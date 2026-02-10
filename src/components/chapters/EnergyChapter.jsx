@@ -10,6 +10,7 @@ import {
     StickySlide,
 } from "../slides";
 import SlideQuote from "../slides/SlideQuote";
+import useTextScramble from "../../hooks/useTextScramble";
 
 const VIDEOS = {
     osloCityscape: "/videos/ch1/ch1_1.mp4",
@@ -95,7 +96,7 @@ const DataInfo = styled.div`
     }
 `;
 
-const DataCenter = styled.div`
+const DataCenterStyled = styled.div`
     font-family: 'logic-monospace', monospace;
     font-size: 24px;
     font-weight: 400;
@@ -106,6 +107,15 @@ const DataCenter = styled.div`
     background: ${({ $bg }) => $bg || '#f7ff95'};
     padding: 8px 12px;
 `;
+
+function DataCenter({ $bg, children }) {
+    const scrambleRef = useTextScramble({ delay: 500, duration: 1000 });
+    return (
+        <DataCenterStyled $bg={$bg} ref={scrambleRef}>
+            {children}
+        </DataCenterStyled>
+    );
+}
 
 const DataAttribution = styled.p`
     && {
