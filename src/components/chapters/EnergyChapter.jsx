@@ -11,6 +11,7 @@ import {
 } from "../slides";
 import SlideQuote from "../slides/SlideQuote";
 import useTextScramble from "../../hooks/useTextScramble";
+import useScrollVideo from "../../hooks/useScrollVideo";
 
 const VIDEOS = {
     osloCityscape: "/videos/ch1/ch1_1.mp4",
@@ -190,29 +191,42 @@ const SolutionBox = styled.div`
     }
 `;
 
+function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
+    const videoRef = useScrollVideo(scrollProgress);
+    return (
+        <HeroVideo
+            ref={videoRef}
+            src={src}
+            poster={poster}
+            muted
+            playsInline
+            preload="auto"
+        />
+    );
+}
+
 export default function EnergyChapter() {
     return (
         <Chapter>
             {/* Hero / Chapter Intro */}
-            <StickySlide>
-                <HeroSection>
-                    <HeroVideo
-                        src={getAssetPath(VIDEOS.osloCityscape)}
-                        poster={getAssetPath(POSTERS.osloCityscape)}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                    />
-                    <HeroOverlay />
-                    <div style={{ position: "relative", zIndex: 2 }}>
-                        <ChapterIntro
-                            chapter="CHAPTER_ONE"
-                            title="ENERGY"
-                            subtitle="When vital infrastructure is held hostage by hacktivists"
+            <StickySlide trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <HeroSection>
+                        <ScrollSyncHeroVideo
+                            scrollProgress={scrollYProgress}
+                            src={getAssetPath(VIDEOS.osloCityscape)}
+                            poster={getAssetPath(POSTERS.osloCityscape)}
                         />
-                    </div>
-                </HeroSection>
+                        <HeroOverlay />
+                        <div style={{ position: "relative", zIndex: 2 }}>
+                            <ChapterIntro
+                                chapter="CHAPTER_ONE"
+                                title="ENERGY"
+                                subtitle="When vital infrastructure is held hostage by hacktivists"
+                            />
+                        </div>
+                    </HeroSection>
+                )}
             </StickySlide>
 
             {/* S1 — Oslo intro */}

@@ -1,5 +1,6 @@
 import { useRef, useLayoutEffect, useEffect } from "react";
 import styled from "styled-components";
+import { useScroll } from "framer-motion";
 
 const StickyWrapper = styled.div`
     position: sticky;
@@ -8,9 +9,12 @@ const StickyWrapper = styled.div`
     overflow: hidden;
 `;
 
-export default function StickySlide({ children, appearInPlace }) {
-    const ref = useRef();
+const ScrollTrack = styled.div`
+    position: relative;
+    height: ${(props) => props.$trackHeight};
+`;
 
+function useZIndexAndAppear(ref, appearInPlace) {
     useLayoutEffect(() => {
         const el = ref.current;
         const siblings = Array.from(el.parentElement.children);
@@ -32,6 +36,38 @@ export default function StickySlide({ children, appearInPlace }) {
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, [appearInPlace]);
+}
+
+function ScrollTrackedSlide({ children, trackHeight }) {
+    const trackRef = useRef();
+
+    const { scrollYProgress } = useScroll({
+        target: trackRef,
+        offset: ["start start", "end end"],
+    });
+
+    useZIndexAndAppear(trackRef, false);
+
+    return (
+        <ScrollTrack ref={trackRef} $trackHeight={trackHeight}>
+            <StickyWrapper>
+                {children({ scrollYProgress })}
+            </StickyWrapper>
+        </ScrollTrack>
+    );
+}
+
+function BaseStickySlide({ children, appearInPlace }) {
+    const ref = useRef();
+    useZIndexAndAppear(ref, appearInPlace);
 
     return <StickyWrapper ref={ref}>{children}</StickyWrapper>;
+}
+
+export default function StickySlide({ children, appearInPlace, trackHeight }) {
+    if (trackHeight) {
+        return <ScrollTrackedSlide trackHeight={trackHeight}>{children}</ScrollTrackedSlide>;
+    }
+
+    return <BaseStickySlide appearInPlace={appearInPlace}>{children}</BaseStickySlide>;
 }
