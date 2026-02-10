@@ -14,7 +14,9 @@ const mask = (chars, progress) => {
     const masked = [];
     for (let i = 0; i < chars.length; i++) {
         const position = (i + 1) / chars.length;
-        if (position > progress) {
+        if (chars[i] === " ") {
+            masked.push(" ");
+        } else if (position > progress) {
             masked.push(randomChar());
         } else {
             masked.push(chars[i]);

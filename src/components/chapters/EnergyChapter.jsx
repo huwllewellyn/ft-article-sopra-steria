@@ -75,58 +75,92 @@ const HeroOverlay = styled.div`
     );
 `;
 
-const DataInfo = styled.div`
+const DataText = styled.div`
     text-align: center;
-    max-width: 364px;
-    background: #f7ff95;
-    padding: 8px 12px;
+    max-width: 400px;
+    font-family: "logic-monospace", monospace;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: -0.96px;
+    color: #000;
 
-    p {
-        font-family: "logic-monospace", monospace;
-        font-size: 21px;
-        font-weight: 400;
-        line-height: 1.25;
-        letter-spacing: -0.84px;
-        color: #000;
-        margin: 0;
-
-        ${media.mobile(`
-            font-size: 18px;
-        `)}
+    span {
+        background: #f7ff95;
+        padding: 4px 8px;
+        display: inline;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
     }
+
+    strong {
+        font-weight: 700;
+    }
+
+    ${media.mobile(`
+        font-size: 19px;
+        line-height: 1.35;
+        letter-spacing: -0.76px;
+    `)}
 `;
 
 const DataCenterStyled = styled.div`
-    font-family: 'logic-monospace', monospace;
+    font-family: "logic-monospace", monospace;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.25;
+    max-width: 400px;
+    letter-spacing: -0.96px;
+    color: #000;
+    text-align: center;
+
+    span {
+        background: ${({ $bg }) => $bg || "#f7ff95"};
+        padding: 4px 8px;
+        display: inline;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
+    }
+
+    ${media.mobile(`
+        font-size: 19px;
+        line-height: 1.35;
+        letter-spacing: -0.76px;
+    `)}
+`;
+
+function DataCenter({ $bg, children }) {
+    const scrambleRef = useTextScramble({ delay: 500, duration: 1000 });
+    return (
+        <DataCenterStyled $bg={$bg}>
+            <span ref={scrambleRef}>{children}</span>
+        </DataCenterStyled>
+    );
+}
+
+const DataAttribution = styled.div`
+    font-family: "logic-monospace", monospace;
     font-size: 24px;
     font-weight: 400;
     line-height: 1.25;
     letter-spacing: -0.96px;
     color: #000;
     text-align: center;
-    background: ${({ $bg }) => $bg || '#f7ff95'};
-    padding: 8px 12px;
-`;
+    max-width: 480px;
 
-function DataCenter({ $bg, children }) {
-    const scrambleRef = useTextScramble({ delay: 500, duration: 1000 });
-    return (
-        <DataCenterStyled $bg={$bg} ref={scrambleRef}>
-            {children}
-        </DataCenterStyled>
-    );
-}
-
-const DataAttribution = styled.p`
-    && {
-        font-size: 14px;
-        font-weight: 700;
-        text-transform: none;
-        letter-spacing: 0;
-        color: #000;
+    span {
         background: #f7ff95;
-        padding: 4px 12px;
+        padding: 4px 8px;
+        display: inline;
+        box-decoration-break: clone;
+        -webkit-box-decoration-break: clone;
     }
+
+    ${media.mobile(`
+        font-size: 19px;
+        line-height: 1.35;
+        letter-spacing: -0.76px;
+    `)}
 `;
 
 const SolutionBoxes = styled.div`
@@ -324,16 +358,16 @@ export default function EnergyChapter() {
                     backgroundVideo={VIDEOS.dataPoint}
                     poster={POSTERS.dataPoint}
                 >
-                    <DataInfo>
-                        Cyber attacks <strong>doubled</strong> between 2020 and
-                        2022 in <strong>Europe's power sector</strong> with
-                    </DataInfo>
+                    <DataText>
+                        <span>Cyber attacks <strong>doubled</strong> between 2020 and
+                        2022 in <strong>Europe's power sector</strong> with</span>
+                    </DataText>
                     <DataCenter $bg="#fff">
                         48 attacks on Europe's energy infrastructure
                     </DataCenter>
                     <DataAttribution>
-                        in 2022, according to Eurelectric, a federation for the
-                        European electricity industry.
+                        <span>in 2022, according to Eurelectric, a federation for the
+                        European electricity industry.</span>
                     </DataAttribution>
                 </DataGridSlide>
             </StickySlide>
