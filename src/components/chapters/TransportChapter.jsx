@@ -9,7 +9,11 @@ import {
     StickySlide,
 } from "../slides";
 import SlideQuote from "../slides/SlideQuote";
-import { DataCenter, DataText, DataAttribution } from "../shared/DataSlideComponents";
+import {
+    DataCenter,
+    DataText,
+    DataAttribution,
+} from "../shared/DataSlideComponents";
 
 const ACCENT = "#c999ff";
 const GRID_COLOR = "rgba(201, 153, 255, 0.15)";
@@ -75,7 +79,6 @@ const HeroOverlay = styled.div`
         rgba(0, 0, 0, 0.6) 100%
     );
 `;
-
 
 const SolutionBoxes = styled.div`
     display: flex;
@@ -261,11 +264,11 @@ export default function TransportChapter() {
                     backgroundVideo={VIDEOS.dataPoint}
                     poster={POSTERS.dataPoint}
                 >
-                    <DataText>
+                    <DataText $bg={ACCENT}>
                         <span>EU Transport Sector Cyber Incidents (2025)</span>
                     </DataText>
-                    <DataCenter $bg="#fff"></DataCenter>
-                    <DataAttribution>
+                    {/* <DataCenter $bg="#fff"></DataCenter> */}
+                    <DataAttribution $bg={"#fff"}>
                         <span>Source: ENISA 2025 Report</span>
                     </DataAttribution>
                 </DataGridSlide>
@@ -279,17 +282,17 @@ export default function TransportChapter() {
                     headingColor={ACCENT}
                 >
                     <SlideQuote
-                        quote="Aircraft, ground systems and even airport gates are now deeply interconnected. This creates new vulnerabilities: imagine someone disrupting digital flight-planning systems during peak travel or manipulating airport operational networks"
+                        quote="Aircraft, ground systems and even airport gates are now deeply interconnected. This creates new vulnerabilities: imagine someone disrupting digital flight‑planning systems during peak travel or manipulating airport operational networks"
                         name="Stefan Garczynski"
                         role="Managing Security Architect, Sopra Steria"
                     />
                 </EditorialSlide>
             </StickySlide>
 
-            {/* T9 — 3:00pm deliveries at slower pace */}
+            {/* T9 — 12:00pm deliveries at slower pace */}
             <StickySlide appearInPlace>
                 <NarrativeSlide
-                    timestamp="3:00pm"
+                    timestamp="12:00pm"
                     heading="WHEN DISRUPTION CROSSES BORDERS"
                     backgroundVideo={VIDEOS.truckRoad}
                     poster={POSTERS.truckRoad}
@@ -344,15 +347,17 @@ export default function TransportChapter() {
                     headingColor={ACCENT}
                 >
                     <p>
-                        Europe&rsquo;s reliance on GPS &ndash; a US-owned
-                        satellite service &ndash; poses a strategic risk in
-                        times of global tension.
+                        Europe’s reliance on GPS – a US-owned satellite service
+                        – poses a strategic risk in times of global tension.
                     </p>
                     <p>
-                        13 EU member states have already called on the European
-                        Commission to accelerate the deployment of
-                        interference-resistant Global Navigation Satellite
-                        System (GNSS) technologies to accelerate Europe&rsquo;s
+                        13 EU member states have already{" "}
+                        <a href="https://navisp.esa.int/news/article/13%20EU%20Member%20States%20call%20for%20common%20actions%20in%20response%20to%20GNSS%20jamming%20and%20spoofing%20threats">
+                            called
+                        </a>{" "}
+                        on the European Commission to accelerate the deployment
+                        of interference-resistant Global Navigation Satellite
+                        System (GNSS) technologies to accelerate Europe’s
                         digital sovereignty.
                     </p>
                 </EditorialSlide>
@@ -367,10 +372,9 @@ export default function TransportChapter() {
                 >
                     <p>
                         Julia Carver, an assistant professor focusing on
-                        Europe&rsquo;s cybersecurity policy and strategic
-                        affairs at Leiden University, explains that the
-                        EU&rsquo;s vision of digital sovereignty emphasises
-                        self-determination.
+                        Europe’s cybersecurity policy and strategic affairs at
+                        Leiden University, explains that the EU’s vision of
+                        digital sovereignty emphasises self-determination.
                     </p>
                 </EditorialSlide>
             </StickySlide>
@@ -402,12 +406,11 @@ export default function TransportChapter() {
                         tricky.
                     </p>
                     <p>
-                        &ldquo;Digital sovereignty sounds compelling, but in
-                        legal terms, it goes in many directions,&rdquo; says
-                        Elaine Fahey, Professor of EU Law at City St
-                        George&rsquo;s, University of London. &ldquo;It&rsquo;s
-                        rooted in internal market law, while the threats
-                        themselves are cross-border.&rdquo;
+                        “Digital sovereignty sounds compelling, but, in legal
+                        terms, it goes in many directions,” says Elaine Fahey,
+                        Professor of EU Law at City St George’s, University of
+                        London. “It’s rooted in internal market law, while the
+                        threats themselves are cross-border.”
                     </p>
                 </EditorialSlide>
             </StickySlide>
@@ -420,9 +423,9 @@ export default function TransportChapter() {
                     headingColor={ACCENT}
                 >
                     <SlideQuote
-                        quote="That's the paradox of the digital era; the EU has limited powers, yet it faces limitless, transboundary risks"
+                        quote="That’s the paradox of the digital era; the EU has limited powers, yet it faces limitless, transboundary risks"
                         name="Elaine Fahey"
-                        role="Professor of EU Law, City St George's, University of London"
+                        role="Professor of EU Law, City St George’s, University of London"
                     />
                 </EditorialSlide>
             </StickySlide>
@@ -439,7 +442,7 @@ export default function TransportChapter() {
                 >
                     <p>
                         Drivers are told they will need to work overtime to
-                        recoup the company&rsquo;s revenue losses.
+                        recoup the company’s revenue losses.
                     </p>
                 </NarrativeSlide>
             </StickySlide>
@@ -471,10 +474,12 @@ export default function TransportChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        A news alert says trains have been cancelled and
-                        delayed, due to a coordinated attack on the WiFi
-                        networks at UK train stations.
+                        A news alert says trains have been cancelled and delayed
+                        due to a coordinated attack on the Wi-Fi networks at UK
+                        train stations.
                     </p>
+                    <br />
+                    <br />
                     <p>
                         Cyber analysts believe a foreign entity is behind the
                         travel chaos throughout the country.

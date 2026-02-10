@@ -13,7 +13,7 @@ export const DataText = styled.div`
     color: #000;
 
     span {
-        background: #f7ff95;
+        background: ${({ $bg }) => $bg || "#f7ff95"};
         padding: 4px 8px;
         display: inline;
         box-decoration-break: clone;
@@ -76,7 +76,7 @@ export const DataAttribution = styled.div`
     max-width: 480px;
 
     span {
-        background: #f7ff95;
+        background: ${({ $bg }) => $bg || "#f7ff95"};
         padding: 4px 8px;
         display: inline;
         box-decoration-break: clone;
