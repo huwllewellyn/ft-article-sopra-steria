@@ -38,7 +38,7 @@ function useZIndexAndAppear(ref, appearInPlace) {
     }, [appearInPlace]);
 }
 
-function ScrollTrackedSlide({ children, trackHeight }) {
+function ScrollTrackedSlide({ children, trackHeight, appearInPlace }) {
     const trackRef = useRef();
 
     const { scrollYProgress } = useScroll({
@@ -46,7 +46,7 @@ function ScrollTrackedSlide({ children, trackHeight }) {
         offset: ["start start", "end end"],
     });
 
-    useZIndexAndAppear(trackRef, false);
+    useZIndexAndAppear(trackRef, appearInPlace);
 
     return (
         <ScrollTrack ref={trackRef} $trackHeight={trackHeight}>
@@ -66,7 +66,7 @@ function BaseStickySlide({ children, appearInPlace }) {
 
 export default function StickySlide({ children, appearInPlace, trackHeight }) {
     if (trackHeight) {
-        return <ScrollTrackedSlide trackHeight={trackHeight}>{children}</ScrollTrackedSlide>;
+        return <ScrollTrackedSlide trackHeight={trackHeight} appearInPlace={appearInPlace}>{children}</ScrollTrackedSlide>;
     }
 
     return <BaseStickySlide appearInPlace={appearInPlace}>{children}</BaseStickySlide>;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import SectionHeadingBar from "./SectionHeadingBar";
+import useScrollVideo from "../../hooks/useScrollVideo";
 
 const Slide = styled.section`
     min-height: 100vh;
@@ -72,14 +73,18 @@ const ContentArea = styled.div`
     }
 `;
 
-export default function DataGridSlide({ sectionTitle, headingColor, gridColor, backgroundVideo, poster, backgroundColor, children }) {
+export default function DataGridSlide({ sectionTitle, headingColor, gridColor, backgroundVideo, poster, backgroundColor, children, scrollProgress }) {
+    const videoRef = useScrollVideo(scrollProgress);
+
     return (
         <Slide $bg={backgroundColor}>
             {backgroundVideo && (
                 <BackgroundVideo
+                    ref={scrollProgress ? videoRef : undefined}
                     src={getAssetPath(backgroundVideo)}
                     poster={poster ? getAssetPath(poster) : undefined}
-                    autoPlay loop muted playsInline
+                    {...(scrollProgress ? { preload: "auto" } : { autoPlay: true, loop: true })}
+                    muted playsInline
                 />
             )}
             <GridOverlay $gridColor={gridColor} />

@@ -230,123 +230,141 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S1 — Oslo intro */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    backgroundVideo={VIDEOS.osloCityscape}
-                    poster={POSTERS.osloCityscape}
-                    heading={
-                        <>
-                            TUESDAY
-                            <br />
-                            OSLO, NORWAY
-                        </>
-                    }
-                    textPosition="top"
-                >
-                    <p>
-                        The sun sets early in December, and by mid-afternoon the
-                        city is slipping into darkness.
-                    </p>
-                    <p>
-                        As workers wrap up for the day, the grid that keeps
-                        Norway – and several neighbouring countries – running
-                        begins to falter.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        backgroundVideo={VIDEOS.osloCityscape}
+                        poster={POSTERS.osloCityscape}
+                        scrollProgress={scrollYProgress}
+                        heading={
+                            <>
+                                TUESDAY
+                                <br />
+                                OSLO, NORWAY
+                            </>
+                        }
+                        textPosition="top"
+                    >
+                        <p>
+                            The sun sets early in December, and by mid-afternoon the
+                            city is slipping into darkness.
+                        </p>
+                        <p>
+                            As workers wrap up for the day, the grid that keeps
+                            Norway – and several neighbouring countries – running
+                            begins to falter.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S3 — Full bleed hacker scene */}
-            <StickySlide>
-                <FullBleedImage
-                    videoSrc={VIDEOS.hackerScene}
-                    poster={POSTERS.hackerScene}
-                />
+            <StickySlide trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <FullBleedImage
+                        videoSrc={VIDEOS.hackerScene}
+                        poster={POSTERS.hackerScene}
+                        scrollProgress={scrollYProgress}
+                    />
+                )}
             </StickySlide>
             {/* S3b — 5:00pm DDoS attack */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="4:45pm"
-                    backgroundVideo={VIDEOS.globe}
-                    poster={POSTERS.globe}
-                    textPosition="top"
-                >
-                    <p>
-                        A lead engineer at one of Norway’s top energy companies
-                        logs in for the evening shift and is immediately locked
-                        out of the grid’s control system.
-                    </p>
-                    <br />
-                    <br />
-                    <p>Something is seriously wrong.</p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="4:45pm"
+                        backgroundVideo={VIDEOS.globe}
+                        poster={POSTERS.globe}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                    >
+                        <p>
+                            A lead engineer at one of Norway's top energy companies
+                            logs in for the evening shift and is immediately locked
+                            out of the grid's control system.
+                        </p>
+                        <br />
+                        <br />
+                        <p>Something is seriously wrong.</p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S4 — 5:00pm DDoS attack */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="5:00pm"
-                    backgroundVideo={VIDEOS.globe}
-                    poster={POSTERS.globe}
-                    textPosition="top"
-                >
-                    <p>
-                        Remotely, a hacktivist group is in the process of
-                        systematically taking out the smart grids of the
-                        country’s leading energy providers via a{" "}
-                        <strong>distributed denial-of-service attack</strong>.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        By targeting smart meters, they are overwhelming the
-                        central servers that power the grids.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="5:00pm"
+                        backgroundVideo={VIDEOS.globe}
+                        poster={POSTERS.globe}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                    >
+                        <p>
+                            Remotely, a hacktivist group is in the process of
+                            systematically taking out the smart grids of the
+                            country's leading energy providers via a{" "}
+                            <strong>distributed denial-of-service attack</strong>.
+                        </p>
+                        <br />
+                        <br />
+                        <p>
+                            By targeting smart meters, they are overwhelming the
+                            central servers that power the grids.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S5 — 5:10pm elevator */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="5:10pm"
-                    backgroundVideo={VIDEOS.elevator}
-                    poster={POSTERS.elevator}
-                    textPosition="top"
-                >
-                    <p>
-                        Across town, the CTO of a prominent investment firm is
-                        ready to leave for the day.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        She presses the elevator button on the 14th floor of the
-                        company’s building, but nothing happens.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        Moments later, the entire floor is plunged into
-                        darkness.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="5:10pm"
+                        backgroundVideo={VIDEOS.elevator}
+                        poster={POSTERS.elevator}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                    >
+                        <p>
+                            Across town, the CTO of a prominent investment firm is
+                            ready to leave for the day.
+                        </p>
+                        <br />
+                        <br />
+                        <p>
+                            She presses the elevator button on the 14th floor of the
+                            company's building, but nothing happens.
+                        </p>
+                        <br />
+                        <br />
+                        <p>
+                            Moments later, the entire floor is plunged into
+                            darkness.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S6 — 5:15pm signal lost */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="5:15pm"
-                    backgroundVideo={VIDEOS.signalLost}
-                    poster={POSTERS.signalLost}
-                    textPosition="top"
-                >
-                    <p>
-                        Outside, the city’s skyline no longer shines brightly.
-                        Mobile and internet services are down.
-                    </p>
-                    <br />
-                    <br />
-                    <p>People across Oslo start to panic.</p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="5:15pm"
+                        backgroundVideo={VIDEOS.signalLost}
+                        poster={POSTERS.signalLost}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                    >
+                        <p>
+                            Outside, the city's skyline no longer shines brightly.
+                            Mobile and internet services are down.
+                        </p>
+                        <br />
+                        <br />
+                        <p>People across Oslo start to panic.</p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S7 — Evolving threat intro */}
@@ -365,26 +383,29 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S8 — Cyber attacks data grid */}
-            <StickySlide appearInPlace>
-                <DataGridSlide
-                    sectionTitle="AN EVOLVING THREAT LANDSCAPE"
-                    headingColor="#f7ff95"
-                    backgroundColor="#f7ff95"
-                    backgroundVideo={VIDEOS.dataPoint}
-                    poster={POSTERS.dataPoint}
-                >
-                    <DataText>
-                        <span>Cyber attacks <strong>doubled</strong> between 2020 and
-                        2022 in <strong>Europe's power sector</strong> with</span>
-                    </DataText>
-                    <DataCenter $bg="#fff">
-                        48 attacks on Europe's energy infrastructure
-                    </DataCenter>
-                    <DataAttribution>
-                        <span>in 2022, according to Eurelectric, a federation for the
-                        European electricity industry.</span>
-                    </DataAttribution>
-                </DataGridSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <DataGridSlide
+                        sectionTitle="AN EVOLVING THREAT LANDSCAPE"
+                        headingColor="#f7ff95"
+                        backgroundColor="#f7ff95"
+                        backgroundVideo={VIDEOS.dataPoint}
+                        poster={POSTERS.dataPoint}
+                        scrollProgress={scrollYProgress}
+                    >
+                        <DataText>
+                            <span>Cyber attacks <strong>doubled</strong> between 2020 and
+                            2022 in <strong>Europe's power sector</strong> with</span>
+                        </DataText>
+                        <DataCenter $bg="#fff">
+                            48 attacks on Europe's energy infrastructure
+                        </DataCenter>
+                        <DataAttribution>
+                            <span>in 2022, according to Eurelectric, a federation for the
+                            European electricity industry.</span>
+                        </DataAttribution>
+                    </DataGridSlide>
+                )}
             </StickySlide>
 
             {/* S9 — Sopra Steria + Robert M Lee quote */}
@@ -406,20 +427,23 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S10 — 5:20pm blackouts */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="5:20pm"
-                    backgroundVideo={VIDEOS.glitchyCityscape}
-                    poster={POSTERS.glitchyCityscape}
-                    textPosition="bottom"
-                >
-                    <p>
-                        As the grid's automated load balancers struggle to cope
-                        with the intensity of a sustained attack, safety
-                        shutdowns are being triggered across energy grids,
-                        causing blackouts.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="5:20pm"
+                        backgroundVideo={VIDEOS.glitchyCityscape}
+                        poster={POSTERS.glitchyCityscape}
+                        scrollProgress={scrollYProgress}
+                        textPosition="bottom"
+                    >
+                        <p>
+                            As the grid's automated load balancers struggle to cope
+                            with the intensity of a sustained attack, safety
+                            shutdowns are being triggered across energy grids,
+                            causing blackouts.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S11 — 5:30pm phone torches */}
@@ -438,22 +462,25 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S12 — 7:00pm C-suite */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="7:00pm"
-                    backgroundVideo={VIDEOS.womanScreens}
-                    poster={POSTERS.womanScreens}
-                    textPosition="bottom"
-                    highlightText
-                >
-                    <p>
-                        C-suite executives across the various energy firms are
-                        struggling to get a sense of the impact as internal
-                        systems, including monitoring tools, have been
-                        compromised. Engineers no longer have real-time
-                        visibility.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="7:00pm"
+                        backgroundVideo={VIDEOS.womanScreens}
+                        poster={POSTERS.womanScreens}
+                        scrollProgress={scrollYProgress}
+                        textPosition="bottom"
+                        highlightText
+                    >
+                        <p>
+                            C-suite executives across the various energy firms are
+                            struggling to get a sense of the impact as internal
+                            systems, including monitoring tools, have been
+                            compromised. Engineers no longer have real-time
+                            visibility.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S13 — Operating while under attack */}
@@ -512,88 +539,100 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S16 — 8:00pm work through the night */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="8:00pm"
-                    heading="WORK CONTINUES THROUGH THE NIGHT"
-                    backgroundVideo={VIDEOS.escalator}
-                    poster={POSTERS.escalator}
-                    textPosition="top"
-                >
-                    <p>
-                        Policymakers, emergency services and cybersecurity
-                        experts gather to implement emergency procedures.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="8:00pm"
+                        heading="WORK CONTINUES THROUGH THE NIGHT"
+                        backgroundVideo={VIDEOS.escalator}
+                        poster={POSTERS.escalator}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                    >
+                        <p>
+                            Policymakers, emergency services and cybersecurity
+                            experts gather to implement emergency procedures.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S17 — 2:00am */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="2:00am"
-                    backgroundVideo={VIDEOS.escalator}
-                    poster={POSTERS.escalator}
-                    textPosition="top"
-                >
-                    <p>
-                        Cyber experts work with internet service providers to
-                        divert malicious traffic and implement recovery
-                        protocols.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="2:00am"
+                        backgroundVideo={VIDEOS.escalator}
+                        poster={POSTERS.escalator}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                    >
+                        <p>
+                            Cyber experts work with internet service providers to
+                            divert malicious traffic and implement recovery
+                            protocols.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S18 — 8:00am */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="8:00am"
-                    backgroundVideo={VIDEOS.escalator}
-                    poster={POSTERS.escalator}
-                    textPosition="top"
-                >
-                    <p>
-                        Power has returned, but public services reel from the
-                        human and financial cost of this major incident.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="8:00am"
+                        backgroundVideo={VIDEOS.escalator}
+                        poster={POSTERS.escalator}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                    >
+                        <p>
+                            Power has returned, but public services reel from the
+                            human and financial cost of this major incident.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S19 — Solutions data grid */}
-            <StickySlide appearInPlace>
-                <DataGridSlide
-                    sectionTitle="THE SOLUTIONS"
-                    headingColor="#fff"
-                    backgroundColor="#f7ff95"
-                    backgroundVideo={VIDEOS.dataPoint}
-                    poster={POSTERS.dataPoint}
-                >
-                    <SolutionBoxes>
-                        <SolutionBox>
-                            <p>State-led cyber defence policies</p>
-                        </SolutionBox>
-                        <SolutionBox>
-                            <p>
-                                Regular penetration testing and threat
-                                simulations
-                            </p>
-                        </SolutionBox>
-                        <SolutionBox>
-                            <p>
-                                24/7 Security Operation Centres with real-time
-                                monitoring
-                            </p>
-                        </SolutionBox>
-                        <SolutionBox>
-                            <p>
-                                Cross-sector coordination across energy,
-                                telecoms and media
-                            </p>
-                        </SolutionBox>
-                        <SolutionBox>
-                            <p>A threat-driven approach beyond compliance</p>
-                        </SolutionBox>
-                    </SolutionBoxes>
-                </DataGridSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <DataGridSlide
+                        sectionTitle="THE SOLUTIONS"
+                        headingColor="#fff"
+                        backgroundColor="#f7ff95"
+                        backgroundVideo={VIDEOS.dataPoint}
+                        poster={POSTERS.dataPoint}
+                        scrollProgress={scrollYProgress}
+                    >
+                        <SolutionBoxes>
+                            <SolutionBox>
+                                <p>State-led cyber defence policies</p>
+                            </SolutionBox>
+                            <SolutionBox>
+                                <p>
+                                    Regular penetration testing and threat
+                                    simulations
+                                </p>
+                            </SolutionBox>
+                            <SolutionBox>
+                                <p>
+                                    24/7 Security Operation Centres with real-time
+                                    monitoring
+                                </p>
+                            </SolutionBox>
+                            <SolutionBox>
+                                <p>
+                                    Cross-sector coordination across energy,
+                                    telecoms and media
+                                </p>
+                            </SolutionBox>
+                            <SolutionBox>
+                                <p>A threat-driven approach beyond compliance</p>
+                            </SolutionBox>
+                        </SolutionBoxes>
+                    </DataGridSlide>
+                )}
             </StickySlide>
         </Chapter>
     );

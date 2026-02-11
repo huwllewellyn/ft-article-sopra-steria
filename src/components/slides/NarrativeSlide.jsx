@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import TimestampBadge from "./TimestampBadge";
+import useScrollVideo from "../../hooks/useScrollVideo";
 
 const Slide = styled.section`
     position: relative;
@@ -151,7 +152,9 @@ export default function NarrativeSlide({
     highlightText = false,
     backgroundColor,
     accentColor,
+    scrollProgress,
 }) {
+    const videoRef = useScrollVideo(scrollProgress);
     const BodyWrapper = highlightText ? HighlightedBody : Body;
 
     return (
@@ -159,10 +162,10 @@ export default function NarrativeSlide({
             {backgroundVideo ? (
                 <>
                     <BackgroundVideo
+                        ref={scrollProgress ? videoRef : undefined}
                         src={getAssetPath(backgroundVideo)}
                         poster={poster ? getAssetPath(poster) : undefined}
-                        autoPlay
-                        loop
+                        {...(scrollProgress ? { preload: "auto" } : { autoPlay: true, loop: true })}
                         muted
                         playsInline
                     />
