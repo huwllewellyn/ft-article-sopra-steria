@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { media } from "../../utils/breakpoints";
+import FlashingTime from "./FlashingTime";
 
 const EventContainer = styled(motion.div)`
     display: flex;
@@ -65,7 +66,7 @@ export default function TimelineEvent({ time, description, color }) {
             viewport={{ once: true, margin: "-50px" }}
             variants={eventVariants}
         >
-            <Time $color={color}>{time}</Time>
+            <Time $color={color}><FlashingTime time={time} /></Time>
             <Description $color={color}>– {description}</Description>
         </EventContainer>
     );

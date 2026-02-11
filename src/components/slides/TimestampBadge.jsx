@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { media } from "../../utils/breakpoints";
+import FlashingTime from "../shared/FlashingTime";
 
 const Badge = styled.span`
     display: inline-block;
@@ -17,5 +18,5 @@ const Badge = styled.span`
 `;
 
 export default function TimestampBadge({ time, color }) {
-    return <Badge $color={color}>{time}</Badge>;
+    return <Badge $color={color}><FlashingTime time={time} /></Badge>;
 }
