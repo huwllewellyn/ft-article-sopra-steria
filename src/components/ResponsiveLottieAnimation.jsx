@@ -45,6 +45,7 @@ export default function ResponsiveLottieAnimation({
     scrollProgress = null,
     initialFrame = 0,
     finalFrame = 1,
+    preserveAspectRatio = "xMidYMid meet",
 }) {
     const [currentBreakpoint, setCurrentBreakpoint] = useState(
         () => getCurrentBreakpoint()
@@ -106,6 +107,7 @@ export default function ResponsiveLottieAnimation({
                 scrollProgress={scrollProgress}
                 initialFrame={initialFrame}
                 finalFrame={finalFrame}
+                preserveAspectRatio={preserveAspectRatio}
             />
         </Container>
     );

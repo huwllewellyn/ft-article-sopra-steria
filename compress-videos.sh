@@ -132,6 +132,14 @@ for entry in "${CHAPTERS[@]}"; do
     mkdir -p "$dest"
     echo "--- ${chapter_dir} → ${ch} ---"
 
+    # Copy JSON files (Lottie animations)
+    for jsonpath in "$src"/*.json; do
+        [ -f "$jsonpath" ] || continue
+        jsonname=$(basename "$jsonpath")
+        cp "$jsonpath" "${dest}/${jsonname}"
+        echo "  COPY (json): ${jsonname}"
+    done
+
     for filepath in "$src"/*.mp4; do
         [ -f "$filepath" ] || continue
         filename=$(basename "$filepath")

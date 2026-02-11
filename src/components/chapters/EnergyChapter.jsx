@@ -299,8 +299,11 @@ export default function EnergyChapter() {
                         sectionTitle="AN EVOLVING THREAT LANDSCAPE"
                         headingColor="#f7ff95"
                         backgroundColor="#f7ff95"
-                        backgroundVideo={VIDEOS.dataPoint}
-                        poster={POSTERS.dataPoint}
+                        lottieAnimation={{
+                            mobile: "/videos/ch1/SOPRA_DigitalDisruption_DP1_M.json",
+                            tablet: "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
+                            desktop: "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
+                        }}
                         scrollProgress={scrollYProgress}
                     >
                         <DataText>
@@ -542,8 +545,11 @@ export default function EnergyChapter() {
                 sectionTitle="THE SOLUTIONS"
                 headingColor="#fff"
                 backgroundColor="#f7ff95"
-                backgroundVideo={VIDEOS.dataPoint}
-                poster={POSTERS.dataPoint}
+                lottieAnimation={{
+                    mobile: "/videos/ch1/SOPRA_DigitalDisruption_DP1_M.json",
+                    tablet: "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
+                    desktop: "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
+                }}
             >
                 <SolutionBoxes>
                     <SolutionBox>

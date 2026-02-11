@@ -24,6 +24,7 @@ export default function LottieAnimation({
     scrollProgress = null,
     initialFrame = 0,
     finalFrame = 1,
+    preserveAspectRatio = "xMidYMid meet",
 }) {
     const containerRef = useRef(null);
     const animationLoadedRef = useRef(false);
@@ -88,6 +89,9 @@ export default function LottieAnimation({
                                 loop: loop,
                                 autoplay: scrollSync ? false : autoplay,
                                 animationData: data,
+                                rendererSettings: {
+                                    preserveAspectRatio,
+                                },
                             });
                             animationRef.current = anim;
 
@@ -115,7 +119,7 @@ export default function LottieAnimation({
         };
 
         loadAnimation();
-    }, [path, fallbackPath, loop, autoplay, renderer, scrollSync, initialFrame]);
+    }, [path, fallbackPath, loop, autoplay, renderer, scrollSync, initialFrame, preserveAspectRatio]);
 
     // Handle scroll-synced animation (legacy window scroll)
     useEffect(() => {

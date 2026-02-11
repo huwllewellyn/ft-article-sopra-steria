@@ -5,6 +5,7 @@ import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import SectionHeadingBar from "./SectionHeadingBar";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import ResponsiveLottieAnimation from "../ResponsiveLottieAnimation";
 
 const GLITCH_CHARS =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?<>{}[]~/\\|";
@@ -40,6 +41,15 @@ const BackgroundVideo = styled.video`
     height: 100%;
     object-fit: cover;
     z-index: 0;
+`;
+
+const BackgroundLottie = styled.div`
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
 `;
 
 const GridOverlay = styled.div`
@@ -140,6 +150,7 @@ export default function DataGridSlide({
     headingColor,
     gridColor,
     backgroundVideo,
+    lottieAnimation,
     poster,
     backgroundColor,
     children,
@@ -238,7 +249,20 @@ export default function DataGridSlide({
         <ScrollTrack ref={trackRef} $height={trackHeight} $margin={trackMargin}>
             <StickyInner>
                 <Slide $bg={backgroundColor}>
-                    {backgroundVideo && (
+                    {lottieAnimation && (
+                        <BackgroundLottie>
+                            <ResponsiveLottieAnimation
+                                animations={lottieAnimation}
+                                loop={false}
+                                autoplay={false}
+                                scrollProgress={activeProgress}
+                                width="100%"
+                                height="100%"
+                                preserveAspectRatio="xMidYMid slice"
+                            />
+                        </BackgroundLottie>
+                    )}
+                    {backgroundVideo && !lottieAnimation && (
                         <BackgroundVideo
                             ref={videoRef}
                             src={getAssetPath(backgroundVideo)}

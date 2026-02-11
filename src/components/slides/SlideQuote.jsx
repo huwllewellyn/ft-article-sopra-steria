@@ -10,8 +10,9 @@ const QuoteWrapper = styled.blockquote`
 
 const QuoteMark = styled.span`
     display: block;
-    font-family: 'Space Mono', monospace;
-    font-size: 42px;
+    font-family: 'logic-monospace', monospace;
+    font-size: 44px;
+    font-weight: 600;
     line-height: 1;
     color: #000;
     margin-bottom: 8px;
@@ -19,11 +20,11 @@ const QuoteMark = styled.span`
 
 const QuoteText = styled.p`
     font-family: 'Space Mono', monospace;
-    font-size: 27px;
+    font-size: 30px;
     font-weight: 400;
     text-transform: uppercase;
     letter-spacing: -0.54px;
-    line-height: 1.35;
+    line-height: 1.1;
     color: #000;
     margin: 0 0 16px;
 
@@ -34,11 +35,12 @@ const QuoteText = styled.p`
 
 const Attribution = styled.p`
     font-family: 'Space Mono', monospace;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 700;
     color: #000;
     margin: 0;
-    line-height: 1.35;
+    line-height: 1.1;
+    text-transform: uppercase;
 `;
 
 export default function SlideQuote({ quote, name, role }) {
