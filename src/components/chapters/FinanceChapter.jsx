@@ -10,6 +10,7 @@ import {
     StickySlide,
 } from "../slides";
 import SlideQuote from "../slides/SlideQuote";
+import useScrollVideo from "../../hooks/useScrollVideo";
 
 const ACCENT = "#8eb8ff";
 const GRID_COLOR = "rgba(142, 184, 255, 0.15)";
@@ -129,133 +130,161 @@ const SolutionBox = styled.div`
     }
 `;
 
+function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
+    const videoRef = useScrollVideo(scrollProgress);
+    return (
+        <HeroVideo
+            ref={videoRef}
+            src={src}
+            poster={poster}
+            muted
+            playsInline
+            preload="auto"
+        />
+    );
+}
+
 export default function FinanceChapter() {
     return (
         <Chapter>
             {/* F1 — Hero / Chapter Intro */}
-            <StickySlide appearInPlace>
-                <HeroSection>
-                    <HeroVideo
-                        src={getAssetPath(VIDEOS.madridCityscape)}
-                        poster={getAssetPath(POSTERS.madridCityscape)}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                    />
-                    <HeroOverlay />
-                    <div style={{ position: "relative", zIndex: 2 }}>
-                        <ChapterIntro
-                            chapter="CHAPTER_TWO"
-                            title="FINANCE"
-                            subtitle="How a single email could crash a continent's payment systems"
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <HeroSection>
+                        <ScrollSyncHeroVideo
+                            scrollProgress={scrollYProgress}
+                            src={getAssetPath(VIDEOS.madridCityscape)}
+                            poster={getAssetPath(POSTERS.madridCityscape)}
                         />
-                    </div>
-                </HeroSection>
+                        <HeroOverlay />
+                        <div style={{ position: "relative", zIndex: 2 }}>
+                            <ChapterIntro
+                                chapter="CHAPTER_TWO"
+                                title="FINANCE"
+                                subtitle="How a single email could crash a continent's payment systems"
+                            />
+                        </div>
+                    </HeroSection>
+                )}
             </StickySlide>
 
             {/* F2 — Madrid intro */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    backgroundVideo={VIDEOS.madridCityscape}
-                    poster={POSTERS.madridCityscape}
-                    heading={
-                        <>
-                            THURSDAY
-                            <br />
-                            MADRID, SPAIN
-                        </>
-                    }
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        In Madrid, a single phishing email sets off a chain
-                        reaction that brings payment systems to a standstill.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        It begins quietly, with a distracted employee and a
-                        convincingly urgent email.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        backgroundVideo={VIDEOS.madridCityscape}
+                        poster={POSTERS.madridCityscape}
+                        scrollProgress={scrollYProgress}
+                        heading={
+                            <>
+                                THURSDAY
+                                <br />
+                                MADRID, SPAIN
+                            </>
+                        }
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            In Madrid, a single phishing email sets off a chain
+                            reaction that brings payment systems to a standstill.
+                        </p>
+                        <br />
+                        <br />
+                        <p>
+                            It begins quietly, with a distracted employee and a
+                            convincingly urgent email.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F3 — Supermarket escalation */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    backgroundVideo={VIDEOS.supermarket}
-                    poster={POSTERS.supermarket}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Within hours, an issue at a local supermarket in Madrid
-                        escalates into a multi-million-euro crisis, with malware
-                        spreading from one store to thousands and damage
-                        reaching far beyond one retailer.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        backgroundVideo={VIDEOS.supermarket}
+                        poster={POSTERS.supermarket}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        highlightText
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            Within hours, an issue at a local supermarket in Madrid
+                            escalates into a multi-million-euro crisis, with malware
+                            spreading from one store to thousands and damage
+                            reaching far beyond one retailer.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F4 — 12:00pm store manager clicks link */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="12:00pm"
-                    backgroundVideo={VIDEOS.supermarket}
-                    poster={POSTERS.supermarket}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        A stressed store manager clicks a link to a lookalike
-                        inventory portal in an &ldquo;urgent&rdquo; email from a
-                        supposed HQ executive.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="12:00pm"
+                        backgroundVideo={VIDEOS.supermarket}
+                        poster={POSTERS.supermarket}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        highlightText
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            A stressed store manager clicks a link to a lookalike
+                            inventory portal in an &ldquo;urgent&rdquo; email from a
+                            supposed HQ executive.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F5 — 12:20pm POS malware */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="12:20pm"
-                    backgroundVideo={VIDEOS.supermarketBlurred}
-                    poster={POSTERS.supermarketBlurred}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Cyber attackers can now traverse the network and deploy
-                        malware to the retailer’s POS system.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        Sensitive payment data is sent in batches to an external
-                        server.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="12:20pm"
+                        backgroundVideo={VIDEOS.supermarketBlurred}
+                        poster={POSTERS.supermarketBlurred}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        highlightText
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            Cyber attackers can now traverse the network and deploy
+                            malware to the retailer's POS system.
+                        </p>
+                        <br />
+                        <br />
+                        <p>
+                            Sensitive payment data is sent in batches to an external
+                            server.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F6 — 1:05pm contacts IT helpdesk */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="1:05pm"
-                    backgroundVideo={VIDEOS.warehousePhone}
-                    poster={POSTERS.warehousePhone}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Concerned about the email chain, the store manager
-                        contacts the IT help desk.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="1:05pm"
+                        backgroundVideo={VIDEOS.warehousePhone}
+                        poster={POSTERS.warehousePhone}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        highlightText
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            Concerned about the email chain, the store manager
+                            contacts the IT help desk.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F7 — 1:35pm payment systems fail */}
@@ -392,52 +421,61 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F14 — 3:00pm stores close */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="3:00pm"
-                    heading="FROM A COMPANY BREACH TO MAJOR DISRUPTION"
-                    backgroundVideo={VIDEOS.ironGate}
-                    poster={POSTERS.ironGate}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        All of the retailer’s stores close as payments and
-                        inventory systems fail.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="3:00pm"
+                        heading="FROM A COMPANY BREACH TO MAJOR DISRUPTION"
+                        backgroundVideo={VIDEOS.ironGate}
+                        poster={POSTERS.ironGate}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            All of the retailer's stores close as payments and
+                            inventory systems fail.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F15 — Full bleed phone video */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="4:30pm"
-                    backgroundVideo={VIDEOS.phoneInHand}
-                    poster={POSTERS.phoneInHand}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Internal forensics reveals loyalty card and e-receipt
-                        data were compromised.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="4:30pm"
+                        backgroundVideo={VIDEOS.phoneInHand}
+                        poster={POSTERS.phoneInHand}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            Internal forensics reveals loyalty card and e-receipt
+                            data were compromised.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F16 — 6:30pm media reports */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="6:30pm"
-                    backgroundVideo={VIDEOS.phoneInHand}
-                    poster={POSTERS.phoneInHand}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        The first media reports break as customers report
-                        phishing attacks.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="6:30pm"
+                        backgroundVideo={VIDEOS.phoneInHand}
+                        poster={POSTERS.phoneInHand}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            The first media reports break as customers report
+                            phishing attacks.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F17 — Editorial: interconnected systems */}
@@ -510,30 +548,36 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F21 — 7:00am the next day */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="7:00am"
-                    heading="THE NEXT DAY"
-                    backgroundVideo={VIDEOS.warehouse}
-                    poster={POSTERS.warehouse}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>It emerges that supplier credentials were exploited.</p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="7:00am"
+                        heading="THE NEXT DAY"
+                        backgroundVideo={VIDEOS.warehouse}
+                        poster={POSTERS.warehouse}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>It emerges that supplier credentials were exploited.</p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F22 — 2:00pm banks tighten fraud checks */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="2:00pm"
-                    backgroundVideo={VIDEOS.idVerification}
-                    poster={POSTERS.idVerification}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>Banks introduce tighter fraud checks.</p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="2:00pm"
+                        backgroundVideo={VIDEOS.idVerification}
+                        poster={POSTERS.idVerification}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>Banks introduce tighter fraud checks.</p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* F23 — Solutions data grid */}

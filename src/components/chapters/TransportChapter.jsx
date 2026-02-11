@@ -14,6 +14,7 @@ import {
     DataText,
     DataAttribution,
 } from "../shared/DataSlideComponents";
+import useScrollVideo from "../../hooks/useScrollVideo";
 
 const ACCENT = "#c999ff";
 const GRID_COLOR = "rgba(201, 153, 255, 0.15)";
@@ -107,121 +108,146 @@ const SolutionBox = styled.div`
     }
 `;
 
+function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
+    const videoRef = useScrollVideo(scrollProgress);
+    return (
+        <HeroVideo
+            ref={videoRef}
+            src={src}
+            poster={poster}
+            muted
+            playsInline
+            preload="auto"
+        />
+    );
+}
+
 export default function TransportChapter() {
     return (
         <Chapter>
             {/* T1 — Hero / Chapter Intro */}
-            <StickySlide appearInPlace>
-                <HeroSection>
-                    <HeroVideo
-                        src={getAssetPath(VIDEOS.portOfDover)}
-                        poster={getAssetPath(POSTERS.portOfDover)}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                    />
-                    <HeroOverlay />
-                    <div style={{ position: "relative", zIndex: 2 }}>
-                        <ChapterIntro
-                            chapter="CHAPTER_THREE"
-                            title="TRANSPORT"
-                            subtitle="How hidden vulnerabilities grind a country's transport network to a halt"
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <HeroSection>
+                        <ScrollSyncHeroVideo
+                            scrollProgress={scrollYProgress}
+                            src={getAssetPath(VIDEOS.portOfDover)}
+                            poster={getAssetPath(POSTERS.portOfDover)}
                         />
-                    </div>
-                </HeroSection>
+                        <HeroOverlay />
+                        <div style={{ position: "relative", zIndex: 2 }}>
+                            <ChapterIntro
+                                chapter="CHAPTER_THREE"
+                                title="TRANSPORT"
+                                subtitle="How hidden vulnerabilities grind a country's transport network to a halt"
+                            />
+                        </div>
+                    </HeroSection>
+                )}
             </StickySlide>
 
             {/* T2 — Port of Dover intro */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    backgroundVideo={VIDEOS.portOfDover}
-                    poster={POSTERS.portOfDover}
-                    heading={
-                        <>
-                            MONDAY
-                            <br />
-                            PORT OF DOVER, UK
-                        </>
-                    }
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        At a major UK port, logistics drivers prepare for the
-                        day ahead while commuters gather at stations across the
-                        country.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        But just as the morning rush begins, unexpected glitches
-                        creep into navigation systems – this is the first sign
-                        of a broader attack targeting transport nationwide.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        backgroundVideo={VIDEOS.portOfDover}
+                        poster={POSTERS.portOfDover}
+                        scrollProgress={scrollYProgress}
+                        heading={
+                            <>
+                                MONDAY
+                                <br />
+                                PORT OF DOVER, UK
+                            </>
+                        }
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            At a major UK port, logistics drivers prepare for the
+                            day ahead while commuters gather at stations across the
+                            country.
+                        </p>
+                        <br />
+                        <br />
+                        <p>
+                            But just as the morning rush begins, unexpected glitches
+                            creep into navigation systems – this is the first sign
+                            of a broader attack targeting transport nationwide.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T3 — 8:00am sat-nav freezes */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="8:00am"
-                    backgroundVideo={VIDEOS.satNav}
-                    poster={POSTERS.satNav}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        A driver taps the first delivery address for the day
-                        into his sat-nav, only for the screen to freeze.
-                    </p>
-                    <br />
-                    <br />
-                    <p>He keeps tapping, but nothing displays.</p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="8:00am"
+                        backgroundVideo={VIDEOS.satNav}
+                        poster={POSTERS.satNav}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        highlightText
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            A driver taps the first delivery address for the day
+                            into his sat-nav, only for the screen to freeze.
+                        </p>
+                        <br />
+                        <br />
+                        <p>He keeps tapping, but nothing displays.</p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T4 — 8:15am depot issues */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="8:15am"
-                    backgroundVideo={VIDEOS.truckDepot}
-                    poster={POSTERS.truckDepot}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Others in the depot face similar issues and management
-                        wonders why vans aren’t moving.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        Thousands of pounds of revenue could be lost from a late
-                        departure.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="8:15am"
+                        backgroundVideo={VIDEOS.truckDepot}
+                        poster={POSTERS.truckDepot}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        highlightText
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            Others in the depot face similar issues and management
+                            wonders why vans aren't moving.
+                        </p>
+                        <br />
+                        <br />
+                        <p>
+                            Thousands of pounds of revenue could be lost from a late
+                            departure.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T5 — 9:00am GPS jamming */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="9:00am"
-                    backgroundVideo={VIDEOS.airportBoard}
-                    poster={POSTERS.airportBoard}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        A foreign hacker group is using a technique called{" "}
-                        <strong>GPS jamming</strong> to block signals and
-                        interfere with the GPS network, disrupting travel in the
-                        UK.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="9:00am"
+                        backgroundVideo={VIDEOS.airportBoard}
+                        poster={POSTERS.airportBoard}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        highlightText
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            A foreign hacker group is using a technique called{" "}
+                            <strong>GPS jamming</strong> to block signals and
+                            interfere with the GPS network, disrupting travel in the
+                            UK.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T6 — Editorial: GPS vulnerability + Lecoq quote */}
@@ -256,23 +282,26 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T7 — Data grid: EU transport incidents */}
-            <StickySlide appearInPlace>
-                <DataGridSlide
-                    sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
-                    headingColor={ACCENT}
-                    backgroundColor={ACCENT}
-                    gridColor={GRID_COLOR}
-                    backgroundVideo={VIDEOS.dataPoint}
-                    poster={POSTERS.dataPoint}
-                >
-                    <DataText $bg={ACCENT}>
-                        <span>EU Transport Sector Cyber Incidents (2025)</span>
-                    </DataText>
-                    {/* <DataCenter $bg="#fff"></DataCenter> */}
-                    <DataAttribution $bg={"#fff"}>
-                        <span>Source: ENISA 2025 Report</span>
-                    </DataAttribution>
-                </DataGridSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <DataGridSlide
+                        sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
+                        headingColor={ACCENT}
+                        backgroundColor={ACCENT}
+                        gridColor={GRID_COLOR}
+                        backgroundVideo={VIDEOS.dataPoint}
+                        poster={POSTERS.dataPoint}
+                        scrollProgress={scrollYProgress}
+                    >
+                        <DataText $bg={ACCENT}>
+                            <span>EU Transport Sector Cyber Incidents (2025)</span>
+                        </DataText>
+                        {/* <DataCenter $bg="#fff"></DataCenter> */}
+                        <DataAttribution $bg={"#fff"}>
+                            <span>Source: ENISA 2025 Report</span>
+                        </DataAttribution>
+                    </DataGridSlide>
+                )}
             </StickySlide>
 
             {/* T8 — Editorial: Garczynski quote */}
@@ -291,53 +320,62 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T9 — 12:00pm deliveries at slower pace */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="12:00pm"
-                    heading="WHEN DISRUPTION CROSSES BORDERS"
-                    backgroundVideo={VIDEOS.truckRoad}
-                    poster={POSTERS.truckRoad}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        The driver makes deliveries, albeit at a slower pace,
-                        using maps and institutional knowledge.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="12:00pm"
+                        heading="WHEN DISRUPTION CROSSES BORDERS"
+                        backgroundVideo={VIDEOS.truckRoad}
+                        poster={POSTERS.truckRoad}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            The driver makes deliveries, albeit at a slower pace,
+                            using maps and institutional knowledge.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T10 — 3:00pm military jet GPS disturbance */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="3:00pm"
-                    backgroundVideo={VIDEOS.satellite}
-                    poster={POSTERS.satellite}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Over the radio, news breaks about a disruption to a UK
-                        military jet carrying an MP over Russian airspace. Early
-                        reports suggest it was a GPS disturbance.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="3:00pm"
+                        backgroundVideo={VIDEOS.satellite}
+                        poster={POSTERS.satellite}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            Over the radio, news breaks about a disruption to a UK
+                            military jet carrying an MP over Russian airspace. Early
+                            reports suggest it was a GPS disturbance.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T11 — 3:30pm airports security measures */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="3:30pm"
-                    backgroundVideo={VIDEOS.satellite}
-                    poster={POSTERS.satellite}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        UK airports implement additional security measures,
-                        delaying arrivals and departures.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="3:30pm"
+                        backgroundVideo={VIDEOS.satellite}
+                        poster={POSTERS.satellite}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            UK airports implement additional security measures,
+                            delaying arrivals and departures.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T12 — Editorial: GPS reliance + 13 EU states */}
@@ -432,93 +470,105 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T17 — 6:00pm overtime */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="6:00pm"
-                    heading="CHAOS CONTINUES INTO THE EVENING"
-                    backgroundVideo={VIDEOS.mapDark}
-                    poster={POSTERS.mapDark}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Drivers are told they will need to work overtime to
-                        recoup the company’s revenue losses.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="6:00pm"
+                        heading="CHAOS CONTINUES INTO THE EVENING"
+                        backgroundVideo={VIDEOS.mapDark}
+                        poster={POSTERS.mapDark}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            Drivers are told they will need to work overtime to
+                            recoup the company's revenue losses.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T18 — 7:00pm train delayed */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="7:00pm"
-                    backgroundVideo={VIDEOS.mapDark}
-                    poster={POSTERS.mapDark}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        As the driver heads home, his usual train is delayed by
-                        two hours.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="7:00pm"
+                        backgroundVideo={VIDEOS.mapDark}
+                        poster={POSTERS.mapDark}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            As the driver heads home, his usual train is delayed by
+                            two hours.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T19 — 7:30pm trains cancelled */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="7:30pm"
-                    backgroundVideo={VIDEOS.trainStation}
-                    poster={POSTERS.trainStation}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        A news alert says trains have been cancelled and delayed
-                        due to a coordinated attack on the Wi-Fi networks at UK
-                        train stations.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        Cyber analysts believe a foreign entity is behind the
-                        travel chaos throughout the country.
-                    </p>
-                </NarrativeSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <NarrativeSlide
+                        timestamp="7:30pm"
+                        backgroundVideo={VIDEOS.trainStation}
+                        poster={POSTERS.trainStation}
+                        scrollProgress={scrollYProgress}
+                        textPosition="top"
+                        highlightText
+                        accentColor={ACCENT}
+                    >
+                        <p>
+                            A news alert says trains have been cancelled and delayed
+                            due to a coordinated attack on the Wi-Fi networks at UK
+                            train stations.
+                        </p>
+                        <br />
+                        <br />
+                        <p>
+                            Cyber analysts believe a foreign entity is behind the
+                            travel chaos throughout the country.
+                        </p>
+                    </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* T20 — Solutions data grid */}
-            <StickySlide appearInPlace>
-                <DataGridSlide
-                    sectionTitle="THE SOLUTIONS"
-                    headingColor={ACCENT}
-                    backgroundColor={ACCENT}
-                    gridColor={GRID_COLOR}
-                    backgroundVideo={VIDEOS.dataPoint}
-                    poster={POSTERS.dataPoint}
-                >
-                    <SolutionBoxes>
-                        <SolutionBox>
-                            <p>Expanding European investment in GNSS</p>
-                        </SolutionBox>
-                        <SolutionBox>
-                            <p>
-                                Manufacturing critical GPS and satellite
-                                components
-                            </p>
-                        </SolutionBox>
-                        <SolutionBox>
-                            <p>
-                                Promoting EU-developed navigation software and
-                                apps
-                            </p>
-                        </SolutionBox>
-                        <SolutionBox>
-                            <p>Zero-trust architectures</p>
-                        </SolutionBox>
-                    </SolutionBoxes>
-                </DataGridSlide>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <DataGridSlide
+                        sectionTitle="THE SOLUTIONS"
+                        headingColor={ACCENT}
+                        backgroundColor={ACCENT}
+                        gridColor={GRID_COLOR}
+                        backgroundVideo={VIDEOS.dataPoint}
+                        poster={POSTERS.dataPoint}
+                        scrollProgress={scrollYProgress}
+                    >
+                        <SolutionBoxes>
+                            <SolutionBox>
+                                <p>Expanding European investment in GNSS</p>
+                            </SolutionBox>
+                            <SolutionBox>
+                                <p>
+                                    Manufacturing critical GPS and satellite
+                                    components
+                                </p>
+                            </SolutionBox>
+                            <SolutionBox>
+                                <p>
+                                    Promoting EU-developed navigation software and
+                                    apps
+                                </p>
+                            </SolutionBox>
+                            <SolutionBox>
+                                <p>Zero-trust architectures</p>
+                            </SolutionBox>
+                        </SolutionBoxes>
+                    </DataGridSlide>
+                )}
             </StickySlide>
         </Chapter>
     );
