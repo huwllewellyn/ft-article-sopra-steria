@@ -2,7 +2,13 @@ import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import { ChapterIntro } from "../shared";
-import { DataCenter, DataText, DataAttribution, SolutionBoxes, SolutionBox } from "../shared/DataSlideComponents";
+import {
+    DataCenter,
+    DataText,
+    DataAttribution,
+    SolutionBoxes,
+    SolutionBox,
+} from "../shared/DataSlideComponents";
 import {
     NarrativeSlide,
     EditorialSlide,
@@ -77,35 +83,6 @@ const HeroOverlay = styled.div`
     );
 `;
 
-const DataText = styled.div`
-    text-align: center;
-    max-width: 400px;
-    font-family: "logic-monospace", monospace;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: -0.96px;
-    color: #000;
-
-    span {
-        background: #f7ff95;
-        padding: 4px 8px;
-        display: inline;
-        box-decoration-break: clone;
-        -webkit-box-decoration-break: clone;
-    }
-
-    strong {
-        font-weight: 700;
-    }
-
-    ${media.mobile(`
-        font-size: 19px;
-        line-height: 1.35;
-        letter-spacing: -0.76px;
-    `)}
-`;
-
 const DataCenterStyled = styled.div`
     font-family: "logic-monospace", monospace;
     font-size: 24px;
@@ -118,40 +95,6 @@ const DataCenterStyled = styled.div`
 
     span {
         background: ${({ $bg }) => $bg || "#f7ff95"};
-        padding: 4px 8px;
-        display: inline;
-        box-decoration-break: clone;
-        -webkit-box-decoration-break: clone;
-    }
-
-    ${media.mobile(`
-        font-size: 19px;
-        line-height: 1.35;
-        letter-spacing: -0.76px;
-    `)}
-`;
-
-function DataCenter({ $bg, children }) {
-    const scrambleRef = useTextScramble({ delay: 500, duration: 1000 });
-    return (
-        <DataCenterStyled $bg={$bg}>
-            <span ref={scrambleRef}>{children}</span>
-        </DataCenterStyled>
-    );
-}
-
-const DataAttribution = styled.div`
-    font-family: "logic-monospace", monospace;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 1.25;
-    letter-spacing: -0.96px;
-    color: #000;
-    text-align: center;
-    max-width: 480px;
-
-    span {
-        background: #f7ff95;
         padding: 4px 8px;
         display: inline;
         box-decoration-break: clone;
@@ -618,26 +561,23 @@ export default function EnergyChapter() {
                     </SolutionBox>
                     <SolutionBox>
                         <p>
-                            Regular penetration testing and threat
-                            simulations
+                            Regular penetration testing and threat simulations
                         </p>
                     </SolutionBox>
                     <SolutionBox>
                         <p>
-                            24/7 Security Operation Centres with
-                            real-time monitoring
+                            24/7 Security Operation Centres with real-time
+                            monitoring
                         </p>
                     </SolutionBox>
                     <SolutionBox>
                         <p>
-                            Cross-sector coordination across energy,
-                            telecoms and media
+                            Cross-sector coordination across energy, telecoms
+                            and media
                         </p>
                     </SolutionBox>
                     <SolutionBox>
-                        <p>
-                            A threat-driven approach beyond compliance
-                        </p>
+                        <p>A threat-driven approach beyond compliance</p>
                     </SolutionBox>
                 </SolutionBoxes>
             </DataGridSlide>

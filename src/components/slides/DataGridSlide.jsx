@@ -254,7 +254,10 @@ export default function DataGridSlide({
                             {sectionTitle}
                         </SectionHeadingBar>
                     )}
-                    <ContentArea ref={contentRef}>{children}</ContentArea>
+                    <ContentArea ref={contentRef}>
+                        {children}
+                        <p aria-hidden style={{ position: "absolute", visibility: "hidden" }} />
+                    </ContentArea>
                 </Slide>
             </StickyInner>
         </ScrollTrack>
