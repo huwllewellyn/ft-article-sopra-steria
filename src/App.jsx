@@ -12,8 +12,46 @@ import {
     ConclusionSection,
 } from "./components/chapters";
 import { useState, useRef, useEffect } from "react";
+import { getAssetPath } from "./utils/assetPath";
 
 const AppContainer = styled.div``;
+
+const IntroVideoWrapper = styled.div`
+    position: relative;
+`;
+
+const StickyVideo = styled.div`
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 0;
+    overflow: hidden;
+`;
+
+const BackgroundVideo = styled.video`
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+`;
+
+const VideoOverlay = styled.div`
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(13, 17, 23, 0.3) 0%,
+        rgba(13, 17, 23, 0.6) 50%,
+        rgba(13, 17, 23, 0.9) 100%
+    );
+`;
+
+const IntroContent = styled.div`
+    position: relative;
+    z-index: 1;
+    margin-top: -100vh;
+`;
 
 const ChapterContainer = styled.div`
     scroll-margin-top: 60px;
@@ -89,8 +127,22 @@ function App() {
 
     return (
         <AppContainer>
-            <IntroSection />
-            <WarningSection />
+            <IntroVideoWrapper>
+                <StickyVideo>
+                    <BackgroundVideo
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        src={getAssetPath("videos/intro/GettyImages-1444535963.mp4")}
+                    />
+                    <VideoOverlay />
+                </StickyVideo>
+                <IntroContent>
+                    <IntroSection />
+                    <WarningSection />
+                </IntroContent>
+            </IntroVideoWrapper>
             <OneClickSection />
             <IntroTextSection />
 

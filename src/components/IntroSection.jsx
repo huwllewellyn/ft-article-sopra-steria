@@ -5,24 +5,12 @@ import { media } from "../utils/breakpoints";
 const Container = styled.section`
     width: 100%;
     min-height: 100vh;
-    background: #0d1117;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
 `;
 
-const BackgroundOverlay = styled.div`
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        180deg,
-        rgba(13, 17, 23, 0.3) 0%,
-        rgba(13, 17, 23, 0.6) 50%,
-        rgba(13, 17, 23, 0.9) 100%
-    );
-    z-index: 1;
-`;
 
 const ContentWrapper = styled.div`
     position: relative;
@@ -181,7 +169,6 @@ const itemVariants = {
 export default function IntroSection() {
     return (
         <Container>
-            <BackgroundOverlay />
             <ContentWrapper>
                 <MainRow>
                     <LeftColumn>
