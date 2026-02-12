@@ -24,10 +24,11 @@ import useScrollVideo from "../../hooks/useScrollVideo";
 const VIDEOS = {
     osloCityscape: "/videos/ch1/ch1_1.mp4",
     hackerScene: "/videos/ch1/ch1_2-2.mp4",
-    globe: "/videos/ch1/ch1_2-2.mp4",
-    elevator: "/videos/ch1/ch1_2-2.mp4",
-    signalLost: "/videos/ch1/ch1_5.mp4",
-    glitchyCityscape: "/videos/ch1/ch1_6.mp4",
+    globe: "/videos/ch1/ch1_2_desktop.mp4",
+    elevator: "/videos/ch1/ch1_3.mp4",
+    signalLost: "/videos/ch1/ch1_4.mp4",
+    glitchyCityscape: "/videos/ch1/ch1_5.mp4",
+    glitchyCityscape530: "/videos/ch1/ch1_6.mp4",
     womanScreens: "/videos/ch1/ch1_7.mp4",
     escalator: "/videos/ch1/ch1_8.mp4",
     dataPoint: "/videos/ch1/dp1_desktop.mp4",
@@ -37,9 +38,10 @@ const POSTERS = {
     osloCityscape: "/videos/posters/ch1/ch1_1.jpg",
     hackerScene: "/videos/posters/ch1/ch1_2-2.jpg",
     globe: "/videos/posters/ch1/ch1_2-2.jpg",
-    elevator: "/videos/posters/ch1/ch1_2-2.jpg",
-    signalLost: "/videos/posters/ch1/ch1_5.jpg",
-    glitchyCityscape: "/videos/posters/ch1/ch1_6.jpg",
+    elevator: "/videos/posters/ch1/ch1_3.jpg",
+    signalLost: "/videos/posters/ch1/ch1_4.jpg",
+    glitchyCityscape: "/videos/posters/ch1/ch1_5.jpg",
+    glitchyCityscape530: "/videos/posters/ch1/ch1_6.jpg",
     womanScreens: "/videos/posters/ch1/ch1_7.jpg",
     escalator: "/videos/posters/ch1/ch1_8.jpg",
     dataPoint: "/videos/posters/ch1/dp1_desktop.jpg",
@@ -350,11 +352,14 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S11 — 5:30pm phone torches */}
-            <StickySlide appearInPlace>
+            <StickySlide appearInPlace trackHeight="300vh">
+                {({ scrollYProgress }) => (
                 <NarrativeSlide
                     timestamp="5:30pm"
+                    backgroundVideo={VIDEOS.glitchyCityscape530}
+                    poster={POSTERS.glitchyCityscape530}
+                    scrollProgress={scrollYProgress}
                     textPosition="bottom"
-                    backgroundColor="#000"
                 >
                     <p>
                         Workers use phone torches to find their way to the
@@ -362,6 +367,7 @@ export default function EnergyChapter() {
                         widespread; every building is impacted.
                     </p>
                 </NarrativeSlide>
+                )}
             </StickySlide>
 
             {/* S12 — 7:00pm C-suite */}
