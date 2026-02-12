@@ -2,15 +2,22 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { media } from "../utils/breakpoints";
 
-const Container = styled.section`
+const Outer = styled.section`
     width: 100%;
-    min-height: 100vh;
+    height: 200vh;
+    position: relative;
+`;
+
+const Container = styled.div`
+    width: 100%;
+    height: 100vh;
     background: #f7ff95;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px 10px;
-    position: relative;
+    position: sticky;
+    top: 0;
 `;
 
 const TextBlock = styled(motion.div)`
@@ -45,29 +52,31 @@ const TextBlock = styled(motion.div)`
 
 export default function IntroTextSection() {
     return (
-        <Container>
-            <TextBlock
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-            >
-                <p>
-                    <strong>That is all it takes</strong> to bring down
-                    networks, disrupt lives and cause a cascade of harm in
-                    today’s hyper-connected world.
-                </p>
-                <p>
-                    Against this backdrop, what could happen if three key
-                    European industries – <strong>energy</strong>,{" "}
-                    <strong>finance</strong> and <strong>transport</strong> –
-                    come under fire?
-                </p>
-                <p>
-                    And what solutions exist to protect society in this new age
-                    of digital warfare?
-                </p>
-            </TextBlock>
-        </Container>
+        <Outer>
+            <Container>
+                <TextBlock
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
+                    <p>
+                        <strong>That is all it takes</strong> to bring down
+                        networks, disrupt lives and cause a cascade of harm in
+                        today's hyper-connected world.
+                    </p>
+                    <p>
+                        Against this backdrop, what could happen if three key
+                        European industries – <strong>energy</strong>,{" "}
+                        <strong>finance</strong> and <strong>transport</strong> –
+                        come under fire?
+                    </p>
+                    <p>
+                        And what solutions exist to protect society in this new age
+                        of digital warfare?
+                    </p>
+                </TextBlock>
+            </Container>
+        </Outer>
     );
 }
