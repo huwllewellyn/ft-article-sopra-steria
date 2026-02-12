@@ -20,6 +20,7 @@ export default function useScrollVideo(scrollProgress) {
             if (!video) return;
 
             if (video.paused) {
+                video.playbackRate = 2;
                 video.play().catch(() => {});
             }
 
