@@ -9,6 +9,9 @@ const Bar = styled.div`
     justify-content: center;
     padding: 50px 20px 8px 20px;
     box-sizing: border-box;
+    z-index: 99;
+    position: relative;
+    ${({ $bordered }) => $bordered ? `border-bottom: 1px solid #fff;` : ""}
 
     ${media.mobile(`
         padding-top: 76px;
@@ -16,12 +19,12 @@ const Bar = styled.div`
 `;
 
 const Title = styled.span`
-    font-family: 'logic-monospace', monospace;
-    font-weight: 700;
+    font-family: ${({ $fontFamily }) => $fontFamily || "'logic-monospace', monospace"};
+    font-weight: ${({ $fontWeight }) => $fontWeight || 700};
     font-size: 24px;
     text-transform: uppercase;
     color: ${({ $color }) => $color || "#f7ff95"};
-    line-height: 1.24;
+    line-height: 1.2;
     text-align: center;
 
     ${media.mobile(`
@@ -29,10 +32,10 @@ const Title = styled.span`
     `)}
 `;
 
-export default function SectionHeadingBar({ children, color }) {
+export default function SectionHeadingBar({ children, color, bordered, fontFamily, fontWeight }) {
     return (
-        <Bar>
-            <Title $color={color}>{children}</Title>
+        <Bar $bordered={bordered}>
+            <Title $color={color} $fontFamily={fontFamily} $fontWeight={fontWeight}>{children}</Title>
         </Bar>
     );
 }

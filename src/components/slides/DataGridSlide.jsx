@@ -148,6 +148,9 @@ function scrambleElement(element) {
 export default function DataGridSlide({
     sectionTitle,
     headingColor,
+    headingBordered,
+    headingFontFamily,
+    headingFontWeight,
     gridColor,
     backgroundVideo,
     lottieAnimation,
@@ -274,7 +277,12 @@ export default function DataGridSlide({
                     )}
                     <GridOverlay $gridColor={gridColor} />
                     {sectionTitle && (
-                        <SectionHeadingBar color={headingColor}>
+                        <SectionHeadingBar
+                            color={headingColor}
+                            bordered={headingBordered}
+                            fontFamily={headingFontFamily}
+                            fontWeight={headingFontWeight}
+                        >
                             {sectionTitle}
                         </SectionHeadingBar>
                     )}

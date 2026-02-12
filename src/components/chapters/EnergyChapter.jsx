@@ -565,7 +565,10 @@ export default function EnergyChapter() {
             {/* S19 — Solutions data grid */}
             <DataGridSlide
                 sectionTitle="THE SOLUTIONS"
-                headingColor="#fff"
+                headingColor="#EBEBEB"
+                headingBordered
+                headingFontFamily="'Space Grotesk', sans-serif"
+                headingFontWeight={500}
                 backgroundColor="#f7ff95"
                 lottieAnimation={{
                     mobile: "/videos/ch1/SOPRA_DigitalDisruption_DP1_M.json",
