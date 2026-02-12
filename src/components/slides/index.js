@@ -6,3 +6,4 @@ export { default as SectionHeadingBar } from "./SectionHeadingBar";
 export { default as SlideQuote } from "./SlideQuote";
 export { default as TimestampBadge } from "./TimestampBadge";
 export { default as StickySlide } from "./StickySlide";
+export { default as ContinuousSlide } from "./ContinuousSlide";
