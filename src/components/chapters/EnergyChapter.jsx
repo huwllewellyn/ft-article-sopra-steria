@@ -107,6 +107,7 @@ export default function EnergyChapter() {
             {/* Hero + S1 — continuous Oslo cityscape video */}
             <ContinuousSlide
                 trackHeight="300vh"
+                flowHeight="200vh"
                 background={({ scrollYProgress }) => (
                     <>
                         <ScrollSyncHeroVideo
@@ -183,8 +184,8 @@ export default function EnergyChapter() {
                 {({ scrollYProgress }) => (
                     <NarrativeSlide
                         timestamp="5:00pm"
-                        backgroundVideo={VIDEOS.globe}
-                        poster={POSTERS.globe}
+                        backgroundVideo={VIDEOS.hackerScene}
+                        poster={POSTERS.hackerScene}
                         scrollProgress={scrollYProgress}
                         textPosition="top"
                     >

@@ -27,6 +27,7 @@ export default function ContinuousSlide({
     slides,
     background,
     trackHeight = "300vh",
+    flowHeight,
     appearInPlace = false,
 }) {
     const trackRef = useRef(null);
@@ -70,7 +71,11 @@ export default function ContinuousSlide({
     return (
         <div
             ref={trackRef}
-            style={{ position: "relative", height: trackHeight }}
+            style={{
+                position: "relative",
+                height: trackHeight,
+                ...(flowHeight && { marginBottom: `calc(${flowHeight} - ${trackHeight})` }),
+            }}
         >
             <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden" }}>
                 {background?.({ scrollYProgress })}
