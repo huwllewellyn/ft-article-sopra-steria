@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
@@ -47,6 +48,34 @@ const POSTERS = {
     escalator: "/videos/posters/ch1/ch1_8.jpg",
     dataPoint: "/videos/posters/ch1/dp1_desktop.jpg",
 };
+
+function ScrollReveal({ scrollProgress, threshold, children }) {
+    const ref = useRef(null);
+
+    useEffect(() => {
+        const el = ref.current;
+        if (!el) return;
+
+        el.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+        el.style.opacity = threshold === 0 ? "1" : "0";
+        el.style.transform =
+            threshold === 0 ? "translateY(0)" : "translateY(30px)";
+
+        const unsubscribe = scrollProgress.on("change", (v) => {
+            if (v >= threshold) {
+                el.style.opacity = "1";
+                el.style.transform = "translateY(0)";
+            } else {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(30px)";
+            }
+        });
+
+        return unsubscribe;
+    }, [scrollProgress, threshold]);
+
+    return <div ref={ref}>{children}</div>;
+}
 
 const Chapter = styled.div`
     background: #0d1117;
@@ -278,7 +307,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S8 — Cyber attacks data grid */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide appearInPlace flowHeight="400vh" trackHeight="300vh">
                 {({ scrollYProgress }) => (
                     <DataGridSlide
                         sectionTitle="AN EVOLVING THREAT LANDSCAPE"
@@ -292,22 +321,38 @@ export default function EnergyChapter() {
                         }}
                         scrollProgress={scrollYProgress}
                     >
-                        <DataText>
-                            <span>
-                                Cyber attacks <strong>doubled</strong> between
-                                2020 and 2022 in{" "}
-                                <strong>Europe's power sector</strong> with
-                            </span>
-                        </DataText>
-                        <DataCenter $bg="#fff">
-                            48 attacks on Europe's energy infrastructure
-                        </DataCenter>
-                        <DataAttribution>
-                            <span>
-                                in 2022, according to Eurelectric, a federation
-                                for the European electricity industry.
-                            </span>
-                        </DataAttribution>
+                        <ScrollReveal
+                            scrollProgress={scrollYProgress}
+                            threshold={0}
+                        >
+                            <DataText>
+                                <span>
+                                    Cyber attacks <strong>doubled</strong>{" "}
+                                    between 2020 and 2022 in{" "}
+                                    <strong>Europe's power sector</strong> with
+                                </span>
+                            </DataText>
+                        </ScrollReveal>
+                        <ScrollReveal
+                            scrollProgress={scrollYProgress}
+                            threshold={0.33}
+                        >
+                            <DataCenter $bg="#fff">
+                                48 attacks on Europe's energy infrastructure
+                            </DataCenter>
+                        </ScrollReveal>
+                        <ScrollReveal
+                            scrollProgress={scrollYProgress}
+                            threshold={0.66}
+                        >
+                            <DataAttribution>
+                                <span>
+                                    in 2022, according to Eurelectric, a
+                                    federation for the European electricity
+                                    industry.
+                                </span>
+                            </DataAttribution>
+                        </ScrollReveal>
                     </DataGridSlide>
                 )}
             </StickySlide>

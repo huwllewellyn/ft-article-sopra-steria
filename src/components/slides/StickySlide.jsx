@@ -12,7 +12,7 @@ const StickyWrapper = styled.div`
 const ScrollTrack = styled.div`
     position: relative;
     height: ${(props) => props.$trackHeight};
-    margin-bottom: calc(-1 * (${(props) => props.$trackHeight} - 100vh));
+    margin-bottom: calc(-1 * (${(props) => props.$trackHeight} - ${(props) => props.$flowHeight || "100vh"}));
 `;
 
 function useZIndexAndAppear(ref, appearInPlace) {
@@ -39,7 +39,7 @@ function useZIndexAndAppear(ref, appearInPlace) {
     }, [appearInPlace]);
 }
 
-function ScrollTrackedSlide({ children, trackHeight, appearInPlace }) {
+function ScrollTrackedSlide({ children, trackHeight, flowHeight, appearInPlace }) {
     const trackRef = useRef();
 
     const { scrollYProgress } = useScroll({
@@ -50,7 +50,7 @@ function ScrollTrackedSlide({ children, trackHeight, appearInPlace }) {
     useZIndexAndAppear(trackRef, appearInPlace);
 
     return (
-        <ScrollTrack ref={trackRef} $trackHeight={trackHeight}>
+        <ScrollTrack ref={trackRef} $trackHeight={trackHeight} $flowHeight={flowHeight}>
             <StickyWrapper>
                 {children({ scrollYProgress })}
             </StickyWrapper>
@@ -65,9 +65,9 @@ function BaseStickySlide({ children, appearInPlace }) {
     return <StickyWrapper ref={ref}>{children}</StickyWrapper>;
 }
 
-export default function StickySlide({ children, appearInPlace, trackHeight }) {
+export default function StickySlide({ children, appearInPlace, trackHeight, flowHeight }) {
     if (trackHeight) {
-        return <ScrollTrackedSlide trackHeight={trackHeight} appearInPlace={appearInPlace}>{children}</ScrollTrackedSlide>;
+        return <ScrollTrackedSlide trackHeight={trackHeight} flowHeight={flowHeight} appearInPlace={appearInPlace}>{children}</ScrollTrackedSlide>;
     }
 
     return <BaseStickySlide appearInPlace={appearInPlace}>{children}</BaseStickySlide>;
