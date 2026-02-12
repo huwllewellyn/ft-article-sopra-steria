@@ -77,9 +77,10 @@ export function DataCenter({ $bg, children }) {
 export const SolutionBoxes = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 16px;
-    width: 100%;
-    max-width: 600px;
+    margin: auto 0;
+    width: 2000px;
 `;
 
 export const SolutionBox = styled.div`
@@ -91,12 +92,14 @@ export const SolutionBox = styled.div`
     border: 2px solid #fff;
     background: #000;
 
-    p {
-        font-family: "Space Mono", monospace;
-        font-size: 21px;
-        line-height: 1.35;
-        letter-spacing: -0.84px;
-        color: #fff;
+    && p {
+        font-family: "logic-monospace", monospace;
+        font-size: 26px;
+        font-weight: 500;
+        text-transform: uppercase;
+        line-height: 0.9;
+        text-align: center;
+        color: #ebebeb;
         margin: 0;
 
         ${media.mobile(`

@@ -11,7 +11,7 @@ const Bar = styled.div`
     box-sizing: border-box;
     z-index: 99;
     position: relative;
-    ${({ $bordered }) => $bordered ? `border-bottom: 1px solid #fff;` : ""}
+    ${({ $bordered }) => $bordered ? `border-bottom: 2px solid #fff;` : ""}
 
     ${media.mobile(`
         padding-top: 76px;
