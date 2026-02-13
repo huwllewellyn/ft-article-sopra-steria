@@ -18,6 +18,7 @@ set -euo pipefail
 
 RAW_DIR="raw_assets"
 OUT_DIR="public/videos"
+OVERRIDES_FILE="video-overrides.json"
 
 # Check ffmpeg is available
 if ! command -v ffmpeg &>/dev/null; then
@@ -25,6 +26,15 @@ if ! command -v ffmpeg &>/dev/null; then
     echo "Install with: brew install ffmpeg"
     exit 1
 fi
+
+# Load per-video overrides (requires jq for JSON parsing)
+get_override() {
+    local output_path="$1"  # e.g. "ch1/ch1_1.mp4"
+    local field="$2"        # e.g. "keyframes"
+    if [ -f "$OVERRIDES_FILE" ] && command -v jq &>/dev/null; then
+        jq -r --arg p "$output_path" --arg f "$field" '.[$p][$f] // empty' "$OVERRIDES_FILE" 2>/dev/null
+    fi
+}
 
 # Chapter mapping: "directory|output_subdir"
 CHAPTERS=(
@@ -176,6 +186,15 @@ for entry in "${CHAPTERS[@]}"; do
             profile_label="standard"
         fi
 
+        # Check for per-video overrides
+        override_key="${ch}/${out_name}"
+        keyframe_override=$(get_override "$override_key" "keyframes")
+        extra_flags=()
+        if [ "$keyframe_override" = "every" ]; then
+            extra_flags+=(-g 1 -keyint_min 1)
+            profile_label="${profile_label}+keyframes"
+        fi
+
         printf "  %-45s [%s] " "${filename}" "${profile_label}"
 
         ffmpeg -i "$filepath" \
@@ -183,6 +202,7 @@ for entry in "${CHAPTERS[@]}"; do
             -c:v libx264 \
             -preset slow \
             -crf "$crf" \
+            ${extra_flags[@]+"${extra_flags[@]}"} \
             -r 24 \
             -pix_fmt yuv420p \
             -an \
