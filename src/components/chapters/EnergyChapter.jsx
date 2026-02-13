@@ -107,18 +107,19 @@ function scrambleText(element) {
 }
 
 const DARKNESS_WORDS = [
-    { text: "THE", offset: "-130%" },
-    { text: "CITY", offset: "93%" },
-    { text: "IS", offset: "-94%" },
-    { text: "PLUNGED", offset: "73%" },
-    { text: "INTO", offset: "-128%" },
-    { text: "DARKNESS", offset: "37%" },
+    { text: "THE", offset: "-10vw" },
+    { text: "CITY", offset: "15vw" },
+    { text: "IS", offset: "-4vw" },
+    { text: "PLUNGED", offset: "7vw" },
+    { text: "INTO", offset: "-14vw" },
+    { text: "DARKNESS", offset: "12vw" },
 ];
 
 const WordRevealContainer = styled.div`
     position: absolute;
     inset: 0;
     z-index: 2;
+    top: 5vh;
     min-height: 100vh;
     color: #fff;
     display: flex;
