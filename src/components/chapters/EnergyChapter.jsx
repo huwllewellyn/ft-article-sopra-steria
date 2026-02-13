@@ -194,18 +194,14 @@ function WordReveal({ scrollProgress }) {
 
     return (
         <WordRevealContainer>
-            {DARKNESS_WORDS.map((word, i) =>
-                word.text === null ? (
-                    <br key={`br-${i}`} />
-                ) : (
-                    <RevealWord
-                        key={word.text}
-                        ref={(el) => (wordsRef.current[i] = el)}
-                    >
-                        {word.text}
-                    </RevealWord>
-                )
-            )}
+            {DARKNESS_WORDS.map((word, i) => (
+                <RevealWord
+                    key={word.text}
+                    ref={(el) => (wordsRef.current[i] = el)}
+                >
+                    {word.text}
+                </RevealWord>
+            ))}
         </WordRevealContainer>
     );
 }
@@ -371,54 +367,48 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S5 — 5:10pm elevator */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="5:10pm"
-                        backgroundVideo={VIDEOS.elevator}
-                        poster={POSTERS.elevator}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                    >
-                        <p>
-                            Across town, the CTO of a prominent investment firm
-                            is ready to leave for the day.
-                        </p>
-                        <br />
-                        <br />
-                        <p>
-                            She presses the elevator button on the 14th floor of
-                            the company's building, but nothing happens.
-                        </p>
-                        <br />
-                        <br />
-                        <p>
-                            Moments later, the entire floor is plunged into
-                            darkness.
-                        </p>
-                    </NarrativeSlide>
-                )}
+            <StickySlide appearInPlace trackHeight="200vh" flowHeight="200vh">
+                <NarrativeSlide
+                    timestamp="5:10pm"
+                    backgroundVideo={VIDEOS.elevator}
+                    poster={POSTERS.elevator}
+                    textPosition="top"
+                >
+                    <p>
+                        Across town, the CTO of a prominent investment firm is
+                        ready to leave for the day.
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                        She presses the elevator button on the 14th floor of the
+                        company's building, but nothing happens.
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                        Moments later, the entire floor is plunged into
+                        darkness.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* S6 — 5:15pm signal lost */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="5:15pm"
-                        backgroundVideo={VIDEOS.signalLost}
-                        poster={POSTERS.signalLost}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                    >
-                        <p>
-                            Outside, the city's skyline no longer shines
-                            brightly. Mobile and internet services are down.
-                        </p>
-                        <br />
-                        <br />
-                        <p>People across Oslo start to panic.</p>
-                    </NarrativeSlide>
-                )}
+            <StickySlide appearInPlace trackHeight="200vh" flowHeight="200vh">
+                <NarrativeSlide
+                    timestamp="5:15pm"
+                    backgroundVideo={VIDEOS.signalLost}
+                    poster={POSTERS.signalLost}
+                    textPosition="top"
+                >
+                    <p>
+                        Outside, the city's skyline no longer shines brightly.
+                        Mobile and internet services are down.
+                    </p>
+                    <br />
+                    <br />
+                    <p>People across Oslo start to panic.</p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* S7 — Evolving threat intro */}

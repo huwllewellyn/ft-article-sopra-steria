@@ -52,15 +52,30 @@ function ScrollTrackedSlide({ children, trackHeight, flowHeight, appearInPlace }
     return (
         <ScrollTrack ref={trackRef} $trackHeight={trackHeight} $flowHeight={flowHeight}>
             <StickyWrapper>
-                {children({ scrollYProgress })}
+                {typeof children === "function" ? children({ scrollYProgress }) : children}
             </StickyWrapper>
         </ScrollTrack>
     );
 }
 
-function BaseStickySlide({ children, appearInPlace }) {
+const FlowTrack = styled.div`
+    position: relative;
+    height: ${(props) => props.$flowHeight};
+    margin-bottom: calc(-1 * (${(props) => props.$flowHeight} - 100vh));
+`;
+
+function BaseStickySlide({ children, appearInPlace, flowHeight }) {
     const ref = useRef();
-    useZIndexAndAppear(ref, appearInPlace);
+    const flowRef = useRef();
+    useZIndexAndAppear(flowHeight ? flowRef : ref, appearInPlace);
+
+    if (flowHeight) {
+        return (
+            <FlowTrack ref={flowRef} $flowHeight={flowHeight}>
+                <StickyWrapper>{children}</StickyWrapper>
+            </FlowTrack>
+        );
+    }
 
     return <StickyWrapper ref={ref}>{children}</StickyWrapper>;
 }
@@ -70,5 +85,5 @@ export default function StickySlide({ children, appearInPlace, trackHeight, flow
         return <ScrollTrackedSlide trackHeight={trackHeight} flowHeight={flowHeight} appearInPlace={appearInPlace}>{children}</ScrollTrackedSlide>;
     }
 
-    return <BaseStickySlide appearInPlace={appearInPlace}>{children}</BaseStickySlide>;
+    return <BaseStickySlide appearInPlace={appearInPlace} flowHeight={flowHeight}>{children}</BaseStickySlide>;
 }
