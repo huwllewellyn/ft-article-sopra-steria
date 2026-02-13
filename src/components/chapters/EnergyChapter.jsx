@@ -77,6 +77,134 @@ function ScrollReveal({ scrollProgress, threshold, children }) {
     return <div ref={ref}>{children}</div>;
 }
 
+const GLITCH_CHARS =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?<>{}[]~/\\|";
+
+function scrambleText(element) {
+    const original = element.textContent;
+    let frame = 0;
+    const totalFrames = 8;
+
+    const interval = setInterval(() => {
+        if (frame >= totalFrames) {
+            element.textContent = original;
+            clearInterval(interval);
+            return;
+        }
+        element.textContent = original
+            .split("")
+            .map((char) => {
+                if (char === " ") return char;
+                return Math.random() > 0.4
+                    ? GLITCH_CHARS[
+                          Math.floor(Math.random() * GLITCH_CHARS.length)
+                      ]
+                    : char;
+            })
+            .join("");
+        frame++;
+    }, 50);
+}
+
+const DARKNESS_WORDS = [
+    { text: "THE", offset: "-130%" },
+    { text: "CITY", offset: "93%" },
+    { text: "IS", offset: "-94%" },
+    { text: "PLUNGED", offset: "73%" },
+    { text: "INTO", offset: "-128%" },
+    { text: "DARKNESS", offset: "37%" },
+];
+
+const WordRevealContainer = styled.div`
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    min-height: 100vh;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    overflow: hidden;
+`;
+
+const RevealWord = styled.span`
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    display: block;
+    text-align: center;
+    background: black;
+    padding: 4px 12px;
+
+    ${media.tablet(`
+        font-size: 25px;
+    `)}
+
+    ${media.mobile(`
+        font-size: 21px;
+        line-height: 1.3;
+    `)}
+`;
+
+function WordReveal({ scrollProgress }) {
+    const wordsRef = useRef([]);
+    const revealedRef = useRef(new Set());
+
+    useEffect(() => {
+        if (!scrollProgress) return;
+
+        wordsRef.current.forEach((el, i) => {
+            if (!el) return;
+            el.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+            el.style.opacity = "0";
+            el.style.transform = `translateX(${DARKNESS_WORDS[i].offset}) translateY(20px)`;
+        });
+
+        const unsubscribe = scrollProgress.on("change", (v) => {
+            const count = Math.min(
+                Math.floor(v * DARKNESS_WORDS.length) + 1,
+                DARKNESS_WORDS.length,
+            );
+
+            wordsRef.current.forEach((el, i) => {
+                if (!el) return;
+                if (i < count) {
+                    el.style.opacity = "1";
+                    el.style.transform = `translateX(${DARKNESS_WORDS[i].offset})`;
+                    if (!revealedRef.current.has(i)) {
+                        revealedRef.current.add(i);
+                        scrambleText(el);
+                    }
+                } else {
+                    el.style.opacity = "0";
+                    el.style.transform = `translateX(${DARKNESS_WORDS[i].offset}) translateY(20px)`;
+                    revealedRef.current.delete(i);
+                }
+            });
+        });
+
+        return unsubscribe;
+    }, [scrollProgress]);
+
+    return (
+        <WordRevealContainer>
+            {DARKNESS_WORDS.map((word, i) => (
+                <RevealWord
+                    key={word.text}
+                    ref={(el) => (wordsRef.current[i] = el)}
+                >
+                    {word.text}
+                </RevealWord>
+            ))}
+        </WordRevealContainer>
+    );
+}
+
 const Chapter = styled.div`
     background: #0d1117;
     color: #fff;
@@ -382,21 +510,32 @@ export default function EnergyChapter() {
                 </EditorialSlide>
             </StickySlide>
 
-            {/* S10 — 5:20pm blackouts */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="5:20pm"
-                    backgroundVideo={VIDEOS.glitchyCityscape}
-                    poster={POSTERS.glitchyCityscape}
-                    textPosition="top"
-                >
-                    <p>
-                        As the grid's automated load balancers struggle to cope
-                        with the intensity of a sustained attack, safety
-                        shutdowns are being triggered across energy grids,
-                        causing blackouts.
-                    </p>
-                </NarrativeSlide>
+            {/* S10 — 5:20pm blackouts + word reveal */}
+            <StickySlide appearInPlace trackHeight="400vh" flowHeight="300vh">
+                {({ scrollYProgress }) => (
+                    <div
+                        style={{
+                            position: "relative",
+                            width: "100%",
+                            height: "100%",
+                        }}
+                    >
+                        <NarrativeSlide
+                            timestamp="5:20pm"
+                            backgroundVideo={VIDEOS.glitchyCityscape}
+                            poster={POSTERS.glitchyCityscape}
+                            textPosition="top"
+                        >
+                            <p>
+                                As the grid's automated load balancers struggle
+                                to cope with the intensity of a sustained
+                                attack, safety shutdowns are being triggered
+                                across energy grids, causing blackouts.
+                            </p>
+                        </NarrativeSlide>
+                        <WordReveal scrollProgress={scrollYProgress} />
+                    </div>
+                )}
             </StickySlide>
 
             {/* S11 — 5:30pm phone torches */}
