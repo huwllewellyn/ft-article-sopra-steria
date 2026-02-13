@@ -107,6 +107,7 @@ function scrambleText(element) {
 }
 
 const DARKNESS_WORDS = [
+    { text: null, offset: "-130%" },
     { text: "THE", offset: "-130%" },
     { text: "CITY", offset: "93%" },
     { text: "IS", offset: "-94%" },
@@ -193,14 +194,18 @@ function WordReveal({ scrollProgress }) {
 
     return (
         <WordRevealContainer>
-            {DARKNESS_WORDS.map((word, i) => (
-                <RevealWord
-                    key={word.text}
-                    ref={(el) => (wordsRef.current[i] = el)}
-                >
-                    {word.text}
-                </RevealWord>
-            ))}
+            {DARKNESS_WORDS.map((word, i) =>
+                word.text === null ? (
+                    <br key={`br-${i}`} />
+                ) : (
+                    <RevealWord
+                        key={word.text}
+                        ref={(el) => (wordsRef.current[i] = el)}
+                    >
+                        {word.text}
+                    </RevealWord>
+                )
+            )}
         </WordRevealContainer>
     );
 }
