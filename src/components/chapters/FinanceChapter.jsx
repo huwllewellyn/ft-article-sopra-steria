@@ -178,65 +178,82 @@ export default function FinanceChapter() {
                 ]}
             />
 
-            {/* F3 — Supermarket escalation */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <NarrativeSlide
-                    backgroundVideo={VIDEOS.supermarket}
-                    poster={POSTERS.supermarket}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Within hours, an issue at a local supermarket in
-                        Madrid escalates into a multi-million-euro crisis,
-                        with malware spreading from one store to thousands
-                        and damage reaching far beyond one retailer.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
-
-            {/* F4 — 12:00pm store manager clicks link */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <NarrativeSlide
-                    timestamp="12:00pm"
-                    backgroundVideo={VIDEOS.supermarket}
-                    poster={POSTERS.supermarket}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        A stressed store manager clicks a link to a
-                        lookalike inventory portal in an
-                        &ldquo;urgent&rdquo; email from a supposed HQ
-                        executive.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
-
-            {/* F5 — 12:20pm POS malware */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <NarrativeSlide
-                    timestamp="12:20pm"
-                    backgroundVideo={VIDEOS.supermarketBlurred}
-                    poster={POSTERS.supermarketBlurred}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Cyber attackers can now traverse the network and
-                        deploy malware to the retailer's POS system.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        Sensitive payment data is sent in batches to an
-                        external server.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
+            {/* F3-F5 — Supermarket escalation (continuous video) */}
+            <ContinuousSlide
+                trackHeight="400vh"
+                flowHeight="300vh"
+                appearInPlace
+                background={() => (
+                    <video
+                        src={getAssetPath(VIDEOS.supermarket)}
+                        poster={getAssetPath(POSTERS.supermarket)}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
+                    />
+                )}
+                slides={[
+                    () => (
+                        <NarrativeSlide
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            highlightText
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                Within hours, an issue at a local supermarket in
+                                Madrid escalates into a multi-million-euro crisis,
+                                with malware spreading from one store to thousands
+                                and damage reaching far beyond one retailer.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                    () => (
+                        <NarrativeSlide
+                            timestamp="12:00pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            highlightText
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                A stressed store manager clicks a link to a
+                                lookalike inventory portal in an
+                                &ldquo;urgent&rdquo; email from a supposed HQ
+                                executive.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                    () => (
+                        <NarrativeSlide
+                            timestamp="12:20pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            highlightText
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                Cyber attackers can now traverse the network and
+                                deploy malware to the retailer's POS system.
+                            </p>
+                            <br />
+                            <br />
+                            <p>
+                                Sensitive payment data is sent in batches to an
+                                external server.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                ]}
+            />
 
             {/* F6 — 1:05pm contacts IT helpdesk */}
             <StickySlide appearInPlace trackHeight="300vh">
