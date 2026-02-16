@@ -6,7 +6,7 @@ import useScrollVideo from "../../hooks/useScrollVideo";
 
 const Slide = styled.section`
     position: relative;
-    min-height: 100vh;
+    ${({ $flowHeight }) => ($flowHeight ? "" : "min-height: 100vh;")}
     background: ${({ $bg }) => $bg || "#0d1117"};
     color: #fff;
     display: flex;
@@ -154,12 +154,13 @@ export default function NarrativeSlide({
     backgroundColor,
     accentColor,
     scrollProgress,
+    flowHeight = false,
 }) {
     const videoRef = useScrollVideo(scrollProgress);
     const BodyWrapper = highlightText ? HighlightedBody : Body;
 
     return (
-        <Slide $bg={backgroundColor}>
+        <Slide $bg={backgroundColor} $flowHeight={flowHeight}>
             {backgroundVideo ? (
                 <>
                     <BackgroundVideo

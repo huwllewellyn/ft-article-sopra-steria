@@ -20,7 +20,6 @@ import {
 } from "../slides";
 import { EditorialBody } from "../slides/EditorialSlide";
 import SlideQuote from "../slides/SlideQuote";
-import useTextScramble from "../../hooks/useTextScramble";
 import useScrollVideo from "../../hooks/useScrollVideo";
 
 const VIDEOS = {
@@ -317,7 +316,8 @@ export default function EnergyChapter() {
 
             {/* S3 + S4 — continuous globe video */}
             <ContinuousSlide
-                trackHeight="600vh"
+                trackHeight="400vh"
+                flowHeight="300vh"
                 appearInPlace
                 background={({ scrollYProgress }) => (
                     <>
@@ -352,6 +352,7 @@ export default function EnergyChapter() {
                             timestamp="5:00pm"
                             backgroundColor="transparent"
                             textPosition="top"
+                            flowHeight="100vh"
                         >
                             <p>
                                 Remotely, a hacktivist group is in the process
@@ -374,7 +375,7 @@ export default function EnergyChapter() {
             />
 
             {/* S5 — 5:10pm elevator */}
-            <StickySlide appearInPlace trackHeight="200vh" flowHeight="200vh">
+            <StickySlide appearInPlace trackHeight="200vh" flowHeight="100vh">
                 <NarrativeSlide
                     timestamp="5:10pm"
                     backgroundVideo={VIDEOS.elevator}
