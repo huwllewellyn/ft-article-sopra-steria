@@ -395,20 +395,21 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F13 — 41% data point (lottie) */}
-            <StickySlide appearInPlace flowHeight="300vh" trackHeight="400vh">
+            <StickySlide appearInPlace flowHeight="200vh" trackHeight="300vh">
                 {({ scrollYProgress }) => (
                     <DataGridSlide
                         sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
                         lottieAnimation={{
-                            mobile: "/videos/ch2/SOPRA_CH2_12pm.json",
-                            tablet: "/videos/ch2/SOPRA_CH2_12pm.json",
-                            desktop: "/videos/ch2/SOPRA_CH2_12pm.json",
+                            mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_M.json",
+                            tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
+                            desktop:
+                                "/videos/ch2//SOPRA_DigitalDisruption_DP2_D.json",
                         }}
                         scrollProgress={scrollYProgress}
                     >
-                        <DataText>
+                        <DataText $bg={ACCENT}>
                             <span>
                                 <strong>41 per cent</strong> is the approximate
                                 amount of organisations that suffered a material
