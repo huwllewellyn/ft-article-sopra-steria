@@ -482,6 +482,11 @@ export default function FinanceChapter() {
                     timestamp="6:30pm"
                     backgroundVideo={VIDEOS.phoneInHand}
                     poster={POSTERS.phoneInHand}
+                    lottieOverlay={{
+                        mobile: "/videos/ch2/SOPRA_CH2_430pm_MOBILE.json",
+                        tablet: "/videos/ch2/SOPRA_CH2_430pm_MOBILE.json",
+                        desktop: "/videos/ch2/SOPRA_CH2_430pm_MOBILE.json",
+                    }}
                     textPosition="top"
                     accentColor={ACCENT}
                 >

@@ -3,6 +3,7 @@ import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import TimestampBadge from "./TimestampBadge";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import ResponsiveLottieAnimation from "../ResponsiveLottieAnimation";
 
 const Slide = styled.section`
     position: relative;
@@ -54,6 +55,15 @@ const VideoOverlay = styled.div`
         rgba(0, 0, 0, 0.2) 40%,
         rgba(0, 0, 0, 0.6) 100%
     );
+`;
+
+const LottieOverlayWrapper = styled.div`
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const Content = styled.div`
@@ -162,6 +172,7 @@ export default function NarrativeSlide({
     accentColor,
     scrollProgress,
     flowHeight = false,
+    lottieOverlay,
 }) {
     const videoRef = useScrollVideo(scrollProgress);
     const BodyWrapper = highlightText ? HighlightedBody : Body;
@@ -184,6 +195,16 @@ export default function NarrativeSlide({
                 </>
             ) : (
                 backgroundImage && <BackgroundImage $src={backgroundImage} />
+            )}
+            {lottieOverlay && (
+                <LottieOverlayWrapper>
+                    <ResponsiveLottieAnimation
+                        animations={lottieOverlay}
+                        loop
+                        autoplay
+                        preserveAspectRatio="xMidYMid slice"
+                    />
+                </LottieOverlayWrapper>
             )}
             {timestamp && (
                 <TimestampWrapper>

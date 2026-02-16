@@ -158,6 +158,7 @@ export default function LottieAnimation({
 
     // Handle framer-motion scroll progress (only when scrollProgress MotionValue is provided)
     useEffect(() => {
+        if (!scrollProgress) return;
         const unsubscribe = scrollProgress.onChange((latest) => {
             const animation = animationRef.current;
             if (!animation) {
