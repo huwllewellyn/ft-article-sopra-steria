@@ -59,7 +59,7 @@ const VideoOverlay = styled.div`
 const Content = styled.div`
     position: relative;
     z-index: 1;
-    padding: 102px 80px 80px;
+    padding: 120px 80px 80px;
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -67,12 +67,19 @@ const Content = styled.div`
         $position === "bottom" ? "flex-end" : "flex-start"};
 
     ${media.mobile(`
-        padding: 80px 20px 40px;
+        padding: 120px 20px 40px;
     `)}
 `;
 
 const TimestampWrapper = styled.div`
-    margin-bottom: 24px;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 1;
+
+    ${media.mobile(`
+        top: 70px;
+    `)}
 `;
 
 const Heading = styled.h2`
@@ -178,12 +185,12 @@ export default function NarrativeSlide({
             ) : (
                 backgroundImage && <BackgroundImage $src={backgroundImage} />
             )}
+            {timestamp && (
+                <TimestampWrapper>
+                    <TimestampBadge time={timestamp} color={accentColor} />
+                </TimestampWrapper>
+            )}
             <Content $position={textPosition}>
-                {timestamp && (
-                    <TimestampWrapper>
-                        <TimestampBadge time={timestamp} color={accentColor} />
-                    </TimestampWrapper>
-                )}
                 {heading && (
                     <Heading>
                         <span>{heading}</span>
