@@ -117,7 +117,7 @@ export const DataAttribution = styled.div`
     letter-spacing: -0.96px;
     color: #000;
     text-align: center;
-    max-width: 550px;
+    max-width: 600px;
     margin-bottom: 100px;
 
     span {
