@@ -13,7 +13,7 @@ const BannerScope = styled.div`
 const StickyBanner = styled.div`
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 9;
 `;
 
 export default function ConclusionSection() {
@@ -42,10 +42,10 @@ export default function ConclusionSection() {
                         <p>
                             From corrupted payment infrastructure in Madrid to a
                             disrupted transport network throughout the UK and
-                            blackouts in Oslo, these hypothetical scenarios show how
-                            quickly disruption could ripple across Europe's daily
-                            life – crossing industries and countries in hours,
-                            sometimes minutes.
+                            blackouts in Oslo, these hypothetical scenarios show
+                            how quickly disruption could ripple across Europe's
+                            daily life – crossing industries and countries in
+                            hours, sometimes minutes.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -56,21 +56,21 @@ export default function ConclusionSection() {
                 <EditorialBody>
                     <p>
                         The sophistication of these attacks demands an equally
-                        sophisticated response, but this cyber resilience cannot be
-                        built in silos.
+                        sophisticated response, but this cyber resilience cannot
+                        be built in silos.
                     </p>
                     <br />
                     <br />
                     <p>
-                        These cases highlight why a multifaceted, cross-border and
-                        cross-sector approach to cyber security is required in
-                        today's hyper-connected society.
+                        These cases highlight why a multifaceted, cross-border
+                        and cross-sector approach to cyber security is required
+                        in today's hyper-connected society.
                     </p>
                     <br />
                     <br />
                     <p>
-                        The future will belong not to the best-defended sector, but
-                        to the best-coordinated network.
+                        The future will belong not to the best-defended sector,
+                        but to the best-coordinated network.
                     </p>
                 </EditorialBody>
             </EditorialSlide>

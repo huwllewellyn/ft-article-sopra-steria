@@ -142,17 +142,17 @@ export default function TransportChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                At a major UK port, logistics drivers prepare for
-                                the day ahead while commuters gather at stations
-                                across the country.
+                                At a major UK port, logistics drivers prepare
+                                for the day ahead while commuters gather at
+                                stations across the country.
                             </p>
                             <br />
                             <br />
                             <p>
                                 But just as the morning rush begins, unexpected
-                                glitches creep into navigation systems – this is the
-                                first sign of a broader attack targeting transport
-                                nationwide.
+                                glitches creep into navigation systems – this is
+                                the first sign of a broader attack targeting
+                                transport nationwide.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -190,14 +190,14 @@ export default function TransportChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        Others in the depot face similar issues and
-                        management wonders why vans aren't moving.
+                        Others in the depot face similar issues and management
+                        wonders why vans aren't moving.
                     </p>
                     <br />
                     <br />
                     <p>
-                        Thousands of pounds of revenue could be lost from a
-                        late departure.
+                        Thousands of pounds of revenue could be lost from a late
+                        departure.
                     </p>
                 </NarrativeSlide>
             </StickySlide>
@@ -215,8 +215,8 @@ export default function TransportChapter() {
                     <p>
                         A foreign hacker group is using a technique called{" "}
                         <strong>GPS jamming</strong> to block signals and
-                        interfere with the GPS network, disrupting travel in
-                        the UK.
+                        interfere with the GPS network, disrupting travel in the
+                        UK.
                     </p>
                 </NarrativeSlide>
             </StickySlide>
@@ -231,24 +231,24 @@ export default function TransportChapter() {
                     <EditorialBody>
                         <p>
                             While the Global Positioning System (GPS) has been a
-                            trusted navigation system since the mid-1990s, it's far
-                            from invulnerable.
+                            trusted navigation system since the mid-1990s, it's
+                            far from invulnerable.
                         </p>
                         <SlideQuote
                             quote={
                                 <>
-                                    <strong>Jamming</strong> can block the signals,
-                                    while <strong>spoofing</strong> tricks systems
-                                    into misreading locations
+                                    <strong>Jamming</strong> can block the
+                                    signals, while <strong>spoofing</strong>{" "}
+                                    tricks systems into misreading locations
                                 </>
                             }
                             name="Fabien Lecoq"
                             role="Cybersecurity Director, Sopra Steria"
                         />
                         <p>
-                            Transport is the second most targeted sector in the EU,
-                            with the majority of attacks concentrated in air and
-                            logistics.
+                            Transport is the second most targeted sector in the
+                            EU, with the majority of attacks concentrated in air
+                            and logistics.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -265,9 +265,7 @@ export default function TransportChapter() {
                     poster={POSTERS.dataPoint}
                 >
                     <DataText $bg={ACCENT}>
-                        <span>
-                            EU Transport Sector Cyber Incidents (2025)
-                        </span>
+                        <span>EU Transport Sector Cyber Incidents (2025)</span>
                     </DataText>
                     {/* <DataCenter $bg="#fff"></DataCenter> */}
                     <DataAttribution $bg={"#fff"}>
@@ -302,8 +300,8 @@ export default function TransportChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        The driver makes deliveries, albeit at a slower
-                        pace, using maps and institutional knowledge.
+                        The driver makes deliveries, albeit at a slower pace,
+                        using maps and institutional knowledge.
                     </p>
                 </NarrativeSlide>
             </StickySlide>
@@ -318,10 +316,9 @@ export default function TransportChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        Over the radio, news breaks about a disruption to a
-                        UK military jet carrying an MP over Russian
-                        airspace. Early reports suggest it was a GPS
-                        disturbance.
+                        Over the radio, news breaks about a disruption to a UK
+                        military jet carrying an MP over Russian airspace. Early
+                        reports suggest it was a GPS disturbance.
                     </p>
                 </NarrativeSlide>
             </StickySlide>
@@ -351,18 +348,19 @@ export default function TransportChapter() {
                 >
                     <EditorialBody>
                         <p>
-                            Europe's reliance on GPS – a US-owned satellite service
-                            – poses a strategic risk in times of global tension.
+                            Europe's reliance on GPS – a US-owned satellite
+                            service – poses a strategic risk in times of global
+                            tension.
                         </p>
                         <p>
                             13 EU member states have already{" "}
                             <a href="https://navisp.esa.int/news/article/13%20EU%20Member%20States%20call%20for%20common%20actions%20in%20response%20to%20GNSS%20jamming%20and%20spoofing%20threats">
                                 called
                             </a>{" "}
-                            on the European Commission to accelerate the deployment
-                            of interference-resistant Global Navigation Satellite
-                            System (GNSS) technologies to accelerate Europe's
-                            digital sovereignty.
+                            on the European Commission to accelerate the
+                            deployment of interference-resistant Global
+                            Navigation Satellite System (GNSS) technologies to
+                            accelerate Europe's digital sovereignty.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -378,9 +376,10 @@ export default function TransportChapter() {
                     <EditorialBody>
                         <p>
                             Julia Carver, an assistant professor focusing on
-                            Europe's cybersecurity policy and strategic affairs at
-                            Leiden University, explains that the EU's vision of
-                            digital sovereignty emphasises self-determination.
+                            Europe's cybersecurity policy and strategic affairs
+                            at Leiden University, explains that the EU's vision
+                            of digital sovereignty emphasises
+                            self-determination.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -414,11 +413,12 @@ export default function TransportChapter() {
                             tricky.
                         </p>
                         <p>
-                            "Digital sovereignty sounds compelling, but, in legal
-                            terms, it goes in many directions," says Elaine Fahey,
-                            Professor of EU Law at City St George's, University of
-                            London. "It's rooted in internal market law, while the
-                            threats themselves are cross-border."
+                            "Digital sovereignty sounds compelling, but, in
+                            legal terms, it goes in many directions," says
+                            Elaine Fahey, Professor of EU Law at City St
+                            George's, University of London. "It's rooted in
+                            internal market law, while the threats themselves
+                            are cross-border."
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -466,8 +466,8 @@ export default function TransportChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        As the driver heads home, his usual train is delayed
-                        by two hours.
+                        As the driver heads home, his usual train is delayed by
+                        two hours.
                     </p>
                 </NarrativeSlide>
             </StickySlide>
@@ -481,30 +481,34 @@ export default function TransportChapter() {
                     textPosition="top"
                     highlightText
                     accentColor={ACCENT}
-                    >
-                        <p>
-                            A news alert says trains have been cancelled and
-                            delayed due to a coordinated attack on the Wi-Fi
-                            networks at UK train stations.
-                        </p>
-                        <br />
-                        <br />
-                        <p>
-                            Cyber analysts believe a foreign entity is behind
-                            the travel chaos throughout the country.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                >
+                    <p>
+                        A news alert says trains have been cancelled and delayed
+                        due to a coordinated attack on the Wi-Fi networks at UK
+                        train stations.
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                        Cyber analysts believe a foreign entity is behind the
+                        travel chaos throughout the country.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* T20 — Solutions data grid */}
             <DataGridSlide
                 sectionTitle="THE SOLUTIONS"
-                headingColor={ACCENT}
-                backgroundColor={ACCENT}
-                gridColor={GRID_COLOR}
-                backgroundVideo={VIDEOS.dataPoint}
-                poster={POSTERS.dataPoint}
+                headingColor="#EBEBEB"
+                headingBordered
+                headingFontFamily="'Space Grotesk', sans-serif"
+                headingFontWeight={500}
+                backgroundColor="#000"
+                lottieAnimation={{
+                    mobile: "/videos/ch3/SOLUTIONS_3.json",
+                    tablet: "/videos/ch3/SOLUTIONS_3.json",
+                    desktop: "/videos/ch3/SOLUTIONS_3.json",
+                }}
             >
                 <SolutionBoxes>
                     <SolutionBox>
