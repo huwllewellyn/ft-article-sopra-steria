@@ -30,7 +30,7 @@ const VIDEOS = {
     supermarketBlurred: "/videos/ch2/ch2_3.mp4",
     warehousePhone: "/videos/ch2/ch2_4_desktop.mp4",
     ironGate: "/videos/ch2/ch2_5.mp4",
-    phoneInHand: "/videos/ch2/ch2_6_desktop.mp4",
+    phoneInHand: "/videos/ch2/ch2_630.mp4",
     warehouse: "/videos/ch2/ch2_7.mp4",
     idVerification: "/videos/ch2/ch2_8.mp4",
 };
@@ -41,7 +41,7 @@ const POSTERS = {
     supermarketBlurred: "/videos/posters/ch2/ch2_3.jpg",
     warehousePhone: "/videos/posters/ch2/ch2_4_desktop.jpg",
     ironGate: "/videos/posters/ch2/ch2_5.jpg",
-    phoneInHand: "/videos/posters/ch2/ch2_6_desktop.jpg",
+    phoneInHand: "/videos/posters/ch2/ch2_630.jpg",
     warehouse: "/videos/posters/ch2/ch2_7.jpg",
     idVerification: "/videos/posters/ch2/ch2_8.jpg",
 };
