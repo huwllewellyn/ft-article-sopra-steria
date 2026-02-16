@@ -220,8 +220,7 @@ export default function TransportChapter() {
                     </p>
                 </NarrativeSlide>
             </StickySlide>
-
-            {/* T6 — Editorial: GPS vulnerability + Lecoq quote */}
+            {/* T6a — Editorial: GPS vulnerability + Lecoq quote */}
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
@@ -234,6 +233,18 @@ export default function TransportChapter() {
                             trusted navigation system since the mid-1990s, it's
                             far from invulnerable.
                         </p>
+                    </EditorialBody>
+                </EditorialSlide>
+            </StickySlide>
+
+            {/* T6b — Editorial: GPS vulnerability + Lecoq quote */}
+            <StickySlide appearInPlace>
+                <EditorialSlide
+                    sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
+                    backgroundColor={ACCENT}
+                    headingColor={ACCENT}
+                >
+                    <EditorialBody>
                         <SlideQuote
                             quote={
                                 <>
@@ -261,8 +272,12 @@ export default function TransportChapter() {
                     headingColor={ACCENT}
                     backgroundColor={ACCENT}
                     gridColor={GRID_COLOR}
-                    backgroundVideo={VIDEOS.dataPoint}
-                    poster={POSTERS.dataPoint}
+                    lottieAnimation={{
+                        mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_M.json",
+                        tablet: "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
+                        desktop:
+                            "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
+                    }}
                 >
                     <DataText $bg={ACCENT}>
                         <span>EU Transport Sector Cyber Incidents (2025)</span>
@@ -337,9 +352,10 @@ export default function TransportChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                Over the radio, news breaks about a disruption to a UK
-                                military jet carrying an MP over Russian airspace. Early
-                                reports suggest it was a GPS disturbance.
+                                Over the radio, news breaks about a disruption
+                                to a UK military jet carrying an MP over Russian
+                                airspace. Early reports suggest it was a GPS
+                                disturbance.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -351,8 +367,8 @@ export default function TransportChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                UK airports implement additional security measures,
-                                delaying arrivals and departures.
+                                UK airports implement additional security
+                                measures, delaying arrivals and departures.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -372,6 +388,16 @@ export default function TransportChapter() {
                             service – poses a strategic risk in times of global
                             tension.
                         </p>
+                    </EditorialBody>
+                </EditorialSlide>
+            </StickySlide>
+            <StickySlide appearInPlace>
+                <EditorialSlide
+                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    backgroundColor={ACCENT}
+                    headingColor={ACCENT}
+                >
+                    <EditorialBody>
                         <p>
                             13 EU member states have already{" "}
                             <a href="https://navisp.esa.int/news/article/13%20EU%20Member%20States%20call%20for%20common%20actions%20in%20response%20to%20GNSS%20jamming%20and%20spoofing%20threats">
@@ -491,8 +517,8 @@ export default function TransportChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                Drivers are told they will need to work overtime to
-                                recoup the company's revenue losses.
+                                Drivers are told they will need to work overtime
+                                to recoup the company's revenue losses.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -504,8 +530,8 @@ export default function TransportChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                As the driver heads home, his usual train is delayed by
-                                two hours.
+                                As the driver heads home, his usual train is
+                                delayed by two hours.
                             </p>
                         </NarrativeSlide>
                     ),
