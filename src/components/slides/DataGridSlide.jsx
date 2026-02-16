@@ -52,23 +52,6 @@ const BackgroundLottie = styled.div`
     overflow: hidden;
 `;
 
-const GridOverlay = styled.div`
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    background-image:
-        linear-gradient(
-            ${({ $gridColor }) => $gridColor || "rgba(247, 255, 149, 0.15)"} 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            ${({ $gridColor }) => $gridColor || "rgba(247, 255, 149, 0.15)"} 1px,
-            transparent 1px
-        );
-    background-size: 60px 60px;
-`;
-
 const ContentArea = styled.div`
     position: relative;
     z-index: 1;
@@ -275,7 +258,6 @@ export default function DataGridSlide({
                             preload="auto"
                         />
                     )}
-                    <GridOverlay $gridColor={gridColor} />
                     {sectionTitle && (
                         <SectionHeadingBar
                             color={headingColor}

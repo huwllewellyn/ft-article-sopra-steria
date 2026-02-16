@@ -603,9 +603,16 @@ export default function FinanceChapter() {
             {/* F23 — Solutions data grid */}
             <DataGridSlide
                 sectionTitle="THE SOLUTIONS"
-                headingColor={ACCENT}
-                backgroundColor={ACCENT}
-                gridColor={GRID_COLOR}
+                headingColor="#EBEBEB"
+                headingBordered
+                headingFontFamily="'Space Grotesk', sans-serif"
+                headingFontWeight={500}
+                backgroundColor="#000"
+                lottieAnimation={{
+                    mobile: "/videos/ch2/SOLUTIONS_2.json",
+                    tablet: "/videos/ch2/SOLUTIONS_2.json",
+                    desktop: "/videos/ch2/SOLUTIONS_2.json",
+                }}
             >
                 <SolutionBoxes>
                     <SolutionBox>
