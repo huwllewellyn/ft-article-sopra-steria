@@ -32,6 +32,7 @@ export const DataText = styled.div`
         font-size: 22px;
         line-height: 1.35;
         letter-spacing: -0.76px;
+        text-align: left;
     `)}
 `;
 
@@ -135,5 +136,6 @@ export const DataAttribution = styled.div`
         font-size: 22px;
         line-height: 1.35;
         letter-spacing: -0.76px;
+        text-align: left;
     `)}
 `;

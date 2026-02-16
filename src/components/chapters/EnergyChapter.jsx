@@ -521,58 +521,25 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S10 — 5:20pm blackouts + word reveal */}
-            <StickySlide appearInPlace trackHeight="200vh" flowHeight="200vh">
-                <div
-                    style={{
-                        position: "relative",
-                        width: "100%",
-                        height: "100%",
-                    }}
+            <StickySlide appearInPlace>
+                <NarrativeSlide
+                    timestamp="5:20pm"
+                    heading="THE CITY IS PLUNGED INTO DARKNESS"
+                    backgroundVideo={VIDEOS.glitchyCityscape}
+                    poster={POSTERS.glitchyCityscape}
+                    textPosition="top"
                 >
-                    <NarrativeSlide
-                        timestamp="5:20pm"
-                        backgroundVideo={VIDEOS.glitchyCityscape}
-                        poster={POSTERS.glitchyCityscape}
-                        textPosition="top"
-                    >
-                        <p>
-                            As the grid's automated load balancers struggle to
-                            cope with the intensity of a sustained attack,
-                            safety shutdowns are being triggered across energy
-                            grids, causing blackouts.
-                        </p>
-                    </NarrativeSlide>
-                </div>
+                    <p>
+                        As the grid's automated load balancers struggle to cope
+                        with the intensity of a sustained attack, safety
+                        shutdowns are being triggered across energy grids,
+                        causing blackouts.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
-            {/* <StickySlide appearInPlace trackHeight="400vh" flowHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <div
-                        style={{
-                            position: "relative",
-                            width: "100%",
-                            height: "100%",
-                        }}
-                    >
-                        <NarrativeSlide
-                            timestamp="5:20pm"
-                            backgroundVideo={VIDEOS.glitchyCityscape}
-                            poster={POSTERS.glitchyCityscape}
-                            textPosition="top"
-                        >
-                            <p>
-                                As the grid's automated load balancers struggle
-                                to cope with the intensity of a sustained
-                                attack, safety shutdowns are being triggered
-                                across energy grids, causing blackouts.
-                            </p>
-                        </NarrativeSlide>
-                        <WordReveal scrollProgress={scrollYProgress} />
-                    </div>
-                )}
-            </StickySlide> */}
 
             {/* S11 — 5:30pm phone torches */}
-            <StickySlide appearInPlace flowHeight="200vh" trackHeight="200px">
+            <StickySlide appearInPlace>
                 <NarrativeSlide
                     timestamp="5:30pm"
                     backgroundVideo={VIDEOS.glitchyCityscape530}
@@ -589,24 +556,21 @@ export default function EnergyChapter() {
 
             {/* S12 — 7:00pm C-suite */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="7:00pm"
-                        backgroundVideo={VIDEOS.womanScreens}
-                        poster={POSTERS.womanScreens}
-                        scrollProgress={scrollYProgress}
-                        textPosition="bottom"
-                        highlightText
-                    >
-                        <p>
-                            C-suite executives across the various energy firms
-                            are struggling to get a sense of the impact as
-                            internal systems, including monitoring tools, have
-                            been compromised. Engineers no longer have real-time
-                            visibility.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    timestamp="7:00pm"
+                    backgroundVideo={VIDEOS.womanScreens}
+                    poster={POSTERS.womanScreens}
+                    textPosition="top"
+                    highlightText
+                >
+                    <p>
+                        C-suite executives across the various energy firms are
+                        struggling to get a sense of the impact as internal
+                        systems, including monitoring tools, have been
+                        compromised. Engineers no longer have real-time
+                        visibility.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* S13 — Operating while under attack */}
