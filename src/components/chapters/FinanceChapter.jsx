@@ -405,10 +405,12 @@ export default function FinanceChapter() {
                             mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_M.json",
                             tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
                             desktop:
-                                "/videos/ch2//SOPRA_DigitalDisruption_DP2_D.json",
+                                "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
                         }}
                         scrollProgress={scrollYProgress}
                         maxWidth="90vw"
+                        lottieHeight="50vh"
+                        lottieTop="20vh"
                     >
                         <DataText $bg={ACCENT}></DataText>
                         <DataAttribution $bg={ACCENT} maxWidth="90vw">

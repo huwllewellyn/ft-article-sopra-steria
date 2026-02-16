@@ -45,9 +45,19 @@ const BackgroundVideo = styled.video`
 
 const BackgroundLottie = styled.div`
     position: absolute;
-    inset: 0;
+    left: 0;
+    right: 0;
+    ${({ $top, $bottom, $height }) => {
+        if ($height) {
+            // Custom height: only apply the specified anchor, default to bottom: 0
+            if ($top != null) return `top: ${$top};`;
+            return `bottom: ${$bottom || "0"};`;
+        }
+        // No custom height: fill the parent
+        return "top: 0; bottom: 0;";
+    }}
     width: 100%;
-    height: 100%;
+    height: ${({ $height }) => $height || "100%"};
     z-index: 0;
     overflow: hidden;
 `;
@@ -137,6 +147,9 @@ export default function DataGridSlide({
     gridColor,
     backgroundVideo,
     lottieAnimation,
+    lottieHeight,
+    lottieBottom,
+    lottieTop,
     poster,
     backgroundColor,
     maxWidth,
@@ -237,7 +250,7 @@ export default function DataGridSlide({
             <StickyInner>
                 <Slide $bg={backgroundColor}>
                     {lottieAnimation && (
-                        <BackgroundLottie>
+                        <BackgroundLottie $height={lottieHeight} $bottom={lottieBottom} $top={lottieTop}>
                             <ResponsiveLottieAnimation
                                 animations={lottieAnimation}
                                 loop={false}
@@ -245,7 +258,7 @@ export default function DataGridSlide({
                                 scrollProgress={activeProgress}
                                 width="100%"
                                 height="100%"
-                                preserveAspectRatio="xMidYMid slice"
+                                preserveAspectRatio={lottieHeight ? "xMidYMid meet" : "xMidYMid slice"}
                             />
                         </BackgroundLottie>
                     )}
