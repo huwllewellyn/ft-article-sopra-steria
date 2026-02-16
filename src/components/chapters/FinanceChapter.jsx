@@ -84,8 +84,6 @@ const HeroOverlay = styled.div`
     );
 `;
 
-
-
 function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
     const videoRef = useScrollVideo(scrollProgress);
     return (
@@ -203,6 +201,11 @@ export default function FinanceChapter() {
                             backgroundColor="transparent"
                             textPosition="top"
                             highlightText
+                            lottieOverlay={{
+                                mobile: "/videos/ch2/SOPRA_CH2_12pm.json",
+                                tablet: "/videos/ch2/SOPRA_CH2_12pm.json",
+                                desktop: "/videos/ch2/SOPRA_CH2_12pm.json",
+                            }}
                             accentColor={ACCENT}
                         >
                             <p>
@@ -284,8 +287,8 @@ export default function FinanceChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                As the malware overloads resources, payment systems
-                                across stores fail.
+                                As the malware overloads resources, payment
+                                systems across stores fail.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -297,8 +300,8 @@ export default function FinanceChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                The help desk is flooded with reports from stores
-                                experiencing outages.
+                                The help desk is flooded with reports from
+                                stores experiencing outages.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -455,8 +458,8 @@ export default function FinanceChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                All of the retailer's stores close as payments and
-                                inventory systems fail.
+                                All of the retailer's stores close as payments
+                                and inventory systems fail.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -468,8 +471,8 @@ export default function FinanceChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                Internal forensics reveals loyalty card and e-receipt
-                                data were compromised.
+                                Internal forensics reveals loyalty card and
+                                e-receipt data were compromised.
                             </p>
                         </NarrativeSlide>
                     ),
