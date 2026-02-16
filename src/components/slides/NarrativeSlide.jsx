@@ -59,7 +59,10 @@ const VideoOverlay = styled.div`
 
 const LottieOverlayWrapper = styled.div`
     position: absolute;
-    inset: 0;
+    left: 0;
+    right: 0;
+    bottom: 10vh;
+    height: 60vh;
     z-index: 0;
     display: flex;
     align-items: center;
@@ -200,9 +203,11 @@ export default function NarrativeSlide({
                 <LottieOverlayWrapper>
                     <ResponsiveLottieAnimation
                         animations={lottieOverlay}
+                        height="100%"
+                        width="100%"
                         loop
                         autoplay
-                        preserveAspectRatio="xMidYMid slice"
+                        preserveAspectRatio="xMidYMid meet"
                     />
                 </LottieOverlayWrapper>
             )}
