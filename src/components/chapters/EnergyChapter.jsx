@@ -648,14 +648,29 @@ export default function EnergyChapter() {
                 trackHeight="400vh"
                 flowHeight="300vh"
                 appearInPlace
+                background={() => (
+                    <video
+                        src={getAssetPath(VIDEOS.escalator)}
+                        poster={getAssetPath(POSTERS.escalator)}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
+                    />
+                )}
                 slides={[
-                    ({ scrollYProgress }) => (
+                    () => (
                         <NarrativeSlide
                             timestamp="8:00pm"
                             heading="WORK CONTINUES THROUGH THE NIGHT"
-                            backgroundVideo={VIDEOS.escalator}
-                            poster={POSTERS.escalator}
-                            scrollProgress={scrollYProgress}
+                            backgroundColor="transparent"
                             textPosition="top"
                         >
                             <p>
@@ -665,12 +680,10 @@ export default function EnergyChapter() {
                             </p>
                         </NarrativeSlide>
                     ),
-                    ({ scrollYProgress }) => (
+                    () => (
                         <NarrativeSlide
                             timestamp="2:00am"
-                            backgroundVideo={VIDEOS.escalator}
-                            poster={POSTERS.escalator}
-                            scrollProgress={scrollYProgress}
+                            backgroundColor="transparent"
                             textPosition="top"
                         >
                             <p>
@@ -680,12 +693,10 @@ export default function EnergyChapter() {
                             </p>
                         </NarrativeSlide>
                     ),
-                    ({ scrollYProgress }) => (
+                    () => (
                         <NarrativeSlide
                             timestamp="8:00am"
-                            backgroundVideo={VIDEOS.escalator}
-                            poster={POSTERS.escalator}
-                            scrollProgress={scrollYProgress}
+                            backgroundColor="transparent"
                             textPosition="top"
                         >
                             <p>
