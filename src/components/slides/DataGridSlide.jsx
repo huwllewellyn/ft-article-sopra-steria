@@ -288,7 +288,13 @@ export default function DataGridSlide({
                     )}
                     <ContentArea ref={contentRef}>
                         {children}
-                        <p aria-hidden style={{ position: "absolute", visibility: "hidden" }} />
+                        <p
+                            aria-hidden
+                            style={{
+                                position: "absolute",
+                                visibility: "hidden",
+                            }}
+                        />
                     </ContentArea>
                 </Slide>
             </StickyInner>

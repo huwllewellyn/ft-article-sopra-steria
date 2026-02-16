@@ -469,11 +469,11 @@ export default function EnergyChapter() {
                             threshold={0.25}
                         >
                             <DataCenter $bg="#fff">
-                                <>48 attacks</>
+                                48 attacks
                                 <br />
-                                <>on Europe's </>
+                                on Europe's
                                 <br />
-                                <>energy infrastructure</>
+                                energy infrastructure
                             </DataCenter>
                         </ScrollReveal>
                         <ScrollReveal

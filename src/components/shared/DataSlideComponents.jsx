@@ -4,7 +4,7 @@ import useTextScramble from "../../hooks/useTextScramble";
 
 export const DataText = styled.div`
     text-align: center;
-    max-width: 400px;
+    max-width: 500px;
     font-family: "logic-monospace", monospace;
     font-size: 30px;
     font-weight: 400;
