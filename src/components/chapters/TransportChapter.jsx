@@ -7,6 +7,7 @@ import {
     EditorialSlide,
     DataGridSlide,
     StickySlide,
+    ContinuousSlide,
 } from "../slides";
 import { EditorialBody } from "../slides/EditorialSlide";
 import SlideQuote from "../slides/SlideQuote";
@@ -101,60 +102,62 @@ function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
 export default function TransportChapter() {
     return (
         <Chapter>
-            {/* T1 — Hero / Chapter Intro */}
-            <StickySlide trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <HeroSection>
+            {/* Hero + T1 — continuous Port of Dover video */}
+            <ContinuousSlide
+                trackHeight="300vh"
+                flowHeight="200vh"
+                background={({ scrollYProgress }) => (
+                    <>
                         <ScrollSyncHeroVideo
                             scrollProgress={scrollYProgress}
                             src={getAssetPath(VIDEOS.portOfDover)}
                             poster={getAssetPath(POSTERS.portOfDover)}
                         />
                         <HeroOverlay />
-                        <div style={{ position: "relative", zIndex: 2 }}>
-                            <ChapterIntro
-                                chapter="CHAPTER_THREE"
-                                title="TRANSPORT"
-                                subtitle="How hidden vulnerabilities grind a country's transport network to a halt"
-                            />
-                        </div>
-                    </HeroSection>
+                    </>
                 )}
-            </StickySlide>
-
-            {/* T2 — Port of Dover intro */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        backgroundVideo={VIDEOS.portOfDover}
-                        poster={POSTERS.portOfDover}
-                        scrollProgress={scrollYProgress}
-                        heading={
-                            <>
-                                MONDAY
-                                <br />
-                                PORT OF DOVER, UK
-                            </>
-                        }
-                        textPosition="top"
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            At a major UK port, logistics drivers prepare for
-                            the day ahead while commuters gather at stations
-                            across the country.
-                        </p>
-                        <br />
-                        <br />
-                        <p>
-                            But just as the morning rush begins, unexpected
-                            glitches creep into navigation systems – this is the
-                            first sign of a broader attack targeting transport
-                            nationwide.
-                        </p>
-                    </NarrativeSlide>
-                )}
-            </StickySlide>
+                slides={[
+                    () => (
+                        <HeroSection>
+                            <div style={{ position: "relative", zIndex: 2 }}>
+                                <ChapterIntro
+                                    chapter="CHAPTER_THREE"
+                                    title="TRANSPORT"
+                                    subtitle="How hidden vulnerabilities grind a country's transport network to a halt"
+                                />
+                            </div>
+                        </HeroSection>
+                    ),
+                    () => (
+                        <NarrativeSlide
+                            backgroundColor="transparent"
+                            heading={
+                                <>
+                                    MONDAY
+                                    <br />
+                                    PORT OF DOVER, UK
+                                </>
+                            }
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                At a major UK port, logistics drivers prepare for
+                                the day ahead while commuters gather at stations
+                                across the country.
+                            </p>
+                            <br />
+                            <br />
+                            <p>
+                                But just as the morning rush begins, unexpected
+                                glitches creep into navigation systems – this is the
+                                first sign of a broader attack targeting transport
+                                nationwide.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                ]}
+            />
 
             {/* T3 — 8:00am sat-nav freezes */}
             <StickySlide appearInPlace trackHeight="300vh">

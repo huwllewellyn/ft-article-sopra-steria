@@ -9,6 +9,7 @@ import {
     FullBleedImage,
     DataGridSlide,
     StickySlide,
+    ContinuousSlide,
 } from "../slides";
 import { EditorialBody } from "../slides/EditorialSlide";
 import SlideQuote from "../slides/SlideQuote";
@@ -122,58 +123,60 @@ function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
 export default function FinanceChapter() {
     return (
         <Chapter>
-            {/* F1 — Hero / Chapter Intro */}
-            <StickySlide trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <HeroSection>
+            {/* Hero + F1 — continuous Madrid cityscape video */}
+            <ContinuousSlide
+                trackHeight="300vh"
+                flowHeight="200vh"
+                background={({ scrollYProgress }) => (
+                    <>
                         <ScrollSyncHeroVideo
                             scrollProgress={scrollYProgress}
                             src={getAssetPath(VIDEOS.madridCityscape)}
                             poster={getAssetPath(POSTERS.madridCityscape)}
                         />
                         <HeroOverlay />
-                        <div style={{ position: "relative", zIndex: 2 }}>
-                            <ChapterIntro
-                                chapter="CHAPTER_TWO"
-                                title="FINANCE"
-                                subtitle="How a single email could crash a continent's payment systems"
-                            />
-                        </div>
-                    </HeroSection>
+                    </>
                 )}
-            </StickySlide>
-
-            {/* F2 — Madrid intro */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        backgroundVideo={VIDEOS.madridCityscape}
-                        poster={POSTERS.madridCityscape}
-                        scrollProgress={scrollYProgress}
-                        heading={
-                            <>
-                                THURSDAY
-                                <br />
-                                MADRID, SPAIN
-                            </>
-                        }
-                        textPosition="top"
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            In Madrid, a single phishing email sets off a chain
-                            reaction that brings payment systems to a
-                            standstill.
-                        </p>
-                        <br />
-                        <br />
-                        <p>
-                            It begins quietly, with a distracted employee and a
-                            convincingly urgent email.
-                        </p>
-                    </NarrativeSlide>
-                )}
-            </StickySlide>
+                slides={[
+                    () => (
+                        <HeroSection>
+                            <div style={{ position: "relative", zIndex: 2 }}>
+                                <ChapterIntro
+                                    chapter="CHAPTER_TWO"
+                                    title="FINANCE"
+                                    subtitle="How a single email could crash a continent's payment systems"
+                                />
+                            </div>
+                        </HeroSection>
+                    ),
+                    () => (
+                        <NarrativeSlide
+                            backgroundColor="transparent"
+                            heading={
+                                <>
+                                    THURSDAY
+                                    <br />
+                                    MADRID, SPAIN
+                                </>
+                            }
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                In Madrid, a single phishing email sets off a chain
+                                reaction that brings payment systems to a
+                                standstill.
+                            </p>
+                            <br />
+                            <br />
+                            <p>
+                                It begins quietly, with a distracted employee and a
+                                convincingly urgent email.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                ]}
+            />
 
             {/* F3 — Supermarket escalation */}
             <StickySlide appearInPlace trackHeight="300vh">
