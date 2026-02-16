@@ -587,15 +587,6 @@ export default function EnergyChapter() {
                     </EditorialBody>
                 </EditorialSlide>
             </StickySlide>
-            <StickySlide appearInPlace>
-                <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
-                    <SlideQuote
-                        quote="Energy systems being as complex as they are, it is much more difficult to know what actually happened"
-                        name="Robert M Lee"
-                        role="Leading expert in operational technology security, CEO of Dragos"
-                    />
-                </EditorialSlide>
-            </StickySlide>
 
             {/* S14 — Policymakers */}
             <StickySlide appearInPlace>
