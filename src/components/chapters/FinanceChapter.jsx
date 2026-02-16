@@ -2,7 +2,13 @@ import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import { ChapterIntro } from "../shared";
-import { SolutionBoxes, SolutionBox } from "../shared/DataSlideComponents";
+import {
+    DataCenter,
+    DataText,
+    DataAttribution,
+    SolutionBoxes,
+    SolutionBox,
+} from "../shared/DataSlideComponents";
 import {
     NarrativeSlide,
     EditorialSlide,
@@ -78,33 +84,7 @@ const HeroOverlay = styled.div`
     );
 `;
 
-const DataCallout = styled.div`
-    text-align: center;
-    max-width: 600px;
 
-    p {
-        font-family: "Space Mono", monospace;
-        font-size: 27px;
-        line-height: 1.35;
-        letter-spacing: -0.54px;
-        color: #000;
-        text-transform: uppercase;
-        margin: 0 0 16px;
-
-        ${media.mobile(`
-            font-size: 20px;
-        `)}
-    }
-`;
-
-const DataAttribution = styled.p`
-    && {
-        font-size: 14px;
-        font-weight: 700;
-        text-transform: none;
-        letter-spacing: 0;
-    }
-`;
 
 function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
     const videoRef = useScrollVideo(scrollProgress);
@@ -411,62 +391,90 @@ export default function FinanceChapter() {
                 </EditorialSlide>
             </StickySlide>
 
-            {/* F13 — Editorial: 41% data point */}
-            <StickySlide appearInPlace>
-                <EditorialSlide
-                    sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
-                    backgroundColor={ACCENT}
-                    headingColor={ACCENT}
-                    contentAlign="bottom"
-                >
-                    <DataCallout>
-                        <p>
-                            <strong>41 per cent</strong> is the approximate
-                            amount of organisations that suffered a material
-                            incident in the past 12 months, and say it was
-                            caused by a third party, according to the World
-                            Economic Forum's 2024 Cybersecurity Outlook.
-                        </p>
-                        {/* <DataAttribution>
-                            World Economic Forum&rsquo;s 2024 Cybersecurity
-                            Outlook
-                        </DataAttribution> */}
-                    </DataCallout>
-                </EditorialSlide>
+            {/* F13 — 41% data point (lottie) */}
+            <StickySlide appearInPlace flowHeight="300vh" trackHeight="400vh">
+                {({ scrollYProgress }) => (
+                    <DataGridSlide
+                        sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
+                        headingColor={ACCENT}
+                        backgroundColor={ACCENT}
+                        lottieAnimation={{
+                            mobile: "/videos/ch2/SOPRA_CH2_12pm.json",
+                            tablet: "/videos/ch2/SOPRA_CH2_12pm.json",
+                            desktop: "/videos/ch2/SOPRA_CH2_12pm.json",
+                        }}
+                        scrollProgress={scrollYProgress}
+                    >
+                        <DataText>
+                            <span>
+                                <strong>41 per cent</strong> is the approximate
+                                amount of organisations that suffered a material
+                                incident in the past 12 months, and say it was
+                                caused by a third party
+                            </span>
+                        </DataText>
+                        <DataAttribution $bg={ACCENT}>
+                            <span>
+                                World Economic Forum&rsquo;s 2024 Cybersecurity
+                                Outlook
+                            </span>
+                        </DataAttribution>
+                    </DataGridSlide>
+                )}
             </StickySlide>
 
-            {/* F14 — 3:00pm stores close */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <NarrativeSlide
-                    timestamp="3:00pm"
-                    heading="FROM A COMPANY BREACH TO MAJOR DISRUPTION"
-                    backgroundVideo={VIDEOS.ironGate}
-                    poster={POSTERS.ironGate}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        All of the retailer's stores close as payments and
-                        inventory systems fail.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
-
-            {/* F15 — Full bleed phone video */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <NarrativeSlide
-                    timestamp="4:30pm"
-                    backgroundVideo={VIDEOS.phoneInHand}
-                    poster={POSTERS.phoneInHand}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Internal forensics reveals loyalty card and e-receipt
-                        data were compromised.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
+            {/* F14-F15 — Stores close / forensics (continuous video) */}
+            <ContinuousSlide
+                trackHeight="300vh"
+                flowHeight="200vh"
+                appearInPlace
+                background={() => (
+                    <video
+                        src={getAssetPath(VIDEOS.ironGate)}
+                        poster={getAssetPath(POSTERS.ironGate)}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
+                    />
+                )}
+                slides={[
+                    () => (
+                        <NarrativeSlide
+                            timestamp="3:00pm"
+                            heading="FROM A COMPANY BREACH TO MAJOR DISRUPTION"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                All of the retailer's stores close as payments and
+                                inventory systems fail.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                    () => (
+                        <NarrativeSlide
+                            timestamp="4:30pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                Internal forensics reveals loyalty card and e-receipt
+                                data were compromised.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                ]}
+            />
 
             {/* F16 — 6:30pm media reports */}
             <StickySlide appearInPlace trackHeight="300vh">
