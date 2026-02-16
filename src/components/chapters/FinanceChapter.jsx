@@ -163,15 +163,15 @@ export default function FinanceChapter() {
                             accentColor={ACCENT}
                         >
                             <p>
-                                In Madrid, a single phishing email sets off a chain
-                                reaction that brings payment systems to a
+                                In Madrid, a single phishing email sets off a
+                                chain reaction that brings payment systems to a
                                 standstill.
                             </p>
                             <br />
                             <br />
                             <p>
-                                It begins quietly, with a distracted employee and a
-                                convincingly urgent email.
+                                It begins quietly, with a distracted employee
+                                and a convincingly urgent email.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -210,9 +210,10 @@ export default function FinanceChapter() {
                         >
                             <p>
                                 Within hours, an issue at a local supermarket in
-                                Madrid escalates into a multi-million-euro crisis,
-                                with malware spreading from one store to thousands
-                                and damage reaching far beyond one retailer.
+                                Madrid escalates into a multi-million-euro
+                                crisis, with malware spreading from one store to
+                                thousands and damage reaching far beyond one
+                                retailer.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -259,8 +260,8 @@ export default function FinanceChapter() {
             <StickySlide appearInPlace trackHeight="300vh">
                 <NarrativeSlide
                     timestamp="1:05pm"
-                    backgroundVideo={VIDEOS.warehousePhone}
-                    poster={POSTERS.warehousePhone}
+                    backgroundVideo={VIDEOS.supermarketBlurred}
+                    poster={POSTERS.supermarketBlurred}
                     textPosition="top"
                     highlightText
                     accentColor={ACCENT}
@@ -272,35 +273,57 @@ export default function FinanceChapter() {
                 </NarrativeSlide>
             </StickySlide>
 
-            {/* F7 — 1:35pm payment systems fail */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="1:35pm"
-                    backgroundColor="#000"
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        As the malware overloads resources, payment systems
-                        across stores fail.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
-
-            {/* F8 — 2:00pm helpdesk flooded */}
-            <StickySlide appearInPlace>
-                <NarrativeSlide
-                    timestamp="2:00pm"
-                    backgroundColor="#000"
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        The help desk is flooded with reports from stores
-                        experiencing outages.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
+            {/* F7-F8 — Payment systems fail / helpdesk flooded (continuous video) */}
+            <ContinuousSlide
+                trackHeight="300vh"
+                flowHeight="200vh"
+                appearInPlace
+                background={() => (
+                    <video
+                        src={getAssetPath(VIDEOS.warehousePhone)}
+                        poster={getAssetPath(POSTERS.warehousePhone)}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
+                    />
+                )}
+                slides={[
+                    () => (
+                        <NarrativeSlide
+                            timestamp="1:35pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                As the malware overloads resources, payment systems
+                                across stores fail.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                    () => (
+                        <NarrativeSlide
+                            timestamp="2:00pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                The help desk is flooded with reports from stores
+                                experiencing outages.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                ]}
+            />
 
             {/* F9 — Editorial: phishing attacks */}
             <StickySlide appearInPlace>
@@ -311,17 +334,17 @@ export default function FinanceChapter() {
                 >
                     <EditorialBody>
                         <p>
-                            Today's <strong>phishing attacks</strong> are meticulous
-                            &ndash; they mimic corporate tone, structure and
-                            urgency. An employee's decision to trust an email while
-                            under pressure provides the attackers with everything
-                            they need to prowl the network and access a vulnerable
-                            system.
+                            Today's <strong>phishing attacks</strong> are
+                            meticulous &ndash; they mimic corporate tone,
+                            structure and urgency. An employee's decision to
+                            trust an email while under pressure provides the
+                            attackers with everything they need to prowl the
+                            network and access a vulnerable system.
                         </p>
                         <p>
-                            Artificial intelligence (AI) enables attackers to craft
-                            flawless, personalised phishing emails free of spelling
-                            errors or awkward phrasing.
+                            Artificial intelligence (AI) enables attackers to
+                            craft flawless, personalised phishing emails free of
+                            spelling errors or awkward phrasing.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -336,12 +359,12 @@ export default function FinanceChapter() {
                 >
                     <EditorialBody>
                         <p>
-                            AI enables them to use real-time company data and social
-                            media to make each message convincingly authentic.
-                            "Entire campaigns are being run by machines – targeting
-                            the right person, at the right time, with the right
-                            message," says Arsenio Pérez Gavira, Cybersecurity
-                            Manager at Sopra Steria Spain.
+                            AI enables them to use real-time company data and
+                            social media to make each message convincingly
+                            authentic. "Entire campaigns are being run by
+                            machines – targeting the right person, at the right
+                            time, with the right message," says Arsenio Pérez
+                            Gavira, Cybersecurity Manager at Sopra Steria Spain.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -371,8 +394,8 @@ export default function FinanceChapter() {
                 >
                     <EditorialBody>
                         <p>
-                            Around <strong>60 per cent</strong> of all cybersecurity
-                            incidents{" "}
+                            Around <strong>60 per cent</strong> of all
+                            cybersecurity incidents{" "}
                             <a href="https://www.soprasteria.com/docs/librariesprovider2/sopra-steria-corporate/publications/en_25.08.20---sopra-steria---%C3%A9tat-de-la-cybers%C3%A9curit%C3%A9-en-2025.pdf?sfvrsn=216234db_6">
                                 reported
                             </a>{" "}
@@ -380,9 +403,9 @@ export default function FinanceChapter() {
                             phishing-related.
                         </p>
                         <p>
-                            To prevent these attacks, organisations must train staff
-                            with scenario-based and department-specific simulations
-                            to respond to attacks in real time.
+                            To prevent these attacks, organisations must train
+                            staff with scenario-based and department-specific
+                            simulations to respond to attacks in real time.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -439,8 +462,8 @@ export default function FinanceChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        Internal forensics reveals loyalty card and
-                        e-receipt data were compromised.
+                        Internal forensics reveals loyalty card and e-receipt
+                        data were compromised.
                     </p>
                 </NarrativeSlide>
             </StickySlide>
@@ -473,12 +496,12 @@ export default function FinanceChapter() {
                             The attack exposes the fragility of interconnected
                             systems. Attackers launch fresh intrusions from the
                             breach, while banks compound the disruption with
-                            tightened security that leads consumer spending to grind
-                            to a halt.
+                            tightened security that leads consumer spending to
+                            grind to a halt.
                         </p>
                         <p>
-                            The cost of these attacks is high: both financially and
-                            in terms of customer trust.
+                            The cost of these attacks is high: both financially
+                            and in terms of customer trust.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -494,9 +517,10 @@ export default function FinanceChapter() {
                     <EditorialBody>
                         <p>
                             In 2025, UK retailer Marks & Spencer estimated that
-                            there had been a <strong>£300mn</strong> hit to profits
-                            following a cyber incident that stole customer data and
-                            disrupted operations and product availability.
+                            there had been a <strong>£300mn</strong> hit to
+                            profits following a cyber incident that stole
+                            customer data and disrupted operations and product
+                            availability.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -546,9 +570,7 @@ export default function FinanceChapter() {
                     textPosition="top"
                     accentColor={ACCENT}
                 >
-                    <p>
-                        It emerges that supplier credentials were exploited.
-                    </p>
+                    <p>It emerges that supplier credentials were exploited.</p>
                 </NarrativeSlide>
             </StickySlide>
 
