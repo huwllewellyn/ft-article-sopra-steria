@@ -180,91 +180,79 @@ export default function FinanceChapter() {
 
             {/* F3 — Supermarket escalation */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        backgroundVideo={VIDEOS.supermarket}
-                        poster={POSTERS.supermarket}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                        highlightText
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            Within hours, an issue at a local supermarket in
-                            Madrid escalates into a multi-million-euro crisis,
-                            with malware spreading from one store to thousands
-                            and damage reaching far beyond one retailer.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    backgroundVideo={VIDEOS.supermarket}
+                    poster={POSTERS.supermarket}
+                    textPosition="top"
+                    highlightText
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        Within hours, an issue at a local supermarket in
+                        Madrid escalates into a multi-million-euro crisis,
+                        with malware spreading from one store to thousands
+                        and damage reaching far beyond one retailer.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* F4 — 12:00pm store manager clicks link */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="12:00pm"
-                        backgroundVideo={VIDEOS.supermarket}
-                        poster={POSTERS.supermarket}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                        highlightText
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            A stressed store manager clicks a link to a
-                            lookalike inventory portal in an
-                            &ldquo;urgent&rdquo; email from a supposed HQ
-                            executive.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    timestamp="12:00pm"
+                    backgroundVideo={VIDEOS.supermarket}
+                    poster={POSTERS.supermarket}
+                    textPosition="top"
+                    highlightText
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        A stressed store manager clicks a link to a
+                        lookalike inventory portal in an
+                        &ldquo;urgent&rdquo; email from a supposed HQ
+                        executive.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* F5 — 12:20pm POS malware */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="12:20pm"
-                        backgroundVideo={VIDEOS.supermarketBlurred}
-                        poster={POSTERS.supermarketBlurred}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                        highlightText
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            Cyber attackers can now traverse the network and
-                            deploy malware to the retailer's POS system.
-                        </p>
-                        <br />
-                        <br />
-                        <p>
-                            Sensitive payment data is sent in batches to an
-                            external server.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    timestamp="12:20pm"
+                    backgroundVideo={VIDEOS.supermarketBlurred}
+                    poster={POSTERS.supermarketBlurred}
+                    textPosition="top"
+                    highlightText
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        Cyber attackers can now traverse the network and
+                        deploy malware to the retailer's POS system.
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                        Sensitive payment data is sent in batches to an
+                        external server.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* F6 — 1:05pm contacts IT helpdesk */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="1:05pm"
-                        backgroundVideo={VIDEOS.warehousePhone}
-                        poster={POSTERS.warehousePhone}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                        highlightText
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            Concerned about the email chain, the store manager
-                            contacts the IT help desk.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    timestamp="1:05pm"
+                    backgroundVideo={VIDEOS.warehousePhone}
+                    poster={POSTERS.warehousePhone}
+                    textPosition="top"
+                    highlightText
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        Concerned about the email chain, the store manager
+                        contacts the IT help desk.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* F7 — 1:35pm payment systems fail */}
@@ -409,60 +397,51 @@ export default function FinanceChapter() {
 
             {/* F14 — 3:00pm stores close */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="3:00pm"
-                        heading="FROM A COMPANY BREACH TO MAJOR DISRUPTION"
-                        backgroundVideo={VIDEOS.ironGate}
-                        poster={POSTERS.ironGate}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            All of the retailer's stores close as payments and
-                            inventory systems fail.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    timestamp="3:00pm"
+                    heading="FROM A COMPANY BREACH TO MAJOR DISRUPTION"
+                    backgroundVideo={VIDEOS.ironGate}
+                    poster={POSTERS.ironGate}
+                    textPosition="top"
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        All of the retailer's stores close as payments and
+                        inventory systems fail.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* F15 — Full bleed phone video */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="4:30pm"
-                        backgroundVideo={VIDEOS.phoneInHand}
-                        poster={POSTERS.phoneInHand}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            Internal forensics reveals loyalty card and
-                            e-receipt data were compromised.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    timestamp="4:30pm"
+                    backgroundVideo={VIDEOS.phoneInHand}
+                    poster={POSTERS.phoneInHand}
+                    textPosition="top"
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        Internal forensics reveals loyalty card and
+                        e-receipt data were compromised.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* F16 — 6:30pm media reports */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="6:30pm"
-                        backgroundVideo={VIDEOS.phoneInHand}
-                        poster={POSTERS.phoneInHand}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            The first media reports break as customers report
-                            phishing attacks.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    timestamp="6:30pm"
+                    backgroundVideo={VIDEOS.phoneInHand}
+                    poster={POSTERS.phoneInHand}
+                    textPosition="top"
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        The first media reports break as customers report
+                        phishing attacks.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* F17 — Editorial: interconnected systems */}
@@ -542,37 +521,31 @@ export default function FinanceChapter() {
 
             {/* F21 — 7:00am the next day */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="7:00am"
-                        heading="THE NEXT DAY"
-                        backgroundVideo={VIDEOS.warehouse}
-                        poster={POSTERS.warehouse}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                        accentColor={ACCENT}
-                    >
-                        <p>
-                            It emerges that supplier credentials were exploited.
-                        </p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    timestamp="7:00am"
+                    heading="THE NEXT DAY"
+                    backgroundVideo={VIDEOS.warehouse}
+                    poster={POSTERS.warehouse}
+                    textPosition="top"
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        It emerges that supplier credentials were exploited.
+                    </p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* F22 — 2:00pm banks tighten fraud checks */}
             <StickySlide appearInPlace trackHeight="300vh">
-                {({ scrollYProgress }) => (
-                    <NarrativeSlide
-                        timestamp="2:00pm"
-                        backgroundVideo={VIDEOS.idVerification}
-                        poster={POSTERS.idVerification}
-                        scrollProgress={scrollYProgress}
-                        textPosition="top"
-                        accentColor={ACCENT}
-                    >
-                        <p>Banks introduce tighter fraud checks.</p>
-                    </NarrativeSlide>
-                )}
+                <NarrativeSlide
+                    timestamp="2:00pm"
+                    backgroundVideo={VIDEOS.idVerification}
+                    poster={POSTERS.idVerification}
+                    textPosition="top"
+                    accentColor={ACCENT}
+                >
+                    <p>Banks introduce tighter fraud checks.</p>
+                </NarrativeSlide>
             </StickySlide>
 
             {/* F23 — Solutions data grid */}
