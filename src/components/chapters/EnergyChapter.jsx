@@ -438,7 +438,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S8 — Cyber attacks data grid */}
-            <StickySlide appearInPlace flowHeight="200vh" trackHeight="300vh">
+            <StickySlide appearInPlace flowHeight="300vh" trackHeight="400vh">
                 {({ scrollYProgress }) => (
                     <DataGridSlide
                         sectionTitle="AN EVOLVING THREAT LANDSCAPE"
@@ -466,15 +466,19 @@ export default function EnergyChapter() {
                         </ScrollReveal>
                         <ScrollReveal
                             scrollProgress={scrollYProgress}
-                            threshold={0.33}
+                            threshold={0.25}
                         >
                             <DataCenter $bg="#fff">
-                                48 attacks on Europe's energy infrastructure
+                                <>48 attacks</>
+                                <br />
+                                <>on Europe's </>
+                                <br />
+                                <>energy infrastructure</>
                             </DataCenter>
                         </ScrollReveal>
                         <ScrollReveal
                             scrollProgress={scrollYProgress}
-                            threshold={0.66}
+                            threshold={0.5}
                         >
                             <DataAttribution>
                                 <span>
