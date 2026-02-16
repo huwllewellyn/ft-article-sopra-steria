@@ -458,8 +458,10 @@ export default function EnergyChapter() {
                         >
                             <DataText>
                                 <span>
-                                    Cyber attacks <strong>doubled</strong>{" "}
-                                    between 2020 and 2022 in{" "}
+                                    Cyber attacks <strong>doubled</strong>
+                                    <br />
+                                    between 2020 and 2022 in
+                                    <br />
                                     <strong>Europe's power sector</strong> with
                                 </span>
                             </DataText>
@@ -471,9 +473,9 @@ export default function EnergyChapter() {
                             <DataCenter $bg="#fff">
                                 48 attacks
                                 <br />
-                                on Europe's
+                                on energy
                                 <br />
-                                energy infrastructure
+                                infrastructure
                             </DataCenter>
                         </ScrollReveal>
                         <ScrollReveal
@@ -482,9 +484,10 @@ export default function EnergyChapter() {
                         >
                             <DataAttribution>
                                 <span>
-                                    in 2022, according to Eurelectric, a
-                                    federation for the European electricity
-                                    industry.
+                                    in 2022, according to Eurelectric,
+                                    <br /> a federation for the European
+                                    <br />
+                                    electricity industry.
                                 </span>
                             </DataAttribution>
                         </ScrollReveal>

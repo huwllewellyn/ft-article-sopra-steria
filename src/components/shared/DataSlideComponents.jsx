@@ -40,7 +40,7 @@ const DataCenterStyled = styled.div`
     font-size: 30px;
     font-weight: 600;
     line-height: 1.25;
-    max-width: 400px;
+    max-width: 500px;
     letter-spacing: -0.96px;
     color: #000;
     text-align: center;
@@ -116,7 +116,7 @@ export const DataAttribution = styled.div`
     letter-spacing: -0.96px;
     color: #000;
     text-align: center;
-    max-width: 480px;
+    max-width: 550px;
     margin-bottom: 100px;
 
     span {

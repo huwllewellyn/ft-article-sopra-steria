@@ -25,19 +25,35 @@ const mask = (chars, progress) => {
     return masked.join("");
 };
 
+function getTextNodes(el) {
+    const nodes = [];
+    for (const child of el.childNodes) {
+        if (child.nodeType === Node.TEXT_NODE) {
+            nodes.push(child);
+        } else if (child.nodeType === Node.ELEMENT_NODE) {
+            nodes.push(...getTextNodes(child));
+        }
+    }
+    return nodes;
+}
+
 export default function useTextScramble({ delay = 500, duration = 1000 } = {}) {
     const ref = useRef(null);
-    const originalText = useRef("");
+    const originalTexts = useRef([]);
     const hasPlayed = useRef(false);
 
     const scramble = useCallback(() => {
         const el = ref.current;
         if (!el) return;
 
-        const chars = originalText.current.split("");
+        const textNodes = getTextNodes(el);
         const params = { progress: 0 };
 
-        el.textContent = mask(chars, 0);
+        // Set initial scrambled state
+        textNodes.forEach((node, i) => {
+            const chars = originalTexts.current[i].split("");
+            node.textContent = mask(chars, 0);
+        });
 
         animate(params, {
             progress: 1,
@@ -45,7 +61,10 @@ export default function useTextScramble({ delay = 500, duration = 1000 } = {}) {
             duration,
             ease: "inQuad",
             onUpdate: () => {
-                el.textContent = mask(chars, params.progress);
+                textNodes.forEach((node, i) => {
+                    const chars = originalTexts.current[i].split("");
+                    node.textContent = mask(chars, params.progress);
+                });
             },
         });
     }, [delay, duration]);
@@ -54,7 +73,8 @@ export default function useTextScramble({ delay = 500, duration = 1000 } = {}) {
         const el = ref.current;
         if (!el) return;
 
-        originalText.current = el.textContent;
+        const textNodes = getTextNodes(el);
+        originalTexts.current = textNodes.map((node) => node.textContent);
 
         const observer = new IntersectionObserver(
             ([entry]) => {
