@@ -306,38 +306,58 @@ export default function TransportChapter() {
                 </NarrativeSlide>
             </StickySlide>
 
-            {/* T10 — 3:00pm military jet GPS disturbance */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <NarrativeSlide
-                    timestamp="3:00pm"
-                    backgroundVideo={VIDEOS.satellite}
-                    poster={POSTERS.satellite}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Over the radio, news breaks about a disruption to a UK
-                        military jet carrying an MP over Russian airspace. Early
-                        reports suggest it was a GPS disturbance.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
-
-            {/* T11 — 3:30pm airports security measures */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <NarrativeSlide
-                    timestamp="3:30pm"
-                    backgroundVideo={VIDEOS.satellite}
-                    poster={POSTERS.satellite}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        UK airports implement additional security measures,
-                        delaying arrivals and departures.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
+            {/* T10-T11 — Military jet / airports (continuous video) */}
+            <ContinuousSlide
+                trackHeight="300vh"
+                flowHeight="200vh"
+                appearInPlace
+                background={() => (
+                    <video
+                        src={getAssetPath(VIDEOS.satellite)}
+                        poster={getAssetPath(POSTERS.satellite)}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
+                    />
+                )}
+                slides={[
+                    () => (
+                        <NarrativeSlide
+                            timestamp="3:00pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                Over the radio, news breaks about a disruption to a UK
+                                military jet carrying an MP over Russian airspace. Early
+                                reports suggest it was a GPS disturbance.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                    () => (
+                        <NarrativeSlide
+                            timestamp="3:30pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                UK airports implement additional security measures,
+                                delaying arrivals and departures.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                ]}
+            />
 
             {/* T12 — Editorial: GPS reliance + 13 EU states */}
             <StickySlide appearInPlace>
@@ -439,38 +459,58 @@ export default function TransportChapter() {
                 </EditorialSlide>
             </StickySlide>
 
-            {/* T17 — 6:00pm overtime */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <NarrativeSlide
-                    timestamp="6:00pm"
-                    heading="CHAOS CONTINUES INTO THE EVENING"
-                    backgroundVideo={VIDEOS.mapDark}
-                    poster={POSTERS.mapDark}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        Drivers are told they will need to work overtime to
-                        recoup the company's revenue losses.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
-
-            {/* T18 — 7:00pm train delayed */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <NarrativeSlide
-                    timestamp="7:00pm"
-                    backgroundVideo={VIDEOS.mapDark}
-                    poster={POSTERS.mapDark}
-                    textPosition="top"
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        As the driver heads home, his usual train is delayed by
-                        two hours.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
+            {/* T17-T18 — Overtime / train delayed (continuous video) */}
+            <ContinuousSlide
+                trackHeight="300vh"
+                flowHeight="200vh"
+                appearInPlace
+                background={() => (
+                    <video
+                        src={getAssetPath(VIDEOS.mapDark)}
+                        poster={getAssetPath(POSTERS.mapDark)}
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        style={{
+                            position: "absolute",
+                            inset: 0,
+                            width: "100%",
+                            height: "100%",
+                            objectFit: "cover",
+                        }}
+                    />
+                )}
+                slides={[
+                    () => (
+                        <NarrativeSlide
+                            timestamp="6:00pm"
+                            heading="CHAOS CONTINUES INTO THE EVENING"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                Drivers are told they will need to work overtime to
+                                recoup the company's revenue losses.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                    () => (
+                        <NarrativeSlide
+                            timestamp="7:00pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                            accentColor={ACCENT}
+                        >
+                            <p>
+                                As the driver heads home, his usual train is delayed by
+                                two hours.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                ]}
+            />
 
             {/* T19 — 7:30pm trains cancelled */}
             <StickySlide appearInPlace trackHeight="300vh">
