@@ -61,7 +61,7 @@ const ContentArea = styled.div`
     justify-content: space-between;
     align-items: center;
     padding: 60px 80px;
-    max-width: 846px;
+    max-width: ${({ $maxWidth }) => $maxWidth || "846px"};
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
@@ -139,6 +139,7 @@ export default function DataGridSlide({
     lottieAnimation,
     poster,
     backgroundColor,
+    maxWidth,
     children,
     scrollProgress,
 }) {
@@ -268,7 +269,7 @@ export default function DataGridSlide({
                             {sectionTitle}
                         </SectionHeadingBar>
                     )}
-                    <ContentArea ref={contentRef}>
+                    <ContentArea ref={contentRef} $maxWidth={maxWidth}>
                         {children}
                         <p
                             aria-hidden

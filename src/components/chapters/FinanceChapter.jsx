@@ -408,16 +408,17 @@ export default function FinanceChapter() {
                                 "/videos/ch2//SOPRA_DigitalDisruption_DP2_D.json",
                         }}
                         scrollProgress={scrollYProgress}
+                        maxWidth="90vw"
                     >
-                        <DataText $bg={ACCENT}>
+                        <DataText $bg={ACCENT}></DataText>
+                        <DataAttribution $bg={ACCENT} maxWidth="90vw">
                             <span>
                                 <strong>41 per cent</strong> is the approximate
                                 amount of organisations that suffered a material
                                 incident in the past 12 months, and say it was
                                 caused by a third party
                             </span>
-                        </DataText>
-                        <DataAttribution $bg={ACCENT}>
+                            <br />
                             <span>
                                 World Economic Forum&rsquo;s 2024 Cybersecurity
                                 Outlook
