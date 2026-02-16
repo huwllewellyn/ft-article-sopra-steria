@@ -1263,17 +1263,24 @@ Error generating stack: `+c.message+`
 `,Content=dt.div`
     position: relative;
     z-index: 1;
-    padding: 102px 80px 80px;
+    padding: 120px 80px 80px;
     display: flex;
     flex-direction: column;
     flex: 1;
     justify-content: ${({$position:t})=>t==="bottom"?"flex-end":"flex-start"};
 
     ${media.mobile(`
-        padding: 80px 20px 40px;
+        padding: 120px 20px 40px;
     `)}
 `,TimestampWrapper=dt.div`
-    margin-bottom: 24px;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    z-index: 1;
+
+    ${media.mobile(`
+        top: 70px;
+    `)}
 `,Heading=dt.h2`
     font-family: "Space Grotesk", sans-serif;
     font-size: 30px;
@@ -1335,7 +1342,7 @@ Error generating stack: `+c.message+`
         box-decoration-break: clone;
         -webkit-box-decoration-break: clone;
     }
-`;function NarrativeSlide({timestamp:t,heading:e,children:n,textPosition:s="top",backgroundImage:a,backgroundVideo:l,poster:u,highlightText:p=!1,backgroundColor:h,accentColor:b,scrollProgress:P,flowHeight:tt=!1}){const N=useScrollVideo(P),ht=p?HighlightedBody:Body;return jsxRuntimeExports.jsxs(Slide$2,{$bg:h,$flowHeight:tt,children:[l?jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment,{children:[jsxRuntimeExports.jsx(BackgroundVideo$2,{ref:P?N:void 0,src:getAssetPath(l),poster:u?getAssetPath(u):void 0,...P?{preload:"auto"}:{autoPlay:!0,loop:!0},muted:!0,playsInline:!0}),jsxRuntimeExports.jsx(VideoOverlay$1,{})]}):a&&jsxRuntimeExports.jsx(BackgroundImage,{$src:a}),jsxRuntimeExports.jsxs(Content,{$position:s,children:[t&&jsxRuntimeExports.jsx(TimestampWrapper,{children:jsxRuntimeExports.jsx(TimestampBadge,{time:t,color:b})}),e&&jsxRuntimeExports.jsx(Heading,{children:jsxRuntimeExports.jsx("span",{children:e})}),jsxRuntimeExports.jsx(ht,{children:n})]})]})}const Bar=dt.div`
+`;function NarrativeSlide({timestamp:t,heading:e,children:n,textPosition:s="top",backgroundImage:a,backgroundVideo:l,poster:u,highlightText:p=!1,backgroundColor:h,accentColor:b,scrollProgress:P,flowHeight:tt=!1}){const N=useScrollVideo(P),ht=p?HighlightedBody:Body;return jsxRuntimeExports.jsxs(Slide$2,{$bg:h,$flowHeight:tt,children:[l?jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment,{children:[jsxRuntimeExports.jsx(BackgroundVideo$2,{ref:P?N:void 0,src:getAssetPath(l),poster:u?getAssetPath(u):void 0,...P?{preload:"auto"}:{autoPlay:!0,loop:!0},muted:!0,playsInline:!0}),jsxRuntimeExports.jsx(VideoOverlay$1,{})]}):a&&jsxRuntimeExports.jsx(BackgroundImage,{$src:a}),t&&jsxRuntimeExports.jsx(TimestampWrapper,{children:jsxRuntimeExports.jsx(TimestampBadge,{time:t,color:b})}),jsxRuntimeExports.jsxs(Content,{$position:s,children:[e&&jsxRuntimeExports.jsx(Heading,{children:jsxRuntimeExports.jsx("span",{children:e})}),jsxRuntimeExports.jsx(ht,{children:n})]})]})}const Bar=dt.div`
     width: 100%;
     background: #000;
     display: flex;
