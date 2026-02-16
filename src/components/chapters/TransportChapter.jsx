@@ -266,27 +266,32 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T7 — Data grid: EU transport incidents */}
-            <StickySlide appearInPlace trackHeight="300vh">
-                <DataGridSlide
-                    sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
-                    headingColor={ACCENT}
-                    backgroundColor={ACCENT}
-                    gridColor={GRID_COLOR}
-                    lottieAnimation={{
-                        mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_M.json",
-                        tablet: "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
-                        desktop:
-                            "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
-                    }}
-                >
-                    <DataText $bg={ACCENT}>
-                        <span>EU Transport Sector Cyber Incidents (2025)</span>
-                    </DataText>
-                    {/* <DataCenter $bg="#fff"></DataCenter> */}
-                    <DataAttribution $bg={"#fff"}>
-                        <span>Source: ENISA 2025 Report</span>
-                    </DataAttribution>
-                </DataGridSlide>
+            <StickySlide appearInPlace flowHeight="300vh" trackHeight="400vh">
+                {({ scrollYProgress }) => (
+                    <DataGridSlide
+                        sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
+                        headingColor={ACCENT}
+                        backgroundColor={ACCENT}
+                        gridColor={GRID_COLOR}
+                        scrollProgress={scrollYProgress}
+                        lottieAnimation={{
+                            mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_M.json",
+                            tablet: "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
+                            desktop:
+                                "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
+                        }}
+                    >
+                        <DataText $bg={ACCENT}>
+                            <span>
+                                EU Transport Sector Cyber Incidents (2025)
+                            </span>
+                        </DataText>
+                        {/* <DataCenter $bg="#fff"></DataCenter> */}
+                        <DataAttribution $bg={"#fff"}>
+                            <span>Source: ENISA 2025 Report</span>
+                        </DataAttribution>
+                    </DataGridSlide>
+                )}
             </StickySlide>
 
             {/* T8 — Editorial: Garczynski quote */}
