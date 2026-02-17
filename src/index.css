@@ -11,7 +11,7 @@ body {
 
 /* Override external styles */
 .pc-cta {
-  background-color: #222222 !important;
+  background-color: #D96A38; !important;
 }
 
 /* Make pc__client anchor inherit styling */
@@ -31,4 +31,27 @@ body {
 /* Keep share tether above sticky slides */
 .pc__share {
   z-index: 1001 !important;
+}
+
+.cta{
+  color: #000;
+  background: #D96A38;
+  border: 2px #000 solid;
+  text-align: center;
+  font-family: "Space Grotesk";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  &:hover{
+      color: #000;
+    background: #c7541f;
+    border: 2px #000 solid;
+    text-align: center;
+    font-family: "Space Grotesk";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
 }
