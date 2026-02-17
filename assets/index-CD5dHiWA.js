@@ -317,6 +317,10 @@ Error generating stack: `+u.message+`
     max-width: 846px;
     width: 100%;
 
+    ${media.tablet(`
+        padding: 0 100px;
+    `)}
+
     ${media.mobile(`
         font-size: 18px;
         max-width: 100%;
