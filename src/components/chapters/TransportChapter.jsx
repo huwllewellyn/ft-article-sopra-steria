@@ -244,18 +244,18 @@ export default function TransportChapter() {
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
+                    <SlideQuote
+                        quote={
+                            <>
+                                <strong>Jamming</strong> can block the signals,
+                                while <strong>spoofing</strong> tricks systems
+                                into misreading locations
+                            </>
+                        }
+                        name="Fabien Lecoq"
+                        role="Cybersecurity Director, Sopra Steria"
+                    />
                     <EditorialBody>
-                        <SlideQuote
-                            quote={
-                                <>
-                                    <strong>Jamming</strong> can block the
-                                    signals, while <strong>spoofing</strong>{" "}
-                                    tricks systems into misreading locations
-                                </>
-                            }
-                            name="Fabien Lecoq"
-                            role="Cybersecurity Director, Sopra Steria"
-                        />
                         <p>
                             Transport is the second most targeted sector in the
                             EU, with the majority of attacks concentrated in air
@@ -275,7 +275,7 @@ export default function TransportChapter() {
                         gridColor={GRID_COLOR}
                         scrollProgress={scrollYProgress}
                         lottieAnimation={{
-                            mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_M.json",
+                            mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
                             tablet: "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
                             desktop:
                                 "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
@@ -302,7 +302,18 @@ export default function TransportChapter() {
                     headingColor={ACCENT}
                 >
                     <SlideQuote
-                        quote="Aircraft, ground systems and even airport gates are now deeply interconnected. This creates new vulnerabilities: imagine someone disrupting digital flight‑planning systems during peak travel or manipulating airport operational networks"
+                        quote={
+                            <>
+                                Aircraft, ground systems and even airport gates
+                                are now deeply interconnected.
+                                <br />
+                                <br />
+                                This creates new vulnerabilities: imagine
+                                someone disrupting digital flight‑planning
+                                systems during peak travel or manipulating
+                                airport operational networks
+                            </>
+                        }
                         name="Stefan Garczynski"
                         role="Managing Security Architect, Sopra Steria"
                     />
@@ -393,16 +404,6 @@ export default function TransportChapter() {
                             service – poses a strategic risk in times of global
                             tension.
                         </p>
-                    </EditorialBody>
-                </EditorialSlide>
-            </StickySlide>
-            <StickySlide appearInPlace>
-                <EditorialSlide
-                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
-                    backgroundColor={ACCENT}
-                    headingColor={ACCENT}
-                >
-                    <EditorialBody>
                         <p>
                             13 EU member states have already{" "}
                             <a href="https://navisp.esa.int/news/article/13%20EU%20Member%20States%20call%20for%20common%20actions%20in%20response%20to%20GNSS%20jamming%20and%20spoofing%20threats">
@@ -463,15 +464,12 @@ export default function TransportChapter() {
                             But from a legal perspective, digital sovereignty is
                             tricky.
                         </p>
-                        <p>
-                            "Digital sovereignty sounds compelling, but, in
-                            legal terms, it goes in many directions," says
-                            Elaine Fahey, Professor of EU Law at City St
-                            George's, University of London. "It's rooted in
-                            internal market law, while the threats themselves
-                            are cross-border."
-                        </p>
                     </EditorialBody>
+                    <SlideQuote
+                        quote="Digital sovereignty sounds compelling, but, in legal terms, it goes in many directions. It’s rooted in internal market law, while the threats themselves are cross-border"
+                        name="Elaine Fahey"
+                        role="Professor of EU Law, City St George’s, University of London"
+                    />
                 </EditorialSlide>
             </StickySlide>
 
