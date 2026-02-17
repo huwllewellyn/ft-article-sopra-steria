@@ -22,6 +22,7 @@ function useZIndexAndAppear(ref, appearInPlace) {
         el.style.zIndex = siblings.indexOf(el) + 1;
         if (appearInPlace) {
             el.style.opacity = "0";
+            el.style.pointerEvents = "none";
         }
     }, [appearInPlace]);
 
@@ -30,7 +31,9 @@ function useZIndexAndAppear(ref, appearInPlace) {
         const el = ref.current;
 
         const handleScroll = () => {
-            el.style.opacity = el.getBoundingClientRect().top <= 0 ? "1" : "0";
+            const appeared = el.getBoundingClientRect().top <= 0;
+            el.style.opacity = appeared ? "1" : "0";
+            el.style.pointerEvents = appeared ? "auto" : "none";
         };
 
         handleScroll();

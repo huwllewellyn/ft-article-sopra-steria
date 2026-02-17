@@ -585,7 +585,7 @@ export default function EnergyChapter() {
                             energy sector has gone into prevention rather than
                             visibility and monitoring. This presents challenges
                             for root-cause analysis and improving prevention
-                            strategies, explains Lee.
+                            strategies.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -622,11 +622,11 @@ export default function EnergyChapter() {
                 <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
                     <EditorialBody>
                         <p>
-                            This can include breaking the grid into "islands",
-                            which can distribute power locally, to prevent
-                            cascading failures, or building a parallel network
-                            for monitoring and management to prevent loss of
-                            visibility, Rørvik says.
+                            Defensible architectures can include breaking the
+                            grid into "islands", which can distribute power
+                            locally, to prevent cascading failures, or building
+                            a parallel network for monitoring and management to
+                            prevent loss of visibility, Rørvik says.
                         </p>
                     </EditorialBody>
                     <SlideQuote

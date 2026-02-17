@@ -10,6 +10,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    pointer-events: none;
 `;
 
 export default function LottieAnimation({

@@ -340,16 +340,11 @@ export default function FinanceChapter() {
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
-                    <EditorialBody>
-                        <p>
-                            AI enables them to use real-time company data and
-                            social media to make each message convincingly
-                            authentic. "Entire campaigns are being run by
-                            machines – targeting the right person, at the right
-                            time, with the right message," says Arsenio Pérez
-                            Gavira, Cybersecurity Manager at Sopra Steria Spain.
-                        </p>
-                    </EditorialBody>
+                    <SlideQuote
+                        quote="Entire campaigns are being run by machines – targeting the right person, at the right time, with the right message"
+                        name="Arsenio Pérez Gavira"
+                        role="Cybersecurity Manager, Sopra Steria Spain"
+                    />
                 </EditorialSlide>
             </StickySlide>
 
