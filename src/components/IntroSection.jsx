@@ -13,7 +13,7 @@ const Container = styled.section`
         min-height: calc(100vh - 80px);
     `)}
     ${media.mobile(`
-        min-height: calc(100vh - 120px);
+        min-height: calc(100vh - 150px);
     `)}
     ${media.wide(`
         min-height: calc(100vh - 190px);
@@ -35,8 +35,8 @@ const ContentWrapper = styled.div`
     font-weight: 500;
 
     ${media.tablet(`
-        padding: 80px 40px 30px;
-        gap: 30px;
+        padding: 40px 40px 50px;
+        gap: 0;
     `)}
 
     ${media.mobile(`
@@ -54,6 +54,13 @@ const MainRow = styled.div`
     justify-content: space-between;
     flex: 1;
 
+    ${media.tablet(`
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+    `)}
+
     ${media.mobile(`
         flex-direction: column;
         align-items: flex-start;
@@ -66,7 +73,7 @@ const LeftColumn = styled.div`
     width: 630px;
 
     ${media.tablet(`
-        width: 50%;
+        display: contents;
     `)}
 
     ${media.mobile(`
@@ -84,7 +91,7 @@ const RightColumn = styled.div`
     `)}
 
     ${media.tablet(`
-        width: 45%;
+        display: contents;
     `)}
 
     ${media.mobile(`
@@ -107,7 +114,7 @@ const MainTitle = styled(motion.h1)`
     `)}
 
     ${media.tablet(`
-        font-size: 56px;
+        font-size: 74px;
     `)}
 
     ${media.mobile(`
@@ -129,7 +136,8 @@ const BigQuestion = styled(motion.h2)`
     `)}
 
     ${media.tablet(`
-        font-size: 56px;
+        font-size: 74px;
+        line-height: 0.9;
     `)}
 
     ${media.mobile(`
@@ -151,6 +159,12 @@ const Standfirst = styled(motion.p)`
     ${media.wide(`
         font-size: 32px;
         max-width: 731px;
+    `)}
+
+    ${media.tablet(`
+        font-size: 17px;
+        max-width: 411px;
+        padding: 47px 0;
     `)}
 
     ${media.mobile(`
@@ -181,7 +195,8 @@ const TitleBlock = styled(motion.div)`
     width: 630px;
 
     ${media.tablet(`
-        width: 50%;
+        width: 100%;
+        text-align: left;
     `)}
 
     ${media.mobile(`
@@ -191,6 +206,13 @@ const TitleBlock = styled(motion.div)`
 `;
 
 const QuestionBlock = styled(motion.div)`
+    ${media.tablet(`
+        order: 2;
+        width: 100%;
+        text-align: right;
+        margin-top: auto;
+    `)}
+
     ${media.mobile(`
         order: 2;
         width: 100%;
@@ -200,6 +222,11 @@ const QuestionBlock = styled(motion.div)`
 `;
 
 const StandfirstBlock = styled(motion.div)`
+    ${media.tablet(`
+        order: 3;
+        width: 100%;
+    `)}
+
     ${media.mobile(`
         order: 3;
         width: 100%;
@@ -233,7 +260,11 @@ export default function IntroSection() {
                     variants={containerVariants}
                 >
                     <MainTitle variants={itemVariants}>
-                        Digital disruption diaries:
+                        Digital
+                        <br />
+                        disruption
+                        <br />
+                        diaries:
                     </MainTitle>
                 </TitleBlock>
                 <MainRow>
@@ -258,7 +289,13 @@ export default function IntroSection() {
                             variants={containerVariants}
                         >
                             <BigQuestion variants={itemVariants}>
-                                what if Europe's networks went dark?
+                                what
+                                <br />
+                                if Europe's
+                                <br />
+                                networks
+                                <br />
+                                went dark?
                             </BigQuestion>
                         </QuestionBlock>
                     </RightColumn>
