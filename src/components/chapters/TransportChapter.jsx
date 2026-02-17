@@ -221,7 +221,7 @@ export default function TransportChapter() {
                 </NarrativeSlide>
             </StickySlide>
             {/* T6a — Editorial: GPS vulnerability + Lecoq quote */}
-            <StickySlide appearInPlace>
+            <StickySlide>
                 <EditorialSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                     backgroundColor={ACCENT}
@@ -392,7 +392,7 @@ export default function TransportChapter() {
             />
 
             {/* T12 — Editorial: GPS reliance + 13 EU states */}
-            <StickySlide appearInPlace>
+            <StickySlide>
                 <EditorialSlide
                     sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
                     backgroundColor={ACCENT}

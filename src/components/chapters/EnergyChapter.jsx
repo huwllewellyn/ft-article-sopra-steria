@@ -577,7 +577,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S13 — Operating while under attack */}
-            <StickySlide appearInPlace>
+            <StickySlide>
                 <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
                     <EditorialBody>
                         <p>

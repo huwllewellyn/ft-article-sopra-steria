@@ -11,7 +11,7 @@ body {
 
 /* Override external styles */
 .pc-cta {
-  background-color: #D96A38; !important;
+  background-color: #D96A38 !important;
 }
 
 /* Make pc__client anchor inherit styling */

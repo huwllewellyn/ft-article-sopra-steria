@@ -342,7 +342,7 @@ export default function FinanceChapter() {
             />
 
             {/* F9 — Editorial: phishing attacks */}
-            <StickySlide appearInPlace>
+            <StickySlide>
                 <EditorialSlide
                     sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
                     backgroundColor={ACCENT}
@@ -527,7 +527,7 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F17 — Editorial: interconnected systems */}
-            <StickySlide appearInPlace>
+            <StickySlide>
                 <EditorialSlide
                     sectionTitle="WHEN SYSTEMS CONNECT, FAILURE IS EXPONENTIAL"
                     backgroundColor={ACCENT}
