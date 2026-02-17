@@ -430,7 +430,7 @@ export default function FinanceChapter() {
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
                         lottieAnimation={{
-                            mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_M.json",
+                            mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
                             tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
                             desktop:
                                 "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
@@ -443,10 +443,10 @@ export default function FinanceChapter() {
                         <DataText $bg={ACCENT}></DataText>
                         <F13Text>
                             is the approximate share of organisations that
-                            suffered a material incident in the past 12
-                            months, and say it was caused by a third party,
-                            according to the World Economic Forum&rsquo;s
-                            2024 Cybersecurity Outlook.
+                            suffered a material incident in the past 12 months,
+                            and say it was caused by a third party, according to
+                            the World Economic Forum&rsquo;s 2024 Cybersecurity
+                            Outlook.
                         </F13Text>
                     </DataGridSlide>
                 )}
@@ -575,15 +575,11 @@ export default function FinanceChapter() {
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
-                    <EditorialBody>
-                        <p>
-                            "With everything being connected, or wanting to be
-                            connected to every other system, firms must examine
-                            their architecture and make sure there aren't any
-                            security gaps," says Stefan Garczynski, Managing
-                            Security Architect at Sopra Steria.
-                        </p>
-                    </EditorialBody>
+                    <SlideQuote
+                        quote="With everything being connected, or wanting to be connected to every other system, firms must examine their architecture and make sure there aren’t any security gaps"
+                        name="Stefan Garczynski"
+                        role="Managing Security Architect, Sopra Steria"
+                    />
                 </EditorialSlide>
             </StickySlide>
 

@@ -6,6 +6,10 @@ const QuoteWrapper = styled.blockquote`
     padding: 0;
     max-width: 846px;
     text-align: center;
+
+    ${media.mobile(`
+        text-align: left;
+    `)}
 `;
 
 const QuoteMark = styled.span`
