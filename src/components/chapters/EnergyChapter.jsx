@@ -502,10 +502,13 @@ export default function EnergyChapter() {
                         <p>
                             Sopra Steria, a technology and consulting company
                             that provides cybersecurity services, identified in
-                            its State of Cybersecurity 2025 report that Advanced
-                            Persistent Threat (APT) groups are increasingly
-                            collaborating with cyber criminals, particularly on
-                            destructive attacks.
+                            its State of Cybersecurity 2025{" "}
+                            <a href="https://www.soprasteria.com/docs/librariesprovider2/sopra-steria-corporate/publications/en_25.08.20---sopra-steria---%C3%A9tat-de-la-cybers%C3%A9curit%C3%A9-en-2025.pdf?sfvrsn=216234db_6">
+                                report
+                            </a>{" "}
+                            that Advanced Persistent Threat (APT) groups are
+                            increasingly collaborating with cyber criminals,
+                            particularly on destructive attacks.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
