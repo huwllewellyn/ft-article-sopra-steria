@@ -597,8 +597,11 @@ export default function EnergyChapter() {
                     <EditorialBody>
                         <p>
                             Europe's policymakers are starting to recognise the
-                            risks. In 2025, the European Commission signed a
-                            €36mn agreement with the EU's Agency for
+                            risks. In 2025, the European Commission{" "}
+                            <a href="https://www.enisa.europa.eu/news/enisa-to-operate-the-eu-cybersecurity-reserve-with-eur-36-million">
+                                signed
+                            </a>{" "}
+                            a €36mn agreement with the EU's Agency for
                             Cybersecurity (ENISA) to administer a reserve that
                             can be used by critical sectors – including energy –
                             to support the response and recovery from cyber
