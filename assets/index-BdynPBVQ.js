@@ -42,7 +42,7 @@ Error generating stack: `+u.message+`
         min-height: calc(100vh - 80px);
     `)}
     ${media.mobile(`
-        min-height: calc(100vh - 120px);
+        min-height: calc(100vh - 150px);
     `)}
     ${media.wide(`
         min-height: calc(100vh - 190px);
@@ -62,8 +62,8 @@ Error generating stack: `+u.message+`
     font-weight: 500;
 
     ${media.tablet(`
-        padding: 80px 40px 30px;
-        gap: 30px;
+        padding: 40px 40px 50px;
+        gap: 0;
     `)}
 
     ${media.mobile(`
@@ -79,6 +79,13 @@ Error generating stack: `+u.message+`
     justify-content: space-between;
     flex: 1;
 
+    ${media.tablet(`
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 20px;
+    `)}
+
     ${media.mobile(`
         flex-direction: column;
         align-items: flex-start;
@@ -89,7 +96,7 @@ Error generating stack: `+u.message+`
     width: 630px;
 
     ${media.tablet(`
-        width: 50%;
+        display: contents;
     `)}
 
     ${media.mobile(`
@@ -105,7 +112,7 @@ Error generating stack: `+u.message+`
     `)}
 
     ${media.tablet(`
-        width: 45%;
+        display: contents;
     `)}
 
     ${media.mobile(`
@@ -126,7 +133,7 @@ Error generating stack: `+u.message+`
     `)}
 
     ${media.tablet(`
-        font-size: 56px;
+        font-size: 74px;
     `)}
 
     ${media.mobile(`
@@ -146,7 +153,8 @@ Error generating stack: `+u.message+`
     `)}
 
     ${media.tablet(`
-        font-size: 56px;
+        font-size: 74px;
+        line-height: 0.9;
     `)}
 
     ${media.mobile(`
@@ -166,6 +174,12 @@ Error generating stack: `+u.message+`
     ${media.wide(`
         font-size: 32px;
         max-width: 731px;
+    `)}
+
+    ${media.tablet(`
+        font-size: 17px;
+        max-width: 411px;
+        padding: 47px 0;
     `)}
 
     ${media.mobile(`
@@ -192,7 +206,8 @@ Error generating stack: `+u.message+`
     width: 630px;
 
     ${media.tablet(`
-        width: 50%;
+        width: 100%;
+        text-align: left;
     `)}
 
     ${media.mobile(`
@@ -200,6 +215,13 @@ Error generating stack: `+u.message+`
         text-align: left;
     `)}
 `,QuestionBlock=dt(motion.div)`
+    ${media.tablet(`
+        order: 2;
+        width: 100%;
+        text-align: right;
+        margin-top: auto;
+    `)}
+
     ${media.mobile(`
         order: 2;
         width: 100%;
@@ -207,11 +229,16 @@ Error generating stack: `+u.message+`
         margin-top: auto;
     `)}
 `,StandfirstBlock=dt(motion.div)`
+    ${media.tablet(`
+        order: 3;
+        width: 100%;
+    `)}
+
     ${media.mobile(`
         order: 3;
         width: 100%;
     `)}
-`,containerVariants$1={hidden:{opacity:0},visible:{opacity:1,transition:{staggerChildren:.15,delayChildren:.3}}},itemVariants$1={hidden:{opacity:0,y:30},visible:{opacity:1,y:0,transition:{duration:.8,ease:"easeOut"}}};function IntroSection(){return jsxRuntimeExports.jsx(Container$6,{children:jsxRuntimeExports.jsxs(ContentWrapper,{children:[jsxRuntimeExports.jsx(TitleBlock,{initial:"hidden",animate:"visible",variants:containerVariants$1,children:jsxRuntimeExports.jsx(MainTitle,{variants:itemVariants$1,children:"Digital disruption diaries:"})}),jsxRuntimeExports.jsxs(MainRow,{children:[jsxRuntimeExports.jsx(LeftColumn,{children:jsxRuntimeExports.jsx(StandfirstBlock,{initial:"hidden",animate:"visible",variants:containerVariants$1,children:jsxRuntimeExports.jsx(Standfirst,{variants:itemVariants$1,children:"Three hypothetical stories expose how cyber attacks could swiftly disrupt and destabilise daily life – and explore the solutions required to protect our most critical systems"})})}),jsxRuntimeExports.jsx(RightColumn,{children:jsxRuntimeExports.jsx(QuestionBlock,{initial:"hidden",animate:"visible",variants:containerVariants$1,children:jsxRuntimeExports.jsx(BigQuestion,{variants:itemVariants$1,children:"what if Europe's networks went dark?"})})})]}),jsxRuntimeExports.jsx(ScrollIndicator,{initial:{opacity:0},animate:{opacity:1},transition:{delay:1.5,duration:.5},children:"SCROLL TO EXPLORE"})]})})}const Container$5=dt.section`
+`,containerVariants$1={hidden:{opacity:0},visible:{opacity:1,transition:{staggerChildren:.15,delayChildren:.3}}},itemVariants$1={hidden:{opacity:0,y:30},visible:{opacity:1,y:0,transition:{duration:.8,ease:"easeOut"}}};function IntroSection(){return jsxRuntimeExports.jsx(Container$6,{children:jsxRuntimeExports.jsxs(ContentWrapper,{children:[jsxRuntimeExports.jsx(TitleBlock,{initial:"hidden",animate:"visible",variants:containerVariants$1,children:jsxRuntimeExports.jsxs(MainTitle,{variants:itemVariants$1,children:["Digital",jsxRuntimeExports.jsx("br",{}),"disruption",jsxRuntimeExports.jsx("br",{}),"diaries:"]})}),jsxRuntimeExports.jsxs(MainRow,{children:[jsxRuntimeExports.jsx(LeftColumn,{children:jsxRuntimeExports.jsx(StandfirstBlock,{initial:"hidden",animate:"visible",variants:containerVariants$1,children:jsxRuntimeExports.jsx(Standfirst,{variants:itemVariants$1,children:"Three hypothetical stories expose how cyber attacks could swiftly disrupt and destabilise daily life – and explore the solutions required to protect our most critical systems"})})}),jsxRuntimeExports.jsx(RightColumn,{children:jsxRuntimeExports.jsx(QuestionBlock,{initial:"hidden",animate:"visible",variants:containerVariants$1,children:jsxRuntimeExports.jsxs(BigQuestion,{variants:itemVariants$1,children:["what",jsxRuntimeExports.jsx("br",{}),"if Europe's",jsxRuntimeExports.jsx("br",{}),"networks",jsxRuntimeExports.jsx("br",{}),"went dark?"]})})})]}),jsxRuntimeExports.jsx(ScrollIndicator,{initial:{opacity:0},animate:{opacity:1},transition:{delay:1.5,duration:.5},children:"SCROLL TO EXPLORE"})]})})}const Container$5=dt.section`
     width: 100%;
     min-height: 100vh;
     display: flex;
