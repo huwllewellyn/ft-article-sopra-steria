@@ -415,15 +415,11 @@ export default function FinanceChapter() {
                         <DataText $bg={ACCENT}></DataText>
                         <DataAttribution $bg={ACCENT} maxWidth="90vw">
                             <span>
-                                <strong>41 per cent</strong> is the approximate
-                                amount of organisations that suffered a material
-                                incident in the past 12 months, and say it was
-                                caused by a third party
-                            </span>
-                            <br />
-                            <span>
-                                World Economic Forum&rsquo;s 2024 Cybersecurity
-                                Outlook
+                                is the approximate amount of organisations that
+                                suffered a material incident in the past 12
+                                months, and say it was caused by a third party
+                                according to the World Economic Forum&rsquo;s
+                                2024 Cybersecurity Outlook
                             </span>
                         </DataAttribution>
                     </DataGridSlide>
