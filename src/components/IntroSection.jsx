@@ -13,7 +13,7 @@ const Container = styled.section`
         min-height: calc(100vh - 80px);
     `)}
     ${media.mobile(`
-        min-height: calc(100vh - 80px);
+        min-height: calc(100vh - 120px);
     `)}
     ${media.wide(`
         min-height: calc(100vh - 190px);
@@ -40,8 +40,8 @@ const ContentWrapper = styled.div`
     `)}
 
     ${media.mobile(`
-        padding: 80px 20px 30px;
-        gap: 30px;
+        padding: 40px 20px 30px;
+        gap: 0;
     `)}
     ${media.wide(`
         padding-top: 190px;
@@ -57,7 +57,8 @@ const MainRow = styled.div`
     ${media.mobile(`
         flex-direction: column;
         align-items: flex-start;
-        gap: 60px;
+        justify-content: space-between;
+        gap: 20px;
     `)}
 `;
 
@@ -155,6 +156,7 @@ const Standfirst = styled(motion.p)`
     ${media.mobile(`
         font-size: 15px;
         max-width: 100%;
+        padding: 30px 0;
     `)}
 `;
 
@@ -193,6 +195,7 @@ const QuestionBlock = styled(motion.div)`
         order: 2;
         width: 100%;
         text-align: right;
+        margin-top: auto;
     `)}
 `;
 
