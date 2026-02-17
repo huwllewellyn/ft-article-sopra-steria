@@ -3,7 +3,7 @@ export const breakpoints = {
   mobile: 480,
   tablet: 768,
   desktop: 1024,
-  wide: 1440,
+  wide: 2560,
 };
 
 // Media query helpers for styled-components

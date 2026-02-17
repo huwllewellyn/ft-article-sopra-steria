@@ -4,17 +4,25 @@ import { media } from "../utils/breakpoints";
 
 const Container = styled.section`
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 110px);
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    ${media.tablet(`
+        min-height: calc(100vh - 80px);
+    `)}
+    ${media.mobile(`
+        min-height: calc(100vh - 80px);
+    `)}
+    ${media.wide(`
+        min-height: calc(100vh - 190px);
+    `)}
 `;
 
 const ContentWrapper = styled.div`
     position: relative;
     z-index: 2;
-    max-width: 1480px;
     width: 100%;
     margin: 0 auto;
     padding: 110px 80px 40px;
@@ -35,6 +43,9 @@ const ContentWrapper = styled.div`
         padding: 80px 20px 30px;
         gap: 30px;
     `)}
+    ${media.wide(`
+        padding-top: 190px;
+    `)}
 `;
 
 const MainRow = styled.div`
@@ -51,15 +62,10 @@ const MainRow = styled.div`
 `;
 
 const LeftColumn = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     width: 630px;
-    min-height: 580px;
 
     ${media.tablet(`
         width: 50%;
-        min-height: 450px;
     `)}
 
     ${media.mobile(`
@@ -70,6 +76,11 @@ const LeftColumn = styled.div`
 const RightColumn = styled.div`
     width: 494px;
     text-align: right;
+    margin-left: auto;
+
+    ${media.wide(`
+        width: 878px;
+    `)}
 
     ${media.tablet(`
         width: 45%;
@@ -90,6 +101,10 @@ const MainTitle = styled(motion.h1)`
     margin: 0;
     text-transform: uppercase;
 
+    ${media.wide(`
+        font-size: 132px;
+    `)}
+
     ${media.tablet(`
         font-size: 56px;
     `)}
@@ -107,6 +122,10 @@ const BigQuestion = styled(motion.h2)`
     line-height: 0.85;
     margin: 0;
     text-transform: uppercase;
+
+    ${media.wide(`
+        font-size: 132px;
+    `)}
 
     ${media.tablet(`
         font-size: 56px;
@@ -128,6 +147,11 @@ const Standfirst = styled(motion.p)`
     margin: 0;
     text-transform: uppercase;
 
+    ${media.wide(`
+        font-size: 32px;
+        max-width: 731px;
+    `)}
+
     ${media.mobile(`
         font-size: 15px;
         max-width: 100%;
@@ -143,9 +167,21 @@ const ScrollIndicator = styled(motion.p)`
     line-height: 1.35;
     margin: 0;
     text-transform: uppercase;
+
+    ${media.wide(`
+        font-family: "Logic Monospace", monospace;
+        font-size: 26px;
+        letter-spacing: 0.26px;
+    `)}
 `;
 
 const TitleBlock = styled(motion.div)`
+    width: 630px;
+
+    ${media.tablet(`
+        width: 50%;
+    `)}
+
     ${media.mobile(`
         order: 1;
         width: 100%;
@@ -188,17 +224,17 @@ export default function IntroSection() {
     return (
         <Container>
             <ContentWrapper>
+                <TitleBlock
+                    initial="hidden"
+                    animate="visible"
+                    variants={containerVariants}
+                >
+                    <MainTitle variants={itemVariants}>
+                        Digital disruption diaries:
+                    </MainTitle>
+                </TitleBlock>
                 <MainRow>
                     <LeftColumn>
-                        <TitleBlock
-                            initial="hidden"
-                            animate="visible"
-                            variants={containerVariants}
-                        >
-                            <MainTitle variants={itemVariants}>
-                                Digital disruption diaries:
-                            </MainTitle>
-                        </TitleBlock>
                         <StandfirstBlock
                             initial="hidden"
                             animate="visible"
