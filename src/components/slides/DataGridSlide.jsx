@@ -78,6 +78,7 @@ const ContentArea = styled.div`
 
     ${media.mobile(`
         padding: 10px 20px;
+        align-items: flex-start;
     `)}
 
     p {
