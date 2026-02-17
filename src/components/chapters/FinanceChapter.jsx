@@ -18,6 +18,39 @@ import {
     ContinuousSlide,
 } from "../slides";
 import { EditorialBody } from "../slides/EditorialSlide";
+
+const F13Text = styled.div`
+    font-family: "Logic Monospace", monospace;
+    font-size: 21px;
+    font-weight: 500;
+    color: #000;
+    text-align: center;
+    line-height: 1.35;
+    letter-spacing: -0.84px;
+    max-width: 846px;
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0 80px;
+    box-sizing: border-box;
+
+    ${media.tablet(`
+        font-size: 21px;
+        letter-spacing: -0.84px;
+        padding: 0 40px;
+    `)}
+
+    ${media.mobile(`
+        font-size: 17px;
+        letter-spacing: -0.68px;
+        color: #222;
+        text-align: left;
+        padding: 0 20px;
+    `)}
+`;
 import SlideQuote from "../slides/SlideQuote";
 import useScrollVideo from "../../hooks/useScrollVideo";
 
@@ -408,15 +441,13 @@ export default function FinanceChapter() {
                         lottieTop="20vh"
                     >
                         <DataText $bg={ACCENT}></DataText>
-                        <DataAttribution $bg={ACCENT} maxWidth="90vw">
-                            <span>
-                                is the approximate amount of organisations that
-                                suffered a material incident in the past 12
-                                months, and say it was caused by a third party
-                                according to the World Economic Forum&rsquo;s
-                                2024 Cybersecurity Outlook
-                            </span>
-                        </DataAttribution>
+                        <F13Text>
+                            is the approximate share of organisations that
+                            suffered a material incident in the past 12
+                            months, and say it was caused by a third party,
+                            according to the World Economic Forum&rsquo;s
+                            2024 Cybersecurity Outlook.
+                        </F13Text>
                     </DataGridSlide>
                 )}
             </StickySlide>
