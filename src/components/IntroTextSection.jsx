@@ -34,7 +34,8 @@ const TextBlock = styled(motion.div)`
     ${media.mobile(`
         font-size: 18px;
         max-width: 100%;
-        padding: 0 10px;
+        padding: 0 51px;
+        text-align: left;
     `)}
 
     p {

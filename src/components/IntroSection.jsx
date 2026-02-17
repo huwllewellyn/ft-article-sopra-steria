@@ -183,8 +183,8 @@ const TitleBlock = styled(motion.div)`
     `)}
 
     ${media.mobile(`
-        order: 1;
         width: 100%;
+        text-align: left;
     `)}
 `;
 
@@ -192,7 +192,7 @@ const QuestionBlock = styled(motion.div)`
     ${media.mobile(`
         order: 2;
         width: 100%;
-        text-align: left;
+        text-align: right;
     `)}
 `;
 
@@ -243,9 +243,8 @@ export default function IntroSection() {
                             <Standfirst variants={itemVariants}>
                                 Three hypothetical stories expose how cyber
                                 attacks could swiftly disrupt and destabilise
-                                daily life – and explore the solutions and
-                                measures required to protect our most critical
-                                systems
+                                daily life – and explore the solutions required
+                                to protect our most critical systems
                             </Standfirst>
                         </StandfirstBlock>
                     </LeftColumn>
