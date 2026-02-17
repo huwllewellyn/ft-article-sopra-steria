@@ -473,7 +473,7 @@ export default function EnergyChapter() {
                             <DataCenter $bg="#fff">
                                 48 attacks
                                 <br />
-                                on energy
+                                on Europe's energy
                                 <br />
                                 infrastructure
                             </DataCenter>

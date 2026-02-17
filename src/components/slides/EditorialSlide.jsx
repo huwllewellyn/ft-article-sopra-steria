@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { media } from "../../utils/breakpoints";
 import SectionHeadingBar from "./SectionHeadingBar";
 
@@ -64,7 +65,16 @@ export default function EditorialSlide({ sectionTitle, children, backgroundColor
     return (
         <Slide $bg={backgroundColor}>
             {sectionTitle && <SectionHeadingBar color={headingColor}>{sectionTitle}</SectionHeadingBar>}
-            <ContentArea $align={contentAlign}>{children}</ContentArea>
+            <ContentArea
+                as={motion.div}
+                $align={contentAlign}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "0px 0px -50% 0px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                {children}
+            </ContentArea>
         </Slide>
     );
 }
