@@ -81,7 +81,8 @@ export const SolutionBoxes = styled.div`
     align-items: center;
     gap: 16px;
     margin: auto 0;
-    width: 2000px;
+    width: 100vw;
+    max-width: 100%;
 `;
 
 export const SolutionBox = styled.div`
