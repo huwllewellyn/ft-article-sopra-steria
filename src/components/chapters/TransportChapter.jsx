@@ -275,7 +275,7 @@ export default function TransportChapter() {
                         gridColor={GRID_COLOR}
                         scrollProgress={scrollYProgress}
                         lottieAnimation={{
-                            mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
+                            mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_M.json",
                             tablet: "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
                             desktop:
                                 "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",

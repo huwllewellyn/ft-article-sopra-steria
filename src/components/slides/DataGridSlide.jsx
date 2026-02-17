@@ -77,7 +77,7 @@ const ContentArea = styled.div`
     box-sizing: border-box;
 
     ${media.mobile(`
-        padding: 40px 20px;
+        padding: 10px 20px;
     `)}
 
     p {
@@ -250,7 +250,11 @@ export default function DataGridSlide({
             <StickyInner>
                 <Slide $bg={backgroundColor}>
                     {lottieAnimation && (
-                        <BackgroundLottie $height={lottieHeight} $bottom={lottieBottom} $top={lottieTop}>
+                        <BackgroundLottie
+                            $height={lottieHeight}
+                            $bottom={lottieBottom}
+                            $top={lottieTop}
+                        >
                             <ResponsiveLottieAnimation
                                 animations={lottieAnimation}
                                 loop={false}
@@ -258,7 +262,11 @@ export default function DataGridSlide({
                                 scrollProgress={activeProgress}
                                 width="100%"
                                 height="100%"
-                                preserveAspectRatio={lottieHeight ? "xMidYMid meet" : "xMidYMid slice"}
+                                preserveAspectRatio={
+                                    lottieHeight
+                                        ? "xMidYMid meet"
+                                        : "xMidYMid slice"
+                                }
                             />
                         </BackgroundLottie>
                     )}

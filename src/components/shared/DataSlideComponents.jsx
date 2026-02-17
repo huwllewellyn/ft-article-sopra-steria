@@ -134,9 +134,14 @@ export const DataAttribution = styled.div`
     `)}
 
     ${media.mobile(`
-        font-size: 22px;
+        font-family: "Logic Monospace", monospace;
+        font-size: 19px;
+        font-weight: 400;
         line-height: 1.35;
         letter-spacing: -0.76px;
         text-align: left;
+        margin-bottom: 0;
+        margin-top: auto;
+        padding-bottom: 40px;
     `)}
 `;
