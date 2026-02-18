@@ -4,7 +4,7 @@ import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import { ChapterIntro } from "../shared";
 import {
-    DataCenter,
+    DataCenterLarge,
     DataText,
     DataAttribution,
     SolutionBoxes,
@@ -498,13 +498,13 @@ export default function EnergyChapter() {
                             scrollProgress={scrollYProgress}
                             threshold={0.25}
                         >
-                            <DataCenter $bg="#fff">
+                            <DataCenterLarge $bg="#fff">
                                 48 attacks
                                 <br />
                                 on Europe's energy
                                 <br />
                                 infrastructure
-                            </DataCenter>
+                            </DataCenterLarge>
                         </ScrollReveal>
                         <ScrollReveal
                             scrollProgress={scrollYProgress}
@@ -573,6 +573,7 @@ export default function EnergyChapter() {
             <StickySlide appearInPlace>
                 <NarrativeSlide
                     timestamp="5:30pm"
+                    mobileVideoPosition="20% center"
                     backgroundVideo={VIDEOS.glitchyCityscape530}
                     poster={POSTERS.glitchyCityscape530}
                     textPosition="top"
@@ -586,7 +587,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S12 — 7:00pm C-suite */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide appearInPlace trackHeight="300vh" flowHeight="200vh">
                 <NarrativeSlide
                     timestamp="7:00pm"
                     backgroundVideo={VIDEOS.womanScreens}
@@ -673,6 +674,7 @@ export default function EnergyChapter() {
                 trackHeight="400vh"
                 flowHeight="300vh"
                 appearInPlace
+                mobileVideoPosition="left"
                 background={() => (
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.escalator)}

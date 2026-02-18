@@ -85,6 +85,22 @@ export function DataCenter({ $bg, children }) {
     );
 }
 
+const DataCenterLargeStyled = styled(DataCenterStyled)`
+    ${media.mobile(`
+        font-size: 40px;
+        text-align: left;
+    `)}
+`;
+
+export function DataCenterLarge({ $bg, children }) {
+    const scrambleRef = useTextScramble({ delay: 500, duration: 1000 });
+    return (
+        <DataCenterLargeStyled $bg={$bg}>
+            <span ref={scrambleRef}>{children}</span>
+        </DataCenterLargeStyled>
+    );
+}
+
 export const SolutionBoxes = styled.div`
     display: flex;
     flex-direction: column;
