@@ -1668,7 +1668,7 @@ Error generating stack: `+c.message+`
             letter-spacing: -1.7px;
         `)}
     }
-`;function EditorialSlide({sectionTitle:t,children:e,backgroundColor:n,headingColor:s,contentAlign:a}){return jsxRuntimeExports.jsxs(Slide$1,{$bg:n,children:[t&&jsxRuntimeExports.jsx(SectionHeadingBar,{color:s,children:t}),jsxRuntimeExports.jsx(ContentArea$1,{as:motion.div,$align:a,initial:{opacity:0,y:30},whileInView:{opacity:1,y:0},viewport:{once:!0,margin:"0px 0px -50% 0px"},transition:{duration:.8,ease:"easeOut"},children:e})]})}dt.section`
+`;function EditorialSlide({sectionTitle:t,children:e,backgroundColor:n,headingColor:s,contentAlign:a}){return jsxRuntimeExports.jsxs(Slide$1,{$bg:n,children:[t&&jsxRuntimeExports.jsx(SectionHeadingBar,{color:s,children:t}),jsxRuntimeExports.jsx(ContentArea$1,{as:motion.div,$align:a,initial:{opacity:0,y:30},whileInView:{opacity:1,y:0},viewport:{once:!0,margin:"0px 0px -50% 0px"},transition:{duration:1.4,ease:"easeOut"},children:e})]})}dt.section`
     height: 100vh;
     width: 100%;
     overflow: hidden;
