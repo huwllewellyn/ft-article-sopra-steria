@@ -9,6 +9,10 @@ body {
   overflow-x: clip;
 }
 
+p, li, blockquote, figcaption, footer, span {
+  text-wrap: pretty;
+}
+
 /* Override external styles */
 .pc-cta {
   background-color: #D96A38 !important;
