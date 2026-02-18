@@ -60,6 +60,14 @@ const BackgroundLottie = styled.div`
     height: ${({ $height }) => $height || "100%"};
     z-index: 0;
     overflow: hidden;
+
+    ${({ $mobileScale }) =>
+        $mobileScale
+            ? media.mobile(`
+                transform: scale(${$mobileScale});
+                transform-origin: center;
+            `)
+            : ""}
 `;
 
 const ContentArea = styled.div`
@@ -161,6 +169,7 @@ export default function DataGridSlide({
     maxWidth,
     children,
     scrollProgress,
+    mobileScale,
 }) {
     const trackRef = useRef();
     const contentRef = useRef();
@@ -260,6 +269,7 @@ export default function DataGridSlide({
                             $height={lottieHeight}
                             $bottom={lottieBottom}
                             $top={lottieTop}
+                            $mobileScale={mobileScale}
                         >
                             <ResponsiveLottieAnimation
                                 animations={lottieAnimation}

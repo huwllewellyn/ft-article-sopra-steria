@@ -73,6 +73,14 @@ const LottieOverlayWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    ${({ $mobileScale }) =>
+        $mobileScale
+            ? media.mobile(`
+                transform: scale(${$mobileScale});
+                transform-origin: center;
+            `)
+            : ""}
 `;
 
 const Content = styled.div`
@@ -192,6 +200,7 @@ export default function NarrativeSlide({
     flowHeight = false,
     lottieOverlay,
     mobileVideoPosition,
+    mobileScale,
 }) {
     const scrollRef = useScrollVideo(scrollProgress);
     const autoplayRef = useAutoplayOnView();
@@ -219,7 +228,7 @@ export default function NarrativeSlide({
                 backgroundImage && <BackgroundImage $src={backgroundImage} />
             )}
             {lottieOverlay && (
-                <LottieOverlayWrapper>
+                <LottieOverlayWrapper $mobileScale={mobileScale}>
                     <ResponsiveLottieAnimation
                         animations={lottieOverlay}
                         height="100%"

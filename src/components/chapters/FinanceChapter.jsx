@@ -169,7 +169,9 @@ export default function FinanceChapter() {
                         <ScrollSyncHeroVideo
                             scrollProgress={scrollYProgress}
                             src={getAssetPath(VIDEOS.madridCityscape)}
-                            mobileSrc={getAssetPath(VIDEOS.madridCityscapeMobile)}
+                            mobileSrc={getAssetPath(
+                                VIDEOS.madridCityscapeMobile,
+                            )}
                             poster={getAssetPath(POSTERS.madridCityscape)}
                         />
                         <HeroOverlay />
@@ -265,6 +267,7 @@ export default function FinanceChapter() {
                                 tablet: "/videos/ch2/SOPRA_CH2_12pm.json",
                                 desktop: "/videos/ch2/SOPRA_CH2_12pm.json",
                             }}
+                            mobileScale="1.3"
                             accentColor={ACCENT}
                         >
                             <p>
@@ -454,6 +457,7 @@ export default function FinanceChapter() {
                         sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
+                        mobileScale="1.6"
                         lottieAnimation={{
                             mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
                             tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
