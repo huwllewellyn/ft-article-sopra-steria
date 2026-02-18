@@ -60,6 +60,15 @@ p, li, blockquote, figcaption, footer, span {
   }
 }
 
+@media (max-width: 767px) {
+  .cta {
+    font-size: 16px;
+  }
+  .cta:hover {
+    font-size: 16px;
+  }
+}
+
 @media (min-width: 2560px) {
   .cta {
     font-size: 37px;

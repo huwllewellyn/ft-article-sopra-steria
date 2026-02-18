@@ -226,13 +226,14 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T5 — 9:00am GPS jamming */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide appearInPlace trackHeight="300vh" flowHeight="200vh">
                 <NarrativeSlide
                     timestamp="9:00am"
                     backgroundVideo={VIDEOS.airportBoard}
                     poster={POSTERS.airportBoard}
                     textPosition="top"
                     highlightText
+                    mobileVideoPosition="70%"
                     accentColor={ACCENT}
                 >
                     <p>
@@ -363,7 +364,7 @@ export default function TransportChapter() {
             {/* T10-T11 — Military jet / airports (continuous video) */}
             <ContinuousSlide
                 trackHeight="300vh"
-                flowHeight="200vh"
+                flowHeight="300vh"
                 appearInPlace
                 background={() => (
                     <AutoplayVideo

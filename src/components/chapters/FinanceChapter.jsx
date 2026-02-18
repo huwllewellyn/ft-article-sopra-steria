@@ -533,7 +533,7 @@ export default function FinanceChapter() {
             />
 
             {/* F16 — 6:30pm media reports */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide appearInPlace trackHeight="300vh" flowHeight="200vh">
                 <NarrativeSlide
                     timestamp="6:30pm"
                     backgroundVideo={VIDEOS.phoneInHand}
