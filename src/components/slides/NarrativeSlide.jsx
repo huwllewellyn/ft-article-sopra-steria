@@ -44,6 +44,11 @@ const BackgroundVideo = styled.video`
     height: 100%;
     object-fit: cover;
     z-index: 0;
+
+    ${({ $mobileObjectPosition }) =>
+        $mobileObjectPosition
+            ? media.mobile(`object-position: ${$mobileObjectPosition};`)
+            : ""}
 `;
 
 const VideoOverlay = styled.div`
@@ -186,6 +191,7 @@ export default function NarrativeSlide({
     scrollProgress,
     flowHeight = false,
     lottieOverlay,
+    mobileVideoPosition,
 }) {
     const scrollRef = useScrollVideo(scrollProgress);
     const autoplayRef = useAutoplayOnView();
@@ -200,6 +206,7 @@ export default function NarrativeSlide({
                         ref={videoRef}
                         src={getAssetPath(backgroundVideo)}
                         poster={poster ? getAssetPath(poster) : undefined}
+                        $mobileObjectPosition={mobileVideoPosition}
                         {...(scrollProgress
                             ? { preload: "auto" }
                             : { loop: true })}

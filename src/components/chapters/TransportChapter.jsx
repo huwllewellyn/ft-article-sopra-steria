@@ -186,6 +186,7 @@ export default function TransportChapter() {
                     timestamp="8:15am"
                     backgroundVideo={VIDEOS.truckDepot}
                     poster={POSTERS.truckDepot}
+                    mobileVideoPosition="left"
                     textPosition="top"
                     highlightText
                     accentColor={ACCENT}
