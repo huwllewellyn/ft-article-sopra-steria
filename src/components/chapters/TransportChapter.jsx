@@ -19,6 +19,8 @@ import {
     SolutionBox,
 } from "../shared/DataSlideComponents";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import useAutoplayOnView from "../../hooks/useAutoplayOnView";
+import useIsMobile from "../../hooks/useIsMobile";
 import AutoplayVideo from "../shared/AutoplayVideo";
 
 const ACCENT = "#c999ff";
@@ -26,6 +28,7 @@ const GRID_COLOR = "rgba(201, 153, 255, 0.15)";
 
 const VIDEOS = {
     portOfDover: "/videos/ch3/ch3_1.mp4",
+    portOfDoverMobile: "/videos/ch3/ch3_1_mobile.mp4",
     satNav: "/videos/ch3/ch3_2.mp4",
     truckDepot: "/videos/ch3/ch3_3.mp4",
     airportBoard: "/videos/ch3/ch3_4.mp4",
@@ -86,11 +89,28 @@ const HeroOverlay = styled.div`
     );
 `;
 
-function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
-    const videoRef = useScrollVideo(scrollProgress);
+function ScrollSyncHeroVideo({ scrollProgress, src, mobileSrc, poster }) {
+    const isMobile = useIsMobile();
+    const scrollVideoRef = useScrollVideo(isMobile ? null : scrollProgress);
+    const autoplayRef = useAutoplayOnView();
+
+    if (isMobile && mobileSrc) {
+        return (
+            <HeroVideo
+                ref={autoplayRef}
+                src={mobileSrc}
+                poster={poster}
+                muted
+                playsInline
+                autoPlay
+                loop
+            />
+        );
+    }
+
     return (
         <HeroVideo
-            ref={videoRef}
+            ref={scrollVideoRef}
             src={src}
             poster={poster}
             muted
@@ -112,6 +132,7 @@ export default function TransportChapter() {
                         <ScrollSyncHeroVideo
                             scrollProgress={scrollYProgress}
                             src={getAssetPath(VIDEOS.portOfDover)}
+                            mobileSrc={getAssetPath(VIDEOS.portOfDoverMobile)}
                             poster={getAssetPath(POSTERS.portOfDover)}
                         />
                         <HeroOverlay />

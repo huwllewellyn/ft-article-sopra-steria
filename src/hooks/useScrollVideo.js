@@ -19,6 +19,7 @@ export default function useScrollVideo(scrollProgress) {
     useEffect(() => {
         const video = videoRef.current;
         if (!video || !video.src) return;
+        if (!scrollProgress) return;
 
         const src = video.src;
         // Don't re-fetch if already a blob URL

@@ -22,6 +22,7 @@ const Container = styled.div`
 
 const TextBlock = styled(motion.div)`
     font-family: "Space Mono", monospace;
+    font-family: "LogicMonospace", monospace;
     font-size: 24px;
     font-weight: 400;
     color: #000000;
@@ -78,12 +79,12 @@ export default function IntroTextSection() {
                     <p>
                         Against this backdrop, what could happen if three key
                         European industries – <strong>energy</strong>,{" "}
-                        <strong>finance</strong> and <strong>transport</strong> –
-                        come under fire?
+                        <strong>finance</strong> and <strong>transport</strong>{" "}
+                        – come under fire?
                     </p>
                     <p>
-                        And what solutions exist to protect society in this new age
-                        of digital warfare?
+                        And what solutions exist to protect society in this new
+                        age of digital warfare?
                     </p>
                 </TextBlock>
             </Container>

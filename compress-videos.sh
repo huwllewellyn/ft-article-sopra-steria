@@ -7,12 +7,9 @@
 #   Standard (full-bleed background videos): 1280x720, CRF 28
 #   Data Point animations: native aspect ratio, CRF 26
 #
-# TODO: Mobile video processing
-# - Process files matching *_MOBILE*, *_MOB*, *_M.mp4 patterns
-# - Target resolution: 640x360
-# - Output to: public/videos/mobile/ch{1,2,3}/
-# - CRF 30 for aggressive mobile compression
-# - Consider WebM alternatives for better mobile compression
+# Mobile autoplay videos (same resolution, no keyframes):
+#   - Dedicated mobile source files (*_MOBILE*, *_MOB*) are processed as standard
+#   - Videos with "mobile": true in overrides get a _mobile.mp4 re-encode without keyframes
 
 set -euo pipefail
 
@@ -49,7 +46,7 @@ failed=0
 total_in=0
 total_out=0
 
-# Returns true if file is a mobile variant (should be skipped)
+# Returns true if file is a mobile variant
 is_mobile() {
     local name="$1"
     # Case-insensitive matching
@@ -123,6 +120,67 @@ make_output_name() {
     echo "${lower}.mp4"
 }
 
+# Shared ffmpeg encode function
+# Usage: encode_video <input> <output> <vf_opts> <crf> <label> [extra_flags...]
+encode_video() {
+    local filepath="$1"
+    local out_path="$2"
+    local vf_opts="$3"
+    local crf="$4"
+    local label="$5"
+    shift 5
+    local extra_flags=("$@")
+
+    local filename
+    filename=$(basename "$filepath")
+
+    local in_bytes
+    in_bytes=$(stat -f%z "$filepath" 2>/dev/null || stat -c%s "$filepath" 2>/dev/null)
+    local in_human
+    in_human=$(echo "$in_bytes" | awk '{
+        if ($1 >= 1073741824) printf "%.1fG", $1/1073741824
+        else if ($1 >= 1048576) printf "%.1fM", $1/1048576
+        else if ($1 >= 1024) printf "%.1fK", $1/1024
+        else printf "%dB", $1
+    }')
+
+    local out_name
+    out_name=$(basename "$out_path")
+
+    printf "  %-45s [%s] " "${filename}" "${label}"
+
+    ffmpeg -i "$filepath" \
+        -vf "$vf_opts" \
+        -c:v libx264 \
+        -preset slow \
+        -crf "$crf" \
+        ${extra_flags[@]+"${extra_flags[@]}"} \
+        -r 24 \
+        -pix_fmt yuv420p \
+        -an \
+        -movflags +faststart \
+        -y "$out_path" 2>/dev/null
+
+    if [ -f "$out_path" ]; then
+        local out_bytes
+        out_bytes=$(stat -f%z "$out_path" 2>/dev/null || stat -c%s "$out_path" 2>/dev/null)
+        local out_human
+        out_human=$(echo "$out_bytes" | awk '{
+            if ($1 >= 1073741824) printf "%.1fG", $1/1073741824
+            else if ($1 >= 1048576) printf "%.1fM", $1/1048576
+            else if ($1 >= 1024) printf "%.1fK", $1/1024
+            else printf "%dB", $1
+        }')
+        echo "${in_human} → ${out_human}  →  ${out_name}"
+        ((processed++))
+        total_in=$((total_in + in_bytes))
+        total_out=$((total_out + out_bytes))
+    else
+        echo "FAILED"
+        ((failed++))
+    fi
+}
+
 echo "=== Video Compression ==="
 echo "Source: ${RAW_DIR}/CHAPTER {1,2,3}/"
 echo "Output: ${OUT_DIR}/ch{1,2,3}/"
@@ -154,24 +212,24 @@ for entry in "${CHAPTERS[@]}"; do
         [ -f "$filepath" ] || continue
         filename=$(basename "$filepath")
 
-        # Skip mobile variants
+        # Mobile source files: process as standard (no keyframes)
         if is_mobile "$filename"; then
-            echo "  SKIP (mobile): ${filename}"
-            ((skipped++))
+            # Skip mobile data point animations (not needed)
+            if is_datapoint "$filename"; then
+                echo "  SKIP (mobile datapoint): ${filename}"
+                ((skipped++))
+                continue
+            fi
+
+            out_name=$(make_output_name "$filename")
+            out_path="${dest}/${out_name}"
+            vf_opts="scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2"
+            encode_video "$filepath" "$out_path" "$vf_opts" 28 "mobile-src"
             continue
         fi
 
         out_name=$(make_output_name "$filename")
         out_path="${dest}/${out_name}"
-
-        # Get input file size in bytes
-        in_bytes=$(stat -f%z "$filepath" 2>/dev/null || stat -c%s "$filepath" 2>/dev/null)
-        in_human=$(echo "$in_bytes" | awk '{
-            if ($1 >= 1073741824) printf "%.1fG", $1/1073741824
-            else if ($1 >= 1048576) printf "%.1fM", $1/1048576
-            else if ($1 >= 1024) printf "%.1fK", $1/1024
-            else printf "%dB", $1
-        }')
 
         # Choose compression profile
         if is_datapoint "$filename"; then
@@ -195,35 +253,14 @@ for entry in "${CHAPTERS[@]}"; do
             profile_label="${profile_label}+keyframes"
         fi
 
-        printf "  %-45s [%s] " "${filename}" "${profile_label}"
+        encode_video "$filepath" "$out_path" "$vf_opts" "$crf" "$profile_label" "${extra_flags[@]+"${extra_flags[@]}"}"
 
-        ffmpeg -i "$filepath" \
-            -vf "$vf_opts" \
-            -c:v libx264 \
-            -preset slow \
-            -crf "$crf" \
-            ${extra_flags[@]+"${extra_flags[@]}"} \
-            -r 24 \
-            -pix_fmt yuv420p \
-            -an \
-            -movflags +faststart \
-            -y "$out_path" 2>/dev/null
-
-        if [ -f "$out_path" ]; then
-            out_bytes=$(stat -f%z "$out_path" 2>/dev/null || stat -c%s "$out_path" 2>/dev/null)
-            out_human=$(echo "$out_bytes" | awk '{
-                if ($1 >= 1073741824) printf "%.1fG", $1/1073741824
-                else if ($1 >= 1048576) printf "%.1fM", $1/1048576
-                else if ($1 >= 1024) printf "%.1fK", $1/1024
-                else printf "%dB", $1
-            }')
-            echo "${in_human} → ${out_human}  →  ${out_name}"
-            ((processed++))
-            total_in=$((total_in + in_bytes))
-            total_out=$((total_out + out_bytes))
-        else
-            echo "FAILED"
-            ((failed++))
+        # Generate mobile variant (standard, no keyframes) if override says so
+        mobile_override=$(get_override "$override_key" "mobile")
+        if [ "$mobile_override" = "true" ]; then
+            mobile_out_name="${out_name%.mp4}_mobile.mp4"
+            mobile_out_path="${dest}/${mobile_out_name}"
+            encode_video "$filepath" "$mobile_out_path" "$vf_opts" "$crf" "mobile"
         fi
     done
     echo ""
@@ -243,7 +280,9 @@ total_out_human=$(echo "$total_out" | awk '{
 
 echo "=== Summary ==="
 echo "Processed: ${processed} videos"
-echo "Skipped (mobile): ${skipped} videos"
+if [ "$skipped" -gt 0 ]; then
+    echo "Skipped: ${skipped} videos"
+fi
 if [ "$failed" -gt 0 ]; then
     echo "Failed: ${failed} videos"
 fi

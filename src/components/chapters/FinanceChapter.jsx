@@ -58,6 +58,8 @@ const F13Text = styled.div`
 `;
 import SlideQuote from "../slides/SlideQuote";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import useAutoplayOnView from "../../hooks/useAutoplayOnView";
+import useIsMobile from "../../hooks/useIsMobile";
 import AutoplayVideo from "../shared/AutoplayVideo";
 
 const ACCENT = "#8eb8ff";
@@ -65,6 +67,7 @@ const GRID_COLOR = "rgba(142, 184, 255, 0.15)";
 
 const VIDEOS = {
     madridCityscape: "/videos/ch2/ch2_1.mp4",
+    madridCityscapeMobile: "/videos/ch2/ch2_1_mobile.mp4",
     supermarket: "/videos/ch2/ch2_2_glitch.mp4",
     supermarketBlurred: "/videos/ch2/ch2_3.mp4",
     warehousePhone: "/videos/ch2/ch2_4_desktop.mp4",
@@ -123,11 +126,28 @@ const HeroOverlay = styled.div`
     );
 `;
 
-function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
-    const videoRef = useScrollVideo(scrollProgress);
+function ScrollSyncHeroVideo({ scrollProgress, src, mobileSrc, poster }) {
+    const isMobile = useIsMobile();
+    const scrollVideoRef = useScrollVideo(isMobile ? null : scrollProgress);
+    const autoplayRef = useAutoplayOnView();
+
+    if (isMobile && mobileSrc) {
+        return (
+            <HeroVideo
+                ref={autoplayRef}
+                src={mobileSrc}
+                poster={poster}
+                muted
+                playsInline
+                autoPlay
+                loop
+            />
+        );
+    }
+
     return (
         <HeroVideo
-            ref={videoRef}
+            ref={scrollVideoRef}
             src={src}
             poster={poster}
             muted
@@ -149,6 +169,7 @@ export default function FinanceChapter() {
                         <ScrollSyncHeroVideo
                             scrollProgress={scrollYProgress}
                             src={getAssetPath(VIDEOS.madridCityscape)}
+                            mobileSrc={getAssetPath(VIDEOS.madridCityscapeMobile)}
                             poster={getAssetPath(POSTERS.madridCityscape)}
                         />
                         <HeroOverlay />

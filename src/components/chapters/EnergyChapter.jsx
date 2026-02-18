@@ -21,12 +21,16 @@ import {
 import { EditorialBody } from "../slides/EditorialSlide";
 import SlideQuote from "../slides/SlideQuote";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import useAutoplayOnView from "../../hooks/useAutoplayOnView";
+import useIsMobile from "../../hooks/useIsMobile";
 import AutoplayVideo from "../shared/AutoplayVideo";
 
 const VIDEOS = {
     osloCityscape: "/videos/ch1/ch1_1.mp4",
+    osloCityscapeMobile: "/videos/ch1/ch1_1_mobile.mp4",
     hackerScene: "/videos/ch1/ch1_2-2.mp4",
     globe: "/videos/ch1/ch1_2_desktop.mp4",
+    globeMobile: "/videos/ch1/ch1_2_mobile.mp4",
     elevator: "/videos/ch1/ch1_3.mp4",
     signalLost: "/videos/ch1/ch1_4.mp4",
     glitchyCityscape: "/videos/ch1/ch1_5.mp4",
@@ -249,11 +253,28 @@ const HeroOverlay = styled.div`
     );
 `;
 
-function ScrollSyncHeroVideo({ scrollProgress, src, poster }) {
-    const videoRef = useScrollVideo(scrollProgress);
+function ScrollSyncHeroVideo({ scrollProgress, src, mobileSrc, poster }) {
+    const isMobile = useIsMobile();
+    const scrollVideoRef = useScrollVideo(isMobile ? null : scrollProgress);
+    const autoplayRef = useAutoplayOnView();
+
+    if (isMobile && mobileSrc) {
+        return (
+            <HeroVideo
+                ref={autoplayRef}
+                src={mobileSrc}
+                poster={poster}
+                muted
+                playsInline
+                autoPlay
+                loop
+            />
+        );
+    }
+
     return (
         <HeroVideo
-            ref={videoRef}
+            ref={scrollVideoRef}
             src={src}
             poster={poster}
             muted
@@ -275,6 +296,7 @@ export default function EnergyChapter() {
                         <ScrollSyncHeroVideo
                             scrollProgress={scrollYProgress}
                             src={getAssetPath(VIDEOS.osloCityscape)}
+                            mobileSrc={getAssetPath(VIDEOS.osloCityscapeMobile)}
                             poster={getAssetPath(POSTERS.osloCityscape)}
                         />
                         <HeroOverlay />
@@ -329,6 +351,7 @@ export default function EnergyChapter() {
                         <ScrollSyncHeroVideo
                             scrollProgress={scrollYProgress}
                             src={getAssetPath(VIDEOS.globe)}
+                            mobileSrc={getAssetPath(VIDEOS.globeMobile)}
                             poster={getAssetPath(POSTERS.globe)}
                         />
                         <HeroOverlay />
