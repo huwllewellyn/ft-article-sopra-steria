@@ -674,11 +674,11 @@ export default function EnergyChapter() {
                 trackHeight="400vh"
                 flowHeight="300vh"
                 appearInPlace
-                mobileVideoPosition="left"
                 background={() => (
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.escalator)}
                         poster={getAssetPath(POSTERS.escalator)}
+                        mobileVideoPosition="left"
                         loop
                         muted
                         playsInline
