@@ -31,6 +31,10 @@ const ChapterLabel = styled.p`
     ${media.mobile(`
         font-size: 21px;
     `)}
+
+    ${media.wide(`
+        font-size: 51px;
+    `)}
 `;
 
 const blink = keyframes`
@@ -83,6 +87,10 @@ const Subtitle = styled.h2`
 
     ${media.mobile(`
         font-size: 21px;
+    `)}
+
+    ${media.wide(`
+        font-size: 51px;
     `)}
 `;
 

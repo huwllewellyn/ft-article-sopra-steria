@@ -23,6 +23,10 @@ export const QuoteText = styled(motion.p)`
     ${media.mobile(`
         font-size: 21px;
     `)}
+
+    ${media.wide(`
+        font-size: 68px;
+    `)}
 `;
 
 export const QuoteAttribution = styled(motion.p)`
@@ -41,6 +45,10 @@ export const QuoteAttribution = styled(motion.p)`
     `)}
     ${media.mobile(`
         font-size: 12px;
+    `)}
+
+    ${media.wide(`
+        font-size: 32px;
     `)}
 `;
 

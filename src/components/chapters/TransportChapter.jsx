@@ -19,6 +19,7 @@ import {
     SolutionBox,
 } from "../shared/DataSlideComponents";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import AutoplayVideo from "../shared/AutoplayVideo";
 
 const ACCENT = "#c999ff";
 const GRID_COLOR = "rgba(201, 153, 255, 0.15)";
@@ -343,10 +344,9 @@ export default function TransportChapter() {
                 flowHeight="200vh"
                 appearInPlace
                 background={() => (
-                    <video
+                    <AutoplayVideo
                         src={getAssetPath(VIDEOS.satellite)}
                         poster={getAssetPath(POSTERS.satellite)}
-                        autoPlay
                         loop
                         muted
                         playsInline
@@ -494,10 +494,9 @@ export default function TransportChapter() {
                 flowHeight="200vh"
                 appearInPlace
                 background={() => (
-                    <video
+                    <AutoplayVideo
                         src={getAssetPath(VIDEOS.mapDark)}
                         poster={getAssetPath(POSTERS.mapDark)}
-                        autoPlay
                         loop
                         muted
                         playsInline

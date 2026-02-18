@@ -96,6 +96,11 @@ const ContentArea = styled.div`
             letter-spacing: -0.76px;
             line-height: 1.35;
         `)}
+
+        ${media.wide(`
+            font-size: 42px;
+            letter-spacing: -1.7px;
+        `)}
     }
 
     strong {

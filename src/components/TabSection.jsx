@@ -45,6 +45,10 @@ const SlideTitle = styled(motion.h2)`
     ${media.mobile(`
         font-size: 32px;
     `)}
+
+    ${media.wide(`
+        font-size: 77px;
+    `)}
 `;
 
 const SlideText = styled(motion.p)`
@@ -57,6 +61,10 @@ const SlideText = styled(motion.p)`
 
     ${media.mobile(`
         font-size: 16px;
+    `)}
+
+    ${media.wide(`
+        font-size: 33px;
     `)}
 `;
 

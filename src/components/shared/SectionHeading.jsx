@@ -23,6 +23,10 @@ const Heading = styled(motion.h3)`
         font-size: 24px;
         margin: 40px 0 20px 0;
     `)}
+
+    ${media.wide(`
+        font-size: 54px;
+    `)}
 `;
 
 const headingVariants = {

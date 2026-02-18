@@ -59,6 +59,11 @@ export const EditorialBody = styled.div`
             color: #222;
             text-align: left;
         `)}
+
+        ${media.wide(`
+            font-size: 42px;
+            letter-spacing: -1.7px;
+        `)}
     }
 `;
 

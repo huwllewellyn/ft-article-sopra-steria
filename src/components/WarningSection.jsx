@@ -39,6 +39,10 @@ const WarningText = styled.p`
     ${media.mobile(`
         font-size: 16px;
     `)}
+
+    ${media.wide(`
+        font-size: 35px;
+    `)}
 `;
 
 export default function WarningSection() {

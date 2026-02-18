@@ -24,6 +24,10 @@ export const ChapterNumber = styled.p`
         line-height: 120%;
         margin-top: 60px;
     `}
+
+    ${media.wide`
+        font-size: 72px;
+    `}
 `;
 
 export default ChapterNumber;

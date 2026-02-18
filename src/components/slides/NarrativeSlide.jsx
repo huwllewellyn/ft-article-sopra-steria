@@ -3,6 +3,7 @@ import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import TimestampBadge from "./TimestampBadge";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import useAutoplayOnView from "../../hooks/useAutoplayOnView";
 import ResponsiveLottieAnimation from "../ResponsiveLottieAnimation";
 
 const Slide = styled.section`
@@ -121,6 +122,10 @@ const Heading = styled.h2`
         font-size: 21px;
         line-height: 1.3;
     `)}
+
+    ${media.wide(`
+        font-size: 51px;
+    `)}
 `;
 
 const Body = styled.div`
@@ -144,6 +149,11 @@ const Body = styled.div`
             font-size: 19px;
             font-weight: 500;
             letter-spacing: -0.76px;
+        `)}
+
+        ${media.wide(`
+            font-size: 42px;
+            letter-spacing: -1.7px;
         `)}
     }
 
@@ -177,7 +187,9 @@ export default function NarrativeSlide({
     flowHeight = false,
     lottieOverlay,
 }) {
-    const videoRef = useScrollVideo(scrollProgress);
+    const scrollRef = useScrollVideo(scrollProgress);
+    const autoplayRef = useAutoplayOnView();
+    const videoRef = scrollProgress ? scrollRef : autoplayRef;
     const BodyWrapper = highlightText ? HighlightedBody : Body;
 
     return (
@@ -185,12 +197,12 @@ export default function NarrativeSlide({
             {backgroundVideo ? (
                 <>
                     <BackgroundVideo
-                        ref={scrollProgress ? videoRef : undefined}
+                        ref={videoRef}
                         src={getAssetPath(backgroundVideo)}
                         poster={poster ? getAssetPath(poster) : undefined}
                         {...(scrollProgress
                             ? { preload: "auto" }
-                            : { autoPlay: true, loop: true })}
+                            : { loop: true })}
                         muted
                         playsInline
                     />

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { getAssetPath } from "../../utils/assetPath";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import useAutoplayOnView from "../../hooks/useAutoplayOnView";
 
 const ImageSlide = styled.section`
     height: 100vh;
@@ -23,16 +24,18 @@ const Video = styled.video`
 `;
 
 export default function FullBleedImage({ src, videoSrc, poster, alt = "", scrollProgress }) {
-    const videoRef = useScrollVideo(scrollProgress);
+    const scrollRef = useScrollVideo(scrollProgress);
+    const autoplayRef = useAutoplayOnView();
+    const videoRef = scrollProgress ? scrollRef : autoplayRef;
 
     if (videoSrc) {
         return (
             <ImageSlide>
                 <Video
-                    ref={scrollProgress ? videoRef : undefined}
+                    ref={videoRef}
                     src={getAssetPath(videoSrc)}
                     poster={poster ? getAssetPath(poster) : undefined}
-                    {...(scrollProgress ? { preload: "auto" } : { autoPlay: true, loop: true })}
+                    {...(scrollProgress ? { preload: "auto" } : { loop: true })}
                     muted
                     playsInline
                 />

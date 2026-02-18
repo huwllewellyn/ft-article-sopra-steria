@@ -50,9 +50,15 @@ const F13Text = styled.div`
         text-align: left;
         padding: 0 20px;
     `)}
+
+    ${media.wide(`
+        font-size: 39px;
+        letter-spacing: -1.5px;
+    `)}
 `;
 import SlideQuote from "../slides/SlideQuote";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import AutoplayVideo from "../shared/AutoplayVideo";
 
 const ACCENT = "#8eb8ff";
 const GRID_COLOR = "rgba(142, 184, 255, 0.15)";
@@ -195,10 +201,9 @@ export default function FinanceChapter() {
                 flowHeight="300vh"
                 appearInPlace
                 background={() => (
-                    <video
+                    <AutoplayVideo
                         src={getAssetPath(VIDEOS.supermarket)}
                         poster={getAssetPath(POSTERS.supermarket)}
-                        autoPlay
                         loop
                         muted
                         playsInline
@@ -295,10 +300,9 @@ export default function FinanceChapter() {
                 flowHeight="200vh"
                 appearInPlace
                 background={() => (
-                    <video
+                    <AutoplayVideo
                         src={getAssetPath(VIDEOS.warehousePhone)}
                         poster={getAssetPath(POSTERS.warehousePhone)}
-                        autoPlay
                         loop
                         muted
                         playsInline
@@ -458,10 +462,9 @@ export default function FinanceChapter() {
                 flowHeight="200vh"
                 appearInPlace
                 background={() => (
-                    <video
+                    <AutoplayVideo
                         src={getAssetPath(VIDEOS.ironGate)}
                         poster={getAssetPath(POSTERS.ironGate)}
-                        autoPlay
                         loop
                         muted
                         playsInline

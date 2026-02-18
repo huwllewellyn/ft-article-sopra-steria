@@ -55,3 +55,12 @@ body {
     line-height: normal;
   }
 }
+
+@media (min-width: 2560px) {
+  .cta {
+    font-size: 37px;
+  }
+  .cta:hover {
+    font-size: 37px;
+  }
+}

@@ -20,6 +20,10 @@ const QuoteMark = styled.span`
     line-height: 1;
     color: #000;
     margin-bottom: 8px;
+
+    ${media.wide(`
+        font-size: 75px;
+    `)}
 `;
 
 const QuoteText = styled.p`
@@ -35,6 +39,11 @@ const QuoteText = styled.p`
     ${media.mobile(`
         font-size: 20px;
     `)}
+
+    ${media.wide(`
+        font-size: 51px;
+        letter-spacing: -1.56px;
+    `)}
 `;
 
 const Attribution = styled.p`
@@ -46,6 +55,10 @@ const Attribution = styled.p`
     margin: 0;
     line-height: 120%;
     text-transform: uppercase;
+
+    ${media.wide(`
+        font-size: 32px;
+    `)}
 `;
 
 export default function SlideQuote({ quote, name, role }) {

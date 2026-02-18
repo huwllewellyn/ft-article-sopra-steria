@@ -27,6 +27,10 @@ const Time = styled.span`
         font-size: 15px;
         min-width: auto;
     `)}
+
+    ${media.wide(`
+        font-size: 32px;
+    `)}
 `;
 
 const Description = styled.span`
@@ -38,6 +42,10 @@ const Description = styled.span`
 
     ${media.mobile(`
         font-size: 15px;
+    `)}
+
+    ${media.wide(`
+        font-size: 32px;
     `)}
 `;
 

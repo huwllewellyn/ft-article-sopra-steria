@@ -23,6 +23,10 @@ export const SectionTitle = styled.h2`
         font-size: 60px;
         line-height: 60px;
     `}
+
+    ${media.wide`
+        font-size: 160px;
+    `}
 `;
 
 export default SectionTitle;

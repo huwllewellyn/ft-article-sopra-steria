@@ -60,6 +60,10 @@ const TabButton = styled.button`
         font-size: 15px;
         width: auto;
     `)}
+
+    ${media.wide(`
+        font-size: 35px;
+    `)}
 `;
 
 export default function TabNavigation({ tabs, activeTab, onTabChange, visible = true }) {

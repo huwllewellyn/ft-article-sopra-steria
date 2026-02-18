@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { media } from "../utils/breakpoints";
 
 const Outer = styled.section`
     width: 100%;
@@ -28,6 +29,10 @@ const Text = styled(motion.p)`
     text-transform: uppercase;
     line-height: 1.4;
     margin: 0;
+
+    ${media.wide(`
+        font-size: 42px;
+    `)}
 `;
 
 const ORIGINAL = "One click...";

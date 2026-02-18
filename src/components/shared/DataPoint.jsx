@@ -30,6 +30,10 @@ const Stat = styled.div`
     ${media.mobile(`
         font-size: 40px;
     `)}
+
+    ${media.wide(`
+        font-size: 102px;
+    `)}
 `;
 
 const Description = styled.p`
@@ -42,6 +46,10 @@ const Description = styled.p`
 
     ${media.mobile(`
         font-size: 15px;
+    `)}
+
+    ${media.wide(`
+        font-size: 32px;
     `)}
 `;
 
@@ -56,6 +64,10 @@ const Source = styled.p`
 
     ${media.mobile(`
         font-size: 12px;
+    `)}
+
+    ${media.wide(`
+        font-size: 26px;
     `)}
 `;
 

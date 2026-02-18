@@ -42,6 +42,11 @@ const TextBlock = styled(motion.div)`
         text-align: left;
     `)}
 
+    ${media.wide(`
+        font-size: 42px;
+        letter-spacing: -1.5px;
+    `)}
+
     p {
         margin: 0 0 12px;
 

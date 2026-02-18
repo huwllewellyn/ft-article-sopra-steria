@@ -20,6 +20,11 @@ const Title = styled.h4`
         font-size: 12px;
         margin-bottom: 16px;
     `)}
+
+    ${media.wide(`
+        font-size: 26px;
+        letter-spacing: 3.6px;
+    `)}
 `;
 
 const List = styled.ul`
@@ -51,6 +56,10 @@ const ListItem = styled(motion.li)`
     ${media.mobile(`
         font-size: 15px;
         padding-left: 20px;
+    `)}
+
+    ${media.wide(`
+        font-size: 32px;
     `)}
 `;
 

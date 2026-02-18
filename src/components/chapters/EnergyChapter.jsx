@@ -21,6 +21,7 @@ import {
 import { EditorialBody } from "../slides/EditorialSlide";
 import SlideQuote from "../slides/SlideQuote";
 import useScrollVideo from "../../hooks/useScrollVideo";
+import AutoplayVideo from "../shared/AutoplayVideo";
 
 const VIDEOS = {
     osloCityscape: "/videos/ch1/ch1_1.mp4",
@@ -148,6 +149,10 @@ const RevealWord = styled.span`
     ${media.mobile(`
         font-size: 21px;
         line-height: 1.3;
+    `)}
+
+    ${media.wide(`
+        font-size: 51px;
     `)}
 `;
 
@@ -646,10 +651,9 @@ export default function EnergyChapter() {
                 flowHeight="300vh"
                 appearInPlace
                 background={() => (
-                    <video
+                    <AutoplayVideo
                         src={getAssetPath(VIDEOS.escalator)}
                         poster={getAssetPath(POSTERS.escalator)}
-                        autoPlay
                         loop
                         muted
                         playsInline

@@ -34,6 +34,11 @@ export const DataText = styled.div`
         letter-spacing: -0.76px;
         text-align: left;
     `)}
+
+    ${media.wide(`
+        font-size: 51px;
+        letter-spacing: -1.7px;
+    `)}
 `;
 
 const DataCenterStyled = styled.div`
@@ -63,6 +68,11 @@ const DataCenterStyled = styled.div`
         font-size: 22px;
         line-height: 1.35;
         letter-spacing: -0.76px;
+    `)}
+
+    ${media.wide(`
+        font-size: 51px;
+        letter-spacing: -1.7px;
     `)}
 `;
 
@@ -107,6 +117,11 @@ export const SolutionBox = styled.div`
         ${media.mobile(`
             font-size: 16px;
         `)}
+
+        ${media.wide(`
+            font-size: 46px;
+            letter-spacing: -1.7px;
+        `)}
     }
 `;
 
@@ -143,5 +158,10 @@ export const DataAttribution = styled.div`
         margin-bottom: 0;
         margin-top: auto;
         padding-bottom: 40px;
+    `)}
+
+    ${media.wide(`
+        font-size: 51px;
+        letter-spacing: -1.7px;
     `)}
 `;

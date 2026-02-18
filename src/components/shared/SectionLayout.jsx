@@ -769,6 +769,10 @@ const StyledParagraph = styled(motion.p)`
         font-size: 16px;
     `)}
 
+    ${media.wide(`
+        font-size: 35px;
+    `)}
+
     &:last-child {
         margin-bottom: 0;
     }

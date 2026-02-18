@@ -15,6 +15,10 @@ const Badge = styled.span`
     ${media.mobile(`
         font-size: 21px;
     `)}
+
+    ${media.wide(`
+        font-size: 46px;
+    `)}
 `;
 
 export default function TimestampBadge({ time, color }) {

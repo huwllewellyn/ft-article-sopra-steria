@@ -19,6 +19,10 @@ const Text = styled(motion.p)`
         font-size: 15px;
         margin-bottom: 20px;
     `)}
+
+    ${media.wide(`
+        font-size: 32px;
+    `)}
 `;
 
 const textVariants = {

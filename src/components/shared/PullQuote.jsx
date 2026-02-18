@@ -31,6 +31,10 @@ const QuoteText = styled.p`
     ${media.mobile(`
         font-size: 20px;
     `)}
+
+    ${media.wide(`
+        font-size: 49px;
+    `)}
 `;
 
 const Attribution = styled.footer`
@@ -42,6 +46,10 @@ const Attribution = styled.footer`
 
     ${media.mobile(`
         font-size: 13px;
+    `)}
+
+    ${media.wide(`
+        font-size: 28px;
     `)}
 `;
 

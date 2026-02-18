@@ -30,6 +30,10 @@ const Title = styled.span`
     ${media.mobile(`
         font-size: 19px;
     `)}
+
+    ${media.wide(`
+        font-size: 42px;
+    `)}
 `;
 
 export default function SectionHeadingBar({ children, color, bordered, fontFamily, fontWeight }) {
