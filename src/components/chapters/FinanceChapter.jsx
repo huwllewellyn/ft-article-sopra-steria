@@ -451,7 +451,7 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F13 — 41% data point (lottie) */}
-            <StickySlide appearInPlace flowHeight="200vh" trackHeight="300vh">
+            <StickySlide appearInPlace flowHeight="300vh" trackHeight="300vh">
                 {({ scrollYProgress }) => (
                     <DataGridSlide
                         sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
@@ -485,7 +485,6 @@ export default function FinanceChapter() {
             <ContinuousSlide
                 trackHeight="300vh"
                 flowHeight="200vh"
-                appearInPlace
                 background={() => (
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.ironGate)}
