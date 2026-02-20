@@ -573,7 +573,6 @@ export default function EnergyChapter() {
             <StickySlide appearInPlace>
                 <NarrativeSlide
                     timestamp="5:30pm"
-                    mobileVideoPosition="20% center"
                     backgroundVideo={VIDEOS.glitchyCityscape530}
                     poster={POSTERS.glitchyCityscape530}
                     textPosition="top"
@@ -678,7 +677,6 @@ export default function EnergyChapter() {
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.escalator)}
                         poster={getAssetPath(POSTERS.escalator)}
-                        mobileVideoPosition="left"
                         loop
                         muted
                         playsInline

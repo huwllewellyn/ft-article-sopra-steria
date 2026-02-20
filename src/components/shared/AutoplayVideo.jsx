@@ -1,21 +1,10 @@
-import styled from "styled-components";
-import { media } from "../../utils/breakpoints";
 import useAutoplayOnView from "../../hooks/useAutoplayOnView";
+import useIsMobile from "../../hooks/useIsMobile";
+import { getMobilePath } from "../../utils/assetPath";
 
-const StyledVideo = styled.video`
-    ${({ $mobileObjectPosition }) =>
-        $mobileObjectPosition
-            ? media.mobile(`object-position: ${$mobileObjectPosition};`)
-            : ""}
-`;
-
-export default function AutoplayVideo({ mobileVideoPosition, ...props }) {
+export default function AutoplayVideo({ src, ...props }) {
     const videoRef = useAutoplayOnView();
-    return (
-        <StyledVideo
-            ref={videoRef}
-            $mobileObjectPosition={mobileVideoPosition}
-            {...props}
-        />
-    );
+    const isMobile = useIsMobile();
+    const resolvedSrc = isMobile ? getMobilePath(src) : src;
+    return <video ref={videoRef} src={resolvedSrc} {...props} />;
 }

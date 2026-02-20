@@ -207,7 +207,6 @@ export default function TransportChapter() {
                     timestamp="8:15am"
                     backgroundVideo={VIDEOS.truckDepot}
                     poster={POSTERS.truckDepot}
-                    mobileVideoPosition="left"
                     textPosition="top"
                     highlightText
                     accentColor={ACCENT}
@@ -233,7 +232,6 @@ export default function TransportChapter() {
                     poster={POSTERS.airportBoard}
                     textPosition="top"
                     highlightText
-                    mobileVideoPosition="70%"
                     accentColor={ACCENT}
                 >
                     <p>

@@ -1,21 +1,34 @@
 {
     "ch1/ch1_1.mp4": {
         "keyframes": "every",
-        "mobile": true,
-        "comment": "Oslo cityscape — scroll-scrubbed, needs every-frame keyframes for smooth seeking. Mobile: standard autoplay version."
+        "comment": "Oslo cityscape — scroll-scrubbed, needs every-frame keyframes for smooth seeking."
     },
     "ch1/ch1_2_desktop.mp4": {
         "keyframes": "every",
         "comment": "Globe — scroll-scrubbed, needs every-frame keyframes for smooth seeking. Mobile version from dedicated SOPRA_CH1_2_MOBILE.mp4 source."
     },
+    "ch1/ch1_6.mp4": {
+        "mobileCropPosition": "20%",
+        "comment": "Glitchy cityscape 5:30pm — focal point is off-center left."
+    },
+    "ch1/ch1_8.mp4": {
+        "mobileCropPosition": "left",
+        "comment": "Escalator — focal point is on the left side."
+    },
     "ch2/ch2_1.mp4": {
         "keyframes": "every",
-        "mobile": true,
-        "comment": "Madrid cityscape — scroll-scrubbed chapter title, needs every-frame keyframes. Mobile: standard autoplay version."
+        "comment": "Madrid cityscape — scroll-scrubbed chapter title, needs every-frame keyframes."
     },
     "ch3/ch3_1.mp4": {
         "keyframes": "every",
-        "mobile": true,
-        "comment": "Port of Dover — scroll-scrubbed chapter title, needs every-frame keyframes. Mobile: standard autoplay version."
+        "comment": "Port of Dover — scroll-scrubbed chapter title, needs every-frame keyframes."
+    },
+    "ch3/ch3_3.mp4": {
+        "mobileCropPosition": "left",
+        "comment": "Truck depot — focal point is on the left side."
+    },
+    "ch3/ch3_4.mp4": {
+        "mobileCropPosition": "70%",
+        "comment": "Airport board — focal point is off-center right."
     }
 }

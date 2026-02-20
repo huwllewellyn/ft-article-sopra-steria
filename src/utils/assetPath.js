@@ -9,3 +9,12 @@ export function getAssetPath(path) {
   const cleanPath = path.startsWith('/') ? path.slice(1) : path;
   return `${basePath}${cleanPath}`;
 }
+
+export function getMobilePath(path) {
+  if (!path || path.includes('_mobile')) return path;
+  const ext = path.match(/\.[^.]+$/)?.[0] || '';
+  if (path.includes('_desktop')) {
+    return path.replace(`_desktop${ext}`, `_mobile${ext}`);
+  }
+  return path.replace(ext, `_mobile${ext}`);
+}

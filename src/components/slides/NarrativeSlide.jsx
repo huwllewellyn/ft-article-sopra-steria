@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
-import { getAssetPath } from "../../utils/assetPath";
+import { getAssetPath, getMobilePath } from "../../utils/assetPath";
 import TimestampBadge from "./TimestampBadge";
 import useScrollVideo from "../../hooks/useScrollVideo";
 import useAutoplayOnView from "../../hooks/useAutoplayOnView";
+import useIsMobile from "../../hooks/useIsMobile";
 import ResponsiveLottieAnimation from "../ResponsiveLottieAnimation";
 
 const Slide = styled.section`
@@ -44,11 +45,6 @@ const BackgroundVideo = styled.video`
     height: 100%;
     object-fit: cover;
     z-index: 0;
-
-    ${({ $mobileObjectPosition }) =>
-        $mobileObjectPosition
-            ? media.mobile(`object-position: ${$mobileObjectPosition};`)
-            : ""}
 `;
 
 const VideoOverlay = styled.div`
@@ -199,13 +195,20 @@ export default function NarrativeSlide({
     scrollProgress,
     flowHeight = false,
     lottieOverlay,
-    mobileVideoPosition,
     mobileScale,
 }) {
+    const isMobile = useIsMobile();
     const scrollRef = useScrollVideo(scrollProgress);
     const autoplayRef = useAutoplayOnView();
     const videoRef = scrollProgress ? scrollRef : autoplayRef;
     const BodyWrapper = highlightText ? HighlightedBody : Body;
+
+    const videoSrc = backgroundVideo
+        ? getAssetPath(isMobile ? getMobilePath(backgroundVideo) : backgroundVideo)
+        : undefined;
+    const posterSrc = poster
+        ? getAssetPath(isMobile ? getMobilePath(poster) : poster)
+        : undefined;
 
     return (
         <Slide $bg={backgroundColor} $flowHeight={flowHeight}>
@@ -213,9 +216,8 @@ export default function NarrativeSlide({
                 <>
                     <BackgroundVideo
                         ref={videoRef}
-                        src={getAssetPath(backgroundVideo)}
-                        poster={poster ? getAssetPath(poster) : undefined}
-                        $mobileObjectPosition={mobileVideoPosition}
+                        src={videoSrc}
+                        poster={posterSrc}
                         {...(scrollProgress
                             ? { preload: "auto" }
                             : { loop: true })}

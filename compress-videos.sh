@@ -3,13 +3,13 @@
 # Compress raw video assets for web delivery
 # Source: raw_assets/CHAPTER {1,2,3}/ → Output: public/videos/ch{1,2,3}/
 #
-# Two compression profiles:
+# Three compression profiles:
 #   Standard (full-bleed background videos): 1280x720, CRF 28
 #   Data Point animations: native aspect ratio, CRF 26
+#   Mobile portrait crops: 405x720 (9:16), CRF 28, no keyframes
 #
-# Mobile autoplay videos (same resolution, no keyframes):
-#   - Dedicated mobile source files (*_MOBILE*, *_MOB*) are processed as standard
-#   - Videos with "mobile": true in overrides get a _mobile.mp4 re-encode without keyframes
+# Mobile source files (*_MOBILE*, *_MOB*, *_M*) in raw assets are skipped entirely.
+# Portrait-cropped _mobile.mp4 variants are generated for every standard video.
 
 set -euo pipefail
 
@@ -212,19 +212,10 @@ for entry in "${CHAPTERS[@]}"; do
         [ -f "$filepath" ] || continue
         filename=$(basename "$filepath")
 
-        # Mobile source files: process as standard (no keyframes)
+        # Skip mobile source files — portrait crops are generated from standard sources
         if is_mobile "$filename"; then
-            # Skip mobile data point animations (not needed)
-            if is_datapoint "$filename"; then
-                echo "  SKIP (mobile datapoint): ${filename}"
-                ((skipped++))
-                continue
-            fi
-
-            out_name=$(make_output_name "$filename")
-            out_path="${dest}/${out_name}"
-            vf_opts="scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2"
-            encode_video "$filepath" "$out_path" "$vf_opts" 28 "mobile-src"
+            echo "  SKIP (mobile source): ${filename}"
+            ((skipped++))
             continue
         fi
 
@@ -255,12 +246,33 @@ for entry in "${CHAPTERS[@]}"; do
 
         encode_video "$filepath" "$out_path" "$vf_opts" "$crf" "$profile_label" "${extra_flags[@]+"${extra_flags[@]}"}"
 
-        # Generate mobile variant (standard, no keyframes) if override says so
-        mobile_override=$(get_override "$override_key" "mobile")
-        if [ "$mobile_override" = "true" ]; then
-            mobile_out_name="${out_name%.mp4}_mobile.mp4"
+        # Generate portrait-cropped mobile variant (405x720, 9:16) for standard videos
+        if [ "$profile_label" != "datapoint" ] && [[ "$profile_label" != datapoint* ]]; then
+            # Compute mobile output name
+            if [[ "$out_name" == *_desktop.mp4 ]]; then
+                mobile_out_name="${out_name/_desktop.mp4/_mobile.mp4}"
+            else
+                mobile_out_name="${out_name%.mp4}_mobile.mp4"
+            fi
             mobile_out_path="${dest}/${mobile_out_name}"
-            encode_video "$filepath" "$mobile_out_path" "$vf_opts" "$crf" "mobile"
+
+            # Determine crop x-offset (default: center)
+            crop_pos=$(get_override "$override_key" "mobileCropPosition")
+            crop_x=437  # center: (1280 - 405) / 2
+            if [ -n "$crop_pos" ]; then
+                case "$crop_pos" in
+                    left)   crop_x=0 ;;
+                    center) crop_x=437 ;;
+                    right)  crop_x=875 ;;
+                    *%)
+                        pct="${crop_pos%\%}"
+                        crop_x=$(echo "$pct * 875 / 100" | bc | cut -d. -f1)
+                        ;;
+                esac
+            fi
+
+            mobile_vf="scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,crop=405:720:${crop_x}:0"
+            encode_video "$filepath" "$mobile_out_path" "$mobile_vf" 28 "mobile-crop"
         fi
     done
     echo ""
