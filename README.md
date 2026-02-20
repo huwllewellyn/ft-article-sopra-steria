@@ -55,14 +55,15 @@ ft-article-sopra-steria/
 ## Installation
 
 1. **Clone and install dependencies:**
-   ```bash
-   npm install
-   ```
+
+    ```bash
+    npm install
+    ```
 
 2. **Install key libraries** (already included):
-   ```bash
-   npm install styled-components lottie-react framer-motion
-   ```
+    ```bash
+    npm install styled-components lottie-react framer-motion
+    ```
 
 ## Development
 
@@ -83,6 +84,7 @@ npm run build
 ```
 
 This creates a `dist` folder with:
+
 - `index.html` - The complete HTML file with inlined React code
 - `assets/` - JavaScript and CSS bundles
 
@@ -97,6 +99,7 @@ Images in `public/images/` can be compressed and resized using the provided scri
 ```
 
 **What it does:**
+
 - Scales images to height of 590px (maintaining aspect ratio)
 - Crops excess width from left and right to achieve 354x590px portrait dimensions
 - Compresses images to high quality using ffmpeg
@@ -104,6 +107,7 @@ Images in `public/images/` can be compressed and resized using the provided scri
 - Replaces originals with compressed versions
 
 **Example results:**
+
 - 19MB → 148KB (128x smaller)
 - 10MB → 24KB (417x smaller)
 - Most files: 5-15MB → 32-72KB (100-300x smaller)
@@ -114,11 +118,14 @@ Images in `public/images/` can be compressed and resized using the provided scri
 
 Videos in `public/images/` can be compressed and resized using a similar script. This scales landscape videos to portrait dimensions (354x590px) by scaling and cropping.
 
+Currently we run the `./generate-posters.sh` script separately, but run that after!
+
 ```bash
 ./compress-videos.sh
 ```
 
 **What it does:**
+
 - Scales videos to height of 590px (maintaining aspect ratio)
 - Crops excess width from left and right to achieve 354x590px portrait dimensions
 - Re-encodes with H.264 codec for web delivery
@@ -126,10 +133,12 @@ Videos in `public/images/` can be compressed and resized using a similar script.
 - Replaces originals with compressed versions
 
 **Example results:**
+
 - 1.0MB → 376KB (2.7x smaller)
 - 13MB → 2.8MB (4.6x smaller)
 
 **Configuration:** Edit WIDTH, HEIGHT, and CRF (quality) settings at the top of `compress-videos.sh`:
+
 - `CRF`: 0-51 (lower = better quality; 18-28 is good quality range; 23 is default)
 - `preset`: ultrafast to veryslow (affects encoding speed and final size)
 
@@ -140,11 +149,13 @@ Videos in `public/images/` can be compressed and resized using a similar script.
 This repository is configured for GitHub Pages deployment.
 
 **Deploy updates:**
+
 ```bash
 npm run deploy
 ```
 
 This will:
+
 1. Build the project (`npm run build`)
 2. Deploy the dist folder to the `gh-pages` branch
 3. GitHub Pages serves changes at: `https://casper-codes.github.io/ft-article-sopra-steria`
@@ -157,14 +168,15 @@ Send the GitHub Pages link for design review before final S3 deployment.
 The built `dist` folder is ready for S3 deployment:
 
 1. **Build the project:**
-   ```bash
-   npm run build
-   ```
+
+    ```bash
+    npm run build
+    ```
 
 2. **Upload to S3:**
-   - Compress the `dist` folder contents
-   - Send to FT S3 team or upload via S3 console
-   - The relative paths (`./`) will work correctly in any S3 folder structure
+    - Compress the `dist` folder contents
+    - Send to FT S3 team or upload via S3 console
+    - The relative paths (`./`) will work correctly in any S3 folder structure
 
 **No additional configuration needed** — the `base: './'` in vite.config.js handles relative path loading for both GitHub Pages and S3.
 
@@ -187,33 +199,33 @@ The `LottieScrolljack` component creates a full-width, sticky animation that scr
 ### Usage
 
 ```jsx
-import LottieScrolljack from './LottieScrolljack'
+import LottieScrolljack from "./LottieScrolljack";
 
 export default function MySection() {
-  return (
-    <LottieScrolljack
-      animations={{
-        mobile: "/lottie/mobile/animation.json",
-        tablet: "/lottie/tablet/animation.json",
-        desktop: "/lottie/desktop/animation.json",
-      }}
-      backgroundColor="#FFFFFF"
-      loop={false}
-      trackHeight="2000px"  // Optional - default 4000px
-    />
-  )
+    return (
+        <LottieScrolljack
+            animations={{
+                mobile: "/lottie/mobile/animation.json",
+                tablet: "/lottie/tablet/animation.json",
+                desktop: "/lottie/desktop/animation.json",
+            }}
+            backgroundColor="#FFFFFF"
+            loop={false}
+            trackHeight="2000px" // Optional - default 4000px
+        />
+    );
 }
 ```
 
 ### Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `animations` | Object | Required | Breakpoint-mapped animation paths |
-| `backgroundColor` | String | `#FFFFFF` | Background color for viewport |
-| `trackHeight` | String | `4000px` | Scrollable track area height |
-| `loop` | Boolean | `false` | Whether animation loops |
-| `autoplay` | Boolean | `false` | Whether animation plays automatically |
+| Prop              | Type    | Default   | Description                           |
+| ----------------- | ------- | --------- | ------------------------------------- |
+| `animations`      | Object  | Required  | Breakpoint-mapped animation paths     |
+| `backgroundColor` | String  | `#FFFFFF` | Background color for viewport         |
+| `trackHeight`     | String  | `4000px`  | Scrollable track area height          |
+| `loop`            | Boolean | `false`   | Whether animation loops               |
+| `autoplay`        | Boolean | `false`   | Whether animation plays automatically |
 
 ### How It Works
 
@@ -228,21 +240,27 @@ export default function MySection() {
 ### Core Animation Components
 
 #### LottieScrolljack
+
 Reusable component for full-width, scroll-driven animations. Handles:
+
 - Aspect ratio detection
 - Viewport height constraints
 - Scroll progress tracking
 - Frame synchronization
 
 #### LottieAnimation
+
 Base animation component that wraps lottie-web. Features:
+
 - Lazy loading via Intersection Observer
 - Scroll progress support (via framer-motion MotionValue)
 - Fallback path support
 - SVG/canvas renderer options
 
 #### ResponsiveLottieAnimation
+
 Breakpoint-aware wrapper that:
+
 - Detects current screen size
 - Selects appropriate animation file
 - Passes through animation props
@@ -251,6 +269,7 @@ Breakpoint-aware wrapper that:
 ### Section Components
 
 Each chapter uses the `LottieScrolljack` component for full-width animations:
+
 - **RisksSection** - DP01 animation
 - **PolycrisisSection** - DP02 animation
 - **NexusInActionSection** - DP03 & DP04 animations
@@ -264,83 +283,85 @@ When adding new sections with scrolljack animations, follow this pattern:
 
 ```jsx
 // src/components/NewSection.jsx
-import styled from 'styled-components'
-import { motion } from 'framer-motion'
-import LottieScrolljack from './LottieScrolljack'
+import styled from "styled-components";
+import { motion } from "framer-motion";
+import LottieScrolljack from "./LottieScrolljack";
 
 const Container = styled.section`
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 80px 40px;
-  background: #FFFFFF;
-`
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 80px 40px;
+    background: #ffffff;
+`;
 
 const ContentWrapper = styled.div`
-  max-width: 900px;
-  margin: 0 auto;
-`
+    max-width: 900px;
+    margin: 0 auto;
+`;
 
 const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.1 }
-  }
-}
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    },
+};
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-}
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
 
 export default function NewSection() {
-  return (
-    <>
-      <Container>
-        <ContentWrapper>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            variants={containerVariants}
-          >
-            {/* Your text content */}
-          </motion.div>
-        </ContentWrapper>
-      </Container>
+    return (
+        <>
+            <Container>
+                <ContentWrapper>
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                        variants={containerVariants}
+                    >
+                        {/* Your text content */}
+                    </motion.div>
+                </ContentWrapper>
+            </Container>
 
-      {/* Add scrolljack animation */}
-      <LottieScrolljack
-        animations={{
-          mobile: '/lottie/mobile/animation.json',
-          tablet: '/lottie/tablet/animation.json',
-          desktop: '/lottie/desktop/animation.json'
-        }}
-        backgroundColor="#FFFFFF"
-        loop={false}
-      />
-    </>
-  )
+            {/* Add scrolljack animation */}
+            <LottieScrolljack
+                animations={{
+                    mobile: "/lottie/mobile/animation.json",
+                    tablet: "/lottie/tablet/animation.json",
+                    desktop: "/lottie/desktop/animation.json",
+                }}
+                backgroundColor="#FFFFFF"
+                loop={false}
+            />
+        </>
+    );
 }
 ```
 
 Then import and add to App.jsx:
+
 ```jsx
-import NewSection from './components/NewSection'
+import NewSection from "./components/NewSection";
 
 function App() {
-  return (
-    <>
-      <NewSection />
-    </>
-  )
+    return (
+        <>
+            <NewSection />
+        </>
+    );
 }
 ```
 
 ## Dependencies
 
 ### Runtime
+
 - **react**: ^19.2.0 — UI framework
 - **react-dom**: ^19.2.0 — DOM rendering
 - **styled-components**: ^6.1.19 — CSS-in-JS styling
@@ -348,6 +369,7 @@ function App() {
 - **lottie-react**: ^2.4.1 — Vector animations
 
 ### Development
+
 - **vite**: ^7.2.4 — Build tool
 - **@vitejs/plugin-react**: ^5.1.1 — Vite React plugin
 - **eslint**: ^9.39.1 — Code linting
@@ -360,6 +382,7 @@ function App() {
 - **Global Styles**: Minimal reset in `src/index.css` to avoid conflicts with FT styling
 
 The FT template handles:
+
 - Header and footer styling
 - Layout structure (vertical flow in `.pc-content`)
 - Brand colors and typography
@@ -372,62 +395,73 @@ The FT template handles:
 ## Git Workflow
 
 1. **Develop locally:**
-   ```bash
-   npm run dev
-   ```
+
+    ```bash
+    npm run dev
+    ```
 
 2. **Commit changes:**
-   ```bash
-   git add .
-   git commit -m "Description of changes"
-   git push
-   ```
+
+    ```bash
+    git add .
+    git commit -m "Description of changes"
+    git push
+    ```
 
 3. **Deploy to GitHub Pages:**
-   ```bash
-   npm run deploy
-   ```
+
+    ```bash
+    npm run deploy
+    ```
 
 4. **Final S3 Handoff:**
-   - Build the project
-   - Zip the `dist` folder
-   - Send to FT S3 team with deployment instructions
+    - Build the project
+    - Zip the `dist` folder
+    - Send to FT S3 team with deployment instructions
 
 ## Troubleshooting
 
 **Problem:** Assets not loading on GitHub Pages
+
 - **Solution:** Ensure `base: './'` is set in vite.config.js
 
 **Problem:** Styling broken after build
+
 - **Solution:** Check that FT CSS is being loaded from index.html (not stripped during build)
 
 **Problem:** React component not rendering
+
 - **Solution:** Verify the React mount point `<div id="react-root"></div>` exists in index.html
 
 **Problem:** LottieScrolljack animation not scrubbing
+
 - **Solution:**
-  - Verify animation track height is tall enough (minimum 1000px recommended)
-  - Check that Lottie JSON files are loading (check Network tab in DevTools)
-  - Ensure `loop={false}` and `autoplay={false}` for scrolljack behavior
+    - Verify animation track height is tall enough (minimum 1000px recommended)
+    - Check that Lottie JSON files are loading (check Network tab in DevTools)
+    - Ensure `loop={false}` and `autoplay={false}` for scrolljack behavior
 
 **Problem:** Animation exceeds viewport height on mobile
+
 - **Solution:** This is expected behavior - width automatically reduces to fit within 100svh. Verify aspect ratio calculation is correct.
 
 **Problem:** Scroll tracking not working
+
 - **Solution:**
-  - Check that framer-motion is properly installed
-  - Verify `target` ref is properly attached to AnimationTrack
-  - Ensure offset values in `useScroll` are correct: `["start start", "end end"]`
+    - Check that framer-motion is properly installed
+    - Verify `target` ref is properly attached to AnimationTrack
+    - Ensure offset values in `useScroll` are correct: `["start start", "end end"]`
 
 **Problem:** Lottie animation frames jumping/stuttering
+
 - **Solution:**
-  - Frame count may be too high - reduce animation complexity or split into smaller animations
-  - Enable scroll debouncing for very large frame counts
-  - Use SVG renderer (default) rather than canvas for better performance
+    - Frame count may be too high - reduce animation complexity or split into smaller animations
+    - Enable scroll debouncing for very large frame counts
+    - Use SVG renderer (default) rather than canvas for better performance
 
 ## Future Enhancements
 
 Consider adding:
+
 - TypeScript support
 - E2E testing (Playwright/Cypress)
 - Component library/Storybook
@@ -437,6 +471,7 @@ Consider adding:
 ## Resources
 
 ### Documentation
+
 - [Vite Documentation](https://vitejs.dev)
 - [React Documentation](https://react.dev)
 - [Styled Components Documentation](https://styled-components.com)
@@ -445,10 +480,12 @@ Consider adding:
 - [Lottie React Documentation](https://github.com/LottieFiles/lottie-react)
 
 ### Animation & Scrolling
+
 - [Framer Motion Scroll Documentation](https://www.framer.com/motion/use-scroll/)
 - [Lottie Animation Library](https://lottiefiles.com)
 
 ### Design & Standards
+
 - [FT Origami Components](https://origami.ft.com)
 - [Responsive Design Breakpoints](https://www.figma.com/design/) (for Figma integration via MCP)
 

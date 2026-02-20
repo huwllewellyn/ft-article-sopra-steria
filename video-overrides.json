@@ -23,6 +23,10 @@
         "keyframes": "every",
         "comment": "Port of Dover — scroll-scrubbed chapter title, needs every-frame keyframes."
     },
+    "ch3/ch3_5.mp4": {
+        "maxDuration": 15,
+        "comment": "Truck road — clipped to 15s to reduce file size."
+    },
     "ch3/ch3_3.mp4": {
         "mobileCropPosition": "left",
         "comment": "Truck depot — focal point is on the left side."

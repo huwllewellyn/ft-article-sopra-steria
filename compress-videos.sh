@@ -238,10 +238,15 @@ for entry in "${CHAPTERS[@]}"; do
         # Check for per-video overrides
         override_key="${ch}/${out_name}"
         keyframe_override=$(get_override "$override_key" "keyframes")
+        max_duration=$(get_override "$override_key" "maxDuration")
         extra_flags=()
         if [ "$keyframe_override" = "every" ]; then
             extra_flags+=(-g 1 -keyint_min 1)
             profile_label="${profile_label}+keyframes"
+        fi
+        if [ -n "$max_duration" ]; then
+            extra_flags+=(-t "$max_duration")
+            profile_label="${profile_label}+clip${max_duration}s"
         fi
 
         encode_video "$filepath" "$out_path" "$vf_opts" "$crf" "$profile_label" "${extra_flags[@]+"${extra_flags[@]}"}"
@@ -272,7 +277,11 @@ for entry in "${CHAPTERS[@]}"; do
             fi
 
             mobile_vf="scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,crop=405:720:${crop_x}:0"
-            encode_video "$filepath" "$mobile_out_path" "$mobile_vf" 28 "mobile-crop"
+            mobile_extra=()
+            if [ -n "$max_duration" ]; then
+                mobile_extra+=(-t "$max_duration")
+            fi
+            encode_video "$filepath" "$mobile_out_path" "$mobile_vf" 28 "mobile-crop" "${mobile_extra[@]+"${mobile_extra[@]}"}"
         fi
     done
     echo ""
