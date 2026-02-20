@@ -133,6 +133,8 @@ function App() {
                         loop
                         muted
                         playsInline
+                        fetchpriority="high"
+                        poster={getAssetPath("videos/posters/intro/GettyImages-1444535963.jpg")}
                         src={getAssetPath("videos/intro/GettyImages-1444535963.mp4")}
                     />
                     <VideoOverlay />
