@@ -5,7 +5,7 @@ import SectionHeadingBar from "./SectionHeadingBar";
 
 const Slide = styled.section`
     min-height: 100vh;
-    background: ${({ $bg }) => $bg || '#f7ff95'};
+    background: ${({ $bg }) => $bg || "#f7ff95"};
     color: #000;
     display: flex;
     flex-direction: column;
@@ -15,9 +15,11 @@ const ContentArea = styled.div`
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: ${({ $align }) => $align === 'bottom' ? 'flex-end' : 'center'};
+    justify-content: ${({ $align }) =>
+        $align === "bottom" ? "flex-end" : "center"};
     align-items: center;
-    padding: ${({ $align }) => $align === 'bottom' ? '60px 80px 120px' : '60px 80px'};
+    padding: ${({ $align }) =>
+        $align === "bottom" ? "60px 80px 120px" : "60px 80px"};
     max-width: 846px;
     margin: 0 auto;
     width: 100%;
@@ -39,7 +41,7 @@ const ContentArea = styled.div`
 
 export const EditorialBody = styled.div`
     p {
-        font-family: 'logic-monospace', monospace;
+        font-family: "logic-monospace", monospace;
         font-size: 24px;
         font-weight: 500;
         line-height: 1.35;
@@ -67,17 +69,27 @@ export const EditorialBody = styled.div`
     }
 `;
 
-export default function EditorialSlide({ sectionTitle, children, backgroundColor, headingColor, contentAlign }) {
+export default function EditorialSlide({
+    sectionTitle,
+    children,
+    backgroundColor,
+    headingColor,
+    contentAlign,
+}) {
     return (
         <Slide $bg={backgroundColor}>
-            {sectionTitle && <SectionHeadingBar color={headingColor}>{sectionTitle}</SectionHeadingBar>}
+            {sectionTitle && (
+                <SectionHeadingBar color={headingColor}>
+                    {sectionTitle}
+                </SectionHeadingBar>
+            )}
             <ContentArea
                 as={motion.div}
                 $align={contentAlign}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "0px 0px -50% 0px" }}
-                transition={{ duration: 1.4, ease: "easeOut" }}
+                viewport={{ once: true, margin: "0px 0px -85% 0px" }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
             >
                 {children}
             </ContentArea>

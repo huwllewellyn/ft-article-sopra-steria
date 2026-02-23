@@ -1,19 +1,16 @@
-import { useState, useRef, useLayoutEffect, useEffect } from "react";
+import { useRef, useLayoutEffect, useEffect } from "react";
 import styled from "styled-components";
-import { useScroll } from "framer-motion";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import SectionHeadingBar from "./SectionHeadingBar";
-import useScrollVideo from "../../hooks/useScrollVideo";
 import ResponsiveLottieAnimation from "../ResponsiveLottieAnimation";
 
 const GLITCH_CHARS =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?<>{}[]~/\\|";
 
-const ScrollTrack = styled.div`
+const SlideWrapper = styled.div`
     position: relative;
-    height: ${({ $height }) => $height};
-    margin-bottom: ${({ $margin }) => $margin};
+    height: 200vh;
 `;
 
 const StickyInner = styled.div`
@@ -158,7 +155,6 @@ export default function DataGridSlide({
     headingBordered,
     headingFontFamily,
     headingFontWeight,
-    gridColor,
     backgroundVideo,
     lottieAnimation,
     lottieHeight,
@@ -168,36 +164,37 @@ export default function DataGridSlide({
     backgroundColor,
     maxWidth,
     children,
-    scrollProgress,
     mobileScale,
 }) {
-    const trackRef = useRef();
+    const slideRef = useRef();
     const contentRef = useRef();
     const itemsRef = useRef([]);
     const revealedRef = useRef(new Set());
-    const [itemCount, setItemCount] = useState(0);
+    const hasStartedRef = useRef(false);
 
-    const trackHeight = itemCount > 0 ? `${itemCount * 100}vh` : "100vh";
-    const trackMargin = itemCount > 0 ? "-100vh" : "0";
-
-    const { scrollYProgress } = useScroll({
-        target: trackRef,
-        offset: ["start start", "end end"],
-    });
-
-    const activeProgress = scrollProgress || scrollYProgress;
-    const videoRef = useScrollVideo(activeProgress);
-
-    // Count <p> elements and setup items
+    // Appear-in-place: z-index stacking + show when scrolled into position
     useLayoutEffect(() => {
-        const el = trackRef.current;
+        const el = slideRef.current;
         if (!el) return;
-
-        // Appear-in-place: z-index + initially hidden
         const siblings = Array.from(el.parentElement.children);
         el.style.zIndex = siblings.indexOf(el) + 1;
         el.style.opacity = "0";
+    }, []);
 
+    useEffect(() => {
+        const el = slideRef.current;
+        if (!el) return;
+        const handleScroll = () => {
+            const appeared = el.getBoundingClientRect().top <= 0;
+            el.style.opacity = appeared ? "1" : "0";
+        };
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // Count <p> elements and setup items - initially hide all except first
+    useLayoutEffect(() => {
         const ps = contentRef.current?.querySelectorAll("p");
         if (ps && ps.length > 0) {
             const items = Array.from(ps).map((p) => {
@@ -206,9 +203,8 @@ export default function DataGridSlide({
                 return { p, target };
             });
             itemsRef.current = items;
-            setItemCount(ps.length);
 
-            items.forEach(({ p, target }, i) => {
+            items.forEach(({ target }, i) => {
                 target.style.transition = "opacity 0.3s ease";
                 if (i === 0) {
                     target.style.opacity = "1";
@@ -220,104 +216,95 @@ export default function DataGridSlide({
         }
     }, []);
 
-    // Appear-in-place: show when scrolled to top
+    // Auto-reveal items sequentially when slide enters viewport
     useEffect(() => {
-        const el = trackRef.current;
+        const el = slideRef.current;
         if (!el) return;
-        const handleScroll = () => {
-            el.style.opacity = el.getBoundingClientRect().top <= 0 ? "1" : "0";
-        };
-        handleScroll();
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting && !hasStartedRef.current) {
+                    hasStartedRef.current = true;
+                    const items = itemsRef.current;
+                    let currentIndex = 1; // 0 is already revealed
+
+                    const interval = setInterval(() => {
+                        if (currentIndex >= items.length) {
+                            clearInterval(interval);
+                            return;
+                        }
+                        const { p, target } = items[currentIndex];
+                        target.style.opacity = "1";
+                        revealedRef.current.add(currentIndex);
+                        scrambleElement(p);
+                        currentIndex++;
+                    }, 1500);
+                }
+            },
+            { threshold: 0.3 },
+        );
+
+        observer.observe(el);
+        return () => observer.disconnect();
     }, []);
 
-    // Sequential reveal with scramble
-    useEffect(() => {
-        const items = itemsRef.current;
-        if (items.length === 0) return;
-
-        const unsubscribe = scrollYProgress.on("change", (v) => {
-            const count = Math.min(
-                Math.floor(v * items.length) + 1,
-                items.length,
-            );
-
-            items.forEach(({ p, target }, i) => {
-                if (i < count) {
-                    target.style.opacity = "1";
-                    if (!revealedRef.current.has(i)) {
-                        revealedRef.current.add(i);
-                        scrambleElement(p);
-                    }
-                } else {
-                    target.style.opacity = "0";
-                    revealedRef.current.delete(i);
-                }
-            });
-        });
-
-        return unsubscribe;
-    }, [scrollYProgress]);
-
     return (
-        <ScrollTrack ref={trackRef} $height={trackHeight} $margin={trackMargin}>
+        <SlideWrapper ref={slideRef}>
             <StickyInner>
-                <Slide $bg={backgroundColor}>
-                    {lottieAnimation && (
-                        <BackgroundLottie
-                            $height={lottieHeight}
-                            $bottom={lottieBottom}
-                            $top={lottieTop}
-                            $mobileScale={mobileScale}
-                        >
-                            <ResponsiveLottieAnimation
-                                animations={lottieAnimation}
-                                loop={false}
-                                autoplay={false}
-                                scrollProgress={activeProgress}
-                                width="100%"
-                                height="100%"
-                                preserveAspectRatio={
-                                    lottieHeight
-                                        ? "xMidYMid meet"
-                                        : "xMidYMid slice"
-                                }
-                            />
-                        </BackgroundLottie>
-                    )}
-                    {backgroundVideo && !lottieAnimation && (
-                        <BackgroundVideo
-                            ref={videoRef}
-                            src={getAssetPath(backgroundVideo)}
-                            poster={poster ? getAssetPath(poster) : undefined}
-                            muted
-                            playsInline
-                            preload="auto"
+            <Slide $bg={backgroundColor}>
+                {lottieAnimation && (
+                    <BackgroundLottie
+                        $height={lottieHeight}
+                        $bottom={lottieBottom}
+                        $top={lottieTop}
+                        $mobileScale={mobileScale}
+                    >
+                        <ResponsiveLottieAnimation
+                            animations={lottieAnimation}
+                            loop={true}
+                            autoplay={true}
+                            width="100%"
+                            height="100%"
+                            preserveAspectRatio={
+                                lottieHeight
+                                    ? "xMidYMid meet"
+                                    : "xMidYMid slice"
+                            }
                         />
-                    )}
-                    {sectionTitle && (
-                        <SectionHeadingBar
-                            color={headingColor}
-                            bordered={headingBordered}
-                            fontFamily={headingFontFamily}
-                            fontWeight={headingFontWeight}
-                        >
-                            {sectionTitle}
-                        </SectionHeadingBar>
-                    )}
-                    <ContentArea ref={contentRef} $maxWidth={maxWidth}>
-                        {children}
-                        <p
-                            aria-hidden
-                            style={{
-                                position: "absolute",
-                                visibility: "hidden",
-                            }}
-                        />
-                    </ContentArea>
-                </Slide>
+                    </BackgroundLottie>
+                )}
+                {backgroundVideo && !lottieAnimation && (
+                    <BackgroundVideo
+                        src={getAssetPath(backgroundVideo)}
+                        poster={poster ? getAssetPath(poster) : undefined}
+                        muted
+                        playsInline
+                        autoPlay
+                        loop
+                    />
+                )}
+                {sectionTitle && (
+                    <SectionHeadingBar
+                        color={headingColor}
+                        bordered={headingBordered}
+                        fontFamily={headingFontFamily}
+                        fontWeight={headingFontWeight}
+                    >
+                        {sectionTitle}
+                    </SectionHeadingBar>
+                )}
+                <ContentArea ref={contentRef} $maxWidth={maxWidth}>
+                    {children}
+                    <p
+                        aria-hidden
+                        style={{
+                            position: "absolute",
+                            visibility: "hidden",
+                        }}
+                    />
+                </ContentArea>
+            </Slide>
             </StickyInner>
-        </ScrollTrack>
+        </SlideWrapper>
     );
 }

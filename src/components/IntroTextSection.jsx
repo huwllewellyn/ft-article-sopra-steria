@@ -1,5 +1,6 @@
+import { useRef } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { media } from "../utils/breakpoints";
 
 const Outer = styled.section`
@@ -62,14 +63,16 @@ const TextBlock = styled(motion.div)`
 `;
 
 export default function IntroTextSection() {
+    const outerRef = useRef(null);
+    const isInView = useInView(outerRef, { once: true, margin: "0px 0px -100% 0px" });
+
     return (
-        <Outer>
+        <Outer ref={outerRef}>
             <Container>
                 <TextBlock
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8 }}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
                 >
                     <p>
                         <strong>That is all it takes</strong> to bring down
