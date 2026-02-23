@@ -235,7 +235,7 @@ export default function NarrativeSlide({
                         animations={lottieOverlay}
                         height="100%"
                         width="100%"
-                        loop
+                        loop={false}
                         autoplay
                         preserveAspectRatio="xMidYMid meet"
                     />
