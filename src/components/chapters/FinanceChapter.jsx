@@ -1,4 +1,6 @@
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import { ChapterIntro } from "../shared";
@@ -19,7 +21,7 @@ import {
 } from "../slides";
 import { EditorialBody } from "../slides/EditorialSlide";
 
-const F13Text = styled.div`
+const F13TextStyled = styled(motion.div)`
     font-family: "logic-monospace", monospace;
     font-size: 21px;
     font-weight: 500;
@@ -32,8 +34,8 @@ const F13Text = styled.div`
     margin: 0 auto;
     position: absolute;
     bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
     padding: 0 80px;
     box-sizing: border-box;
 
@@ -56,6 +58,53 @@ const F13Text = styled.div`
         letter-spacing: -1.5px;
     `)}
 `;
+
+function F13Text({ children }) {
+    const ref = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        let trackEl = null;
+
+        const handleScroll = () => {
+            const el = ref.current;
+            if (!el || isVisible) return;
+
+            if (!trackEl) {
+                let node = el.parentElement;
+                while (node && node !== document.body) {
+                    if (node.style.opacity !== "") {
+                        trackEl = node;
+                        break;
+                    }
+                    node = node.parentElement;
+                }
+                trackEl = trackEl || el;
+            }
+
+            const rect = trackEl.getBoundingClientRect();
+            if (rect.top <= 0 && rect.bottom > 0) {
+                setIsVisible(true);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [isVisible]);
+
+    return (
+        <F13TextStyled
+            ref={ref}
+            initial={{ opacity: 0, y: 30 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+        >
+            {children}
+        </F13TextStyled>
+    );
+}
+
 import SlideQuote from "../slides/SlideQuote";
 import useScrollVideo from "../../hooks/useScrollVideo";
 import useAutoplayOnView from "../../hooks/useAutoplayOnView";
