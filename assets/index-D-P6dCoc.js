@@ -354,14 +354,14 @@ Error generating stack: `+c.message+`
     }
 `;function IntroTextSection(){const t=reactExports.useRef(null),e=useInView(t,{once:!0,margin:"0px 0px -100% 0px"});return jsxRuntimeExports.jsx(Outer,{ref:t,children:jsxRuntimeExports.jsx(Container$3,{children:jsxRuntimeExports.jsxs(TextBlock,{initial:{opacity:0,y:30},animate:e?{opacity:1,y:0}:{opacity:0,y:30},transition:{duration:.4,ease:"easeOut"},children:[jsxRuntimeExports.jsxs("p",{children:[jsxRuntimeExports.jsx("strong",{children:"That is all it takes"})," to bring down networks, disrupt lives and cause a cascade of harm in today's hyper-connected world."]}),jsxRuntimeExports.jsxs("p",{children:["Against this backdrop, what could happen if three key European industries – ",jsxRuntimeExports.jsx("strong",{children:"energy"}),","," ",jsxRuntimeExports.jsx("strong",{children:"finance"})," and ",jsxRuntimeExports.jsx("strong",{children:"transport"})," ","– come under fire?"]}),jsxRuntimeExports.jsx("p",{children:"And what solutions exist to protect society in this new age of digital warfare?"})]})})})}const NavContainer=dt.nav`
     position: fixed;
-    bottom: 0;
+    bottom: env(safe-area-inset-bottom, 0px);
     left: 0;
     right: 0;
     z-index: 1000;
     background: rgba(19, 19, 19, 0.5);
     backdrop-filter: blur(4px);
     padding: 8px 240px 12px;
-    transform: translateY(${({$visible:t})=>t?"0":"100%"});
+    transform: translateY(${({$visible:t})=>t?"0":"calc(100% + env(safe-area-inset-bottom, 0px))"});
     transition: transform 0.4s ease;
 
     ${media.tablet(`
@@ -369,7 +369,7 @@ Error generating stack: `+c.message+`
     `)}
 
     ${media.mobile(`
-        padding: 8px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+        padding: 8px 20px 12px;
     `)}
 `,TabList=dt.div`
     display: flex;
