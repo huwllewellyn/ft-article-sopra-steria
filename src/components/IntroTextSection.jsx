@@ -81,17 +81,17 @@ export default function IntroTextSection() {
                     <p>
                         <strong>That is all it takes</strong> to bring down
                         networks, disrupt lives and cause a cascade of harm in
-                        today's hyper-connected world.
+                        today’s hyper-connected world.
                     </p>
                     <p>
                         Against this backdrop, what could happen if three key
                         European industries – <strong>energy</strong>,{" "}
                         <strong>finance</strong> and <strong>transport</strong>{" "}
-                        – come under fire?
+                        – came under fire?
                     </p>
                     <p>
-                        And what solutions exist to protect society in this new
-                        age of digital warfare?
+                        What solutions exist to protect society in this new age
+                        of digital warfare?
                     </p>
                 </TextBlock>
             </Container>

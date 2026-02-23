@@ -12,7 +12,6 @@ const Container = styled.section`
     overflow: hidden;
 `;
 
-
 const WarningBox = styled(motion.div)`
     position: relative;
     z-index: 2;
@@ -57,7 +56,7 @@ export default function WarningSection() {
                 <WarningText>
                     Flashing lights warning:
                     <br />
-                    the following content contains small glitch effects that may
+                    the following content contains glitch effects that may
                     affect those with photosensitive epilepsy
                 </WarningText>
             </WarningBox>

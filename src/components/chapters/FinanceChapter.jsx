@@ -233,7 +233,7 @@ export default function FinanceChapter() {
                                 <ChapterIntro
                                     chapter="CHAPTER_TWO"
                                     title="FINANCE"
-                                    subtitle="How a single email could crash a continent's payment systems"
+                                    subtitle="How a single email could crash a continent’s payment systems"
                                 />
                             </div>
                         </HeroSection>
@@ -321,9 +321,8 @@ export default function FinanceChapter() {
                         >
                             <p>
                                 A stressed store manager clicks a link to a
-                                lookalike inventory portal in an
-                                &ldquo;urgent&rdquo; email from a supposed HQ
-                                executive.
+                                lookalike inventory portal in an “urgent” email
+                                from a supposed HQ executive.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -337,7 +336,7 @@ export default function FinanceChapter() {
                         >
                             <p>
                                 Cyber attackers can now traverse the network and
-                                deploy malware to the retailer's POS system.
+                                deploy malware to the retailer’s POS system.
                             </p>
                             <br />
                             <br />
@@ -421,18 +420,18 @@ export default function FinanceChapter() {
             {/* F9 — Editorial: phishing attacks */}
             <StickySlide>
                 <EditorialSlide
-                    sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
+                    sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
                     <EditorialBody>
                         <p>
-                            Today's <strong>phishing attacks</strong> are
-                            meticulous &ndash; they mimic corporate tone,
-                            structure and urgency. An employee's decision to
-                            trust an email while under pressure provides the
-                            attackers with everything they need to prowl the
-                            network and access a vulnerable system.
+                            Today’s <strong>phishing attacks</strong> are
+                            meticulous mimicking corporate tone, structure and
+                            urgency. An employee’s decision to trust an email
+                            while under pressure provides the attackers with
+                            everything they need to prowl the network and access
+                            a vulnerable system.
                         </p>
                         <p>
                             Artificial intelligence (AI) enables attackers to
@@ -487,7 +486,7 @@ export default function FinanceChapter() {
                             <a href="https://www.soprasteria.com/docs/librariesprovider2/sopra-steria-corporate/publications/en_25.08.20---sopra-steria---%C3%A9tat-de-la-cybers%C3%A9curit%C3%A9-en-2025.pdf?sfvrsn=216234db_6">
                                 reported
                             </a>{" "}
-                            by customers to Sopra Steria's clients were
+                            by customers to Sopra Steria’s clients were
                             phishing-related.
                         </p>
                         <p>
@@ -521,10 +520,10 @@ export default function FinanceChapter() {
                         <DataText $bg={ACCENT}></DataText>
                         <F13Text>
                             is the approximate share of organisations that
-                            suffered a material incident in the past 12 months,
-                            and say it was caused by a third party, according to
-                            the World Economic Forum&rsquo;s 2024 Cybersecurity
-                            Outlook.
+                            recorded a material incident during the past 12
+                            months and say it was caused by a third party,
+                            according to the World Economic Forum&rsquo;s 2024
+                            Cybersecurity Outlook.
                         </F13Text>
                     </DataGridSlide>
                 )}
@@ -554,13 +553,13 @@ export default function FinanceChapter() {
                     () => (
                         <NarrativeSlide
                             timestamp="3:00pm"
-                            heading="FROM A COMPANY BREACH TO MAJOR DISRUPTION"
+                            heading="FROM COMPANY BREACH TO MAJOR DISRUPTION"
                             backgroundColor="transparent"
                             textPosition="top"
                             accentColor={ACCENT}
                         >
                             <p>
-                                All of the retailer's stores close as payments
+                                All of the retailer’s stores close as payments
                                 and inventory systems fail.
                             </p>
                         </NarrativeSlide>
@@ -596,7 +595,7 @@ export default function FinanceChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        The first media reports break as customers report
+                        The first media stories break as customers report
                         phishing attacks.
                     </p>
                 </NarrativeSlide>
@@ -618,7 +617,7 @@ export default function FinanceChapter() {
                             grind to a halt.
                         </p>
                         <p>
-                            The cost of these attacks is high: both financially
+                            The cost of these attacks is high, both financially
                             and in terms of customer trust.
                         </p>
                     </EditorialBody>
@@ -634,11 +633,11 @@ export default function FinanceChapter() {
                 >
                     <EditorialBody>
                         <p>
-                            In 2025, UK retailer Marks & Spencer estimated that
-                            there had been a <strong>£300mn</strong> hit to
-                            profits following a cyber incident that stole
-                            customer data and disrupted operations and product
-                            availability.
+                            In 2025, UK retailer Marks & Spencer estimated a{" "}
+                            <strong>£300mn</strong> hit to profits following a
+                            cyber incident during which customer data was
+                            stolen, and operations and product availability
+                            disrupted.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -652,7 +651,7 @@ export default function FinanceChapter() {
                     headingColor={ACCENT}
                 >
                     <SlideQuote
-                        quote="With everything being connected, or wanting to be connected to every other system, firms must examine their architecture and make sure there aren’t any security gaps"
+                        quote="With everything connected or wanting to be connected to every other system, firms must examine their architecture and make sure there aren’t any security gaps"
                         name="Stefan Garczynski"
                         role="Managing Security Architect, Sopra Steria"
                     />
@@ -667,7 +666,7 @@ export default function FinanceChapter() {
                     headingColor={ACCENT}
                 >
                     <SlideQuote
-                        quote="A zero-trust architecture eliminates the ability for attackers to traverse the network, by ensuring authentication is always required and nothing is trusted automatically"
+                        quote="A zero-trust architecture eliminates the ability of attackers to traverse the network by ensuring authentication is always required and nothing is trusted automatically"
                         name="Stefan Garczynski"
                         role="Managing Security Architect, Sopra Steria"
                     />

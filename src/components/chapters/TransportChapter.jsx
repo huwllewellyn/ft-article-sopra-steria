@@ -145,7 +145,7 @@ export default function TransportChapter() {
                                 <ChapterIntro
                                     chapter="CHAPTER_THREE"
                                     title="TRANSPORT"
-                                    subtitle="How hidden vulnerabilities grind a country's transport network to a halt"
+                                    subtitle="How hidden vulnerabilities could grind a country’s transport network to a halt"
                                 />
                             </div>
                         </HeroSection>
@@ -171,8 +171,8 @@ export default function TransportChapter() {
                             <br />
                             <br />
                             <p>
-                                But just as the morning rush begins, unexpected
-                                glitches creep into navigation systems – this is
+                                Just as the morning rush begins, unexpected
+                                glitches creep into navigation systems. This is
                                 the first sign of a broader attack targeting
                                 transport nationwide.
                             </p>
@@ -192,8 +192,8 @@ export default function TransportChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        A driver taps the first delivery address for the day
-                        into his sat-nav, only for the screen to freeze.
+                        A driver taps the day’s first delivery address into his
+                        satnav, only for the screen to freeze.
                     </p>
                     <br />
                     <br />
@@ -212,14 +212,14 @@ export default function TransportChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        Others in the depot face similar issues and management
-                        wonders why vans aren't moving.
+                        Others in the depot face similar issues, and management
+                        wonders why vans aren’t moving.
                     </p>
                     <br />
                     <br />
                     <p>
-                        Thousands of pounds of revenue could be lost from a late
-                        departure.
+                        Thousands of pounds of revenue could be lost because of
+                        a late departure.
                     </p>
                 </NarrativeSlide>
             </StickySlide>
@@ -252,7 +252,7 @@ export default function TransportChapter() {
                     <EditorialBody>
                         <p>
                             While the Global Positioning System (GPS) has been a
-                            trusted navigation system since the mid-1990s, it's
+                            trusted navigation system since the mid-1990s, it’s
                             far from invulnerable.
                         </p>
                     </EditorialBody>
@@ -307,12 +307,12 @@ export default function TransportChapter() {
                     >
                         <DataText $bg={ACCENT}>
                             <span>
-                                EU Transport Sector Cyber Incidents (2025)
+                                EU transport sector cyber incidents (2025)
                             </span>
                         </DataText>
                         {/* <DataCenter $bg="#fff"></DataCenter> */}
                         <DataAttribution $bg={"#fff"}>
-                            <span>Source: ENISA 2025 Report</span>
+                            <span>Source: ENISA 2025 report</span>
                         </DataAttribution>
                     </DataGridSlide>
                 )}
@@ -423,7 +423,7 @@ export default function TransportChapter() {
                 >
                     <EditorialBody>
                         <p>
-                            Europe's reliance on GPS – a US-owned satellite
+                            Europe’s reliance on GPS – a US-owned satellite
                             service – poses a strategic risk in times of global
                             tension.
                         </p>
@@ -435,7 +435,7 @@ export default function TransportChapter() {
                             on the European Commission to accelerate the
                             deployment of interference-resistant Global
                             Navigation Satellite System (GNSS) technologies to
-                            accelerate Europe's digital sovereignty.
+                            accelerate Europe’s digital sovereignty.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -451,8 +451,8 @@ export default function TransportChapter() {
                     <EditorialBody>
                         <p>
                             Julia Carver, an assistant professor focusing on
-                            Europe's cybersecurity policy and strategic affairs
-                            at Leiden University, explains that the EU's vision
+                            Europe’s cybersecurity policy and strategic affairs
+                            at Leiden University, explains that the EU’s vision
                             of digital sovereignty emphasises
                             self-determination.
                         </p>
@@ -484,12 +484,12 @@ export default function TransportChapter() {
                 >
                     <EditorialBody>
                         <p>
-                            But from a legal perspective, digital sovereignty is
+                            From a legal perspective, digital sovereignty is
                             tricky.
                         </p>
                     </EditorialBody>
                     <SlideQuote
-                        quote="Digital sovereignty sounds compelling, but, in legal terms, it goes in many directions. It’s rooted in internal market law, while the threats themselves are cross-border"
+                        quote="Digital sovereignty sounds compelling but, in legal terms, it goes in many directions. It’s rooted in internal market law, yet the threats themselves are cross-border"
                         name="Elaine Fahey"
                         role="Professor of EU Law, City St George’s, University of London"
                     />
@@ -543,7 +543,7 @@ export default function TransportChapter() {
                         >
                             <p>
                                 Drivers are told they will need to work overtime
-                                to recoup the company's revenue losses.
+                                to recoup the company’s revenue losses.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -574,15 +574,15 @@ export default function TransportChapter() {
                     accentColor={ACCENT}
                 >
                     <p>
-                        A news alert says trains have been cancelled and delayed
-                        due to a coordinated attack on the Wi-Fi networks at UK
+                        A news alert says trains have been cancelled or delayed
+                        owing to a coordinated attack on wifi networks at UK
                         train stations.
                     </p>
                     <br />
                     <br />
                     <p>
-                        Cyber analysts believe a foreign entity is behind the
-                        travel chaos throughout the country.
+                        Cyber analysts believe a foreign entity is behind travel
+                        chaos throughout the country.
                     </p>
                 </NarrativeSlide>
             </StickySlide>

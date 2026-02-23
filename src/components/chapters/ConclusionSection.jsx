@@ -16,7 +16,7 @@ export default function ConclusionSection() {
                 >
                     <EditorialBody>
                         <p>
-                            Cyber threats do not respect borders, digital or
+                            Cyber threats do not respect borders – digital or
                             physical.
                         </p>
                     </EditorialBody>
@@ -33,11 +33,11 @@ export default function ConclusionSection() {
                     <EditorialBody>
                         <p>
                             From corrupted payment infrastructure in Madrid to a
-                            disrupted transport network throughout the UK and
-                            blackouts in Oslo, these hypothetical scenarios show
-                            how quickly disruption could ripple across Europe's
-                            daily life – crossing industries and countries in
-                            hours, sometimes minutes.
+                            disrupted UK or blackouts in Oslo, these
+                            hypothetical scenarios show how quickly disruption
+                            could ripple across Europe’s daily life – crossing
+                            industries and countries in hours, sometimes
+                            minutes.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -60,8 +60,8 @@ export default function ConclusionSection() {
                         <br />
                         <p>
                             These cases highlight why a multifaceted,
-                            cross-border and cross-sector approach to cyber
-                            security is required in today's hyper-connected
+                            cross-border and cross-sector approach to
+                            cybersecurity is required in today’s hyper-connected
                             society.
                         </p>
                         <br />
@@ -82,7 +82,7 @@ export default function ConclusionSection() {
             >
                 <EditorialSlide backgroundColor={ACCENT}>
                     <SlideQuote
-                        quote="It’s no longer a case of if an attack will happen, but when. To stay ahead of threats evolving in both complexity and scale, Europe must act not just with urgency, but with unity."
+                        quote="It’s no longer a case of if an attack will happen, but when. To stay ahead of threats evolving in both complexity and scale, Europe must act not just with urgency, but also with unity"
                         name="Fabien Lecoq"
                         role="Cybersecurity Director, Sopra Steria"
                     />

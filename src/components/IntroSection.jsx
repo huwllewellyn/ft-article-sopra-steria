@@ -291,7 +291,7 @@ export default function IntroSection() {
                             <BigQuestion variants={itemVariants}>
                                 what
                                 <br />
-                                if Europe's
+                                if Europe’s
                                 <br />
                                 networks
                                 <br />

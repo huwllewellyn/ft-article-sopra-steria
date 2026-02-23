@@ -365,9 +365,9 @@ export default function EnergyChapter() {
                             textPosition="top"
                         >
                             <p>
-                                A lead engineer at one of Norway's top energy
+                                A lead engineer at one of Norway’s top energy
                                 companies logs in for the evening shift and is
-                                immediately locked out of the grid's control
+                                immediately locked out of the grid’s control
                                 system.
                             </p>
                             <br />
@@ -385,7 +385,7 @@ export default function EnergyChapter() {
                             <p>
                                 Remotely, a hacktivist group is in the process
                                 of systematically taking out the smart grids of
-                                the country's leading energy providers via a{" "}
+                                the country’s leading energy providers via a{" "}
                                 <strong>
                                     distributed denial-of-service attack
                                 </strong>
@@ -418,7 +418,7 @@ export default function EnergyChapter() {
                     <br />
                     <p>
                         She presses the elevator button on the 14th floor of the
-                        company's building, but nothing happens.
+                        company’s building, but nothing happens.
                     </p>
                     <br />
                     <br />
@@ -438,7 +438,7 @@ export default function EnergyChapter() {
                     textPosition="top"
                 >
                     <p>
-                        Outside, the city's skyline no longer shines brightly.
+                        Outside, the city’s skyline no longer shines brightly.
                         Mobile and internet services are down.
                     </p>
                     <br />
@@ -455,7 +455,7 @@ export default function EnergyChapter() {
                         <br />
                         <br />
                         <p>
-                            But as energy networks become "smarter", with
+                            But as energy networks become “smarter”, with
                             automated load balancing, remote sensors and
                             increasing reliance on digital infrastructure, cyber
                             criminals can find novel ways of exploiting cracks
@@ -490,7 +490,7 @@ export default function EnergyChapter() {
                                     <br />
                                     between 2020 and 2022 in
                                     <br />
-                                    <strong>Europe's power sector</strong> with
+                                    <strong>Europe’s power sector</strong> with
                                 </span>
                             </DataText>
                         </ScrollReveal>
@@ -501,7 +501,7 @@ export default function EnergyChapter() {
                             <DataCenterLarge $bg="#fff">
                                 48 attacks
                                 <br />
-                                on Europe's energy
+                                on Europe’s energy
                                 <br />
                                 infrastructure
                             </DataCenterLarge>
@@ -561,7 +561,7 @@ export default function EnergyChapter() {
                     textPosition="top"
                 >
                     <p>
-                        As the grid's automated load balancers struggle to cope
+                        As the grid’s automated load balancers struggle to cope
                         with the intensity of a sustained attack, safety
                         shutdowns are being triggered across energy grids,
                         causing blackouts.
@@ -624,12 +624,12 @@ export default function EnergyChapter() {
                 <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
                     <EditorialBody>
                         <p>
-                            Europe's policymakers are starting to recognise the
+                            Europe’s policymakers are starting to recognise the
                             risks. In 2025, the European Commission{" "}
                             <a href="https://www.enisa.europa.eu/news/enisa-to-operate-the-eu-cybersecurity-reserve-with-eur-36-million">
                                 signed
                             </a>{" "}
-                            a €36mn agreement with the EU's Agency for
+                            a €36mn agreement with the EU’s Agency for
                             Cybersecurity (ENISA) to administer a reserve that
                             can be used by critical sectors – including energy –
                             to support the response and recovery from cyber
@@ -641,7 +641,7 @@ export default function EnergyChapter() {
             <StickySlide appearInPlace>
                 <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
                     <SlideQuote
-                        quote="Critical operators are moving toward defensible architectures where there's an assumption that breaches will occur"
+                        quote="Critical operators are moving toward defensible architectures where there’s an assumption that breaches will occur"
                         name="Jørgen Rørvik"
                         role="Director of Cybersecurity and Connectivity, Sopra Steria Nordics"
                     />
@@ -654,7 +654,7 @@ export default function EnergyChapter() {
                     <EditorialBody>
                         <p>
                             Defensible architectures can include breaking the
-                            grid into "islands", which can distribute power
+                            grid into “islands”, which can distribute power
                             locally, to prevent cascading failures, or building
                             a parallel network for monitoring and management to
                             prevent loss of visibility, Rørvik says.
