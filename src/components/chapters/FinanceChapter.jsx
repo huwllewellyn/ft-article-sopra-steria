@@ -20,7 +20,7 @@ import {
 import { EditorialBody } from "../slides/EditorialSlide";
 
 const F13Text = styled.div`
-    font-family: "Logic Monospace", monospace;
+    font-family: "logic-monospace", monospace;
     font-size: 21px;
     font-weight: 500;
     color: #000;
