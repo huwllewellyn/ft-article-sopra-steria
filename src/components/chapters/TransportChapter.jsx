@@ -302,6 +302,8 @@ export default function TransportChapter() {
                             desktop:
                                 "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
                         }}
+                        mobileBackgroundImage="/videos/ch3/SOPRA_DigitalDisruption_D3_BKG.png"
+                        mobileLottieAnimation="/videos/ch3/SOPRA_DigitalDisruption_D3_NOBKG.json"
                     >
                         <DataText $bg={ACCENT}>
                             <span>

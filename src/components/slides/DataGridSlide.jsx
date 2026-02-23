@@ -2,7 +2,9 @@ import { useRef, useLayoutEffect, useEffect } from "react";
 import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
+import useIsMobile from "../../hooks/useIsMobile";
 import SectionHeadingBar from "./SectionHeadingBar";
+import LottieAnimation from "../LottieAnimation";
 import ResponsiveLottieAnimation from "../ResponsiveLottieAnimation";
 
 const GLITCH_CHARS =
@@ -33,6 +35,15 @@ const Slide = styled.div`
     flex-direction: column;
     position: relative;
     overflow: hidden;
+`;
+
+const BackgroundImage = styled.div`
+    position: absolute;
+    inset: 0;
+    background-image: url(${({ $src }) => $src});
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
 `;
 
 const BackgroundVideo = styled.video`
@@ -169,7 +180,10 @@ export default function DataGridSlide({
     maxWidth,
     children,
     mobileScale,
+    mobileBackgroundImage,
+    mobileLottieAnimation,
 }) {
+    const isMobile = useIsMobile();
     const slideRef = useRef();
     const contentRef = useRef();
     const itemsRef = useRef([]);
@@ -256,7 +270,24 @@ export default function DataGridSlide({
         <SlideWrapper ref={slideRef}>
             <StickyInner>
             <Slide $bg={backgroundColor}>
-                {lottieAnimation && (
+                {isMobile && mobileBackgroundImage && (
+                    <BackgroundImage $src={getAssetPath(mobileBackgroundImage)} />
+                )}
+                {isMobile && mobileLottieAnimation ? (
+                    <BackgroundLottie
+                        $height="100%"
+                        $mobileScale={mobileScale}
+                    >
+                        <LottieAnimation
+                            path={mobileLottieAnimation}
+                            loop={false}
+                            autoplay={true}
+                            width="100%"
+                            height="100%"
+                            preserveAspectRatio="xMidYMid meet"
+                        />
+                    </BackgroundLottie>
+                ) : lottieAnimation && (
                     <BackgroundLottie
                         $height={lottieHeight}
                         $bottom={lottieBottom}
