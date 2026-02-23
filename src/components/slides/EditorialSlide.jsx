@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { media } from "../../utils/breakpoints";
@@ -76,6 +77,40 @@ export default function EditorialSlide({
     headingColor,
     contentAlign,
 }) {
+    const contentRef = useRef(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        let trackEl = null;
+
+        const handleScroll = () => {
+            const el = contentRef.current;
+            if (!el || isVisible) return;
+
+            // Walk up to find the appear-in-place track ancestor (has inline opacity set)
+            if (!trackEl) {
+                let node = el.parentElement;
+                while (node && node !== document.body) {
+                    if (node.style.opacity !== "") {
+                        trackEl = node;
+                        break;
+                    }
+                    node = node.parentElement;
+                }
+                trackEl = trackEl || el;
+            }
+
+            const rect = trackEl.getBoundingClientRect();
+            if (rect.top <= 0 && rect.bottom > 0) {
+                setIsVisible(true);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [isVisible]);
+
     return (
         <Slide $bg={backgroundColor}>
             {sectionTitle && (
@@ -84,11 +119,11 @@ export default function EditorialSlide({
                 </SectionHeadingBar>
             )}
             <ContentArea
+                ref={contentRef}
                 as={motion.div}
                 $align={contentAlign}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "0px 0px -85% 0px" }}
+                animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
             >
                 {children}
