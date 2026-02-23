@@ -4,19 +4,19 @@ import { media } from "../utils/breakpoints";
 
 const Container = styled.section`
     width: 100%;
-    min-height: calc(100vh - 110px);
+    min-height: calc(100svh - 110px);
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
     ${media.tablet(`
-        min-height: calc(100vh - 80px);
+        min-height: calc(100svh - 80px);
     `)}
     ${media.mobile(`
         min-height: calc(100svh - 150px);
     `)}
     ${media.wide(`
-        min-height: calc(100vh - 190px);
+        min-height: calc(100svh - 190px);
     `)}
 `;
 

@@ -24,7 +24,7 @@ const IntroVideoWrapper = styled.div`
 const StickyVideo = styled.div`
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 100svh;
     z-index: 0;
     overflow: hidden;
 `;
@@ -50,7 +50,7 @@ const VideoOverlay = styled.div`
 const IntroContent = styled.div`
     position: relative;
     z-index: 1;
-    margin-top: -100vh;
+    margin-top: -100svh;
 `;
 
 const ChapterContainer = styled.div`

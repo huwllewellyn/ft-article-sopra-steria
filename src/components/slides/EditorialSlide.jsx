@@ -5,7 +5,7 @@ import { media } from "../../utils/breakpoints";
 import SectionHeadingBar from "./SectionHeadingBar";
 
 const Slide = styled.section`
-    min-height: 100vh;
+    min-height: 100svh;
     background: ${({ $bg }) => $bg || "#f7ff95"};
     color: #000;
     display: flex;

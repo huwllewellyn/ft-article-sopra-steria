@@ -18,12 +18,8 @@ const SlideWrapper = styled.div`
 const StickyInner = styled.div`
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 100svh;
     overflow: hidden;
-
-    ${media.mobile(`
-        height: 100svh;
-    `)}
 `;
 
 const Slide = styled.div`

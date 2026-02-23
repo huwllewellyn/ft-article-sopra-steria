@@ -4,11 +4,11 @@ import { media } from "../utils/breakpoints";
 
 const SectionContainer = styled(motion.section)`
     background-color: ${props => props.$backgroundColor};
-    min-height: 100vh;
+    min-height: 100svh;
 `;
 
 const SlideContainer = styled.div`
-    min-height: 100vh;
+    min-height: 100svh;
     display: flex;
     flex-direction: column;
     justify-content: center;

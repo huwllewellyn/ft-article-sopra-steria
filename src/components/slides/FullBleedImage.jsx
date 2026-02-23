@@ -4,7 +4,7 @@ import useScrollVideo from "../../hooks/useScrollVideo";
 import useAutoplayOnView from "../../hooks/useAutoplayOnView";
 
 const ImageSlide = styled.section`
-    height: 100vh;
+    height: 100svh;
     width: 100%;
     overflow: hidden;
 `;
