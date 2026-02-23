@@ -18,7 +18,7 @@ const NavContainer = styled.nav`
     `)}
 
     ${media.mobile(`
-        padding: 8px 20px 12px;
+        padding: 8px 20px calc(12px + env(safe-area-inset-bottom, 0px));
     `)}
 `;
 
