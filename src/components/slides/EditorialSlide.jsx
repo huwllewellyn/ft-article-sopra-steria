@@ -82,6 +82,7 @@ export default function EditorialSlide({
 
     useEffect(() => {
         let trackEl = null;
+        let isAppearInPlace = false;
 
         const handleScroll = () => {
             const el = contentRef.current;
@@ -93,6 +94,7 @@ export default function EditorialSlide({
                 while (node && node !== document.body) {
                     if (node.style.opacity !== "") {
                         trackEl = node;
+                        isAppearInPlace = true;
                         break;
                     }
                     node = node.parentElement;
@@ -101,8 +103,16 @@ export default function EditorialSlide({
             }
 
             const rect = trackEl.getBoundingClientRect();
-            if (rect.top <= 0 && rect.bottom > 0) {
-                setIsVisible(true);
+            if (isAppearInPlace) {
+                // Appear-in-place: trigger when track reaches top of viewport
+                if (rect.top <= 0 && rect.bottom > 0) {
+                    setIsVisible(true);
+                }
+            } else {
+                // Normal scroll-in: trigger when element is halfway up the page
+                if (rect.top <= window.innerHeight / 2) {
+                    setIsVisible(true);
+                }
             }
         };
 
