@@ -1,5 +1,6 @@
 import "./App.css";
 import styled from "styled-components";
+import { media } from "./utils/breakpoints";
 import IntroSection from "./components/IntroSection";
 import WarningSection from "./components/WarningSection";
 import OneClickSection from "./components/OneClickSection";
@@ -53,8 +54,12 @@ const IntroContent = styled.div`
 `;
 
 const ChapterContainer = styled.div`
-    scroll-margin-top: 60px;
+    scroll-margin-top: 40px;
     isolation: isolate;
+
+    ${media.mobile(`
+        scroll-margin-top: 70px;
+    `)}
 `;
 
 // Tab configuration for navigation
