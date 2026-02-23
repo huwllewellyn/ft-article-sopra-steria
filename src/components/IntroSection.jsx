@@ -13,7 +13,7 @@ const Container = styled.section`
         min-height: calc(100vh - 80px);
     `)}
     ${media.mobile(`
-        min-height: calc(100vh - 150px);
+        min-height: calc(100svh - 150px);
     `)}
     ${media.wide(`
         min-height: calc(100vh - 190px);
