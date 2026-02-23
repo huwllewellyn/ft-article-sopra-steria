@@ -74,8 +74,8 @@ export default function LottieAnimation({
                 }
             }
 
-            // Create Intersection Observer to trigger animation on view
-            const observer = new IntersectionObserver(
+            // Create Intersection Observer to load animation when nearby
+            const loadObserver = new IntersectionObserver(
                 (entries) => {
                     entries.forEach((entry) => {
                         if (
@@ -88,7 +88,7 @@ export default function LottieAnimation({
                                 container: containerRef.current,
                                 renderer: renderer,
                                 loop: loop,
-                                autoplay: scrollSync ? false : autoplay,
+                                autoplay: false,
                                 animationData: data,
                                 rendererSettings: {
                                     preserveAspectRatio,
@@ -103,24 +103,66 @@ export default function LottieAnimation({
                                 anim.goToAndStop(Math.round(targetFrame), true);
                             }
 
-                            observer.unobserve(entry.target);
+                            loadObserver.unobserve(entry.target);
                         }
                     });
                 },
-                { threshold: 0.1 }
+                { rootMargin: "100%" }
             );
 
             if (containerRef.current) {
-                observer.observe(containerRef.current);
+                loadObserver.observe(containerRef.current);
             }
 
             return () => {
-                observer.disconnect();
+                loadObserver.disconnect();
             };
         };
 
         loadAnimation();
     }, [path, fallbackPath, loop, autoplay, renderer, scrollSync, initialFrame, preserveAspectRatio]);
+
+    // Autoplay lotties: play when the appear-in-place slide container reaches top of viewport
+    // Walk up to find the track element (has inline opacity from appear-in-place), then check its position
+    useEffect(() => {
+        if (!autoplay || scrollSync || scrollProgress) return;
+
+        let trackEl = null;
+        let playing = false;
+        const handleScroll = () => {
+            const anim = animationRef.current;
+            const el = containerRef.current;
+            if (!anim || !el) return;
+
+            // Find the appear-in-place track ancestor (has inline opacity set)
+            if (!trackEl) {
+                let node = el.parentElement;
+                while (node && node !== document.body) {
+                    if (node.style.opacity !== "") {
+                        trackEl = node;
+                        break;
+                    }
+                    node = node.parentElement;
+                }
+                trackEl = trackEl || el;
+            }
+
+            const rect = trackEl.getBoundingClientRect();
+            const isVisible = rect.top <= 0 && rect.bottom > 0;
+
+            if (isVisible && !playing) {
+                playing = true;
+                anim.goToAndPlay(0);
+            } else if (!isVisible && playing) {
+                playing = false;
+                anim.pause();
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [autoplay, scrollSync, scrollProgress]);
 
     // Handle scroll-synced animation (legacy window scroll)
     useEffect(() => {
