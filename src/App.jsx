@@ -99,10 +99,7 @@ function App() {
                 const chaptersStart = firstChapter.offsetTop;
                 const chaptersEnd =
                     lastChapter.offsetTop + lastChapter.offsetHeight;
-                setNavVisible(
-                    scrollPosition >= chaptersStart &&
-                        window.scrollY + window.innerHeight <= chaptersEnd,
-                );
+                setNavVisible(scrollPosition >= chaptersStart);
             }
 
             chapterRefs.current.forEach((ref, index) => {
