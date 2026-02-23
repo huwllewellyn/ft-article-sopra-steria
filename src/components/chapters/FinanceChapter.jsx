@@ -321,7 +321,7 @@ export default function FinanceChapter() {
             {/* F7-F8 — Payment systems fail / helpdesk flooded (continuous video) */}
             <ContinuousSlide
                 trackHeight="300vh"
-                flowHeight="200vh"
+                flowHeight="300vh"
                 appearInPlace
                 background={() => (
                     <AutoplayVideo
