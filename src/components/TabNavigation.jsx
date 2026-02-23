@@ -9,16 +9,16 @@ const NavContainer = styled.nav`
     z-index: 1000;
     background: rgba(19, 19, 19, 0.5);
     backdrop-filter: blur(4px);
-    padding: 8px 240px calc(12px + env(safe-area-inset-bottom, 0px));
+    padding: 8px 240px 12px;
     transform: translateY(${({ $visible }) => $visible ? '0' : '100%'});
     transition: transform 0.4s ease;
 
     ${media.tablet(`
-        padding: 8px 80px calc(12px + env(safe-area-inset-bottom, 0px));
+        padding: 8px 80px 12px;
     `)}
 
     ${media.mobile(`
-        padding: 8px 20px calc(12px + env(safe-area-inset-bottom, 0px));
+        padding: 8px 20px 12px;
     `)}
 `;
 
