@@ -280,7 +280,7 @@ Error generating stack: `+c.message+`
     position: relative;
 `,Container$4=dt.div`
     width: 100%;
-    height: 100svh;
+    height: 100dvh;
     background: #111;
     display: flex;
     align-items: center;
@@ -306,7 +306,7 @@ Error generating stack: `+c.message+`
     position: relative;
 `,Container$3=dt.div`
     width: 100%;
-    height: 100svh;
+    height: 100dvh;
     background: #f7ff95;
     display: flex;
     align-items: center;
@@ -1666,7 +1666,7 @@ Error generating stack: `+c.message+`
         `)}
     }
 `;function EditorialSlide({sectionTitle:t,children:e,backgroundColor:n,headingColor:s,contentAlign:a}){const l=reactExports.useRef(null),[u,p]=reactExports.useState(!1);return reactExports.useEffect(()=>{let h=null,d=!1;const P=()=>{const tt=l.current;if(!tt||u)return;if(!h){let ht=tt.parentElement;for(;ht&&ht!==document.body;){if(ht.style.opacity!==""){h=ht,d=!0;break}ht=ht.parentElement}h=h||tt}const N=h.getBoundingClientRect();d?N.top<=0&&N.bottom>0&&p(!0):N.top<=window.innerHeight/2&&p(!0)};return window.addEventListener("scroll",P,{passive:!0}),P(),()=>window.removeEventListener("scroll",P)},[u]),jsxRuntimeExports.jsxs(Slide$1,{$bg:n,children:[t&&jsxRuntimeExports.jsx(SectionHeadingBar,{color:s,children:t}),jsxRuntimeExports.jsx(ContentArea$1,{ref:l,as:motion.div,$align:a,initial:{opacity:0,y:30},animate:u?{opacity:1,y:0}:{opacity:0,y:30},transition:{duration:.4,ease:"easeOut"},children:e})]})}dt.section`
-    height: 100svh;
+    height: 100dvh;
     width: 100%;
     overflow: hidden;
 `;dt.img`
@@ -1685,7 +1685,7 @@ Error generating stack: `+c.message+`
 `,StickyInner=dt.div`
     position: sticky;
     top: 0;
-    height: 100svh;
+    height: 100dvh;
     overflow: hidden;
 `,Slide=dt.div`
     width: 100%;
@@ -1824,17 +1824,17 @@ Error generating stack: `+c.message+`
 `;function SlideQuote({quote:t,name:e,role:n}){return jsxRuntimeExports.jsxs(QuoteWrapper,{children:[jsxRuntimeExports.jsx(QuoteMark,{children:"“"}),jsxRuntimeExports.jsx(QuoteText,{children:t}),jsxRuntimeExports.jsxs(Attribution,{children:[e,n?jsxRuntimeExports.jsxs(jsxRuntimeExports.Fragment,{children:[",",jsxRuntimeExports.jsx("br",{}),n]}):""]})]})}const StickyWrapper=dt.div`
     position: sticky;
     top: 0;
-    height: 100svh;
+    height: 100dvh;
     overflow: hidden;
 `,ScrollTrack=dt.div`
     position: relative;
     height: ${t=>t.$trackHeight};
-    margin-bottom: calc(-1 * (${t=>t.$trackHeight} - ${t=>t.$flowHeight||"100svh"}));
+    margin-bottom: calc(-1 * (${t=>t.$trackHeight} - ${t=>t.$flowHeight||"100dvh"}));
 `;function useZIndexAndAppear(t,e){reactExports.useLayoutEffect(()=>{const n=t.current,s=Array.from(n.parentElement.children);n.style.zIndex=s.indexOf(n)+1,e&&(n.style.opacity="0",n.style.pointerEvents="none")},[e]),reactExports.useEffect(()=>{if(!e)return;const n=t.current,s=()=>{const a=n.getBoundingClientRect().top<=0;n.style.opacity=a?"1":"0",n.style.pointerEvents=a?"auto":"none"};return s(),window.addEventListener("scroll",s,{passive:!0}),()=>window.removeEventListener("scroll",s)},[e])}function ScrollTrackedSlide({children:t,trackHeight:e,flowHeight:n,appearInPlace:s}){const a=reactExports.useRef(),{scrollYProgress:l}=useScroll({target:a,offset:["start start","end end"]});return useZIndexAndAppear(a,s),jsxRuntimeExports.jsx(ScrollTrack,{ref:a,$trackHeight:e,$flowHeight:n,children:jsxRuntimeExports.jsx(StickyWrapper,{children:typeof t=="function"?t({scrollYProgress:l}):t})})}const FlowTrack=dt.div`
     position: relative;
     height: ${t=>t.$flowHeight};
-    margin-bottom: calc(-1 * (${t=>t.$flowHeight} - 100svh));
-`;function BaseStickySlide({children:t,appearInPlace:e,flowHeight:n}){const s=reactExports.useRef(),a=reactExports.useRef();return useZIndexAndAppear(n?a:s,e),n?jsxRuntimeExports.jsx(FlowTrack,{ref:a,$flowHeight:n,children:jsxRuntimeExports.jsx(StickyWrapper,{children:t})}):jsxRuntimeExports.jsx(StickyWrapper,{ref:s,children:t})}function StickySlide({children:t,appearInPlace:e,trackHeight:n,flowHeight:s}){return n?jsxRuntimeExports.jsx(ScrollTrackedSlide,{trackHeight:n,flowHeight:s,appearInPlace:e,children:t}):jsxRuntimeExports.jsx(BaseStickySlide,{appearInPlace:e,flowHeight:s,children:t})}function ContinuousSlide({slides:t,background:e,trackHeight:n="300vh",flowHeight:s,appearInPlace:a=!1}){const l=reactExports.useRef(null),{scrollYProgress:u}=useScroll({target:l,offset:["start start","end end"]}),[p,h]=reactExports.useState(0);return reactExports.useLayoutEffect(()=>{const d=l.current,P=Array.from(d.parentElement.children);d.style.zIndex=P.indexOf(d)+1,a&&(d.style.opacity="0")},[a]),reactExports.useEffect(()=>{if(!a)return;const d=l.current,P=()=>{d.style.opacity=d.getBoundingClientRect().top<=0?"1":"0"};return P(),window.addEventListener("scroll",P,{passive:!0}),()=>window.removeEventListener("scroll",P)},[a]),reactExports.useEffect(()=>{const d=t.length;return u.on("change",P=>{const tt=Math.min(Math.floor(P*d),d-1);h(N=>N===tt?N:tt)})},[u,t.length]),jsxRuntimeExports.jsx("div",{ref:l,style:{position:"relative",height:n,...s&&{marginBottom:`calc(${s} - ${n})`}},children:jsxRuntimeExports.jsxs("div",{style:{position:"sticky",top:0,height:"100svh",overflow:"hidden"},children:[e?.({scrollYProgress:u}),t[p]({scrollYProgress:u})]})})}function AutoplayVideo({src:t,...e}){const n=useAutoplayOnView(),a=useIsMobile()?getMobilePath(t):t;return jsxRuntimeExports.jsx("video",{ref:n,src:a,...e})}const VIDEOS$2={osloCityscape:"/videos/ch1/ch1_1.mp4",osloCityscapeMobile:"/videos/ch1/ch1_1_mobile.mp4",globe:"/videos/ch1/ch1_2_desktop.mp4",globeMobile:"/videos/ch1/ch1_2_mobile.mp4",elevator:"/videos/ch1/ch1_3.mp4",signalLost:"/videos/ch1/ch1_4.mp4",glitchyCityscape:"/videos/ch1/ch1_5.mp4",glitchyCityscape530:"/videos/ch1/ch1_6.mp4",womanScreens:"/videos/ch1/ch1_7.mp4",escalator:"/videos/ch1/ch1_8.mp4"},POSTERS$2={osloCityscape:"/videos/posters/ch1/ch1_1.jpg",globe:"/videos/posters/ch1/ch1_2-2.jpg",elevator:"/videos/posters/ch1/ch1_3.jpg",signalLost:"/videos/posters/ch1/ch1_4.jpg",glitchyCityscape:"/videos/posters/ch1/ch1_5.jpg",glitchyCityscape530:"/videos/posters/ch1/ch1_6.jpg",womanScreens:"/videos/posters/ch1/ch1_7.jpg",escalator:"/videos/posters/ch1/ch1_8.jpg"};function ScrollReveal({scrollProgress:t,threshold:e,children:n}){const s=reactExports.useRef(null);return reactExports.useEffect(()=>{const a=s.current;return a?(a.style.transition="opacity 0.4s ease, transform 0.4s ease",a.style.opacity=e===0?"1":"0",a.style.transform=e===0?"translateY(0)":"translateY(30px)",t.on("change",u=>{u>=e?(a.style.opacity="1",a.style.transform="translateY(0)"):(a.style.opacity="0",a.style.transform="translateY(30px)")})):void 0},[t,e]),jsxRuntimeExports.jsx("div",{ref:s,children:n})}dt.div`
+    margin-bottom: calc(-1 * (${t=>t.$flowHeight} - 100dvh));
+`;function BaseStickySlide({children:t,appearInPlace:e,flowHeight:n}){const s=reactExports.useRef(),a=reactExports.useRef();return useZIndexAndAppear(n?a:s,e),n?jsxRuntimeExports.jsx(FlowTrack,{ref:a,$flowHeight:n,children:jsxRuntimeExports.jsx(StickyWrapper,{children:t})}):jsxRuntimeExports.jsx(StickyWrapper,{ref:s,children:t})}function StickySlide({children:t,appearInPlace:e,trackHeight:n,flowHeight:s}){return n?jsxRuntimeExports.jsx(ScrollTrackedSlide,{trackHeight:n,flowHeight:s,appearInPlace:e,children:t}):jsxRuntimeExports.jsx(BaseStickySlide,{appearInPlace:e,flowHeight:s,children:t})}function ContinuousSlide({slides:t,background:e,trackHeight:n="300vh",flowHeight:s,appearInPlace:a=!1}){const l=reactExports.useRef(null),{scrollYProgress:u}=useScroll({target:l,offset:["start start","end end"]}),[p,h]=reactExports.useState(0);return reactExports.useLayoutEffect(()=>{const d=l.current,P=Array.from(d.parentElement.children);d.style.zIndex=P.indexOf(d)+1,a&&(d.style.opacity="0")},[a]),reactExports.useEffect(()=>{if(!a)return;const d=l.current,P=()=>{d.style.opacity=d.getBoundingClientRect().top<=0?"1":"0"};return P(),window.addEventListener("scroll",P,{passive:!0}),()=>window.removeEventListener("scroll",P)},[a]),reactExports.useEffect(()=>{const d=t.length;return u.on("change",P=>{const tt=Math.min(Math.floor(P*d),d-1);h(N=>N===tt?N:tt)})},[u,t.length]),jsxRuntimeExports.jsx("div",{ref:l,style:{position:"relative",height:n,...s&&{marginBottom:`calc(${s} - ${n})`}},children:jsxRuntimeExports.jsxs("div",{style:{position:"sticky",top:0,height:"100dvh",overflow:"hidden"},children:[e?.({scrollYProgress:u}),t[p]({scrollYProgress:u})]})})}function AutoplayVideo({src:t,...e}){const n=useAutoplayOnView(),a=useIsMobile()?getMobilePath(t):t;return jsxRuntimeExports.jsx("video",{ref:n,src:a,...e})}const VIDEOS$2={osloCityscape:"/videos/ch1/ch1_1.mp4",osloCityscapeMobile:"/videos/ch1/ch1_1_mobile.mp4",globe:"/videos/ch1/ch1_2_desktop.mp4",globeMobile:"/videos/ch1/ch1_2_mobile.mp4",elevator:"/videos/ch1/ch1_3.mp4",signalLost:"/videos/ch1/ch1_4.mp4",glitchyCityscape:"/videos/ch1/ch1_5.mp4",glitchyCityscape530:"/videos/ch1/ch1_6.mp4",womanScreens:"/videos/ch1/ch1_7.mp4",escalator:"/videos/ch1/ch1_8.mp4"},POSTERS$2={osloCityscape:"/videos/posters/ch1/ch1_1.jpg",globe:"/videos/posters/ch1/ch1_2-2.jpg",elevator:"/videos/posters/ch1/ch1_3.jpg",signalLost:"/videos/posters/ch1/ch1_4.jpg",glitchyCityscape:"/videos/posters/ch1/ch1_5.jpg",glitchyCityscape530:"/videos/posters/ch1/ch1_6.jpg",womanScreens:"/videos/posters/ch1/ch1_7.jpg",escalator:"/videos/posters/ch1/ch1_8.jpg"};function ScrollReveal({scrollProgress:t,threshold:e,children:n}){const s=reactExports.useRef(null);return reactExports.useEffect(()=>{const a=s.current;return a?(a.style.transition="opacity 0.4s ease, transform 0.4s ease",a.style.opacity=e===0?"1":"0",a.style.transform=e===0?"translateY(0)":"translateY(30px)",t.on("change",u=>{u>=e?(a.style.opacity="1",a.style.transform="translateY(0)"):(a.style.opacity="0",a.style.transform="translateY(30px)")})):void 0},[t,e]),jsxRuntimeExports.jsx("div",{ref:s,children:n})}dt.div`
     position: absolute;
     inset: 0;
     z-index: 2;
@@ -2003,7 +2003,7 @@ Error generating stack: `+c.message+`
 `,StickyVideo=dt.div`
     position: sticky;
     top: 0;
-    height: 100svh;
+    height: 100dvh;
     z-index: 0;
     overflow: hidden;
 `,BackgroundVideo=dt.video`
@@ -2023,7 +2023,7 @@ Error generating stack: `+c.message+`
 `,IntroContent=dt.div`
     position: relative;
     z-index: 1;
-    margin-top: -100svh;
+    margin-top: -100dvh;
 `,ChapterContainer=dt.div`
     scroll-margin-top: 40px;
     isolation: isolate;
