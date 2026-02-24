@@ -516,6 +516,7 @@ export default function FinanceChapter() {
                         maxWidth="90vw"
                         lottieHeight="50vh"
                         lottieTop="20vh"
+                        lottieLoop={false}
                     >
                         <DataText $bg={ACCENT}></DataText>
                         <F13Text>

@@ -178,6 +178,7 @@ export default function DataGridSlide({
     mobileScale,
     mobileBackgroundImage,
     mobileLottieAnimation,
+    lottieLoop = true,
 }) {
     const isMobile = useIsMobile();
     const slideRef = useRef();
@@ -219,7 +220,7 @@ export default function DataGridSlide({
             itemsRef.current = items;
 
             items.forEach(({ target }, i) => {
-                target.style.transition = "opacity 0.3s ease";
+                target.style.transition = "opacity 50ms ease";
                 if (i === 0) {
                     target.style.opacity = "1";
                     revealedRef.current.add(0);
@@ -252,7 +253,7 @@ export default function DataGridSlide({
                         revealedRef.current.add(currentIndex);
                         scrambleElement(p);
                         currentIndex++;
-                    }, 1500);
+                    }, 500);
                 }
             },
             { threshold: 0.3 },
@@ -292,7 +293,7 @@ export default function DataGridSlide({
                     >
                         <ResponsiveLottieAnimation
                             animations={lottieAnimation}
-                            loop={true}
+                            loop={lottieLoop}
                             autoplay={true}
                             width="100%"
                             height="100%"
