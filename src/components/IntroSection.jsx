@@ -148,7 +148,7 @@ const BigQuestion = styled(motion.h2)`
 
 const Standfirst = styled(motion.p)`
     font-family: "Space Grotesk", sans-serif;
-    font-size: 17px;
+    font-size: 21px;
     font-weight: 500;
     color: #ffffff;
     line-height: 1.3;
@@ -162,13 +162,13 @@ const Standfirst = styled(motion.p)`
     `)}
 
     ${media.tablet(`
-        font-size: 17px;
+        font-size: 19px;
         max-width: 411px;
         padding: 47px 0;
     `)}
 
     ${media.mobile(`
-        font-size: 15px;
+        font-size: 17px;
         max-width: 100%;
         padding: 30px 0;
     `)}
