@@ -312,7 +312,17 @@ export default function TransportChapter() {
                             </span>
                         </DataText>
                         {/* <DataCenter $bg="#fff"></DataCenter> */}
-                        <DataAttribution $bg={"#fff"}>
+                        <DataAttribution
+                            $bg={"#fff"}
+                            style={{
+                                position: "absolute",
+                                bottom: 60,
+                                left: 0,
+                                right: 0,
+                                margin: "0 auto",
+                                maxWidth: 600,
+                            }}
+                        >
                             <span>Source: ENISA 2025 report</span>
                         </DataAttribution>
                     </DataGridSlide>
