@@ -185,7 +185,7 @@ const ScrollIndicator = styled(motion.p)`
     text-transform: uppercase;
 
     ${media.wide(`
-        font-family: "Logic Monospace", monospace;
+        font-family: "logic-monospace", monospace;
         font-size: 26px;
         letter-spacing: 0.26px;
     `)}

@@ -165,7 +165,7 @@ export const DataAttribution = styled.div`
     `)}
 
     ${media.mobile(`
-        font-family: "Logic Monospace", monospace;
+        font-family: "logic-monospace", monospace;
         font-size: 19px;
         font-weight: 400;
         line-height: 1.35;
