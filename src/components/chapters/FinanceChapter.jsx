@@ -594,6 +594,7 @@ export default function FinanceChapter() {
                         tablet: "/videos/ch2/SOPRA_CH2_430pm_MOBILE.json",
                         desktop: "/videos/ch2/SOPRA_CH2_430pm_MOBILE.json",
                     }}
+                    mobileScale={0.95}
                     textPosition="top"
                     accentColor={ACCENT}
                 >
