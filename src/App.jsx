@@ -58,7 +58,7 @@ const ChapterContainer = styled.div`
     isolation: isolate;
 
     ${media.mobile(`
-        scroll-margin-top: 70px;
+        scroll-margin-top: 60px;
     `)}
 `;
 
