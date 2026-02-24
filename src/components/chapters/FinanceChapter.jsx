@@ -144,7 +144,7 @@ const Chapter = styled.div`
 
 const HeroSection = styled.section`
     position: relative;
-    min-height: 100svh;
+    min-height: 100lvh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -505,13 +505,15 @@ export default function FinanceChapter() {
                         sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
-                        mobileScale="1.6"
-                        lottieAnimation={{
-                            mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                            tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                            desktop:
-                                "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                        }}
+                        mobileScale="0.7"
+                        backgroundImage="/videos/ch2/41pecent.jpg"
+                        // mobileScale="1.6"
+                        // lottieAnimation={{
+                        //     mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
+                        //     tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
+                        //     desktop:
+                        //         "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
+                        // }}
                         scrollProgress={scrollYProgress}
                         maxWidth="90vw"
                         lottieHeight="50vh"

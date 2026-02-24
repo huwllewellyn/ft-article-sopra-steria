@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useEffect } from "react";
+import { useRef, useLayoutEffect, useEffect, useState } from "react";
 import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
@@ -76,6 +76,15 @@ const BackgroundLottie = styled.div`
                 transform-origin: center;
             `)
             : ""}
+`;
+
+const ScaleInImg = styled.img`
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(${({ $visible }) => ($visible ? 1 : 0.5)});
+    opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out;
 `;
 
 const ContentArea = styled.div`
@@ -167,6 +176,7 @@ export default function DataGridSlide({
     headingFontFamily,
     headingFontWeight,
     backgroundVideo,
+    backgroundImage,
     lottieAnimation,
     lottieHeight,
     lottieBottom,
@@ -186,6 +196,8 @@ export default function DataGridSlide({
     const itemsRef = useRef([]);
     const revealedRef = useRef(new Set());
     const hasStartedRef = useRef(false);
+    const hasAppearedRef = useRef(false);
+    const [hasAppeared, setHasAppeared] = useState(false);
 
     // Appear-in-place: z-index stacking + show when scrolled into position
     useLayoutEffect(() => {
@@ -202,6 +214,10 @@ export default function DataGridSlide({
         const handleScroll = () => {
             const appeared = el.getBoundingClientRect().top <= 0;
             el.style.opacity = appeared ? "1" : "0";
+            if (appeared && !hasAppearedRef.current) {
+                hasAppearedRef.current = true;
+                setHasAppeared(true);
+            }
         };
         handleScroll();
         window.addEventListener("scroll", handleScroll, { passive: true });
@@ -302,6 +318,20 @@ export default function DataGridSlide({
                                     ? "xMidYMid meet"
                                     : "xMidYMid slice"
                             }
+                        />
+                    </BackgroundLottie>
+                )}
+                {backgroundImage && !lottieAnimation && (
+                    <BackgroundLottie
+                        $height={lottieHeight}
+                        $bottom={lottieBottom}
+                        $top={lottieTop}
+                        $mobileScale={mobileScale}
+                    >
+                        <ScaleInImg
+                            src={getAssetPath(backgroundImage)}
+                            $visible={hasAppeared}
+                            alt=""
                         />
                     </BackgroundLottie>
                 )}

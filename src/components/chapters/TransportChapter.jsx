@@ -58,7 +58,7 @@ const Chapter = styled.div`
 
 const HeroSection = styled.section`
     position: relative;
-    min-height: 100svh;
+    min-height: 100lvh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;

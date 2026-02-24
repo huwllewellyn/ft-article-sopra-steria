@@ -4,7 +4,7 @@ import { media } from "../utils/breakpoints";
 
 const Container = styled.section`
     width: 100%;
-    min-height: 100svh;
+    min-height: 100lvh;
     display: flex;
     align-items: center;
     justify-content: center;
