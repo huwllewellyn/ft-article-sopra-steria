@@ -465,7 +465,7 @@ export default function FinanceChapter() {
                     headingColor={ACCENT}
                 >
                     <SlideQuote
-                        quote="Defending against this demands adaptive defences powered by the same intelligence, capable of detecting patterns and responding in real time"
+                        quote="Defending against this demands adaptive defences powered by the same kind of intelligence, capable of detecting patterns and responding in real time"
                         name="Arsenio Pérez Gavira"
                         role="Cybersecurity Manager, Sopra Steria Spain"
                     />
@@ -666,7 +666,7 @@ export default function FinanceChapter() {
                     headingColor={ACCENT}
                 >
                     <SlideQuote
-                        quote="A zero-trust architecture eliminates the ability of attackers to traverse the network by ensuring authentication is always required and nothing is trusted automatically"
+                        quote="A zero-trust architecture eliminates the ability of attackers to traverse the network, by ensuring authentication is always required and nothing is trusted automatically"
                         name="Stefan Garczynski"
                         role="Managing Security Architect, Sopra Steria"
                     />

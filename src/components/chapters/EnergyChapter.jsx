@@ -563,8 +563,8 @@ export default function EnergyChapter() {
                     <p>
                         As the grid’s automated load balancers struggle to cope
                         with the intensity of a sustained attack, safety
-                        shutdowns are being triggered across energy grids,
-                        causing blackouts.
+                        shutdowns are triggered across energy grids, causing
+                        blackouts.
                     </p>
                 </NarrativeSlide>
             </StickySlide>
