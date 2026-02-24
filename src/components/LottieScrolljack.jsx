@@ -16,7 +16,7 @@ const StickyContainer = styled.div`
     position: sticky;
     top: ${(props) => props.$headerHeight || "60px"};
     width: 100%;
-    height: calc(100svh - ${(props) => props.$headerHeight || "60px"});
+    height: calc(100dvh - ${(props) => props.$headerHeight || "60px"});
     display: flex;
     align-items: center;
     justify-content: center;
@@ -27,7 +27,7 @@ const StickyContainer = styled.div`
         pointer-events: auto;
         width: ${(props) => props.$width || "100%"};
         height: ${(props) => props.$height || "auto"};
-        max-height: calc(100svh - ${(props) => props.$headerHeight || "60px"});
+        max-height: calc(100dvh - ${(props) => props.$headerHeight || "60px"});
     }
 `;
 
@@ -193,7 +193,7 @@ export default function LottieScrolljack({
                 const widthPercentage = (calculatedWidth / scaledViewportWidth) * 100;
                 setDimensions({
                     width: `${widthPercentage}vw`,
-                    height: `calc(100svh - ${headerHeight})`,
+                    height: `calc(100dvh - ${headerHeight})`,
                 });
             } else {
                 // Width exceeds viewport, use 100% width

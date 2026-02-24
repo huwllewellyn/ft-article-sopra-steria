@@ -5,14 +5,14 @@ import { useScroll } from "framer-motion";
 const StickyWrapper = styled.div`
     position: sticky;
     top: 0;
-    height: 100svh;
+    height: 100dvh;
     overflow: hidden;
 `;
 
 const ScrollTrack = styled.div`
     position: relative;
     height: ${(props) => props.$trackHeight};
-    margin-bottom: calc(-1 * (${(props) => props.$trackHeight} - ${(props) => props.$flowHeight || "100svh"}));
+    margin-bottom: calc(-1 * (${(props) => props.$trackHeight} - ${(props) => props.$flowHeight || "100dvh"}));
 `;
 
 function useZIndexAndAppear(ref, appearInPlace) {
@@ -64,7 +64,7 @@ function ScrollTrackedSlide({ children, trackHeight, flowHeight, appearInPlace }
 const FlowTrack = styled.div`
     position: relative;
     height: ${(props) => props.$flowHeight};
-    margin-bottom: calc(-1 * (${(props) => props.$flowHeight} - 100svh));
+    margin-bottom: calc(-1 * (${(props) => props.$flowHeight} - 100dvh));
 `;
 
 function BaseStickySlide({ children, appearInPlace, flowHeight }) {

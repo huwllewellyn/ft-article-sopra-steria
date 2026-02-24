@@ -11,7 +11,7 @@ const Outer = styled.section`
 
 const Container = styled.div`
     width: 100%;
-    height: 100svh;
+    height: 100dvh;
     background: #f7ff95;
     display: flex;
     align-items: center;
