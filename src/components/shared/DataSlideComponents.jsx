@@ -149,8 +149,12 @@ export const DataAttribution = styled.div`
     letter-spacing: -0.96px;
     color: #000;
     text-align: center;
-    max-width: ${({ maxWidth }) => maxWidth || "600px"};
-    margin-bottom: 100px;
+    max-width: 600px;
+    position: absolute;
+    bottom: 60px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
 
     span {
         background: ${({ $bg }) => $bg || "#f7ff95"};
@@ -165,15 +169,13 @@ export const DataAttribution = styled.div`
     `)}
 
     ${media.mobile(`
-        font-family: "logic-monospace", monospace;
         font-size: 19px;
         font-weight: 400;
         line-height: 1.35;
         letter-spacing: -0.76px;
         text-align: left;
-        margin-bottom: 0;
-        margin-top: auto;
-        padding-bottom: 40px;
+        padding: 0 20px;
+        bottom: 40px;
     `)}
 
     ${media.wide(`
