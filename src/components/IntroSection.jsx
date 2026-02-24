@@ -4,7 +4,7 @@ import { media } from "../utils/breakpoints";
 
 const Container = styled.section`
     width: 100%;
-    min-height: calc(100lvh - 110px);
+    min-height: calc(100svh - 110px);
     display: flex;
     flex-direction: column;
     position: relative;
