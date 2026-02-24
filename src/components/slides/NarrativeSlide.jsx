@@ -9,7 +9,7 @@ import ResponsiveLottieAnimation from "../ResponsiveLottieAnimation";
 
 const Slide = styled.section`
     position: relative;
-    ${({ $flowHeight }) => ($flowHeight ? "" : "min-height: 100svh;")}
+    ${({ $flowHeight }) => ($flowHeight ? "" : "min-height: 100lvh;")}
     background: ${({ $bg }) => $bg || "#0d1117"};
     color: #fff;
     display: flex;

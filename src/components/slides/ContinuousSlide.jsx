@@ -77,7 +77,7 @@ export default function ContinuousSlide({
                 ...(flowHeight && { marginBottom: `calc(${flowHeight} - ${trackHeight})` }),
             }}
         >
-            <div style={{ position: "sticky", top: 0, height: "100svh", overflow: "hidden" }}>
+            <div style={{ position: "sticky", top: 0, height: "100lvh", overflow: "hidden" }}>
                 {background?.({ scrollYProgress })}
                 {slides[phase]({ scrollYProgress })}
             </div>

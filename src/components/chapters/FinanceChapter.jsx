@@ -506,14 +506,12 @@ export default function FinanceChapter() {
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
                         mobileScale="1.6"
-                        lottieAnimation={
-                            {
-                                // mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                                // tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                                // desktop:
-                                //     "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                            }
-                        }
+                        lottieAnimation={{
+                            mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
+                            tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
+                            desktop:
+                                "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
+                        }}
                         scrollProgress={scrollYProgress}
                         maxWidth="90vw"
                         lottieHeight="50vh"
