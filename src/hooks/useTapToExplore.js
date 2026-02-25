@@ -86,21 +86,18 @@ export default function useTapToExplore() {
     useEffect(() => {
         if (!isMobile) return;
 
-        // Disable native touch scrolling
-        document.body.style.touchAction = "none";
-        document.body.style.overscrollBehavior = "none";
-
-        // Override CSS scroll properties from FT external stylesheets
-        // that cause scroll-back after programmatic scrolling
-        document.documentElement.style.scrollBehavior = "auto";
-        document.documentElement.style.scrollSnapType = "none";
-        document.body.style.scrollBehavior = "auto";
-        document.body.style.scrollSnapType = "none";
-
-        const preventScroll = (e) => e.preventDefault();
-        document.addEventListener("touchmove", preventScroll, {
-            passive: false,
-        });
+        // 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+        // Prevent browser/FT template from resetting scroll to 0.
+        // Something in the FT external scripts actively scrolls to 0
+        // during page init, which also causes bounce-back on touch scrolls.
+        // Starting at scrollY=1 avoids this entirely.
+        // 💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀💀
+        history.scrollRestoration = "manual";
+        window.scrollTo(0, 1);
+        const scrollGuard = setInterval(() => {
+            if (window.scrollY < 5) window.scrollTo(0, 1);
+        }, 50);
+        setTimeout(() => clearInterval(scrollGuard), 3000);
 
         const handleTouchStart = (e) => {
             if (activeRafId != null) {
@@ -130,25 +127,19 @@ export default function useTapToExplore() {
 
             scrollingRef.current = true;
 
-            // Special-case: intro section — skip ensureNavbarCollapsed + findNextStop
-            // to avoid race between navbar transition and position reading
-            if (window.scrollY < 10) {
-                window.scrollTo(0, 1);
-                // Wait for navbar CSS transition to finish before reading positions
-                setTimeout(() => {
-                    const introEnd =
-                        document.querySelector("[data-slide-intro-end]");
-                    if (introEnd) {
-                        const targetY =
-                            introEnd.getBoundingClientRect().top +
-                            window.scrollY;
-                        smoothScrollTo(targetY, () => {
-                            scrollingRef.current = false;
-                        });
-                    } else {
-                        scrollingRef.current = false;
-                    }
-                }, 350);
+            // Intro section: scroll directly to WarningSection
+            const introEnd =
+                document.querySelector("[data-slide-intro-end]");
+            if (
+                introEnd &&
+                window.scrollY <
+                introEnd.getBoundingClientRect().top + window.scrollY - 50
+            ) {
+                const targetY =
+                    introEnd.getBoundingClientRect().top + window.scrollY;
+                smoothScrollTo(targetY, () => {
+                    scrollingRef.current = false;
+                });
                 return;
             }
 
@@ -161,7 +152,7 @@ export default function useTapToExplore() {
                 const pastIntro =
                     introEnd &&
                     currentY >
-                        introEnd.getBoundingClientRect().top + window.scrollY;
+                    introEnd.getBoundingClientRect().top + window.scrollY;
                 const offset = pastIntro ? 150 : 0;
                 const threshold = pastIntro ? 150 : 50;
 
@@ -210,13 +201,6 @@ export default function useTapToExplore() {
         });
 
         return () => {
-            document.body.style.touchAction = "";
-            document.body.style.overscrollBehavior = "";
-            document.documentElement.style.scrollBehavior = "";
-            document.documentElement.style.scrollSnapType = "";
-            document.body.style.scrollBehavior = "";
-            document.body.style.scrollSnapType = "";
-            document.removeEventListener("touchmove", preventScroll);
             document.removeEventListener("touchstart", handleTouchStart);
             document.removeEventListener("touchend", handleTouchEnd);
             if (activeRafId != null) {
