@@ -202,6 +202,18 @@ Error generating stack: `+c.message+`
         font-size: 26px;
         letter-spacing: 0.26px;
     `)}
+
+    ${media.wide(`
+        font-size: 21px;
+    `)}
+
+    ${media.tablet(`
+        font-size: 19px;
+    `)}
+
+    ${media.mobile(`
+        font-size: 17px;
+    `)}
 `,TitleBlock=dt(motion.div)`
     width: 630px;
 
