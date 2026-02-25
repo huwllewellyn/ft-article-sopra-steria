@@ -285,6 +285,7 @@ function ScrollSyncHeroVideo({ scrollProgress, src, mobileSrc, poster }) {
 }
 
 export default function EnergyChapter() {
+    const isMobile = useIsMobile();
     return (
         <Chapter>
             {/* Hero + S1 — continuous Oslo cityscape video */}
@@ -649,24 +650,53 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S15 — Islands architecture */}
-            <StickySlide appearInPlace>
-                <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
-                    <EditorialBody>
-                        <p>
-                            Defensible architectures can include breaking the
-                            grid into “islands”, which can distribute power
-                            locally, to prevent cascading failures, or building
-                            a parallel network for monitoring and management to
-                            prevent loss of visibility, Rørvik says.
-                        </p>
-                    </EditorialBody>
-                    <SlideQuote
-                        quote="Within this architecture, essential assets can continue functioning, even while under sustained attack"
-                        name="Jørgen Rørvik"
-                        role="Director of Cybersecurity and Connectivity, Sopra Steria Nordics"
-                    />
-                </EditorialSlide>
-            </StickySlide>
+            {isMobile ? (
+                <>
+                    <StickySlide appearInPlace>
+                        <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
+                            <EditorialBody>
+                                <p>
+                                    Defensible architectures can include
+                                    breaking the grid into “islands”, which can
+                                    distribute power locally, to prevent
+                                    cascading failures, or building a parallel
+                                    network for monitoring and management to
+                                    prevent loss of visibility, Rørvik says.
+                                </p>
+                            </EditorialBody>
+                        </EditorialSlide>
+                    </StickySlide>
+                    <StickySlide appearInPlace>
+                        <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
+                            <SlideQuote
+                                quote="Within this architecture, essential assets can continue functioning, even while under sustained attack"
+                                name="Jørgen Rørvik"
+                                role="Director of Cybersecurity and Connectivity, Sopra Steria Nordics"
+                            />
+                        </EditorialSlide>
+                    </StickySlide>
+                </>
+            ) : (
+                <StickySlide appearInPlace>
+                    <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
+                        <EditorialBody>
+                            <p>
+                                Defensible architectures can include breaking
+                                the grid into “islands”, which can distribute
+                                power locally, to prevent cascading failures, or
+                                building a parallel network for monitoring and
+                                management to prevent loss of visibility, Rørvik
+                                says.
+                            </p>
+                        </EditorialBody>
+                        <SlideQuote
+                            quote="Within this architecture, essential assets can continue functioning, even while under sustained attack"
+                            name="Jørgen Rørvik"
+                            role="Director of Cybersecurity and Connectivity, Sopra Steria Nordics"
+                        />
+                    </EditorialSlide>
+                </StickySlide>
+            )}
 
             {/* S16-S18 — 8:00pm / 2:00am / 8:00am (continuous video) */}
             <ContinuousSlide
