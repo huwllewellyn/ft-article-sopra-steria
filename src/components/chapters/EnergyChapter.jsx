@@ -344,8 +344,8 @@ export default function EnergyChapter() {
 
             {/* S3 + S4 — continuous globe video */}
             <ContinuousSlide
-                trackHeight="400vh"
-                flowHeight="300vh"
+                trackHeight="300vh"
+                flowHeight="200vh"
                 appearInPlace
                 background={({ scrollYProgress }) => (
                     <>
@@ -381,7 +381,6 @@ export default function EnergyChapter() {
                             timestamp="5:00pm"
                             backgroundColor="transparent"
                             textPosition="top"
-                            flowHeight="100vh"
                         >
                             <p>
                                 Remotely, a hacktivist group is in the process
@@ -467,7 +466,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S8 — Cyber attacks data grid */}
-            <StickySlide appearInPlace flowHeight="300vh" trackHeight="400vh">
+            <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh">
                 {({ scrollYProgress }) => (
                     <DataGridSlide
                         sectionTitle="AN EVOLVING THREAT LANDSCAPE"

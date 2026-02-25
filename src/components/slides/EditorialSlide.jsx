@@ -20,14 +20,14 @@ const ContentArea = styled.div`
         $align === "bottom" ? "flex-end" : "center"};
     align-items: center;
     padding: ${({ $align }) =>
-        $align === "bottom" ? "60px 80px 120px" : "60px 80px"};
+        $align === "bottom" ? "60px 80px 120px" : "60px 80px 100px"};
     max-width: 846px;
     margin: 0 auto;
     width: 100%;
     box-sizing: border-box;
 
     ${media.mobile(`
-        padding: 40px 20px;
+        padding: 40px 20px 80px;
     `)}
 
     strong {
