@@ -326,6 +326,19 @@ Error generating stack: `+c.message+`
     padding: 40px 10px;
     position: sticky;
     top: 0;
+
+    ${media.mobile(`
+        align-items: flex-start;
+    `)}
+`,MobileContentHeight$1=dt.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 767px) {
+        min-height: calc(100dvh - 40px);
+        width: 100%;
+    }
 `,TextBlock=dt(motion.div)`
     font-family: "logic-monospace", monospace;
     font-size: 24px;
@@ -344,8 +357,9 @@ Error generating stack: `+c.message+`
     ${media.mobile(`
         font-size: 18px;
         max-width: 100%;
-        padding: 0 51px;
+        padding: 0 20px;
         text-align: left;
+        line-height: 1.45;
     `)}
 
     ${media.wide(`
@@ -364,7 +378,7 @@ Error generating stack: `+c.message+`
     strong {
         font-weight: 700;
     }
-`;function IntroTextSection(){const t=reactExports.useRef(null),e=useInView(t,{once:!0,margin:"0px 0px -100% 0px"});return jsxRuntimeExports.jsx(Outer,{ref:t,"data-slide":!0,children:jsxRuntimeExports.jsx(Container$3,{children:jsxRuntimeExports.jsxs(TextBlock,{initial:{opacity:0,y:30},animate:e?{opacity:1,y:0}:{opacity:0,y:30},transition:{duration:.4,ease:"easeOut"},children:[jsxRuntimeExports.jsxs("p",{children:[jsxRuntimeExports.jsx("strong",{children:"That is all it takes"})," to bring down networks, disrupt lives and cause a cascade of harm in today’s hyper-connected world."]}),jsxRuntimeExports.jsxs("p",{children:["Against this backdrop, what could happen if three key European industries – ",jsxRuntimeExports.jsx("strong",{children:"energy"}),","," ",jsxRuntimeExports.jsx("strong",{children:"finance"})," and ",jsxRuntimeExports.jsx("strong",{children:"transport"})," ","– came under fire?"]}),jsxRuntimeExports.jsx("p",{children:"What solutions exist to protect society in this new age of digital warfare?"})]})})})}const NavContainer=dt.nav`
+`;function IntroTextSection(){const t=reactExports.useRef(null),e=useInView(t,{once:!0,margin:"0px 0px -100% 0px"});return jsxRuntimeExports.jsx(Outer,{ref:t,"data-slide":!0,children:jsxRuntimeExports.jsx(Container$3,{children:jsxRuntimeExports.jsx(MobileContentHeight$1,{children:jsxRuntimeExports.jsxs(TextBlock,{initial:{opacity:0,y:30},animate:e?{opacity:1,y:0}:{opacity:0,y:30},transition:{duration:.4,ease:"easeOut"},children:[jsxRuntimeExports.jsxs("p",{children:[jsxRuntimeExports.jsx("strong",{children:"That is all it takes"})," to bring down networks, disrupt lives and cause a cascade of harm in today’s hyper-connected world."]}),jsxRuntimeExports.jsxs("p",{children:["Against this backdrop, what could happen if three key European industries – ",jsxRuntimeExports.jsx("strong",{children:"energy"}),","," ",jsxRuntimeExports.jsx("strong",{children:"finance"})," and"," ",jsxRuntimeExports.jsx("strong",{children:"transport"})," – came under fire?"]}),jsxRuntimeExports.jsx("p",{children:"What solutions exist to protect society in this new age of digital warfare?"})]})})})})}const NavContainer=dt.nav`
     position: fixed;
     bottom: 0;
     left: 0;
@@ -1638,7 +1652,7 @@ Error generating stack: `+c.message+`
     box-sizing: border-box;
 
     ${media.mobile(`
-        padding: 40px 20px 80px;
+        padding: 0 20px;
         justify-content: flex-start;
     `)}
 
@@ -1655,7 +1669,8 @@ Error generating stack: `+c.message+`
 
     @media (max-width: 767px) {
         min-height: calc(
-            100dvh - ${({$hasHeader:t})=>t?HEADING_BAR_MOBILE:0}px -
+            100dvh -
+                ${({$hasHeader:t})=>t?HEADING_BAR_MOBILE:0}px -
                 ${TAB_NAV_MOBILE}px
         );
         display: flex;
