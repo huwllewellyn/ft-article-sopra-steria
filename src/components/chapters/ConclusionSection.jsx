@@ -8,7 +8,7 @@ export default function ConclusionSection() {
     return (
         <div>
             {/* C1 — Opening statement */}
-            <StickySlide appearInPlace>
+            <StickySlide>
                 <EditorialSlide
                     sectionTitle="THE LESSON IS CLEAR"
                     backgroundColor={ACCENT}
