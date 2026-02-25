@@ -27,6 +27,29 @@ function buildStopList() {
     return stops.filter((stop, i) => i === 0 || stop - stops[i - 1] > 30);
 }
 
+const SCROLL_DURATION = 300; // ms — adjust to taste
+
+function smoothScrollTo(target, callback) {
+    const start = window.scrollY;
+    const distance = target - start;
+    const startTime = performance.now();
+
+    function step(now) {
+        const elapsed = now - startTime;
+        const t = Math.min(elapsed / SCROLL_DURATION, 1);
+        // ease-out cubic
+        const eased = 1 - Math.pow(1 - t, 3);
+        window.scrollTo(0, start + distance * eased);
+        if (t < 1) {
+            requestAnimationFrame(step);
+        } else {
+            callback?.();
+        }
+    }
+
+    requestAnimationFrame(step);
+}
+
 export default function useTapToExplore() {
     const isMobile = useIsMobile();
     const scrollingRef = useRef(false);
@@ -99,14 +122,13 @@ export default function useTapToExplore() {
             const currentY = window.scrollY;
 
             // Find next stop beyond current position (50px threshold to avoid sticking)
-            const nextStop = stops.find((y) => y > currentY + 50);
+            const nextStop = stops.find((y) => y > currentY + 150);
 
             if (nextStop != null) {
                 scrollingRef.current = true;
-                window.scrollTo({ top: nextStop, behavior: "smooth" });
-                setTimeout(() => {
+                smoothScrollTo(nextStop + 150, () => {
                     scrollingRef.current = false;
-                }, 1000);
+                });
             }
         };
 
