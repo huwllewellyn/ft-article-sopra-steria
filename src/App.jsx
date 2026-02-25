@@ -12,8 +12,9 @@ import {
     TransportChapter,
     ConclusionSection,
 } from "./components/chapters";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, forwardRef } from "react";
 import { getAssetPath } from "./utils/assetPath";
+import useIsMobile from "./hooks/useIsMobile";
 
 const AppContainer = styled.div``;
 
@@ -62,6 +63,45 @@ const ChapterContainer = styled.div`
     `)}
 `;
 
+const LazyChapter = forwardRef(function LazyChapter(
+    { children, forceMount, ...props },
+    forwardedRef,
+) {
+    const [visible, setVisible] = useState(false);
+    const sentinelRef = useRef(null);
+    const mounted = visible || forceMount;
+
+    useEffect(() => {
+        if (mounted) return;
+        const el = sentinelRef.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVisible(true);
+                    observer.disconnect();
+                }
+            },
+            { rootMargin: "200%" },
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, [mounted]);
+
+    return (
+        <ChapterContainer
+            ref={(el) => {
+                sentinelRef.current = el;
+                if (typeof forwardedRef === "function") forwardedRef(el);
+                else if (forwardedRef) forwardedRef.current = el;
+            }}
+            {...props}
+        >
+            {mounted ? children : null}
+        </ChapterContainer>
+    );
+});
+
 // Tab configuration for navigation
 const tabs = [
     {
@@ -84,12 +124,22 @@ const tabs = [
 function App() {
     const [activeTab, setActiveTab] = useState(0);
     const [navVisible, setNavVisible] = useState(false);
+    const [forceMounted, setForceMounted] = useState({});
     const chapterRefs = useRef([]);
+    const isMobile = useIsMobile();
+
+    // Force-mount a lazy chapter (e.g. when its tab is clicked)
+    const forceMount = (index) =>
+        setForceMounted((prev) => ({ ...prev, [index]: true }));
 
     // Handle tab click - scroll to chapter
     const handleTabChange = (index) => {
         setActiveTab(index);
-        chapterRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+        forceMount(index);
+        // Scroll after a tick to let the chapter mount
+        requestAnimationFrame(() => {
+            chapterRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+        });
     };
 
     // Update active tab and nav visibility based on scroll position
@@ -137,7 +187,11 @@ function App() {
                         playsInline
                         fetchpriority="high"
                         poster={getAssetPath("videos/posters/intro/GettyImages-1444535963.jpg")}
-                        src={getAssetPath("videos/intro/GettyImages-1444535963.mp4")}
+                        src={getAssetPath(
+                            isMobile
+                                ? "videos/intro/GettyImages-1444535963_mobile.mp4"
+                                : "videos/intro/GettyImages-1444535963.mp4",
+                        )}
                     />
                     <VideoOverlay />
                 </StickyVideo>
@@ -160,13 +214,19 @@ function App() {
                 <EnergyChapter />
             </ChapterContainer>
 
-            <ChapterContainer ref={(el) => (chapterRefs.current[1] = el)}>
+            <LazyChapter
+                ref={(el) => (chapterRefs.current[1] = el)}
+                forceMount={forceMounted[1]}
+            >
                 <FinanceChapter />
-            </ChapterContainer>
+            </LazyChapter>
 
-            <ChapterContainer ref={(el) => (chapterRefs.current[2] = el)}>
+            <LazyChapter
+                ref={(el) => (chapterRefs.current[2] = el)}
+                forceMount={forceMounted[2]}
+            >
                 <TransportChapter />
-            </ChapterContainer>
+            </LazyChapter>
 
             <ConclusionSection />
         </AppContainer>

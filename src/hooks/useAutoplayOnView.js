@@ -1,5 +1,8 @@
 import { useRef, useEffect } from "react";
 
+const isMobile =
+    typeof window !== "undefined" && window.innerWidth < 768;
+
 /**
  * Plays a video when it scrolls into view, pauses when it leaves.
  * Releases video decoder resources when the video is far off-screen
@@ -32,7 +35,8 @@ export default function useAutoplayOnView() {
             loaded = true;
         };
 
-        // Nearby observer — load/unload video resources within 1 viewport
+        // Nearby observer — load/unload video resources.
+        // Tighter margin on mobile to limit concurrent decoder slots.
         const resourceObserver = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
@@ -42,7 +46,7 @@ export default function useAutoplayOnView() {
                     unload();
                 }
             },
-            { rootMargin: "100%" },
+            { rootMargin: isMobile ? "50%" : "100%" },
         );
 
         // Visibility observer — play/pause when actually on screen
