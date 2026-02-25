@@ -28,6 +28,7 @@ const ContentArea = styled.div`
 
     ${media.mobile(`
         padding: 40px 20px 80px;
+        justify-content: flex-start;
     `)}
 
     strong {
@@ -37,6 +38,25 @@ const ContentArea = styled.div`
     a {
         color: inherit;
         text-decoration: underline;
+    }
+`;
+
+// Mobile-only wrapper that sizes content to the dynamic viewport height
+// minus the SectionHeadingBar (~107px) and TabNavigation (~40px)
+const HEADING_BAR_MOBILE = 107;
+const TAB_NAV_MOBILE = 40;
+
+const MobileContentHeight = styled.div`
+    width: 100%;
+
+    @media (max-width: 767px) {
+        min-height: calc(
+            100dvh - ${({ $hasHeader }) => ($hasHeader ? HEADING_BAR_MOBILE : 0)}px -
+                ${TAB_NAV_MOBILE}px
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 `;
 
@@ -136,7 +156,9 @@ export default function EditorialSlide({
                 animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
             >
-                {children}
+                <MobileContentHeight $hasHeader={!!sectionTitle}>
+                    {children}
+                </MobileContentHeight>
             </ContentArea>
         </Slide>
     );
