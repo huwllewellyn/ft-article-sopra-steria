@@ -445,7 +445,7 @@ export default function FinanceChapter() {
             {/* F10 — Editorial: AI + inline Arsenio quote */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
+                    sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -468,7 +468,7 @@ export default function FinanceChapter() {
             {/* F11 — Editorial: Arsenio quote */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
+                    sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -483,7 +483,7 @@ export default function FinanceChapter() {
             {/* F12 — Editorial: 60% + training */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
+                    sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -510,7 +510,7 @@ export default function FinanceChapter() {
             <StickySlide appearInPlace flowHeight="200vh" trackHeight="200vh">
                 {({ scrollYProgress }) => (
                     <DataGridSlide
-                        sectionTitle="WHEN HUMAN BEHAVIOUR BECOMES THE ENTRY POINT"
+                        sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
                         mobileScale="0.7"
