@@ -9,6 +9,7 @@ const QuoteWrapper = styled.blockquote`
 
     ${media.mobile(`
         text-align: left;
+        margin: 20px 0;
     `)}
 `;
 
@@ -20,6 +21,11 @@ const QuoteMark = styled.span`
     line-height: 1;
     color: #000;
     margin-bottom: 8px;
+
+    ${media.mobile(`
+        font-size: 38px;
+        margin-bottom: 0;
+    `)}
 
     ${media.wide(`
         font-size: 75px;
