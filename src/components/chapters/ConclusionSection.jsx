@@ -1,3 +1,4 @@
+import useIsMobile from "../../hooks/useIsMobile";
 import { EditorialSlide, SectionHeadingBar, StickySlide } from "../slides";
 import { EditorialBody } from "../slides/EditorialSlide";
 import SlideQuote from "../slides/SlideQuote";
@@ -5,6 +6,8 @@ import SlideQuote from "../slides/SlideQuote";
 const ACCENT = "#d96a38";
 
 export default function ConclusionSection() {
+    const isMobile = useIsMobile();
+
     return (
         <div>
             {/* C1 — Opening statement */}
@@ -56,16 +59,24 @@ export default function ConclusionSection() {
                             equally sophisticated response, but this cyber
                             resilience cannot be built in silos.
                         </p>
-                        <br />
-                        <br />
+                        {!isMobile && (
+                            <>
+                                <br />
+                                <br />
+                            </>
+                        )}
                         <p>
                             These cases highlight why a multifaceted,
                             cross-border and cross-sector approach to
                             cybersecurity is required in today’s hyper-connected
                             society.
                         </p>
-                        <br />
-                        <br />
+                        {!isMobile && (
+                            <>
+                                <br />
+                                <br />
+                            </>
+                        )}
                         <p>
                             The future will belong not to the best-defended
                             sector, but to the best-coordinated network.
