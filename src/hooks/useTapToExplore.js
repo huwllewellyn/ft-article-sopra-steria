@@ -166,8 +166,7 @@ export default function useTapToExplore() {
                         targetY =
                             el.getBoundingClientRect().top +
                             window.scrollY +
-                            (phaseIndex / phases) * el.offsetHeight +
-                            offset;
+                            (phaseIndex / phases) * el.offsetHeight;
                     } else {
                         targetY =
                             el.getBoundingClientRect().top +

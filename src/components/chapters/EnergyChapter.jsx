@@ -770,6 +770,8 @@ export default function EnergyChapter() {
                 headingFontFamily="'Space Grotesk', sans-serif"
                 headingFontWeight={500}
                 backgroundColor="#f7ff95"
+                trackHeight="200vh"
+                flowHeight="200vh"
                 lottieAnimation={{
                     mobile: "/videos/ch1/SOPRA_DigitalDisruption_DP1_M.json",
                     tablet: "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
