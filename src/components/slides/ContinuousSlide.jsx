@@ -71,6 +71,9 @@ export default function ContinuousSlide({
     return (
         <div
             ref={trackRef}
+            data-slide
+            data-slide-phases={slides.length}
+            data-slide-track-height={trackHeight}
             style={{
                 position: "relative",
                 height: trackHeight,

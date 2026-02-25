@@ -53,7 +53,7 @@ function ScrollTrackedSlide({ children, trackHeight, flowHeight, appearInPlace }
     useZIndexAndAppear(trackRef, appearInPlace);
 
     return (
-        <ScrollTrack ref={trackRef} $trackHeight={trackHeight} $flowHeight={flowHeight}>
+        <ScrollTrack ref={trackRef} $trackHeight={trackHeight} $flowHeight={flowHeight} data-slide>
             <StickyWrapper>
                 {typeof children === "function" ? children({ scrollYProgress }) : children}
             </StickyWrapper>
@@ -74,13 +74,13 @@ function BaseStickySlide({ children, appearInPlace, flowHeight }) {
 
     if (flowHeight) {
         return (
-            <FlowTrack ref={flowRef} $flowHeight={flowHeight}>
+            <FlowTrack ref={flowRef} $flowHeight={flowHeight} data-slide>
                 <StickyWrapper>{children}</StickyWrapper>
             </FlowTrack>
         );
     }
 
-    return <StickyWrapper ref={ref}>{children}</StickyWrapper>;
+    return <StickyWrapper ref={ref} data-slide>{children}</StickyWrapper>;
 }
 
 export default function StickySlide({ children, appearInPlace, trackHeight, flowHeight }) {

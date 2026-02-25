@@ -69,7 +69,7 @@ export default function IntroTextSection() {
     });
 
     return (
-        <Outer ref={outerRef}>
+        <Outer ref={outerRef} data-slide>
             <Container>
                 <TextBlock
                     initial={{ opacity: 0, y: 30 }}

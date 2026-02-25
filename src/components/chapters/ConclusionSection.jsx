@@ -9,7 +9,7 @@ export default function ConclusionSection() {
     const isMobile = useIsMobile();
 
     return (
-        <div>
+        <div data-slide>
             {/* C1 — Opening statement */}
             <StickySlide>
                 <EditorialSlide

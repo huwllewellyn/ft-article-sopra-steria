@@ -15,6 +15,7 @@ import {
 import { useState, useRef, useEffect, forwardRef } from "react";
 import { getAssetPath } from "./utils/assetPath";
 import useIsMobile from "./hooks/useIsMobile";
+import useTapToExplore from "./hooks/useTapToExplore";
 
 const AppContainer = styled.div``;
 
@@ -127,6 +128,7 @@ function App() {
     const [forceMounted, setForceMounted] = useState({});
     const chapterRefs = useRef([]);
     const isMobile = useIsMobile();
+    useTapToExplore();
 
     // Force-mount a lazy chapter (e.g. when its tab is clicked)
     const forceMount = (index) =>

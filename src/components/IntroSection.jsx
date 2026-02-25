@@ -264,7 +264,7 @@ const itemVariants = {
 
 export default function IntroSection() {
     return (
-        <Container>
+        <Container data-slide>
             <ContentWrapper>
                 <TitleBlock
                     initial="hidden"

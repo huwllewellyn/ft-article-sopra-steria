@@ -72,7 +72,7 @@ export default function OneClickSection() {
     const displayText = useTextScramble(ORIGINAL);
 
     return (
-        <Outer>
+        <Outer data-slide>
             <Container>
                 <Text
                     initial={{ opacity: 0 }}

@@ -280,7 +280,7 @@ export default function DataGridSlide({
     }, []);
 
     return (
-        <SlideWrapper ref={slideRef}>
+        <SlideWrapper ref={slideRef} data-slide>
             <StickyInner>
             <Slide $bg={backgroundColor}>
                 {isMobile && mobileBackgroundImage && (
