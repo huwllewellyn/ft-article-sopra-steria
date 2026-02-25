@@ -19,6 +19,21 @@ const Container = styled.div`
     padding: 40px 10px;
     position: sticky;
     top: 0;
+
+    ${media.mobile(`
+        align-items: flex-start;
+    `)}
+`;
+
+const MobileContentHeight = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media (max-width: 767px) {
+        min-height: calc(100dvh - 40px);
+        width: 100%;
+    }
 `;
 
 const TextBlock = styled(motion.div)`
@@ -39,8 +54,9 @@ const TextBlock = styled(motion.div)`
     ${media.mobile(`
         font-size: 18px;
         max-width: 100%;
-        padding: 0 51px;
+        padding: 0 20px;
         text-align: left;
+        line-height: 1.45;
     `)}
 
     ${media.wide(`
@@ -71,29 +87,31 @@ export default function IntroTextSection() {
     return (
         <Outer ref={outerRef} data-slide>
             <Container>
-                <TextBlock
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={
-                        isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-                    }
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                >
-                    <p>
-                        <strong>That is all it takes</strong> to bring down
-                        networks, disrupt lives and cause a cascade of harm in
-                        today’s hyper-connected world.
-                    </p>
-                    <p>
-                        Against this backdrop, what could happen if three key
-                        European industries – <strong>energy</strong>,{" "}
-                        <strong>finance</strong> and <strong>transport</strong>{" "}
-                        – came under fire?
-                    </p>
-                    <p>
-                        What solutions exist to protect society in this new age
-                        of digital warfare?
-                    </p>
-                </TextBlock>
+                <MobileContentHeight>
+                    <TextBlock
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={
+                            isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                        }
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                    >
+                        <p>
+                            <strong>That is all it takes</strong> to bring down
+                            networks, disrupt lives and cause a cascade of harm in
+                            today’s hyper-connected world.
+                        </p>
+                        <p>
+                            Against this backdrop, what could happen if three key
+                            European industries – <strong>energy</strong>,{" "}
+                            <strong>finance</strong> and{" "}
+                            <strong>transport</strong> – came under fire?
+                        </p>
+                        <p>
+                            What solutions exist to protect society in this new age
+                            of digital warfare?
+                        </p>
+                    </TextBlock>
+                </MobileContentHeight>
             </Container>
         </Outer>
     );
