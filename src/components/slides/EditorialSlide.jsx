@@ -27,7 +27,7 @@ const ContentArea = styled.div`
     box-sizing: border-box;
 
     ${media.mobile(`
-        padding: 40px 20px 80px;
+        padding: 0 20px;
         justify-content: flex-start;
     `)}
 
@@ -51,7 +51,8 @@ const MobileContentHeight = styled.div`
 
     @media (max-width: 767px) {
         min-height: calc(
-            100dvh - ${({ $hasHeader }) => ($hasHeader ? HEADING_BAR_MOBILE : 0)}px -
+            100dvh -
+                ${({ $hasHeader }) => ($hasHeader ? HEADING_BAR_MOBILE : 0)}px -
                 ${TAB_NAV_MOBILE}px
         );
         display: flex;
@@ -153,7 +154,9 @@ export default function EditorialSlide({
                 as={motion.div}
                 $align={contentAlign}
                 initial={{ opacity: 0, y: 30 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                animate={
+                    isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                }
                 transition={{ duration: 0.4, ease: "easeOut" }}
             >
                 <MobileContentHeight $hasHeader={!!sectionTitle}>
