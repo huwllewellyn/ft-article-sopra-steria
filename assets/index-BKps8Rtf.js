@@ -1639,6 +1639,7 @@ Error generating stack: `+c.message+`
 
     ${media.mobile(`
         padding: 40px 20px 80px;
+        justify-content: flex-start;
     `)}
 
     strong {
@@ -1648,6 +1649,18 @@ Error generating stack: `+c.message+`
     a {
         color: inherit;
         text-decoration: underline;
+    }
+`,HEADING_BAR_MOBILE=107,TAB_NAV_MOBILE=40,MobileContentHeight=dt.div`
+    width: 100%;
+
+    @media (max-width: 767px) {
+        min-height: calc(
+            100dvh - ${({$hasHeader:t})=>t?HEADING_BAR_MOBILE:0}px -
+                ${TAB_NAV_MOBILE}px
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 `,EditorialBody=dt.div`
     p {
@@ -1677,7 +1690,7 @@ Error generating stack: `+c.message+`
             letter-spacing: -1.7px;
         `)}
     }
-`;function EditorialSlide({sectionTitle:t,children:e,backgroundColor:n,headingColor:s,contentAlign:a}){const l=reactExports.useRef(null),[u,p]=reactExports.useState(!1);return reactExports.useEffect(()=>{let h=null,d=!1;const E=()=>{const tt=l.current;if(!tt||u)return;if(!h){let ht=tt.parentElement;for(;ht&&ht!==document.body;){if(ht.style.opacity!==""){h=ht,d=!0;break}ht=ht.parentElement}h=h||tt}const N=h.getBoundingClientRect();d?N.top<=0&&N.bottom>0&&p(!0):N.top<=window.innerHeight/2&&p(!0)};return window.addEventListener("scroll",E,{passive:!0}),E(),()=>window.removeEventListener("scroll",E)},[u]),jsxRuntimeExports.jsxs(Slide$1,{$bg:n,children:[t&&jsxRuntimeExports.jsx(SectionHeadingBar,{color:s,children:t}),jsxRuntimeExports.jsx(ContentArea$1,{ref:l,as:motion.div,$align:a,initial:{opacity:0,y:30},animate:u?{opacity:1,y:0}:{opacity:0,y:30},transition:{duration:.4,ease:"easeOut"},children:e})]})}dt.section`
+`;function EditorialSlide({sectionTitle:t,children:e,backgroundColor:n,headingColor:s,contentAlign:a}){const l=reactExports.useRef(null),[u,p]=reactExports.useState(!1);return reactExports.useEffect(()=>{let h=null,d=!1;const E=()=>{const tt=l.current;if(!tt||u)return;if(!h){let ht=tt.parentElement;for(;ht&&ht!==document.body;){if(ht.style.opacity!==""){h=ht,d=!0;break}ht=ht.parentElement}h=h||tt}const N=h.getBoundingClientRect();d?N.top<=0&&N.bottom>0&&p(!0):N.top<=window.innerHeight/2&&p(!0)};return window.addEventListener("scroll",E,{passive:!0}),E(),()=>window.removeEventListener("scroll",E)},[u]),jsxRuntimeExports.jsxs(Slide$1,{$bg:n,children:[t&&jsxRuntimeExports.jsx(SectionHeadingBar,{color:s,children:t}),jsxRuntimeExports.jsx(ContentArea$1,{ref:l,as:motion.div,$align:a,initial:{opacity:0,y:30},animate:u?{opacity:1,y:0}:{opacity:0,y:30},transition:{duration:.4,ease:"easeOut"},children:jsxRuntimeExports.jsx(MobileContentHeight,{$hasHeader:!!t,children:e})})]})}dt.section`
     height: 100lvh;
     width: 100%;
     overflow: hidden;
