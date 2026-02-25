@@ -46,7 +46,7 @@ const WarningText = styled.p`
 
 export default function WarningSection() {
     return (
-        <Container data-slide data-slide-intro-end>
+        <Container data-slide data-slide-intro-end id="warning">
             <WarningBox
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}

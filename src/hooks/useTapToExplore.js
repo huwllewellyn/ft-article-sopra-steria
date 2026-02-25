@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 import useIsMobile from "./useIsMobile";
 
-function buildStopList() {
-    const slides = document.querySelectorAll("[data-slide]");
-    const stops = [];
+function findNextStop(currentY, threshold) {
+    const slides = Array.from(document.querySelectorAll("[data-slide]"));
 
     for (const el of slides) {
         const top = el.getBoundingClientRect().top + window.scrollY;
@@ -14,40 +13,69 @@ function buildStopList() {
         if (phases > 1) {
             const height = el.offsetHeight;
             for (let i = 0; i < phases; i++) {
-                stops.push(Math.round(top + (i / phases) * height));
+                const phaseY = top + (i / phases) * height;
+                if (phaseY > currentY + threshold) {
+                    return { el, phaseIndex: i, phases };
+                }
             }
         } else {
-            stops.push(Math.round(top));
+            if (top > currentY + threshold) {
+                return { el, phaseIndex: 0, phases: 0 };
+            }
         }
     }
 
-    stops.sort((a, b) => a - b);
-
-    // Deduplicate stops within 30px of each other (handles nested data-slide)
-    return stops.filter((stop, i) => i === 0 || stop - stops[i - 1] > 30);
+    return null;
 }
 
-const SCROLL_DURATION = 300; // ms — adjust to taste
+const SCROLL_DURATION = 300;
+let activeRafId = null;
 
 function smoothScrollTo(target, callback) {
+    if (activeRafId != null) {
+        cancelAnimationFrame(activeRafId);
+        activeRafId = null;
+    }
+
     const start = window.scrollY;
     const distance = target - start;
+    if (Math.abs(distance) < 2) {
+        callback?.();
+        return;
+    }
     const startTime = performance.now();
 
     function step(now) {
         const elapsed = now - startTime;
         const t = Math.min(elapsed / SCROLL_DURATION, 1);
-        // ease-out cubic
         const eased = 1 - Math.pow(1 - t, 3);
-        window.scrollTo(0, start + distance * eased);
+        window.scrollTo(0, Math.round(start + distance * eased));
         if (t < 1) {
-            requestAnimationFrame(step);
+            activeRafId = requestAnimationFrame(step);
         } else {
+            activeRafId = null;
             callback?.();
         }
     }
 
-    requestAnimationFrame(step);
+    activeRafId = requestAnimationFrame(step);
+}
+
+/**
+ * If we're at scrollY=0, the navbar is expanded. Scrolling will collapse it,
+ * shifting all element positions. Force the collapse first by jumping to 1px,
+ * then wait a frame for layout to settle before returning.
+ */
+function ensureNavbarCollapsed() {
+    return new Promise((resolve) => {
+        if (window.scrollY < 1) {
+            window.scrollTo(0, 1);
+            // Wait two frames for the navbar transition and layout reflow
+            requestAnimationFrame(() => requestAnimationFrame(resolve));
+        } else {
+            resolve();
+        }
+    });
 }
 
 export default function useTapToExplore() {
@@ -58,9 +86,16 @@ export default function useTapToExplore() {
     useEffect(() => {
         if (!isMobile) return;
 
-        // Prevent native touch scrolling
+        // Disable native touch scrolling
         document.body.style.touchAction = "none";
         document.body.style.overscrollBehavior = "none";
+
+        // Override CSS scroll properties from FT external stylesheets
+        // that cause scroll-back after programmatic scrolling
+        document.documentElement.style.scrollBehavior = "auto";
+        document.documentElement.style.scrollSnapType = "none";
+        document.body.style.scrollBehavior = "auto";
+        document.body.style.scrollSnapType = "none";
 
         const preventScroll = (e) => e.preventDefault();
         document.addEventListener("touchmove", preventScroll, {
@@ -68,6 +103,11 @@ export default function useTapToExplore() {
         });
 
         const handleTouchStart = (e) => {
+            if (activeRafId != null) {
+                cancelAnimationFrame(activeRafId);
+                activeRafId = null;
+                scrollingRef.current = false;
+            }
             touchStartRef.current = {
                 x: e.touches[0].clientX,
                 y: e.touches[0].clientY,
@@ -77,12 +117,10 @@ export default function useTapToExplore() {
         const handleTouchEnd = (e) => {
             if (scrollingRef.current) return;
 
-            // Only advance on tap (not drag) — 15px threshold
             const dx = e.changedTouches[0].clientX - touchStartRef.current.x;
             const dy = e.changedTouches[0].clientY - touchStartRef.current.y;
             if (Math.abs(dx) > 15 || Math.abs(dy) > 15) return;
 
-            // Ignore taps on interactive elements
             if (
                 e.target.closest(
                     "a, button, input, select, textarea, [role='button'], video",
@@ -90,39 +128,78 @@ export default function useTapToExplore() {
             )
                 return;
 
+            scrollingRef.current = true;
 
-            const stops = buildStopList();
-            const currentY = window.scrollY;
-
-            // Only add offset once past the intro sections
-            const introEnd =
-                document.querySelector("[data-slide-intro-end]");
-            const pastIntro =
-                introEnd &&
-                currentY > introEnd.getBoundingClientRect().top + window.scrollY;
-            const offset = pastIntro ? 150 : 0;
-
-            // Find next stop beyond current position
-            const nextStop = stops.find((y) => y > currentY + (pastIntro ? 150 : 50));
-
-            if (nextStop != null) {
-                scrollingRef.current = true;
-                smoothScrollTo(nextStop + offset, () => {
-                    scrollingRef.current = false;
-                });
-            } else {
-                // Past the last stop — scroll to the CTA button
-                const cta = document.getElementById("cta-sopra");
-                if (cta) {
-                    const ctaTop = cta.getBoundingClientRect().top + window.scrollY;
-                    if (currentY < ctaTop - 50) {
-                        scrollingRef.current = true;
-                        smoothScrollTo(ctaTop, () => {
+            // Special-case: intro section — skip ensureNavbarCollapsed + findNextStop
+            // to avoid race between navbar transition and position reading
+            if (window.scrollY < 10) {
+                window.scrollTo(0, 1);
+                // Wait for navbar CSS transition to finish before reading positions
+                setTimeout(() => {
+                    const introEnd =
+                        document.querySelector("[data-slide-intro-end]");
+                    if (introEnd) {
+                        const targetY =
+                            introEnd.getBoundingClientRect().top +
+                            window.scrollY;
+                        smoothScrollTo(targetY, () => {
                             scrollingRef.current = false;
                         });
+                    } else {
+                        scrollingRef.current = false;
+                    }
+                }, 350);
+                return;
+            }
+
+            // Force navbar collapse before reading positions, then scroll
+            ensureNavbarCollapsed().then(() => {
+                const currentY = window.scrollY;
+
+                const introEnd =
+                    document.querySelector("[data-slide-intro-end]");
+                const pastIntro =
+                    introEnd &&
+                    currentY >
+                        introEnd.getBoundingClientRect().top + window.scrollY;
+                const offset = pastIntro ? 150 : 0;
+                const threshold = pastIntro ? 150 : 50;
+
+                const match = findNextStop(currentY, threshold);
+
+                if (match != null) {
+                    const { el, phaseIndex, phases } = match;
+                    let targetY;
+
+                    if (phaseIndex > 0 && phases > 1) {
+                        targetY =
+                            el.getBoundingClientRect().top +
+                            window.scrollY +
+                            (phaseIndex / phases) * el.offsetHeight +
+                            offset;
+                    } else {
+                        targetY =
+                            el.getBoundingClientRect().top +
+                            window.scrollY +
+                            offset;
+                    }
+
+                    smoothScrollTo(targetY, () => {
+                        scrollingRef.current = false;
+                    });
+                } else {
+                    const cta = document.getElementById("cta-sopra");
+                    if (cta) {
+                        const ctaTop =
+                            cta.getBoundingClientRect().top + window.scrollY;
+                        smoothScrollTo(ctaTop - 200, () => {
+                            scrollingRef.current = false;
+                        });
+                    } else {
+                        scrollingRef.current = false;
                     }
                 }
-            }
+            });
         };
 
         document.addEventListener("touchstart", handleTouchStart, {
@@ -135,9 +212,17 @@ export default function useTapToExplore() {
         return () => {
             document.body.style.touchAction = "";
             document.body.style.overscrollBehavior = "";
+            document.documentElement.style.scrollBehavior = "";
+            document.documentElement.style.scrollSnapType = "";
+            document.body.style.scrollBehavior = "";
+            document.body.style.scrollSnapType = "";
             document.removeEventListener("touchmove", preventScroll);
             document.removeEventListener("touchstart", handleTouchStart);
             document.removeEventListener("touchend", handleTouchEnd);
+            if (activeRafId != null) {
+                cancelAnimationFrame(activeRafId);
+                activeRafId = null;
+            }
         };
     }, [isMobile]);
 }
