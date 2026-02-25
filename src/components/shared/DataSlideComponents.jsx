@@ -29,7 +29,7 @@ export const DataText = styled.div`
     `)}
 
     ${media.mobile(`
-        font-size: 22px;
+        font-size: 19px;
         line-height: 1.35;
         letter-spacing: -0.76px;
         text-align: left;
@@ -87,7 +87,7 @@ export function DataCenter({ $bg, children }) {
 
 const DataCenterLargeStyled = styled(DataCenterStyled)`
     ${media.mobile(`
-        font-size: 40px;
+        font-size: 30px;
         text-align: left;
     `)}
 `;
