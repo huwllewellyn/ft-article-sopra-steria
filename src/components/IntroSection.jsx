@@ -10,10 +10,10 @@ const Container = styled.section`
     position: relative;
     overflow: hidden;
     ${media.tablet(`
-        min-height: calc(100lvh - 80px);
+        min-height: calc(100svh - 80px);
     `)}
     ${media.mobile(`
-        min-height: calc(100lvh - 150px);
+        min-height: calc(100svh - 150px);
     `)}
     ${media.wide(`
         min-height: calc(100lvh - 190px);
