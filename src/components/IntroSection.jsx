@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { media } from "../utils/breakpoints";
+import useIsMobile from "../hooks/useIsMobile";
 
 const Container = styled.section`
     width: 100%;
@@ -263,6 +264,7 @@ const itemVariants = {
 };
 
 export default function IntroSection() {
+    const isMobile = useIsMobile();
     return (
         <Container data-slide>
             <ContentWrapper>
@@ -317,7 +319,7 @@ export default function IntroSection() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.5, duration: 0.5 }}
                 >
-                    SCROLL TO EXPLORE
+                    {isMobile ? "TAP TO EXPLORE" : "SCROLL TO EXPLORE"}
                 </ScrollIndicator>
             </ContentWrapper>
         </Container>

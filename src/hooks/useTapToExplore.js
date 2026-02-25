@@ -67,29 +67,6 @@ export default function useTapToExplore() {
             passive: false,
         });
 
-        // "Tap to continue" hint
-        const hint = document.createElement("div");
-        hint.setAttribute("aria-hidden", "true");
-        Object.assign(hint.style, {
-            position: "fixed",
-            bottom: "24px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            zIndex: "9999",
-            fontFamily: "'Space Mono', monospace",
-            fontSize: "12px",
-            fontWeight: "500",
-            color: "#fff",
-            textTransform: "uppercase",
-            letterSpacing: "1px",
-            opacity: "0.7",
-            pointerEvents: "none",
-            transition: "opacity 0.3s",
-            textAlign: "center",
-        });
-        hint.textContent = "Tap to continue \u25BE";
-        document.body.appendChild(hint);
-
         const handleTouchStart = (e) => {
             touchStartRef.current = {
                 x: e.touches[0].clientX,
@@ -113,22 +90,38 @@ export default function useTapToExplore() {
             )
                 return;
 
-            // Hide hint on first tap
-            if (hint.style.opacity !== "0") {
-                hint.style.opacity = "0";
-            }
 
             const stops = buildStopList();
             const currentY = window.scrollY;
 
-            // Find next stop beyond current position (50px threshold to avoid sticking)
-            const nextStop = stops.find((y) => y > currentY + 150);
+            // Only add offset once past the intro sections
+            const introEnd =
+                document.querySelector("[data-slide-intro-end]");
+            const pastIntro =
+                introEnd &&
+                currentY > introEnd.getBoundingClientRect().top + window.scrollY;
+            const offset = pastIntro ? 150 : 0;
+
+            // Find next stop beyond current position
+            const nextStop = stops.find((y) => y > currentY + (pastIntro ? 150 : 50));
 
             if (nextStop != null) {
                 scrollingRef.current = true;
-                smoothScrollTo(nextStop + 150, () => {
+                smoothScrollTo(nextStop + offset, () => {
                     scrollingRef.current = false;
                 });
+            } else {
+                // Past the last stop — scroll to the CTA button
+                const cta = document.getElementById("cta-sopra");
+                if (cta) {
+                    const ctaTop = cta.getBoundingClientRect().top + window.scrollY;
+                    if (currentY < ctaTop - 50) {
+                        scrollingRef.current = true;
+                        smoothScrollTo(ctaTop, () => {
+                            scrollingRef.current = false;
+                        });
+                    }
+                }
             }
         };
 
@@ -145,7 +138,6 @@ export default function useTapToExplore() {
             document.removeEventListener("touchmove", preventScroll);
             document.removeEventListener("touchstart", handleTouchStart);
             document.removeEventListener("touchend", handleTouchEnd);
-            if (hint.parentNode) hint.parentNode.removeChild(hint);
         };
     }, [isMobile]);
 }
