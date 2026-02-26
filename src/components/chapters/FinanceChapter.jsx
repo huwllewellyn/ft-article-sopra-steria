@@ -55,6 +55,20 @@ const F13TextStyled = styled(motion.div)`
     `)};
 `;
 
+const F13BigNumber = styled.div`
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 120px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    line-height: 1;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-70%);
+`;
+
 function F13Text({ children }) {
     const ref = useRef(null);
     const [isVisible, setIsVisible] = useState(false);
@@ -203,6 +217,7 @@ function ScrollSyncHeroVideo({ scrollProgress, src, mobileSrc, poster }) {
 }
 
 export default function FinanceChapter() {
+    const isMobile = useIsMobile();
     return (
         <Chapter>
             {/* Hero + F1 — continuous Madrid cityscape video */}
@@ -510,14 +525,15 @@ export default function FinanceChapter() {
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
                         mobileScale="0.7"
-                        backgroundImage="/videos/ch2/41pecent.jpg"
-                        // mobileScale="1.6"
-                        // lottieAnimation={{
-                        //     mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                        //     tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                        //     desktop:
-                        //         "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                        // }}
+                        lottieAnimation={
+                            isMobile
+                                ? undefined
+                                : {
+                                      tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
+                                      desktop:
+                                          "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
+                                  }
+                        }
                         scrollProgress={scrollYProgress}
                         maxWidth="90vw"
                         lottieHeight="50vh"
@@ -525,6 +541,7 @@ export default function FinanceChapter() {
                         lottieLoop={false}
                     >
                         <DataText $bg={ACCENT}></DataText>
+                        {isMobile && <F13BigNumber>41%</F13BigNumber>}
                         <F13Text>
                             is the approximate share of organisations that
                             recorded a material incident during the past 12
