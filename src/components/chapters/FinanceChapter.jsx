@@ -451,7 +451,7 @@ export default function FinanceChapter() {
                 >
                     <EditorialBody>
                         <p>
-                            Al enables them to use real-time company data and
+                            AI enables them to use real-time company data and
                             social media to make each message convincingly
                             authentic.
                         </p>
