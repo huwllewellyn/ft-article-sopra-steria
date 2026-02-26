@@ -38,7 +38,7 @@ const F13TextStyled = styled(motion.div)`
     right: 0;
     padding: 0 80px;
     box-sizing: border-box;
-    background: ${ACCENT};
+    background: #8eb8ff;
     ${media.tablet(`
         font-size: 21px;
         letter-spacing: -0.84px;
