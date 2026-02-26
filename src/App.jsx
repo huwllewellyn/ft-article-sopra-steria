@@ -137,10 +137,16 @@ function App() {
     // Handle tab click - scroll to chapter
     const handleTabChange = (index) => {
         setActiveTab(index);
-        forceMount(index);
-        // Scroll after a tick to let the chapter mount
+        // Mount all lazy chapters up to and including the target so
+        // intermediate chapters have their full height before we scroll
+        for (let i = 1; i <= index; i++) {
+            forceMount(i);
+        }
+        // Double rAF to ensure React has committed the batched state updates
         requestAnimationFrame(() => {
-            chapterRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+            requestAnimationFrame(() => {
+                chapterRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
+            });
         });
     };
 
