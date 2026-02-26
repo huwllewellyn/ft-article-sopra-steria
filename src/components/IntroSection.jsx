@@ -177,7 +177,7 @@ const Standfirst = styled(motion.p)`
 
 const ScrollIndicator = styled(motion.p)`
     font-family: "Space Mono", monospace;
-    font-size: 14px;
+    font-size: 21px;
     font-weight: 500;
     color: #fbfbfb;
     letter-spacing: 0.14px;
@@ -186,13 +186,8 @@ const ScrollIndicator = styled(motion.p)`
     text-transform: uppercase;
 
     ${media.wide(`
-        font-family: "logic-monospace", monospace;
         font-size: 26px;
         letter-spacing: 0.26px;
-    `)}
-
-    ${media.wide(`
-        font-size: 21px;
     `)}
 
     ${media.tablet(`
