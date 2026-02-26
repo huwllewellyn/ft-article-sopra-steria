@@ -38,25 +38,21 @@ const F13TextStyled = styled(motion.div)`
     right: 0;
     padding: 0 80px;
     box-sizing: border-box;
-
+    background: ${ACCENT};
     ${media.tablet(`
         font-size: 21px;
         letter-spacing: -0.84px;
         padding: 0 40px;
-    `)}
-
-    ${media.mobile(`
+    `)} ${media.mobile(`
         font-size: 17px;
         letter-spacing: -0.68px;
         color: #222;
         text-align: left;
         padding: 0 20px;
-    `)}
-
-    ${media.wide(`
+    `)} ${media.wide(`
         font-size: 39px;
         letter-spacing: -1.5px;
-    `)}
+    `)};
 `;
 
 function F13Text({ children }) {
