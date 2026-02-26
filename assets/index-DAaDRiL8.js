@@ -1993,7 +1993,7 @@ Error generating stack: `+c.message+`
     right: 0;
     padding: 0 80px;
     box-sizing: border-box;
-    background: ${ACCENT$2};
+    background: #8eb8ff;
     ${media.tablet(`
         font-size: 21px;
         letter-spacing: -0.84px;
