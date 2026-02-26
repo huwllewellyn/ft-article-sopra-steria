@@ -532,15 +532,7 @@ export default function FinanceChapter() {
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
                         mobileScale="0.7"
-                        lottieAnimation={
-                            isMobile
-                                ? undefined
-                                : {
-                                      tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                                      desktop:
-                                          "/videos/ch2/SOPRA_DigitalDisruption_DP2_D.json",
-                                  }
-                        }
+                        backgroundImage={isMobile ? undefined : "/videos/ch2/41pecent.jpg"}
                         scrollProgress={scrollYProgress}
                         maxWidth="90vw"
                         lottieHeight="50vh"
