@@ -6,7 +6,7 @@
 # Three compression profiles:
 #   Standard (full-bleed background videos): 1280x720, CRF 28
 #   Data Point animations: native aspect ratio, CRF 26
-#   Mobile portrait crops: 405x720 (9:16), CRF 28, no keyframes
+#   Mobile portrait crops: 405x720 (9:16), CRF 28, maxrate 500k
 #
 # Mobile source files (*_MOBILE*, *_MOB*, *_M*) in raw assets are skipped entirely.
 # Portrait-cropped _mobile.mp4 variants are generated for every standard video.
@@ -277,7 +277,7 @@ for entry in "${CHAPTERS[@]}"; do
             fi
 
             mobile_vf="scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,crop=405:720:${crop_x}:0"
-            mobile_extra=()
+            mobile_extra=(-maxrate 500k -bufsize 1000k)
             if [ -n "$max_duration" ]; then
                 mobile_extra+=(-t "$max_duration")
             fi
