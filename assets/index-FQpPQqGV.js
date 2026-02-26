@@ -1993,25 +1993,21 @@ Error generating stack: `+c.message+`
     right: 0;
     padding: 0 80px;
     box-sizing: border-box;
-
+    background: ${ACCENT$2};
     ${media.tablet(`
         font-size: 21px;
         letter-spacing: -0.84px;
         padding: 0 40px;
-    `)}
-
-    ${media.mobile(`
+    `)} ${media.mobile(`
         font-size: 17px;
         letter-spacing: -0.68px;
         color: #222;
         text-align: left;
         padding: 0 20px;
-    `)}
-
-    ${media.wide(`
+    `)} ${media.wide(`
         font-size: 39px;
         letter-spacing: -1.5px;
-    `)}
+    `)};
 `;function F13Text({children:t}){const e=reactExports.useRef(null),[n,s]=reactExports.useState(!1);return reactExports.useEffect(()=>{let a=null;const l=()=>{const u=e.current;if(!u||n)return;if(!a){let h=u.parentElement;for(;h&&h!==document.body;){if(h.style.opacity!==""){a=h;break}h=h.parentElement}a=a||u}const p=a.getBoundingClientRect();p.top<=0&&p.bottom>0&&s(!0)};return window.addEventListener("scroll",l,{passive:!0}),l(),()=>window.removeEventListener("scroll",l)},[n]),jsxRuntimeExports.jsx(F13TextStyled,{ref:e,initial:{opacity:0,y:30},animate:n?{opacity:1,y:0}:{opacity:0,y:30},transition:{duration:.4,ease:"easeOut"},children:t})}const ACCENT$2="#8eb8ff",VIDEOS$1={madridCityscape:"/videos/ch2/ch2_1.mp4",madridCityscapeMobile:"/videos/ch2/ch2_1_mobile.mp4",supermarket:"/videos/ch2/ch2_2_glitch.mp4",supermarketBlurred:"/videos/ch2/ch2_3.mp4",warehousePhone:"/videos/ch2/ch2_4_desktop.mp4",ironGate:"/videos/ch2/ch2_5.mp4",phoneInHand:"/videos/ch2/ch2_630.mp4",warehouse:"/videos/ch2/ch2_7.mp4",idVerification:"/videos/ch2/ch2_8.mp4"},POSTERS$1={madridCityscape:"/videos/posters/ch2/ch2_1.jpg",supermarket:"/videos/posters/ch2/ch2_2_glitch.jpg",supermarketBlurred:"/videos/posters/ch2/ch2_3.jpg",warehousePhone:"/videos/posters/ch2/ch2_4_desktop.jpg",ironGate:"/videos/posters/ch2/ch2_5.jpg",phoneInHand:"/videos/posters/ch2/ch2_630.jpg",warehouse:"/videos/posters/ch2/ch2_7.jpg",idVerification:"/videos/posters/ch2/ch2_8.jpg"},Chapter$1=dt.div`
     background: #0d1117;
     color: #fff;
