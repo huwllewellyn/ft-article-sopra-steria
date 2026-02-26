@@ -466,8 +466,8 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S8 — Cyber attacks data grid */}
-            <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh">
-                {({ scrollYProgress }) => (
+            {isMobile ? (
+                <StickySlide appearInPlace>
                     <DataGridSlide
                         sectionTitle="AN EVOLVING THREAT LANDSCAPE"
                         headingColor="#f7ff95"
@@ -478,50 +478,92 @@ export default function EnergyChapter() {
                             desktop:
                                 "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
                         }}
-                        scrollProgress={scrollYProgress}
+                        revealInterval={300}
                     >
-                        <ScrollReveal
-                            scrollProgress={scrollYProgress}
-                            threshold={0}
-                        >
-                            <DataText>
-                                <span>
-                                    Cyber attacks <strong>doubled</strong>
-                                    <br />
-                                    between 2020 and 2022 in
-                                    <br />
-                                    <strong>Europe’s power sector</strong> with
-                                </span>
-                            </DataText>
-                        </ScrollReveal>
-                        <ScrollReveal
-                            scrollProgress={scrollYProgress}
-                            threshold={0.25}
-                        >
-                            <DataCenterLarge $bg="#fff">
-                                48 attacks
+                        <DataText>
+                            <span>
+                                Cyber attacks <strong>doubled</strong>
                                 <br />
-                                on Europe’s energy
+                                between 2020 and 2022 in
                                 <br />
-                                infrastructure
-                            </DataCenterLarge>
-                        </ScrollReveal>
-                        <ScrollReveal
-                            scrollProgress={scrollYProgress}
-                            threshold={0.5}
-                        >
-                            <DataAttribution>
-                                <span>
-                                    in 2022, according to Eurelectric,
-                                    <br /> a federation for the European
-                                    <br />
-                                    electricity industry.
-                                </span>
-                            </DataAttribution>
-                        </ScrollReveal>
+                                <strong>Europe’s power sector</strong> with
+                            </span>
+                        </DataText>
+                        <DataCenterLarge $bg="#fff">
+                            48 attacks
+                            <br />
+                            on Europe’s energy
+                            <br />
+                            infrastructure
+                        </DataCenterLarge>
+                        <DataAttribution>
+                            <span>
+                                in 2022, according to Eurelectric,
+                                <br /> a federation for the European
+                                <br />
+                                electricity industry.
+                            </span>
+                        </DataAttribution>
                     </DataGridSlide>
-                )}
-            </StickySlide>
+                </StickySlide>
+            ) : (
+                <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh">
+                    {({ scrollYProgress }) => (
+                        <DataGridSlide
+                            sectionTitle="AN EVOLVING THREAT LANDSCAPE"
+                            headingColor="#f7ff95"
+                            backgroundColor="#f7ff95"
+                            lottieAnimation={{
+                                mobile: "/videos/ch1/SOPRA_DigitalDisruption_DP1_M.json",
+                                tablet: "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
+                                desktop:
+                                    "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
+                            }}
+                            scrollProgress={scrollYProgress}
+                        >
+                            <ScrollReveal
+                                scrollProgress={scrollYProgress}
+                                threshold={0}
+                            >
+                                <DataText>
+                                    <span>
+                                        Cyber attacks <strong>doubled</strong>
+                                        <br />
+                                        between 2020 and 2022 in
+                                        <br />
+                                        <strong>Europe’s power sector</strong> with
+                                    </span>
+                                </DataText>
+                            </ScrollReveal>
+                            <ScrollReveal
+                                scrollProgress={scrollYProgress}
+                                threshold={0.25}
+                            >
+                                <DataCenterLarge $bg="#fff">
+                                    48 attacks
+                                    <br />
+                                    on Europe’s energy
+                                    <br />
+                                    infrastructure
+                                </DataCenterLarge>
+                            </ScrollReveal>
+                            <ScrollReveal
+                                scrollProgress={scrollYProgress}
+                                threshold={0.5}
+                            >
+                                <DataAttribution>
+                                    <span>
+                                        in 2022, according to Eurelectric,
+                                        <br /> a federation for the European
+                                        <br />
+                                        electricity industry.
+                                    </span>
+                                </DataAttribution>
+                            </ScrollReveal>
+                        </DataGridSlide>
+                    )}
+                </StickySlide>
+            )}
 
             {/* S9 — Sopra Steria + Robert M Lee quote */}
             <StickySlide appearInPlace>

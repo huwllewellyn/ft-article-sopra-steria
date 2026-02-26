@@ -87,6 +87,29 @@ const ScaleInImg = styled.img`
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease-out;
 `;
 
+const HEADING_BAR_MOBILE = 107;
+const TAB_NAV_MOBILE = 40;
+
+const MobileContentHeight = styled.div`
+    width: 100%;
+    display: contents;
+
+    @media (max-width: 767px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: calc(
+            100dvh -
+                ${({ $hasHeader }) => ($hasHeader ? HEADING_BAR_MOBILE : 0)}px -
+                ${TAB_NAV_MOBILE}px
+        );
+
+        > * {
+            margin-top: 0;
+        }
+    }
+`;
+
 const ContentArea = styled.div`
     position: relative;
     z-index: 1;
@@ -189,6 +212,7 @@ export default function DataGridSlide({
     mobileBackgroundImage,
     mobileLottieAnimation,
     lottieLoop = true,
+    revealInterval = 500,
 }) {
     const isMobile = useIsMobile();
     const slideRef = useRef();
@@ -269,7 +293,7 @@ export default function DataGridSlide({
                         revealedRef.current.add(currentIndex);
                         scrambleElement(p);
                         currentIndex++;
-                    }, 500);
+                    }, revealInterval);
                 }
             },
             { threshold: 0.3 },
@@ -356,7 +380,9 @@ export default function DataGridSlide({
                     </SectionHeadingBar>
                 )}
                 <ContentArea ref={contentRef} $maxWidth={maxWidth}>
-                    {children}
+                    <MobileContentHeight $hasHeader={!!sectionTitle}>
+                        {children}
+                    </MobileContentHeight>
                     <p
                         aria-hidden
                         style={{

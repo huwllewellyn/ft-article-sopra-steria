@@ -109,6 +109,10 @@ export const SolutionBoxes = styled.div`
     margin: auto 0;
     width: 100vw;
     max-width: 100%;
+
+    ${media.mobile(`
+        && { margin-top: auto; margin-bottom: auto; }
+    `)}
 `;
 
 export const SolutionBox = styled.div`
