@@ -277,7 +277,7 @@ for entry in "${CHAPTERS[@]}"; do
             fi
 
             mobile_vf="scale=1280:720:force_original_aspect_ratio=decrease,pad=1280:720:(ow-iw)/2:(oh-ih)/2,crop=405:720:${crop_x}:0"
-            mobile_extra=(-maxrate 250k -bufsize 500k)
+            mobile_extra=(-maxrate 150k -bufsize 300k)
             if [ -n "$max_duration" ]; then
                 mobile_extra+=(-t "$max_duration")
             fi
