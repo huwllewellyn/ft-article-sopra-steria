@@ -146,7 +146,7 @@ function T7Content() {
                 ref={lottieRef}
                 style={{
                     transformOrigin: "center bottom",
-                    transform: "scale(1.8)",
+                    transform: "scale(1.5)",
                 }}
             >
                 <ResponsiveLottieAnimation
