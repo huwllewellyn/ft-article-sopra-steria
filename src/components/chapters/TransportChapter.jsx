@@ -1,3 +1,4 @@
+import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
@@ -22,6 +23,7 @@ import useScrollVideo from "../../hooks/useScrollVideo";
 import useAutoplayOnView from "../../hooks/useAutoplayOnView";
 import useIsMobile from "../../hooks/useIsMobile";
 import AutoplayVideo from "../shared/AutoplayVideo";
+import ResponsiveLottieAnimation from "../ResponsiveLottieAnimation";
 
 const ACCENT = "#c999ff";
 const GRID_COLOR = "rgba(201, 153, 255, 0.15)";
@@ -88,6 +90,90 @@ const HeroOverlay = styled.div`
         rgba(0, 0, 0, 0.6) 100%
     );
 `;
+
+const T7_PADDING = 20;
+
+function T7Content() {
+    const topRef = useRef(null);
+    const bottomRef = useRef(null);
+    const lottieRef = useRef(null);
+
+    useEffect(() => {
+        const measure = () => {
+            const top = topRef.current;
+            const bottom = bottomRef.current;
+            const lottie = lottieRef.current;
+            if (!top || !bottom || !lottie) return;
+
+            const parent =
+                top
+                    .closest("[data-slide]")
+                    ?.querySelector(":scope > div > div") || top.parentElement;
+            const parentRect = parent.getBoundingClientRect();
+            const topRect = top.getBoundingClientRect();
+            const bottomRect = bottom.getBoundingClientRect();
+
+            const offsetTop = topRect.bottom - parentRect.top + T7_PADDING;
+            const height =
+                bottomRect.top - parentRect.top - offsetTop - T7_PADDING;
+
+            lottie.style.position = "absolute";
+            lottie.style.top = `${offsetTop}px`;
+            lottie.style.height = `${Math.max(0, height)}px`;
+            lottie.style.left = "0";
+            lottie.style.right = "0";
+        };
+
+        // Run on mount, resize, and periodically until positioned
+        measure();
+        window.addEventListener("resize", measure);
+        const interval = setInterval(measure, 200);
+        const timeout = setTimeout(() => clearInterval(interval), 3000);
+
+        return () => {
+            window.removeEventListener("resize", measure);
+            clearInterval(interval);
+            clearTimeout(timeout);
+        };
+    }, []);
+
+    return (
+        <>
+            <DataText ref={topRef} $bg={ACCENT}>
+                <span>EU transport sector cyber incidents (2025)</span>
+            </DataText>
+            <div ref={lottieRef}>
+                <ResponsiveLottieAnimation
+                    animations={{
+                        mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_NOBKG.json",
+                        tablet: "/videos/ch3/SOPRA_DigitalDisruption_D3_NOBKG.json",
+                        desktop:
+                            "/videos/ch3/SOPRA_DigitalDisruption_D3_NOBKG.json",
+                    }}
+                    loop={true}
+                    autoplay={true}
+                    width="100%"
+                    height="100%"
+                    preserveAspectRatio="xMidYMid meet"
+                />
+            </div>
+            <DataAttribution
+                ref={bottomRef}
+                $bg={"#fff"}
+                style={{
+                    position: "absolute",
+                    bottom: 60,
+                    left: 20,
+                    right: 0,
+                    margin: "0 auto",
+                    maxWidth: 600,
+                }}
+            >
+                <span>Source: ENISA 2025 report</span>
+            </DataAttribution>
+        </>
+    );
+}
 
 function ScrollSyncHeroVideo({ scrollProgress, src, mobileSrc, poster }) {
     const isMobile = useIsMobile();
@@ -293,38 +379,12 @@ export default function TransportChapter() {
                     <DataGridSlide
                         sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                         headingColor={ACCENT}
-                        backgroundColor={ACCENT}
+                        backgroundColor={`repeating-linear-gradient(90deg, ${ACCENT} 0px, ${ACCENT} 2px, transparent 2px, transparent 40px), repeating-linear-gradient(0deg, ${ACCENT} 0px, ${ACCENT} 2px, #000 2px, #000 40px)`}
                         gridColor={GRID_COLOR}
                         scrollProgress={scrollYProgress}
-                        lottieAnimation={{
-                            mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_M.json",
-                            tablet: "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
-                            desktop:
-                                "/videos/ch3/SOPRA_DigitalDisruption_D3_D.json",
-                        }}
-                        mobileScale="0.8"
-                        mobileBackgroundImage="/videos/ch3/SOPRA_DigitalDisruption_D3_BKG.png"
-                        mobileLottieAnimation="/videos/ch3/SOPRA_DigitalDisruption_D3_NOBKG.json"
+                        // mobileBackgroundImage="/videos/ch3/SOPRA_DigitalDisruption_D3_BKG.png"
                     >
-                        <DataText $bg={ACCENT}>
-                            <span>
-                                EU transport sector cyber incidents (2025)
-                            </span>
-                        </DataText>
-                        {/* <DataCenter $bg="#fff"></DataCenter> */}
-                        <DataAttribution
-                            $bg={"#fff"}
-                            style={{
-                                position: "absolute",
-                                bottom: 60,
-                                left: 20,
-                                right: 0,
-                                margin: "0 auto",
-                                maxWidth: 600,
-                            }}
-                        >
-                            <span>Source: ENISA 2025 report</span>
-                        </DataAttribution>
+                        <T7Content />
                     </DataGridSlide>
                 )}
             </StickySlide>

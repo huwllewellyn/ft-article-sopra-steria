@@ -311,7 +311,7 @@ export default function DataGridSlide({
         <SlideWrapper ref={slideRef} data-slide>
             <StickyInner>
             <Slide $bg={backgroundColor}>
-                {isMobile && mobileBackgroundImage && (
+                {mobileBackgroundImage && (
                     <BackgroundImage $src={getAssetPath(mobileBackgroundImage)} />
                 )}
                 {isMobile && mobileLottieAnimation ? (
