@@ -532,7 +532,9 @@ export default function FinanceChapter() {
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
                         mobileScale="0.7"
-                        backgroundImage={isMobile ? undefined : "/videos/ch2/41pecent.jpg"}
+                        backgroundImage={
+                            isMobile ? undefined : "/videos/ch2/41pecent.jpg"
+                        }
                         scrollProgress={scrollYProgress}
                         maxWidth="90vw"
                         lottieHeight="50vh"
@@ -746,11 +748,11 @@ export default function FinanceChapter() {
                 headingFontFamily="'Space Grotesk', sans-serif"
                 headingFontWeight={500}
                 backgroundColor="#000"
-                lottieAnimation={{
-                    mobile: "/videos/ch2/SOLUTIONS_2.json",
-                    tablet: "/videos/ch2/SOLUTIONS_2.json",
-                    desktop: "/videos/ch2/SOLUTIONS_2.json",
-                }}
+                // lottieAnimation={{
+                //     mobile: "/videos/ch2/SOLUTIONS_2.json",
+                //     tablet: "/videos/ch2/SOLUTIONS_2.json",
+                //     desktop: "/videos/ch2/SOLUTIONS_2.json",
+                // }}
             >
                 <SolutionBoxes>
                     <SolutionBox>
