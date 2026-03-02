@@ -142,7 +142,13 @@ function T7Content() {
             <DataText ref={topRef} $bg={ACCENT}>
                 <span>EU transport sector cyber incidents (2025)</span>
             </DataText>
-            <div ref={lottieRef}>
+            <div
+                ref={lottieRef}
+                style={{
+                    transformOrigin: "center bottom",
+                    transform: "scale(1.8)",
+                }}
+            >
                 <ResponsiveLottieAnimation
                     animations={{
                         mobile: "/videos/ch3/SOPRA_DigitalDisruption_D3_NOBKG.json",
