@@ -403,7 +403,12 @@ export default function EnergyChapter() {
             />
 
             {/* S5 — 5:10pm elevator */}
-            <StickySlide appearInPlace trackHeight="200vh" flowHeight="100vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="200vh"
+                flowHeight="100vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="5:10pm"
                     backgroundVideo={VIDEOS.elevator}
@@ -430,7 +435,12 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S6 — 5:15pm signal lost */}
-            <StickySlide appearInPlace trackHeight="200vh" flowHeight="200vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="200vh"
+                flowHeight="200vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="5:15pm"
                     backgroundVideo={VIDEOS.signalLost}
@@ -609,7 +619,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S10 — 5:20pm blackouts + word reveal */}
-            <StickySlide appearInPlace>
+            <StickySlide appearInPlace mobileSimplify={!isMobile}>
                 <NarrativeSlide
                     timestamp="5:20pm"
                     heading="THE CITY IS PLUNGED INTO DARKNESS"
@@ -627,7 +637,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S11 — 5:30pm phone torches */}
-            <StickySlide appearInPlace>
+            <StickySlide appearInPlace mobileSimplify={!isMobile}>
                 <NarrativeSlide
                     timestamp="5:30pm"
                     backgroundVideo={VIDEOS.glitchyCityscape530}
@@ -643,7 +653,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S12 — 7:00pm C-suite */}
-            <StickySlide appearInPlace trackHeight="300vh" flowHeight="200vh">
+            <StickySlide appearInPlace mobileSimplify={!isMobile}>
                 <NarrativeSlide
                     timestamp="7:00pm"
                     backgroundVideo={VIDEOS.womanScreens}

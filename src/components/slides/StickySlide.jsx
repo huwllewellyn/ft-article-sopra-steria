@@ -90,10 +90,10 @@ function BaseStickySlide({ children, appearInPlace, flowHeight }) {
     return <StickyWrapper ref={ref} data-slide>{children}</StickyWrapper>;
 }
 
-export default function StickySlide({ children, appearInPlace, trackHeight, flowHeight }) {
+export default function StickySlide({ children, appearInPlace, trackHeight, flowHeight, mobileSimplify = true }) {
     const isMobile = useIsMobile();
 
-    if (isMobile) {
+    if (isMobile && mobileSimplify) {
         return (
             <MobileWrapper data-slide>
                 {typeof children === "function" ? children({ scrollYProgress: null }) : children}
