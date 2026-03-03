@@ -407,7 +407,7 @@ export default function EnergyChapter() {
                 appearInPlace
                 trackHeight="200vh"
                 flowHeight="100vh"
-                mobileSimplify={!isMobile}
+                mobileSimplify={false}
             >
                 <NarrativeSlide
                     timestamp="5:10pm"
@@ -439,7 +439,7 @@ export default function EnergyChapter() {
                 appearInPlace
                 trackHeight="200vh"
                 flowHeight="200vh"
-                mobileSimplify={!isMobile}
+                mobileSimplify={false}
             >
                 <NarrativeSlide
                     timestamp="5:15pm"
@@ -619,7 +619,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S10 — 5:20pm blackouts + word reveal */}
-            <StickySlide appearInPlace mobileSimplify={!isMobile}>
+            <StickySlide appearInPlace mobileSimplify={false}>
                 <NarrativeSlide
                     timestamp="5:20pm"
                     heading="THE CITY IS PLUNGED INTO DARKNESS"
@@ -637,7 +637,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S11 — 5:30pm phone torches */}
-            <StickySlide appearInPlace mobileSimplify={!isMobile}>
+            <StickySlide appearInPlace mobileSimplify={false}>
                 <NarrativeSlide
                     timestamp="5:30pm"
                     backgroundVideo={VIDEOS.glitchyCityscape530}
@@ -653,7 +653,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S12 — 7:00pm C-suite */}
-            <StickySlide appearInPlace mobileSimplify={!isMobile}>
+            <StickySlide appearInPlace mobileSimplify={false}>
                 <NarrativeSlide
                     timestamp="7:00pm"
                     backgroundVideo={VIDEOS.womanScreens}

@@ -275,7 +275,11 @@ export default function TransportChapter() {
             />
 
             {/* T3 — 8:00am sat-nav freezes */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="8:00am"
                     backgroundVideo={VIDEOS.satNav}
@@ -295,7 +299,11 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T4 — 8:15am depot issues */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="8:15am"
                     backgroundVideo={VIDEOS.truckDepot}
@@ -318,7 +326,12 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T5 — 9:00am GPS jamming */}
-            <StickySlide appearInPlace trackHeight="300vh" flowHeight="200vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                flowHeight="200vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="9:00am"
                     backgroundVideo={VIDEOS.airportBoard}
@@ -426,7 +439,11 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T9 — 12:00pm deliveries at slower pace */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="12:00pm"
                     heading="WHEN DISRUPTION CROSSES BORDERS"
@@ -498,7 +515,7 @@ export default function TransportChapter() {
             {/* T12 — Editorial: GPS reliance + 13 EU states */}
             <StickySlide>
                 <EditorialSlide
-                    ďď
+                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -525,7 +542,8 @@ export default function TransportChapter() {
             {/* T13 — Editorial: Julia Carver intro */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    ďď
+                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -544,7 +562,8 @@ export default function TransportChapter() {
             {/* T14 — Editorial: Julia Carver quote */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    ďď
+                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -559,7 +578,8 @@ export default function TransportChapter() {
             {/* T15 — Editorial: legal perspective + inline Fahey quote */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    ďď
+                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -580,7 +600,8 @@ export default function TransportChapter() {
             {/* T16 — Editorial: Elaine Fahey quote */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    ďď
+                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -645,7 +666,11 @@ export default function TransportChapter() {
             />
 
             {/* T19 — 7:30pm trains cancelled */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="7:30pm"
                     backgroundVideo={VIDEOS.trainStation}

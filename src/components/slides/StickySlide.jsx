@@ -93,9 +93,18 @@ function BaseStickySlide({ children, appearInPlace, flowHeight }) {
 export default function StickySlide({ children, appearInPlace, trackHeight, flowHeight, mobileSimplify = true }) {
     const isMobile = useIsMobile();
 
+    const mobileRef = useRef();
+    useLayoutEffect(() => {
+        if (!isMobile || !mobileSimplify) return;
+        const el = mobileRef.current;
+        if (!el) return;
+        const siblings = Array.from(el.parentElement.children);
+        el.style.zIndex = siblings.indexOf(el) + 1;
+    }, [isMobile, mobileSimplify]);
+
     if (isMobile && mobileSimplify) {
         return (
-            <MobileWrapper data-slide>
+            <MobileWrapper ref={mobileRef} data-slide>
                 {typeof children === "function" ? children({ scrollYProgress: null }) : children}
             </MobileWrapper>
         );

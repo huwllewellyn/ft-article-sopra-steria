@@ -374,7 +374,11 @@ export default function FinanceChapter() {
             />
 
             {/* F6 — 1:05pm contacts IT helpdesk */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="1:05pm"
                     backgroundVideo={VIDEOS.supermarketBlurred}
@@ -627,7 +631,12 @@ export default function FinanceChapter() {
             />
 
             {/* F16 — 6:30pm media reports */}
-            <StickySlide appearInPlace trackHeight="300vh" flowHeight="200vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                flowHeight="200vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="6:30pm"
                     backgroundVideo={VIDEOS.phoneInHand}
@@ -724,7 +733,11 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F21 — 7:00am the next day */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="7:00am"
                     heading="THE NEXT DAY"
@@ -741,7 +754,11 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F22 — 2:00pm banks tighten fraud checks */}
-            <StickySlide appearInPlace trackHeight="300vh">
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="2:00pm"
                     backgroundVideo={VIDEOS.idVerification}
