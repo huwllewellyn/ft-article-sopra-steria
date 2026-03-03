@@ -507,7 +507,11 @@ export default function EnergyChapter() {
                     </DataGridSlide>
                 </StickySlide>
             ) : (
-                <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh">
+                <StickySlide
+                    appearInPlace
+                    flowHeight="100vh"
+                    trackHeight="200vh"
+                >
                     {({ scrollYProgress }) => (
                         <DataGridSlide
                             sectionTitle="AN EVOLVING THREAT LANDSCAPE"
@@ -531,7 +535,10 @@ export default function EnergyChapter() {
                                         <br />
                                         between 2020 and 2022 in
                                         <br />
-                                        <strong>Europe’s power sector</strong> with
+                                        <strong>
+                                            Europe’s power sector
+                                        </strong>{" "}
+                                        with
                                     </span>
                                 </DataText>
                             </ScrollReveal>

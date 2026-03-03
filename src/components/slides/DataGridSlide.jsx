@@ -13,6 +13,10 @@ const GLITCH_CHARS =
 const SlideWrapper = styled.div`
     position: relative;
     height: 200vh;
+
+    ${media.mobile(`
+        height: 100dvh;
+    `)}
 `;
 
 const StickyInner = styled.div`

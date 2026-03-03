@@ -98,6 +98,7 @@ export default function EditorialSlide({
     backgroundColor,
     headingColor,
     contentAlign,
+    hideSectionTitle = false,
 }) {
     const contentRef = useRef(null);
     const isMobile = useIsMobile();
@@ -146,7 +147,7 @@ export default function EditorialSlide({
 
     return (
         <Slide $bg={backgroundColor}>
-            {sectionTitle && (
+            {sectionTitle && !hideSectionTitle && (
                 <SectionHeadingBar color={headingColor}>
                     {sectionTitle}
                 </SectionHeadingBar>
