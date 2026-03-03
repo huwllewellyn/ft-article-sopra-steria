@@ -221,6 +221,7 @@ export default function DataGridSlide({
     mobileLottieAnimation,
     lottieLoop = true,
     revealInterval = 500,
+    hideSectionTitle = false,
 }) {
     const isMobile = useIsMobile();
     const slideRef = useRef();
@@ -384,7 +385,7 @@ export default function DataGridSlide({
                         loop
                     />
                 )}
-                {sectionTitle && (
+                {sectionTitle && !hideSectionTitle && (
                     <SectionHeadingBar
                         color={headingColor}
                         bordered={headingBordered}
@@ -394,7 +395,7 @@ export default function DataGridSlide({
                         {sectionTitle}
                     </SectionHeadingBar>
                 )}
-                <ContentArea ref={contentRef} $maxWidth={maxWidth}>
+                <ContentArea ref={contentRef} $maxWidth={maxWidth} style={hideSectionTitle ? { paddingTop: 40 } : undefined}>
                     <MobileContentHeight $hasHeader={!!sectionTitle}>
                         {children}
                     </MobileContentHeight>

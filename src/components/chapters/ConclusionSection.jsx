@@ -30,6 +30,7 @@ export default function ConclusionSection() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="THE LESSON IS CLEAR"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -50,6 +51,7 @@ export default function ConclusionSection() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="THE LESSON IS CLEAR"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >

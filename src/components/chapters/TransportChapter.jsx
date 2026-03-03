@@ -146,7 +146,7 @@ function T7Content() {
                 ref={lottieRef}
                 style={{
                     transformOrigin: "center bottom",
-                    transform: "scale(1.5)",
+                    transform: "scale(1.1)",
                 }}
             >
                 <ResponsiveLottieAnimation
@@ -213,6 +213,7 @@ function ScrollSyncHeroVideo({ scrollProgress, src, mobileSrc, poster }) {
 }
 
 export default function TransportChapter() {
+    const isMobile = useIsMobile();
     return (
         <Chapter>
             {/* Hero + T1 — continuous Port of Dover video */}
@@ -355,6 +356,7 @@ export default function TransportChapter() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -384,6 +386,7 @@ export default function TransportChapter() {
                 {({ scrollYProgress }) => (
                     <DataGridSlide
                         sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
+                        hideSectionTitle={isMobile}
                         headingColor={ACCENT}
                         backgroundColor={`repeating-linear-gradient(90deg, ${ACCENT} 0px, ${ACCENT} 2px, transparent 2px, transparent 40px), repeating-linear-gradient(0deg, ${ACCENT} 0px, ${ACCENT} 2px, #000 2px, #000 40px)`}
                         gridColor={GRID_COLOR}
@@ -399,6 +402,7 @@ export default function TransportChapter() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -494,7 +498,7 @@ export default function TransportChapter() {
             {/* T12 — Editorial: GPS reliance + 13 EU states */}
             <StickySlide>
                 <EditorialSlide
-                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    ďď
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -521,7 +525,7 @@ export default function TransportChapter() {
             {/* T13 — Editorial: Julia Carver intro */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    ďď
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -540,7 +544,7 @@ export default function TransportChapter() {
             {/* T14 — Editorial: Julia Carver quote */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    ďď
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -555,7 +559,7 @@ export default function TransportChapter() {
             {/* T15 — Editorial: legal perspective + inline Fahey quote */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    ďď
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -576,7 +580,7 @@ export default function TransportChapter() {
             {/* T16 — Editorial: Elaine Fahey quote */}
             <StickySlide appearInPlace>
                 <EditorialSlide
-                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
+                    ďď
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >

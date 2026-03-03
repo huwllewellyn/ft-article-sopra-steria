@@ -470,6 +470,7 @@ export default function EnergyChapter() {
                 <StickySlide appearInPlace>
                     <DataGridSlide
                         sectionTitle="AN EVOLVING THREAT LANDSCAPE"
+                        hideSectionTitle={isMobile}
                         headingColor="#f7ff95"
                         backgroundColor="#f7ff95"
                         lottieAnimation={{
@@ -515,6 +516,7 @@ export default function EnergyChapter() {
                     {({ scrollYProgress }) => (
                         <DataGridSlide
                             sectionTitle="AN EVOLVING THREAT LANDSCAPE"
+                            hideSectionTitle={isMobile}
                             headingColor="#f7ff95"
                             backgroundColor="#f7ff95"
                             lottieAnimation={{
@@ -574,7 +576,10 @@ export default function EnergyChapter() {
 
             {/* S9 — Sopra Steria + Robert M Lee quote */}
             <StickySlide appearInPlace>
-                <EditorialSlide sectionTitle="AN EVOLVING THREAT LANDSCAPE">
+                <EditorialSlide
+                    sectionTitle="AN EVOLVING THREAT LANDSCAPE"
+                    hideSectionTitle={isMobile}
+                >
                     <EditorialBody>
                         <p>
                             Sopra Steria, a technology and consulting company
@@ -591,7 +596,10 @@ export default function EnergyChapter() {
                 </EditorialSlide>
             </StickySlide>
             <StickySlide appearInPlace>
-                <EditorialSlide sectionTitle="AN EVOLVING THREAT LANDSCAPE">
+                <EditorialSlide
+                    sectionTitle="AN EVOLVING THREAT LANDSCAPE"
+                    hideSectionTitle={isMobile}
+                >
                     <SlideQuote
                         quote="Historically, cyber attacks have been high-consequence and low-frequency. When you get hacktivists and criminals who are able to target operational technology and who understand how to do it, you eventually get high-consequence, high-frequency events"
                         name="Robert M Lee"
@@ -670,7 +678,10 @@ export default function EnergyChapter() {
 
             {/* S14 — Policymakers */}
             <StickySlide appearInPlace>
-                <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
+                <EditorialSlide
+                    sectionTitle="OPERATING WHILE UNDER ATTACK"
+                    hideSectionTitle={isMobile}
+                >
                     <EditorialBody>
                         <p>
                             Europe’s policymakers are starting to recognise the
@@ -688,7 +699,10 @@ export default function EnergyChapter() {
                 </EditorialSlide>
             </StickySlide>
             <StickySlide appearInPlace>
-                <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
+                <EditorialSlide
+                    sectionTitle="OPERATING WHILE UNDER ATTACK"
+                    hideSectionTitle={isMobile}
+                >
                     <SlideQuote
                         quote="Critical operators are moving toward defensible architectures where there’s an assumption that breaches will occur"
                         name="Jørgen Rørvik"
@@ -701,7 +715,10 @@ export default function EnergyChapter() {
             {isMobile ? (
                 <>
                     <StickySlide appearInPlace>
-                        <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
+                        <EditorialSlide
+                            sectionTitle="OPERATING WHILE UNDER ATTACK"
+                            hideSectionTitle={isMobile}
+                        >
                             <EditorialBody>
                                 <p>
                                     Defensible architectures can include
@@ -715,7 +732,10 @@ export default function EnergyChapter() {
                         </EditorialSlide>
                     </StickySlide>
                     <StickySlide appearInPlace>
-                        <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
+                        <EditorialSlide
+                            sectionTitle="OPERATING WHILE UNDER ATTACK"
+                            hideSectionTitle={isMobile}
+                        >
                             <SlideQuote
                                 quote="Within this architecture, essential assets can continue functioning, even while under sustained attack"
                                 name="Jørgen Rørvik"
@@ -726,7 +746,10 @@ export default function EnergyChapter() {
                 </>
             ) : (
                 <StickySlide appearInPlace>
-                    <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
+                    <EditorialSlide
+                        sectionTitle="OPERATING WHILE UNDER ATTACK"
+                        hideSectionTitle={isMobile}
+                    >
                         <EditorialBody>
                             <p>
                                 Defensible architectures can include breaking

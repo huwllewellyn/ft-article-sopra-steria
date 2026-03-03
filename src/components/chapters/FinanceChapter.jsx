@@ -83,7 +83,10 @@ function F13Text({ children }) {
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        if (isMobile) { setIsVisible(true); return; }
+        if (isMobile) {
+            setIsVisible(true);
+            return;
+        }
         if (isVisible) return;
 
         let trackEl = null;
@@ -467,6 +470,7 @@ export default function FinanceChapter() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -490,6 +494,7 @@ export default function FinanceChapter() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -505,6 +510,7 @@ export default function FinanceChapter() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -532,6 +538,7 @@ export default function FinanceChapter() {
                 {({ scrollYProgress }) => (
                     <DataGridSlide
                         sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
+                        hideSectionTitle={isMobile}
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
                         mobileScale="0.7"
@@ -668,6 +675,7 @@ export default function FinanceChapter() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="WHEN SYSTEMS CONNECT, FAILURE IS EXPONENTIAL"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -687,6 +695,7 @@ export default function FinanceChapter() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="WHEN SYSTEMS CONNECT, FAILURE IS EXPONENTIAL"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
@@ -702,6 +711,7 @@ export default function FinanceChapter() {
             <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="WHEN SYSTEMS CONNECT, FAILURE IS EXPONENTIAL"
+                    hideSectionTitle={isMobile}
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
