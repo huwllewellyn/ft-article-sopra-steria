@@ -5,10 +5,10 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <script src="https://polyfill-fastly.io/"></script>
-
-  <script async src="https://consent-notice.ft.com/cmp.js"></script>
-  <script src="https://www.ft.com/partnercontent/tracking/tracker.js"></script>
+  <!-- DEBUG: disabled external scripts to test mobile crash -->
+  <!-- <script src="https://polyfill-fastly.io/"></script> -->
+  <!-- <script async src="https://consent-notice.ft.com/cmp.js"></script> -->
+  <!-- <script src="https://www.ft.com/partnercontent/tracking/tracker.js"></script> -->
 
   <meta property="og:url" content="https://www.ft.com/partnercontent/client-name/article-title.html">
   <meta property="og:type" content="article">
@@ -348,13 +348,16 @@ from the FT Group</a>
 </div>
   </footer>
 
-  <script type="application/javascript" src="https://ft.com/partnercontent/cms/js/main.bundle.js?v=12.0"></script>
+  <!-- DEBUG: disabled to test mobile crash -->
+  <!-- <script type="application/javascript" src="https://ft.com/partnercontent/cms/js/main.bundle.js?v=12.0"></script> -->
 
   <div data-o-component="o-cookie-message"></div>
 
-  <img hidden src="https://beacon.krxd.net/event.gif?event_id=LkVtWVBm&amp;event_type=pageview" width="0" height="0">
+  <!-- <img hidden src="https://beacon.krxd.net/event.gif?event_id=LkVtWVBm&amp;event_type=pageview" width="0" height="0"> -->
 
-  <script id="ft-js">
+  <!-- DEBUG: disabled ft-js and ft-events to test mobile crash -->
+  <script id="ft-js-disabled">
+  /* DISABLED
     (function (src) {
       function throttle(func, wait) {
         let last, timer;
@@ -430,9 +433,11 @@ from the FT Group</a>
     })(
       "https://ft.com/partnercontent/cms/ftStyle.js"
     );
+  DISABLED */
   </script>
 
-  <script id="ft-events">
+  <script id="ft-events-disabled">
+  /* DISABLED
     const ATTENTION_INTERVAL = 15000;
     const ATTENTION_EVENTS = [
       "load",
@@ -703,6 +708,7 @@ from the FT Group</a>
     const timeoutId = setTimeout(function () {
       clearInterval(intervalId);
     }, 1000);
+  DISABLED */
   </script>
 
 
