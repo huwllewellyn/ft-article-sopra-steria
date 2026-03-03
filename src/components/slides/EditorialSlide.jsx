@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { media } from "../../utils/breakpoints";
+import useIsMobile from "../../hooks/useIsMobile";
 import SectionHeadingBar from "./SectionHeadingBar";
 
 const Slide = styled.section`
@@ -99,9 +100,13 @@ export default function EditorialSlide({
     contentAlign,
 }) {
     const contentRef = useRef(null);
+    const isMobile = useIsMobile();
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
+        if (isMobile) { setIsVisible(true); return; }
+        if (isVisible) return;
+
         let trackEl = null;
         let isAppearInPlace = false;
 
@@ -109,7 +114,6 @@ export default function EditorialSlide({
             const el = contentRef.current;
             if (!el || isVisible) return;
 
-            // Walk up to find the appear-in-place track ancestor (has inline opacity set)
             if (!trackEl) {
                 let node = el.parentElement;
                 while (node && node !== document.body) {
@@ -125,12 +129,10 @@ export default function EditorialSlide({
 
             const rect = trackEl.getBoundingClientRect();
             if (isAppearInPlace) {
-                // Appear-in-place: trigger when track reaches top of viewport
                 if (rect.top <= 0 && rect.bottom > 0) {
                     setIsVisible(true);
                 }
             } else {
-                // Normal scroll-in: trigger when element is halfway up the page
                 if (rect.top <= window.innerHeight / 2) {
                     setIsVisible(true);
                 }
@@ -140,7 +142,7 @@ export default function EditorialSlide({
         window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [isVisible]);
+    }, [isVisible, isMobile]);
 
     return (
         <Slide $bg={backgroundColor}>

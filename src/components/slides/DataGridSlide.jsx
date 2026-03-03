@@ -233,10 +233,17 @@ export default function DataGridSlide({
         if (!el) return;
         const siblings = Array.from(el.parentElement.children);
         el.style.zIndex = siblings.indexOf(el) + 1;
-        el.style.opacity = "0";
-    }, []);
+        if (!isMobile) el.style.opacity = "0";
+    }, [isMobile]);
 
     useEffect(() => {
+        if (isMobile) {
+            if (!hasAppearedRef.current) {
+                hasAppearedRef.current = true;
+                setHasAppeared(true);
+            }
+            return;
+        }
         const el = slideRef.current;
         if (!el) return;
         const handleScroll = () => {
@@ -250,7 +257,7 @@ export default function DataGridSlide({
         handleScroll();
         window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, [isMobile]);
 
     // Count <p> elements and setup items - initially hide all except first
     useLayoutEffect(() => {

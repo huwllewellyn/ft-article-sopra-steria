@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import styled from "styled-components";
 import { getAssetPath } from "../utils/assetPath";
+import useIsMobile from "../hooks/useIsMobile";
 
 const Container = styled.div`
     width: 100%;
@@ -30,6 +31,7 @@ export default function LottieAnimation({
     const containerRef = useRef(null);
     const animationLoadedRef = useRef(false);
     const animationRef = useRef(null);
+    const isMobile = useIsMobile();
 
     useEffect(() => {
         const loadAnimation = async () => {
@@ -123,9 +125,24 @@ export default function LottieAnimation({
     }, [path, fallbackPath, loop, autoplay, renderer, scrollSync, initialFrame, preserveAspectRatio]);
 
     // Autoplay lotties: play when the appear-in-place slide container reaches top of viewport
-    // Walk up to find the track element (has inline opacity from appear-in-place), then check its position
+    // On mobile (no sticky), just play immediately
     useEffect(() => {
         if (!autoplay || scrollSync || scrollProgress) return;
+
+        if (isMobile) {
+            // No sticky context on mobile — play as soon as animation is loaded
+            const check = () => {
+                const anim = animationRef.current;
+                if (anim) { anim.goToAndPlay(0); return; }
+                // Animation may not be loaded yet; poll briefly
+                const id = setInterval(() => {
+                    const a = animationRef.current;
+                    if (a) { a.goToAndPlay(0); clearInterval(id); }
+                }, 100);
+                return () => clearInterval(id);
+            };
+            return check();
+        }
 
         let trackEl = null;
         let playing = false;
@@ -134,7 +151,6 @@ export default function LottieAnimation({
             const el = containerRef.current;
             if (!anim || !el) return;
 
-            // Find the appear-in-place track ancestor (has inline opacity set)
             if (!trackEl) {
                 let node = el.parentElement;
                 while (node && node !== document.body) {
@@ -162,7 +178,7 @@ export default function LottieAnimation({
         window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [autoplay, scrollSync, scrollProgress]);
+    }, [autoplay, scrollSync, scrollProgress, isMobile]);
 
     // Handle scroll-synced animation (legacy window scroll)
     useEffect(() => {

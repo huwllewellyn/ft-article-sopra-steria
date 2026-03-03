@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { media } from "../../utils/breakpoints";
+import useIsMobile from "../../hooks/useIsMobile";
 import { getAssetPath } from "../../utils/assetPath";
 import { ChapterIntro } from "../shared";
 import {
@@ -78,11 +79,14 @@ const F13BigNumber = styled.div`
 
 function F13Text({ children }) {
     const ref = useRef(null);
+    const isMobile = useIsMobile();
     const [isVisible, setIsVisible] = useState(false);
 
     useEffect(() => {
-        let trackEl = null;
+        if (isMobile) { setIsVisible(true); return; }
+        if (isVisible) return;
 
+        let trackEl = null;
         const handleScroll = () => {
             const el = ref.current;
             if (!el || isVisible) return;
@@ -108,7 +112,7 @@ function F13Text({ children }) {
         window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [isVisible]);
+    }, [isVisible, isMobile]);
 
     return (
         <F13TextStyled
@@ -125,7 +129,6 @@ function F13Text({ children }) {
 import SlideQuote from "../slides/SlideQuote";
 import useScrollVideo from "../../hooks/useScrollVideo";
 import useAutoplayOnView from "../../hooks/useAutoplayOnView";
-import useIsMobile from "../../hooks/useIsMobile";
 import AutoplayVideo from "../shared/AutoplayVideo";
 
 const ACCENT = "#8eb8ff";
