@@ -307,7 +307,7 @@ Error generating stack: `+c.message+`
     ${media.wide(`
         font-size: 42px;
     `)}
-`,ORIGINAL="One click...",GLITCH_CHARS$1="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?<>{}[]~/\\|";function useTextScramble$1(t){const[e,n]=reactExports.useState(t),s=reactExports.useCallback(()=>{const a=t.split(""),l=2+Math.floor(Math.random()*3),u=a.reduce((p,h,d)=>h!==" "?[...p,d]:p,[]);for(let p=0;p<l&&u.length>0;p++){const h=Math.floor(Math.random()*u.length),d=u.splice(h,1)[0];a[d]=GLITCH_CHARS$1[Math.floor(Math.random()*GLITCH_CHARS$1.length)]}n(a.join("")),setTimeout(()=>n(t),80)},[t]);return reactExports.useEffect(()=>{const a=()=>{s(),l=setTimeout(a,700+Math.random()*300)};let l=setTimeout(a,500);return()=>clearTimeout(l)},[s]),e}function OneClickSection(){const t=useTextScramble$1(ORIGINAL);return jsxRuntimeExports.jsx(Outer$1,{"data-slide":!0,children:jsxRuntimeExports.jsx(Container$4,{children:jsxRuntimeExports.jsx(Text,{initial:{opacity:0},whileInView:{opacity:1},viewport:{once:!0},transition:{duration:.6},children:t})})})}const Outer=dt.section`
+`,ORIGINAL="One click...",GLITCH_CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?<>{}[]~/\\|";function useTextScramble$1(t){const[e,n]=reactExports.useState(t),s=reactExports.useCallback(()=>{const a=t.split(""),l=2+Math.floor(Math.random()*3),u=a.reduce((p,h,d)=>h!==" "?[...p,d]:p,[]);for(let p=0;p<l&&u.length>0;p++){const h=Math.floor(Math.random()*u.length),d=u.splice(h,1)[0];a[d]=GLITCH_CHARS[Math.floor(Math.random()*GLITCH_CHARS.length)]}n(a.join("")),setTimeout(()=>n(t),80)},[t]);return reactExports.useEffect(()=>{const a=()=>{s(),l=setTimeout(a,700+Math.random()*300)};let l=setTimeout(a,500);return()=>clearTimeout(l)},[s]),e}function OneClickSection(){const t=useTextScramble$1(ORIGINAL);return jsxRuntimeExports.jsx(Outer$1,{"data-slide":!0,children:jsxRuntimeExports.jsx(Container$4,{children:jsxRuntimeExports.jsx(Text,{initial:{opacity:0},whileInView:{opacity:1},viewport:{once:!0},transition:{duration:.6},children:t})})})}const Outer=dt.section`
     width: 100%;
     height: 200vh;
     position: relative;
@@ -453,37 +453,7 @@ Error generating stack: `+c.message+`
     ${media.wide(`
         font-size: 32px;
     `)}
-`;function generateRandomClips(t=20,e=20,n=100,s=170){let a="";for(let l=0;l<=t;l++){const u=(l/t*e).toFixed(2),p=Math.floor(Math.random()*n),h=Math.floor(Math.random()*s);a+=`${u}% { clip: rect(${p}px, 9999px, ${h}px, 0); }
-`}return a+=`${e}% { clip: rect(0, 0, 0, 0); }
-`,a+=`100% { clip: rect(0, 0, 0, 0); }
-`,a}const glitch1=mt`${generateRandomClips(20,60)}`,glitch2=mt`${generateRandomClips(20,60)}`,glitchEffect=lt`
-    position: relative;
-
-    &::before,
-    &::after {
-        content: attr(data-text);
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: inherit;
-        overflow: hidden;
-        padding: inherit;
-    }
-
-    &::before {
-        left: -2px;
-        text-shadow: -1px 0 red;
-        animation: ${glitch1} 6s linear infinite;
-    }
-
-    &::after {
-        left: 2px;
-        text-shadow: 1px 0 blue;
-        animation: ${glitch2} 8s linear infinite;
-    }
-`,Container$2=dt(motion.div)`
+`;const Container$2=dt(motion.div)`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -499,8 +469,6 @@ Error generating stack: `+c.message+`
     max-width: 408px;
     background: #000;
     padding: 4px 8px;
-    ${glitchEffect}
-
     ${media.tablet(`
         font-size: 25px;
     `)}
@@ -1718,7 +1686,7 @@ Error generating stack: `+c.message+`
     height: 100%;
     object-fit: cover;
     display: block;
-`;const GLITCH_CHARS="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*!?<>{}[]~/\\|",SlideWrapper=dt.div`
+`;const SlideWrapper=dt.div`
     position: relative;
     height: 200vh;
 
@@ -1840,8 +1808,7 @@ Error generating stack: `+c.message+`
     strong {
         font-weight: 700;
     }
-`;function scrambleElement(t){const e=[],n=document.createTreeWalker(t,NodeFilter.SHOW_TEXT);for(;n.nextNode();)e.push(n.currentNode);const s=e.map(p=>p.textContent);let a=0;const l=8,u=setInterval(()=>{if(a>=l){e.forEach((p,h)=>{p.textContent=s[h]}),clearInterval(u);return}e.forEach((p,h)=>{p.textContent=s[h].split("").map(d=>d===" "||d===`
-`?d:Math.random()>.4?GLITCH_CHARS[Math.floor(Math.random()*GLITCH_CHARS.length)]:d).join("")}),a++},50)}function DataGridSlide({sectionTitle:t,headingColor:e,headingBordered:n,headingFontFamily:s,headingFontWeight:a,backgroundVideo:l,backgroundImage:u,lottieAnimation:p,lottieHeight:h,lottieBottom:d,lottieTop:P,poster:tt,backgroundColor:N,maxWidth:ht,children:gt,mobileScale:ot,mobileBackgroundImage:Ct,mobileLottieAnimation:st,lottieLoop:ft=!0,revealInterval:nt=500,hideSectionTitle:yt=!1}){const Et=useIsMobile(),At=reactExports.useRef(),Rt=reactExports.useRef(),wt=reactExports.useRef([]),Ot=reactExports.useRef(new Set),Xt=reactExports.useRef(!1),Yt=reactExports.useRef(!1),[Ht,Zt]=reactExports.useState(!1);return reactExports.useLayoutEffect(()=>{const Kt=At.current;if(!Kt)return;const Bt=Array.from(Kt.parentElement.children);Kt.style.zIndex=Bt.indexOf(Kt)+1,Et||(Kt.style.opacity="0")},[Et]),reactExports.useEffect(()=>{if(Et){Yt.current||(Yt.current=!0,Zt(!0));return}const Kt=At.current;if(!Kt)return;const Bt=()=>{const St=Kt.getBoundingClientRect().top<=0;Kt.style.opacity=St?"1":"0",St&&!Yt.current&&(Yt.current=!0,Zt(!0))};return Bt(),window.addEventListener("scroll",Bt,{passive:!0}),()=>window.removeEventListener("scroll",Bt)},[Et]),reactExports.useLayoutEffect(()=>{const Kt=Rt.current?.querySelectorAll("p");if(Kt&&Kt.length>0){const Bt=Array.from(Kt).map(St=>{const Mt=St.parentElement,xt=Mt===Rt.current?St:Mt;return{p:St,target:xt}});wt.current=Bt,Bt.forEach(({target:St},Mt)=>{St.style.transition="opacity 50ms ease",Mt===0?(St.style.opacity="1",Ot.current.add(0)):St.style.opacity="0"})}},[]),reactExports.useEffect(()=>{const Kt=At.current;if(!Kt)return;const Bt=new IntersectionObserver(([St])=>{if(St.isIntersecting&&!Xt.current){Xt.current=!0;const Mt=wt.current;let xt=1;const bt=setInterval(()=>{if(xt>=Mt.length){clearInterval(bt);return}const{p:Pt,target:Tt}=Mt[xt];Tt.style.opacity="1",Ot.current.add(xt),scrambleElement(Pt),xt++},nt)}},{threshold:.3});return Bt.observe(Kt),()=>Bt.disconnect()},[]),jsxRuntimeExports.jsx(SlideWrapper,{ref:At,"data-slide":!0,children:jsxRuntimeExports.jsx(StickyInner,{children:jsxRuntimeExports.jsxs(Slide,{$bg:N,children:[Ct&&jsxRuntimeExports.jsx(BackgroundImage,{$src:getAssetPath(Ct)}),Et&&st?jsxRuntimeExports.jsx(BackgroundLottie,{$height:"100%",$mobileScale:ot,children:jsxRuntimeExports.jsx(LottieAnimation,{path:st,loop:!1,autoplay:!0,width:"100%",height:"100%",preserveAspectRatio:"xMidYMid meet"})}):p&&jsxRuntimeExports.jsx(BackgroundLottie,{$height:h,$bottom:d,$top:P,$mobileScale:ot,children:jsxRuntimeExports.jsx(ResponsiveLottieAnimation,{animations:p,loop:ft,autoplay:!0,width:"100%",height:"100%",preserveAspectRatio:h?"xMidYMid meet":"xMidYMid slice"})}),u&&!p&&jsxRuntimeExports.jsx(BackgroundLottie,{$height:h,$bottom:d,$top:P,$mobileScale:ot,children:jsxRuntimeExports.jsx(ScaleInImg,{src:getAssetPath(u),$visible:Ht,alt:""})}),l&&!p&&jsxRuntimeExports.jsx(BackgroundVideo$1,{src:getAssetPath(l),poster:tt?getAssetPath(tt):void 0,muted:!0,playsInline:!0,autoPlay:!0,loop:!0}),t&&!yt&&jsxRuntimeExports.jsx(SectionHeadingBar,{color:e,bordered:n,fontFamily:s,fontWeight:a,children:t}),jsxRuntimeExports.jsxs(ContentArea,{ref:Rt,$maxWidth:ht,style:yt?{paddingTop:100}:void 0,children:[jsxRuntimeExports.jsx(MobileContentHeight,{$hasHeader:!!t,children:gt}),jsxRuntimeExports.jsx("p",{"aria-hidden":!0,style:{position:"absolute",visibility:"hidden"}})]})]})})})}const QuoteWrapper=dt.blockquote`
+`;function DataGridSlide({sectionTitle:t,headingColor:e,headingBordered:n,headingFontFamily:s,headingFontWeight:a,backgroundVideo:l,backgroundImage:u,lottieAnimation:p,lottieHeight:h,lottieBottom:d,lottieTop:P,poster:tt,backgroundColor:N,maxWidth:ht,children:gt,mobileScale:ot,mobileBackgroundImage:Ct,mobileLottieAnimation:st,lottieLoop:ft=!0,revealInterval:nt=500,hideSectionTitle:yt=!1}){const Et=useIsMobile(),At=reactExports.useRef(),Rt=reactExports.useRef(),wt=reactExports.useRef([]),Ot=reactExports.useRef(new Set),Xt=reactExports.useRef(!1),Yt=reactExports.useRef(!1),[Ht,Zt]=reactExports.useState(!1);return reactExports.useLayoutEffect(()=>{const Kt=At.current;if(!Kt)return;const Bt=Array.from(Kt.parentElement.children);Kt.style.zIndex=Bt.indexOf(Kt)+1,Et||(Kt.style.opacity="0")},[Et]),reactExports.useEffect(()=>{if(Et){Yt.current||(Yt.current=!0,Zt(!0));return}const Kt=At.current;if(!Kt)return;const Bt=()=>{const St=Kt.getBoundingClientRect().top<=0;Kt.style.opacity=St?"1":"0",St&&!Yt.current&&(Yt.current=!0,Zt(!0))};return Bt(),window.addEventListener("scroll",Bt,{passive:!0}),()=>window.removeEventListener("scroll",Bt)},[Et]),reactExports.useLayoutEffect(()=>{const Kt=Rt.current?.querySelectorAll("p");if(Kt&&Kt.length>0){const Bt=Array.from(Kt).map(St=>{const Mt=St.parentElement,xt=Mt===Rt.current?St:Mt;return{p:St,target:xt}});wt.current=Bt,Bt.forEach(({target:St},Mt)=>{St.style.transition="opacity 50ms ease",Mt===0?(St.style.opacity="1",Ot.current.add(0)):St.style.opacity="0"})}},[]),reactExports.useEffect(()=>{const Kt=At.current;if(!Kt)return;const Bt=new IntersectionObserver(([St])=>{if(St.isIntersecting&&!Xt.current){Xt.current=!0;const Mt=wt.current;let xt=1;const bt=setInterval(()=>{if(xt>=Mt.length){clearInterval(bt);return}const{p:Pt,target:Tt}=Mt[xt];Tt.style.opacity="1",Ot.current.add(xt),scrambleElement(Pt),xt++},nt)}},{threshold:.3});return Bt.observe(Kt),()=>Bt.disconnect()},[]),jsxRuntimeExports.jsx(SlideWrapper,{ref:At,"data-slide":!0,children:jsxRuntimeExports.jsx(StickyInner,{children:jsxRuntimeExports.jsxs(Slide,{$bg:N,children:[Ct&&jsxRuntimeExports.jsx(BackgroundImage,{$src:getAssetPath(Ct)}),Et&&st?jsxRuntimeExports.jsx(BackgroundLottie,{$height:"100%",$mobileScale:ot,children:jsxRuntimeExports.jsx(LottieAnimation,{path:st,loop:!1,autoplay:!0,width:"100%",height:"100%",preserveAspectRatio:"xMidYMid meet"})}):p&&jsxRuntimeExports.jsx(BackgroundLottie,{$height:h,$bottom:d,$top:P,$mobileScale:ot,children:jsxRuntimeExports.jsx(ResponsiveLottieAnimation,{animations:p,loop:ft,autoplay:!0,width:"100%",height:"100%",preserveAspectRatio:h?"xMidYMid meet":"xMidYMid slice"})}),u&&!p&&jsxRuntimeExports.jsx(BackgroundLottie,{$height:h,$bottom:d,$top:P,$mobileScale:ot,children:jsxRuntimeExports.jsx(ScaleInImg,{src:getAssetPath(u),$visible:Ht,alt:""})}),l&&!p&&jsxRuntimeExports.jsx(BackgroundVideo$1,{src:getAssetPath(l),poster:tt?getAssetPath(tt):void 0,muted:!0,playsInline:!0,autoPlay:!0,loop:!0}),t&&!yt&&jsxRuntimeExports.jsx(SectionHeadingBar,{color:e,bordered:n,fontFamily:s,fontWeight:a,children:t}),jsxRuntimeExports.jsxs(ContentArea,{ref:Rt,$maxWidth:ht,style:yt?{paddingTop:100}:void 0,children:[jsxRuntimeExports.jsx(MobileContentHeight,{$hasHeader:!!t,children:gt}),jsxRuntimeExports.jsx("p",{"aria-hidden":!0,style:{position:"absolute",visibility:"hidden"}})]})]})})})}const QuoteWrapper=dt.blockquote`
     margin: 40px auto;
     padding: 0;
     max-width: 846px;
