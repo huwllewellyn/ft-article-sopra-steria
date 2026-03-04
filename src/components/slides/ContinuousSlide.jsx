@@ -44,7 +44,7 @@ export default function ContinuousSlide({
         el.style.zIndex = siblings.indexOf(el) + 1;
         if (appearInPlace) {
             el.style.opacity = "0";
-            el.style.transition = "opacity 100ms ease";
+            el.style.transition = "opacity 50ms ease";
         }
     }, [appearInPlace]);
 
