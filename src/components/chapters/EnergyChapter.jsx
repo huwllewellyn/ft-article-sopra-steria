@@ -425,21 +425,24 @@ export default function EnergyChapter() {
                         </NarrativeSlide>
                     ),
                     () => (
-                        <NarrativeSlide
-                            timestamp="5:15pm"
-                            backgroundColor="transparent"
-                            textPosition="top"
-                            backgroundVideo={VIDEOS.elevator}
-                            poster={POSTERS.elevator}
-                        >
-                            <p>
-                                Outside, the city’s skyline no longer shines
-                                brightly. Mobile and internet services are down.
-                            </p>
-                            <br />
-                            <br />
-                            <p>People across Oslo start to panic.</p>
-                        </NarrativeSlide>
+                        <StickySlide appearInPlace>
+                            <NarrativeSlide
+                                timestamp="5:15pm"
+                                backgroundColor="transparent"
+                                textPosition="top"
+                                backgroundVideo={VIDEOS.elevator}
+                                poster={POSTERS.elevator}
+                            >
+                                <p>
+                                    Outside, the city’s skyline no longer shines
+                                    brightly. Mobile and internet services are
+                                    down.
+                                </p>
+                                <br />
+                                <br />
+                                <p>People across Oslo start to panic.</p>
+                            </NarrativeSlide>
+                        </StickySlide>
                     ),
                 ]}
             />
