@@ -344,8 +344,8 @@ export default function EnergyChapter() {
 
             {/* S3 + S4 — continuous globe video */}
             <ContinuousSlide
-                trackHeight="600vh"
-                flowHeight="600vh"
+                trackHeight="400vh"
+                flowHeight="400vh"
                 appearInPlace
                 background={({ scrollYProgress }) => (
                     <>
