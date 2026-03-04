@@ -429,6 +429,8 @@ export default function EnergyChapter() {
                             timestamp="5:15pm"
                             backgroundColor="transparent"
                             textPosition="top"
+                            backgroundVideo={VIDEOS.elevator}
+                            poster={POSTERS.elevator}
                         >
                             <p>
                                 Outside, the city’s skyline no longer shines
