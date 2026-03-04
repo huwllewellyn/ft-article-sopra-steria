@@ -395,7 +395,11 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T7 — Data grid: EU transport incidents */}
-            <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh">
+            <StickySlide
+                flowHeight="200vh"
+                trackHeight="200vh"
+                mobileSimplify={false}
+            >
                 {({ scrollYProgress }) => (
                     <DataGridSlide
                         sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"

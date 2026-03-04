@@ -485,7 +485,11 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F13 — 41% data point (lottie) */}
-            <StickySlide appearInPlace flowHeight="200vh" trackHeight="200vh">
+            <StickySlide
+                trackHeight="200vh"
+                flowHeight="200vh"
+                mobileSimplify={false}
+            >
                 {({ scrollYProgress }) => (
                     <DataGridSlide
                         sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"

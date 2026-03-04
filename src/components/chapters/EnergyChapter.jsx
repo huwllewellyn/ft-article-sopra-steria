@@ -462,7 +462,11 @@ export default function EnergyChapter() {
 
             {/* S8 — Cyber attacks data grid */}
             {isMobile ? (
-                <StickySlide appearInPlace>
+                <StickySlide
+                    trackHeight="200vh"
+                    flowHeight="200vh"
+                    mobileSimplify={false}
+                >
                     <DataGridSlide
                         sectionTitle="AN EVOLVING THREAT LANDSCAPE"
                         hideSectionTitle={isMobile}
