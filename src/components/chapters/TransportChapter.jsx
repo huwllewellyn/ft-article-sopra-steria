@@ -591,8 +591,6 @@ export default function TransportChapter() {
                                     It’s rooted in internal market law, yet the
                                     threats themselves are cross-border.
                                 </p>
-                                <br />
-                                <br />
                                 <p>
                                     That’s the paradox of the digital era; the
                                     EU has limited powers, yet it faces
