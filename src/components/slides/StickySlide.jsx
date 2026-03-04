@@ -43,14 +43,16 @@ function useZIndexAndAppear(ref, appearInPlace) {
     useEffect(() => {
         if (!appearInPlace) return;
         const el = ref.current;
+        if (!el) return;
 
-        const handleScroll = () => {
-            el.style.opacity = el.getBoundingClientRect().top <= 0 ? "1" : "0";
-        };
-
-        handleScroll();
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                el.style.opacity = entry.isIntersecting ? "1" : "0";
+            },
+            { rootMargin: "0px 0px -100% 0px", threshold: 0 },
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
     }, [appearInPlace]);
 }
 
