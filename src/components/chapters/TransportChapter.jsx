@@ -391,8 +391,9 @@ export default function TransportChapter() {
 
             {/* T7 — Data grid: EU transport incidents */}
             <StickySlide
+                appearInPlace
                 trackHeight="200vh"
-                flowHeight="200vh"
+                flowHeight="100vh"
                 mobileSimplify={false}
             >
                 <DataGridSlide
