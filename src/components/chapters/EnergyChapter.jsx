@@ -400,31 +400,33 @@ export default function EnergyChapter() {
                         </NarrativeSlide>
                     ),
                     () => (
-                        <NarrativeSlide
-                            timestamp="5:10pm"
-                            backgroundColor="transparent"
-                            textPosition="top"
-                            backgroundVideo={VIDEOS.elevator}
-                            poster={POSTERS.elevator}
-                        >
-                            <p>
-                                Across town, the CTO of a prominent investment
-                                firm is ready to leave for the day.
-                            </p>
-                            <br />
-                            <br />
-                            <p>
-                                She presses the elevator button on the 14th
-                                floor of the company’s building, but nothing
-                                happens.
-                            </p>
-                            <br />
-                            <br />
-                            <p>
-                                Moments later, the entire floor is plunged into
-                                darkness.
-                            </p>
-                        </NarrativeSlide>
+                        <StickySlide appearInPlace>
+                            <NarrativeSlide
+                                timestamp="5:10pm"
+                                textPosition="top"
+                                backgroundVideo={VIDEOS.elevator}
+                                poster={POSTERS.elevator}
+                            >
+                                <p>
+                                    Across town, the CTO of a prominent
+                                    investment firm is ready to leave for the
+                                    day.
+                                </p>
+                                <br />
+                                <br />
+                                <p>
+                                    She presses the elevator button on the 14th
+                                    floor of the company’s building, but nothing
+                                    happens.
+                                </p>
+                                <br />
+                                <br />
+                                <p>
+                                    Moments later, the entire floor is plunged
+                                    into darkness.
+                                </p>
+                            </NarrativeSlide>
+                        </StickySlide>
                     ),
                     () => (
                         <StickySlide appearInPlace>

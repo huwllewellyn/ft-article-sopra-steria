@@ -38,13 +38,12 @@ export default function useAutoplayOnView() {
             if (!originalSrc) return;
 
             let loaded = false;
-            let visible = false;
 
             const unload = () => {
                 if (!loaded) return;
                 video.pause();
                 video.removeAttribute("src");
-                video.removeAttribute("poster");
+                if (originalPoster) video.poster = originalPoster;
                 video.load();
                 loaded = false;
             };
@@ -57,37 +56,22 @@ export default function useAutoplayOnView() {
                 loaded = true;
             };
 
-            const resourceObserver = new IntersectionObserver(
+            const observer = new IntersectionObserver(
                 ([entry]) => {
                     if (entry.isIntersecting) {
                         reload();
-                        if (visible) video.play().catch(() => {});
+                        video.play().catch(() => { });
                     } else {
+                        video.pause();
                         unload();
                     }
                 },
-                { rootMargin: "25%" },
+                { rootMargin: "100%" },
             );
 
-            const playbackObserver = new IntersectionObserver(
-                ([entry]) => {
-                    visible = entry.isIntersecting;
-                    if (visible && loaded) {
-                        video.play().catch(() => {});
-                    } else if (loaded) {
-                        video.pause();
-                    }
-                },
-                { threshold: 0.1 },
-            );
+            observer.observe(video);
 
-            resourceObserver.observe(video);
-            playbackObserver.observe(video);
-
-            return () => {
-                resourceObserver.disconnect();
-                playbackObserver.disconnect();
-            };
+            return () => observer.disconnect();
         }
 
         // Desktop path
@@ -114,7 +98,7 @@ export default function useAutoplayOnView() {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     reload();
-                    if (visible) video.play().catch(() => {});
+                    if (visible) video.play().catch(() => { });
                 } else {
                     unload();
                 }
@@ -126,7 +110,7 @@ export default function useAutoplayOnView() {
             ([entry]) => {
                 visible = entry.isIntersecting;
                 if (visible && loaded) {
-                    video.play().catch(() => {});
+                    video.play().catch(() => { });
                 } else if (loaded) {
                     video.pause();
                 }
