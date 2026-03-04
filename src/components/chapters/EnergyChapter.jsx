@@ -811,47 +811,53 @@ export default function EnergyChapter() {
             />
 
             {/* S19 — Solutions data grid */}
-            <DataGridSlide
-                sectionTitle="THE SOLUTIONS"
-                headingColor="#EBEBEB"
-                headingBordered
-                headingFontFamily="'Space Grotesk', sans-serif"
-                headingFontWeight={500}
-                backgroundColor="#f7ff95"
+            <StickySlide
                 trackHeight="200vh"
                 flowHeight="200vh"
-                lottieAnimation={{
-                    mobile: "/videos/ch1/SOPRA_DigitalDisruption_DP1_M.json",
-                    tablet: "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
-                    desktop: "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
-                }}
+                mobileSimplify={false}
             >
-                <SolutionBoxes>
-                    <SolutionBox>
-                        <p>State-led cyber defence policies</p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>
-                            Regular penetration testing and threat simulations
-                        </p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>
-                            24/7 Security Operation Centres with real-time
-                            monitoring
-                        </p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>
-                            Cross-sector coordination across energy, telecoms
-                            and media
-                        </p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>A threat-driven approach beyond compliance</p>
-                    </SolutionBox>
-                </SolutionBoxes>
-            </DataGridSlide>
+                <DataGridSlide
+                    sectionTitle="THE SOLUTIONS"
+                    headingColor="#EBEBEB"
+                    headingBordered
+                    headingFontFamily="'Space Grotesk', sans-serif"
+                    headingFontWeight={500}
+                    backgroundColor="#f7ff95"
+                    lottieAnimation={{
+                        mobile: "/videos/ch1/SOPRA_DigitalDisruption_DP1_M.json",
+                        tablet: "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
+                        desktop:
+                            "/videos/ch1/SOPRA_DigitalDisruption_DP1_D.json",
+                    }}
+                >
+                    <SolutionBoxes>
+                        <SolutionBox>
+                            <p>State-led cyber defence policies</p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>
+                                Regular penetration testing and threat
+                                simulations
+                            </p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>
+                                24/7 Security Operation Centres with real-time
+                                monitoring
+                            </p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>
+                                Cross-sector coordination across energy,
+                                telecoms and media
+                            </p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>A threat-driven approach beyond compliance</p>
+                        </SolutionBox>
+                    </SolutionBoxes>
+                </DataGridSlide>
+            </StickySlide>
         </Chapter>
     );
 }

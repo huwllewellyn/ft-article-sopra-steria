@@ -673,40 +673,46 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F23 — Solutions data grid */}
-            <DataGridSlide
-                sectionTitle="THE SOLUTIONS"
-                headingColor="#EBEBEB"
-                headingBordered
-                headingFontFamily="'Space Grotesk', sans-serif"
-                headingFontWeight={500}
-                backgroundColor="#000"
-                lottieAnimation={{
-                    mobile: "/videos/ch2/SOLUTIONS_2.json",
-                    tablet: "/videos/ch2/SOLUTIONS_2.json",
-                    desktop: "/videos/ch2/SOLUTIONS_2.json",
-                }}
+            <StickySlide
+                trackHeight="200vh"
+                flowHeight="200vh"
+                mobileSimplify={false}
             >
-                <SolutionBoxes>
-                    <SolutionBox>
-                        <p>Zero-trust architecture</p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>Network segmentation</p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>Targeted phishing training</p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>Supplier security checks</p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>AI-driven threat monitoring</p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>Cross-sector drills</p>
-                    </SolutionBox>
-                </SolutionBoxes>
-            </DataGridSlide>
+                <DataGridSlide
+                    sectionTitle="THE SOLUTIONS"
+                    headingColor="#EBEBEB"
+                    headingBordered
+                    headingFontFamily="'Space Grotesk', sans-serif"
+                    headingFontWeight={500}
+                    backgroundColor="#000"
+                    lottieAnimation={{
+                        mobile: "/videos/ch2/SOLUTIONS_2.json",
+                        tablet: "/videos/ch2/SOLUTIONS_2.json",
+                        desktop: "/videos/ch2/SOLUTIONS_2.json",
+                    }}
+                >
+                    <SolutionBoxes>
+                        <SolutionBox>
+                            <p>Zero-trust architecture</p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>Network segmentation</p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>Targeted phishing training</p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>Supplier security checks</p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>AI-driven threat monitoring</p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>Cross-sector drills</p>
+                        </SolutionBox>
+                    </SolutionBoxes>
+                </DataGridSlide>
+            </StickySlide>
         </Chapter>
     );
 }

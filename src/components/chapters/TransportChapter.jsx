@@ -675,38 +675,46 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T20 — Solutions data grid */}
-            <DataGridSlide
-                sectionTitle="THE SOLUTIONS"
-                headingColor="#EBEBEB"
-                headingBordered
-                headingFontFamily="'Space Grotesk', sans-serif"
-                headingFontWeight={500}
-                backgroundColor="#000"
-                lottieAnimation={{
-                    mobile: "/videos/ch3/SOLUTIONS_3.json",
-                    tablet: "/videos/ch3/SOLUTIONS_3.json",
-                    desktop: "/videos/ch3/SOLUTIONS_3.json",
-                }}
+            <StickySlide
+                trackHeight="200vh"
+                flowHeight="200vh"
+                mobileSimplify={false}
             >
-                <SolutionBoxes>
-                    <SolutionBox>
-                        <p>Expanding European investment in GNSS</p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>
-                            Manufacturing critical GPS and satellite components
-                        </p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>
-                            Promoting EU-developed navigation software and apps
-                        </p>
-                    </SolutionBox>
-                    <SolutionBox>
-                        <p>Zero-trust architectures</p>
-                    </SolutionBox>
-                </SolutionBoxes>
-            </DataGridSlide>
+                <DataGridSlide
+                    sectionTitle="THE SOLUTIONS"
+                    headingColor="#EBEBEB"
+                    headingBordered
+                    headingFontFamily="'Space Grotesk', sans-serif"
+                    headingFontWeight={500}
+                    backgroundColor="#000"
+                    lottieAnimation={{
+                        mobile: "/videos/ch3/SOLUTIONS_3.json",
+                        tablet: "/videos/ch3/SOLUTIONS_3.json",
+                        desktop: "/videos/ch3/SOLUTIONS_3.json",
+                    }}
+                >
+                    <SolutionBoxes>
+                        <SolutionBox>
+                            <p>Expanding European investment in GNSS</p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>
+                                Manufacturing critical GPS and satellite
+                                components
+                            </p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>
+                                Promoting EU-developed navigation software and
+                                apps
+                            </p>
+                        </SolutionBox>
+                        <SolutionBox>
+                            <p>Zero-trust architectures</p>
+                        </SolutionBox>
+                    </SolutionBoxes>
+                </DataGridSlide>
+            </StickySlide>
         </Chapter>
     );
 }
