@@ -51,7 +51,7 @@ const F13TextStyled = styled(motion.div)`
         text-align: left;
         padding: 0 20px;
         position: relative;
-        bottom: auto;
+        bottom: 100px;
         padding: 0;
     `)} ${media.wide(`
         font-size: 39px;
@@ -502,7 +502,7 @@ export default function FinanceChapter() {
                         scrollProgress={scrollYProgress}
                         maxWidth="90vw"
                         lottieHeight={isMobile ? "50vh" : "50vh"}
-                        lottieTop={isMobile ? "20vh" : "20vh"}
+                        lottieTop={isMobile ? "10vh" : "20vh"}
                         lottieLoop={false}
                     >
                         {isMobile && <div style={{ minHeight: "50vh" }} />}
