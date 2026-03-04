@@ -314,7 +314,9 @@ export default function IntroSection() {
                     animate={{ opacity: 1 }}
                     transition={{ delay: 1.5, duration: 0.5 }}
                 >
-                    {isMobile ? "TAP TO EXPLORE" : "SCROLL TO EXPLORE"}
+                    {isMobile
+                        ? "TAP OR SCROLL TO EXPLORE"
+                        : "SCROLL TO EXPLORE"}
                 </ScrollIndicator>
             </ContentWrapper>
         </Container>

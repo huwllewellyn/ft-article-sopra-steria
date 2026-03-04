@@ -2,7 +2,7 @@ import { useRef, useEffect } from "react";
 import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
-import { ChapterIntro } from "../shared";
+import { ChapterIntro, MobileBreak } from "../shared";
 import {
     DataCenterLarge,
     DataText,
@@ -676,34 +676,22 @@ export default function EnergyChapter() {
                 <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
                     <EditorialBody>
                         <p>
-                            Most of the investment in cybersecurity in the
-                            energy sector has gone into prevention rather than
-                            visibility and monitoring. This presents challenges
-                            for root-cause analysis and improving prevention
-                            strategies.
+                            Most cybersecurity spending in the energy sector has
+                            focused on prevention rather than monitoring and
+                            visibility, limiting effective root-cause analysis
+                            and long-term improvements.
                         </p>
-                    </EditorialBody>
-                </EditorialSlide>
-            </StickySlide>
-
-            {/* S14 — Policymakers */}
-            <StickySlide appearInPlace>
-                <EditorialSlide
-                    sectionTitle="OPERATING WHILE UNDER ATTACK"
-                    hideSectionTitle={isMobile}
-                >
-                    <EditorialBody>
+                        <MobileBreak />
                         <p>
-                            Europe’s policymakers are starting to recognise the
-                            risks. In 2025, the European Commission{" "}
+                            Recognising these risks, in 2025 the European
+                            Commission{" "}
                             <a href="https://www.enisa.europa.eu/news/enisa-to-operate-the-eu-cybersecurity-reserve-with-eur-36-million">
                                 signed
                             </a>{" "}
                             a €36mn agreement with the EU’s Agency for
-                            Cybersecurity (ENISA) to administer a reserve that
-                            can be used by critical sectors – including energy –
-                            to support the response and recovery from cyber
-                            incidents.
+                            Cybersecurity (ENISA) to support response and
+                            recovery from cyber incidents in critical sectors,
+                            including energy.
                         </p>
                     </EditorialBody>
                 </EditorialSlide>
@@ -779,10 +767,10 @@ export default function EnergyChapter() {
                 </StickySlide>
             )}
 
-            {/* S16-S18 — 8:00pm / 2:00am / 8:00am (continuous video) */}
+            {/* S16-S18 — 8:00pm / 8:00am (continuous video) */}
             <ContinuousSlide
-                trackHeight="400vh"
-                flowHeight="400vh"
+                trackHeight="300vh"
+                flowHeight="300vh"
                 background={() => (
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.escalator)}
@@ -812,14 +800,8 @@ export default function EnergyChapter() {
                                 cybersecurity experts gather to implement
                                 emergency procedures.
                             </p>
-                        </NarrativeSlide>
-                    ),
-                    () => (
-                        <NarrativeSlide
-                            timestamp="2:00am"
-                            backgroundColor="transparent"
-                            textPosition="top"
-                        >
+                            <br />
+                            <br />
                             <p>
                                 Cyber experts work with internet service
                                 providers to divert malicious traffic and

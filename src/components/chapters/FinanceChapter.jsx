@@ -283,8 +283,10 @@ export default function FinanceChapter() {
                             <br />
                             <br />
                             <p>
-                                It begins quietly, with a distracted employee
-                                and a convincingly urgent email.
+                                An issue at a local supermarket escalates into a
+                                multi-million-euro crisis. Malware spreads from
+                                one store to thousands with damage reaching far
+                                beyond one retailer.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -313,22 +315,6 @@ export default function FinanceChapter() {
                     />
                 )}
                 slides={[
-                    () => (
-                        <NarrativeSlide
-                            backgroundColor="transparent"
-                            textPosition="top"
-                            highlightText
-                            accentColor={ACCENT}
-                        >
-                            <p>
-                                Within hours, an issue at a local supermarket in
-                                Madrid escalates into a multi-million-euro
-                                crisis, with malware spreading from one store to
-                                thousands and damage reaching far beyond one
-                                retailer.
-                            </p>
-                        </NarrativeSlide>
-                    ),
                     () => (
                         <NarrativeSlide
                             timestamp="12:00pm"
@@ -396,8 +382,8 @@ export default function FinanceChapter() {
 
             {/* F7-F8 — Payment systems fail / helpdesk flooded (continuous video) */}
             <ContinuousSlide
-                trackHeight="300vh"
-                flowHeight="300vh"
+                trackHeight="200vh"
+                flowHeight="200vh"
                 appearInPlace
                 background={() => (
                     <AutoplayVideo
@@ -425,20 +411,9 @@ export default function FinanceChapter() {
                         >
                             <p>
                                 As the malware overloads resources, payment
-                                systems across stores fail.
-                            </p>
-                        </NarrativeSlide>
-                    ),
-                    () => (
-                        <NarrativeSlide
-                            timestamp="2:00pm"
-                            backgroundColor="transparent"
-                            textPosition="top"
-                            accentColor={ACCENT}
-                        >
-                            <p>
-                                The help desk is flooded with reports from
-                                stores experiencing outages.
+                                systems across stores fail. The help desk is
+                                flooded with reports from stores experiencing
+                                outages.
                             </p>
                         </NarrativeSlide>
                     ),
@@ -478,32 +453,22 @@ export default function FinanceChapter() {
                     backgroundColor={ACCENT}
                     headingColor={ACCENT}
                 >
-                    <EditorialBody>
-                        <p>
-                            AI enables them to use real-time company data and
-                            social media to make each message convincingly
-                            authentic.
-                        </p>
-                    </EditorialBody>
-
                     <SlideQuote
-                        quote="Entire campaigns are being run by machines – targeting the right person, at the right time, with the right message"
-                        name="Arsenio Pérez Gavira"
-                        role="Cybersecurity Manager, Sopra Steria Spain"
-                    />
-                </EditorialSlide>
-            </StickySlide>
-
-            {/* F11 — Editorial: Arsenio quote */}
-            <StickySlide appearInPlace>
-                <EditorialSlide
-                    sectionTitle="WHEN HUMAN BEHAVIOUR IS THE ENTRY POINT"
-                    hideSectionTitle={isMobile}
-                    backgroundColor={ACCENT}
-                    headingColor={ACCENT}
-                >
-                    <SlideQuote
-                        quote="Defending against this demands adaptive defences powered by the same kind of intelligence, capable of detecting patterns and responding in real time"
+                        quote={
+                            <>
+                                <p>
+                                    Entire campaigns are being run by machines –
+                                    targeting the right person, at the right
+                                    time, with the right message.
+                                </p>
+                                <p>
+                                    Defending against this demands adaptive
+                                    defences powered by the same kind of
+                                    intelligence, capable of detecting patterns
+                                    and responding in real time
+                                </p>
+                            </>
+                        }
                         name="Arsenio Pérez Gavira"
                         role="Cybersecurity Manager, Sopra Steria Spain"
                     />
@@ -580,55 +545,23 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F14-F15 — Stores close / forensics (continuous video) */}
-            <ContinuousSlide
-                trackHeight="300vh"
-                flowHeight="200vh"
-                background={() => (
-                    <AutoplayVideo
-                        src={getAssetPath(VIDEOS.ironGate)}
-                        poster={getAssetPath(POSTERS.ironGate)}
-                        loop
-                        muted
-                        playsInline
-                        style={{
-                            position: "absolute",
-                            inset: 0,
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                        }}
-                    />
-                )}
-                slides={[
-                    () => (
-                        <NarrativeSlide
-                            timestamp="3:00pm"
-                            heading="FROM COMPANY BREACH TO MAJOR DISRUPTION"
-                            backgroundColor="transparent"
-                            textPosition="top"
-                            accentColor={ACCENT}
-                        >
-                            <p>
-                                All of the retailer’s stores close as payments
-                                and inventory systems fail.
-                            </p>
-                        </NarrativeSlide>
-                    ),
-                    () => (
-                        <NarrativeSlide
-                            timestamp="4:30pm"
-                            backgroundColor="transparent"
-                            textPosition="top"
-                            accentColor={ACCENT}
-                        >
-                            <p>
-                                Internal forensics reveals loyalty card and
-                                e-receipt data were compromised.
-                            </p>
-                        </NarrativeSlide>
-                    ),
-                ]}
-            />
+            <StickySlide appearInPlace mobileSimplify={!isMobile}>
+                <NarrativeSlide
+                    timestamp="3:00pm"
+                    heading="FROM COMPANY BREACH TO MAJOR DISRUPTION"
+                    backgroundColor="transparent"
+                    textPosition="top"
+                    accentColor={ACCENT}
+                    backgroundVideo={getAssetPath(VIDEOS.ironGate)}
+                    poster={getAssetPath(POSTERS.ironGate)}
+                >
+                    <p>
+                        All of the retailer’s stores close as payments and
+                        inventory systems fail. Loyalty card and e-receipt data
+                        are compromised.
+                    </p>
+                </NarrativeSlide>
+            </StickySlide>
 
             {/* F16 — 6:30pm media reports */}
             <StickySlide

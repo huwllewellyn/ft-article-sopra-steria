@@ -461,8 +461,8 @@ export default function TransportChapter() {
 
             {/* T10-T11 — Military jet / airports (continuous video) */}
             <ContinuousSlide
-                trackHeight="300vh"
-                flowHeight="300vh"
+                trackHeight="200vh"
+                flowHeight="200vh"
                 appearInPlace
                 background={() => (
                     <AutoplayVideo
@@ -494,15 +494,8 @@ export default function TransportChapter() {
                                 airspace. Early reports suggest it was a GPS
                                 disturbance.
                             </p>
-                        </NarrativeSlide>
-                    ),
-                    () => (
-                        <NarrativeSlide
-                            timestamp="3:30pm"
-                            backgroundColor="transparent"
-                            textPosition="top"
-                            accentColor={ACCENT}
-                        >
+                            <br />
+                            <br />
                             <p>
                                 UK airports implement additional security
                                 measures, delaying arrivals and departures.
@@ -615,9 +608,8 @@ export default function TransportChapter() {
 
             {/* T17-T18 — Overtime / train delayed (continuous video) */}
             <ContinuousSlide
-                trackHeight="300vh"
-                flowHeight="200vh"
-                appearInPlace
+                trackHeight="200vh"
+                flowHeight="100vh"
                 background={() => (
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.mapDark)}
@@ -647,15 +639,8 @@ export default function TransportChapter() {
                                 Drivers are told they will need to work overtime
                                 to recoup the company’s revenue losses.
                             </p>
-                        </NarrativeSlide>
-                    ),
-                    () => (
-                        <NarrativeSlide
-                            timestamp="7:00pm"
-                            backgroundColor="transparent"
-                            textPosition="top"
-                            accentColor={ACCENT}
-                        >
+                            <br />
+                            <br />
                             <p>
                                 As the driver heads home, his usual train is
                                 delayed by two hours.
