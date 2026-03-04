@@ -20,6 +20,11 @@ export default function useAutoplayOnView() {
                 el.dataset.src = src;
                 el.removeAttribute("src");
             }
+            const poster = el.getAttribute("poster");
+            if (poster) {
+                el.dataset.poster = poster;
+                el.removeAttribute("poster");
+            }
         }
     }, []);
 
