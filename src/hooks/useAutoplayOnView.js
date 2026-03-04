@@ -66,7 +66,7 @@ export default function useAutoplayOnView() {
                         unload();
                     }
                 },
-                { rootMargin: "0%" },
+                { rootMargin: "25%" },
             );
 
             const playbackObserver = new IntersectionObserver(
