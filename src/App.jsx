@@ -12,7 +12,7 @@ import {
     TransportChapter,
     ConclusionSection,
 } from "./components/chapters";
-import { useState, useRef, useEffect, forwardRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { getAssetPath } from "./utils/assetPath";
 import useIsMobile from "./hooks/useIsMobile";
 import useTapToExplore from "./hooks/useTapToExplore";
@@ -64,45 +64,6 @@ const ChapterContainer = styled.div`
     `)}
 `;
 
-const LazyChapter = forwardRef(function LazyChapter(
-    { children, forceMount, ...props },
-    forwardedRef,
-) {
-    const [visible, setVisible] = useState(false);
-    const sentinelRef = useRef(null);
-    const mounted = visible || forceMount;
-
-    useEffect(() => {
-        if (mounted) return;
-        const el = sentinelRef.current;
-        if (!el) return;
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setVisible(true);
-                    observer.disconnect();
-                }
-            },
-            { rootMargin: "200%" },
-        );
-        observer.observe(el);
-        return () => observer.disconnect();
-    }, [mounted]);
-
-    return (
-        <ChapterContainer
-            ref={(el) => {
-                sentinelRef.current = el;
-                if (typeof forwardedRef === "function") forwardedRef(el);
-                else if (forwardedRef) forwardedRef.current = el;
-            }}
-            {...props}
-        >
-            {mounted ? children : null}
-        </ChapterContainer>
-    );
-});
-
 // Tab configuration for navigation
 const tabs = [
     {
@@ -125,63 +86,42 @@ const tabs = [
 function App() {
     const [activeTab, setActiveTab] = useState(0);
     const [navVisible, setNavVisible] = useState(false);
-    const [forceMounted, setForceMounted] = useState({});
     const chapterRefs = useRef([]);
     const isMobile = useIsMobile();
     useTapToExplore();
 
-    // Force-mount a lazy chapter (e.g. when its tab is clicked)
-    const forceMount = (index) =>
-        setForceMounted((prev) => ({ ...prev, [index]: true }));
-
     // Handle tab click - scroll to chapter
     const handleTabChange = (index) => {
         setActiveTab(index);
-        // Mount all lazy chapters up to and including the target so
-        // intermediate chapters have their full height before we scroll
-        for (let i = 1; i <= index; i++) {
-            forceMount(i);
-        }
-        // Double rAF to ensure React has committed the batched state updates
-        requestAnimationFrame(() => {
-            requestAnimationFrame(() => {
-                chapterRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
-            });
-        });
+        chapterRefs.current[index]?.scrollIntoView({ behavior: "smooth" });
     };
 
-    // Update active tab and nav visibility based on scroll position
+    // Update active tab and nav visibility via IntersectionObserver
     useEffect(() => {
-        const handleScroll = () => {
-            const scrollPosition = window.scrollY + 200;
+        const intersecting = new Set();
 
-            // Show nav only between start of chapter 1 and end of chapter 3
-            const firstChapter = chapterRefs.current[0];
-            const lastChapter = chapterRefs.current[2];
-            if (firstChapter && lastChapter) {
-                const chaptersStart = firstChapter.offsetTop;
-                const chaptersEnd =
-                    lastChapter.offsetTop + lastChapter.offsetHeight;
-                setNavVisible(scrollPosition >= chaptersStart);
-            }
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    const index = chapterRefs.current.indexOf(entry.target);
+                    if (index === -1) return;
+                    if (entry.isIntersecting) intersecting.add(index);
+                    else intersecting.delete(index);
+                });
 
-            chapterRefs.current.forEach((ref, index) => {
-                if (ref) {
-                    const offsetTop = ref.offsetTop;
-                    const offsetBottom = offsetTop + ref.offsetHeight;
-
-                    if (
-                        scrollPosition >= offsetTop &&
-                        scrollPosition < offsetBottom
-                    ) {
-                        setActiveTab(index);
-                    }
+                if (intersecting.size > 0) {
+                    setNavVisible(true);
+                    setActiveTab(Math.max(...intersecting));
                 }
-            });
-        };
+            },
+            { rootMargin: "-200px 0px 0px 0px", threshold: 0 },
+        );
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        chapterRefs.current.forEach((ref) => {
+            if (ref) observer.observe(ref);
+        });
+
+        return () => observer.disconnect();
     }, []);
 
     return (
@@ -222,19 +162,13 @@ function App() {
                 <EnergyChapter />
             </ChapterContainer>
 
-            <LazyChapter
-                ref={(el) => (chapterRefs.current[1] = el)}
-                forceMount={forceMounted[1]}
-            >
+            <ChapterContainer ref={(el) => (chapterRefs.current[1] = el)}>
                 <FinanceChapter />
-            </LazyChapter>
+            </ChapterContainer>
 
-            <LazyChapter
-                ref={(el) => (chapterRefs.current[2] = el)}
-                forceMount={forceMounted[2]}
-            >
+            <ChapterContainer ref={(el) => (chapterRefs.current[2] = el)}>
                 <TransportChapter />
-            </LazyChapter>
+            </ChapterContainer>
 
             <ConclusionSection />
         </AppContainer>
