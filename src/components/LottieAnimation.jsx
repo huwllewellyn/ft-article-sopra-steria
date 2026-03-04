@@ -34,9 +34,13 @@ export default function LottieAnimation({
     const isMobile = useIsMobile();
 
     useEffect(() => {
-        if (isMobile) return;
+        const container = containerRef.current;
+        if (!container) return;
 
-        const loadAnimation = async () => {
+        let cancelled = false;
+        let loadObserver;
+
+        const fetchAndLoad = async () => {
             let data;
 
             try {
@@ -47,7 +51,6 @@ export default function LottieAnimation({
                 }
                 data = await response.json();
             } catch (err) {
-                // If primary path fails and fallback exists, try fallback
                 if (fallbackPath) {
                     try {
                         console.warn(
@@ -78,58 +81,136 @@ export default function LottieAnimation({
                 }
             }
 
-            // Create Intersection Observer to load animation when nearby
-            const loadObserver = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (
-                            entry.isIntersecting &&
-                            containerRef.current &&
-                            !animationLoadedRef.current
-                        ) {
-                            animationLoadedRef.current = true;
-                            const anim = lottie.loadAnimation({
-                                container: containerRef.current,
-                                renderer: renderer,
-                                loop: loop,
-                                autoplay: false,
-                                animationData: data,
-                                rendererSettings: {
-                                    preserveAspectRatio,
-                                },
-                            });
-                            animationRef.current = anim;
+            if (cancelled || !containerRef.current || animationLoadedRef.current) return;
 
-                            // Set initial frame based on initialFrame prop (0-1 range)
-                            if (initialFrame > 0) {
-                                const totalFrames = anim.getDuration(true);
-                                const targetFrame = initialFrame * totalFrames;
-                                anim.goToAndStop(Math.round(targetFrame), true);
-                            }
-
-                            loadObserver.unobserve(entry.target);
-                        }
-                    });
+            animationLoadedRef.current = true;
+            const anim = lottie.loadAnimation({
+                container: containerRef.current,
+                renderer: renderer,
+                loop: loop,
+                autoplay: false,
+                animationData: data,
+                rendererSettings: {
+                    preserveAspectRatio,
                 },
-                { rootMargin: "100%" }
-            );
+            });
+            animationRef.current = anim;
 
-            if (containerRef.current) {
-                loadObserver.observe(containerRef.current);
+            if (initialFrame > 0) {
+                const totalFrames = anim.getDuration(true);
+                const targetFrame = initialFrame * totalFrames;
+                anim.goToAndStop(Math.round(targetFrame), true);
             }
-
-            return () => {
-                loadObserver.disconnect();
-            };
         };
 
-        loadAnimation();
+        // On mobile: only fetch + load when near viewport
+        // On desktop: fetch eagerly, load when near viewport
+        if (isMobile) {
+            loadObserver = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting && !animationLoadedRef.current) {
+                        loadObserver.disconnect();
+                        fetchAndLoad();
+                    }
+                },
+                { rootMargin: "0%" },
+            );
+            loadObserver.observe(container);
+        } else {
+            // Desktop: fetch eagerly, but defer lottie.loadAnimation until nearby
+            const eagerFetch = async () => {
+                let data;
+                try {
+                    const fullPath = getAssetPath(path);
+                    const response = await fetch(fullPath);
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    data = await response.json();
+                } catch (err) {
+                    if (fallbackPath) {
+                        try {
+                            const r = await fetch(getAssetPath(fallbackPath));
+                            if (!r.ok) throw new Error(`HTTP ${r.status}`);
+                            data = await r.json();
+                        } catch {
+                            return;
+                        }
+                    } else {
+                        return;
+                    }
+                }
+
+                if (cancelled) return;
+
+                loadObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach((entry) => {
+                            if (
+                                entry.isIntersecting &&
+                                containerRef.current &&
+                                !animationLoadedRef.current
+                            ) {
+                                animationLoadedRef.current = true;
+                                const anim = lottie.loadAnimation({
+                                    container: containerRef.current,
+                                    renderer: renderer,
+                                    loop: loop,
+                                    autoplay: false,
+                                    animationData: data,
+                                    rendererSettings: { preserveAspectRatio },
+                                });
+                                animationRef.current = anim;
+
+                                if (initialFrame > 0) {
+                                    const totalFrames = anim.getDuration(true);
+                                    anim.goToAndStop(Math.round(initialFrame * totalFrames), true);
+                                }
+
+                                loadObserver.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { rootMargin: "100%" },
+                );
+
+                if (containerRef.current) {
+                    loadObserver.observe(containerRef.current);
+                }
+            };
+
+            eagerFetch();
+        }
+
+        return () => {
+            cancelled = true;
+            if (loadObserver) loadObserver.disconnect();
+        };
     }, [isMobile, path, fallbackPath, loop, autoplay, renderer, scrollSync, initialFrame, preserveAspectRatio]);
 
-    // Autoplay lotties: play when the appear-in-place slide container reaches top of viewport
+    // Autoplay: play when visible
     useEffect(() => {
-        if (isMobile) return;
         if (!autoplay || scrollSync || scrollProgress) return;
+
+        if (isMobile) {
+            // On mobile, play as soon as animation is loaded and visible
+            const el = containerRef.current;
+            if (!el) return;
+
+            const observer = new IntersectionObserver(
+                ([entry]) => {
+                    const anim = animationRef.current;
+                    if (!anim) return;
+                    if (entry.isIntersecting) {
+                        anim.goToAndPlay(0);
+                    } else {
+                        anim.pause();
+                    }
+                },
+                { threshold: 0.1 },
+            );
+            observer.observe(el);
+
+            return () => observer.disconnect();
+        }
 
         let trackEl = null;
         let playing = false;
@@ -180,20 +261,15 @@ export default function LottieAnimation({
 
             if (!container || !animation) return;
 
-            // Get container position relative to viewport
             const rect = container.getBoundingClientRect();
             const windowHeight = window.innerHeight;
 
-            // Calculate scroll progress (0 to 1)
-            // Animation plays as element scrolls from bottom of viewport to top
             const scrollProgress = 1 - rect.top / (windowHeight + rect.height);
             const clampedProgress = Math.max(0, Math.min(1, scrollProgress));
 
-            // Get total frames and calculate target frame
-            const totalFrames = animation.getDuration(true); // true = in frames
+            const totalFrames = animation.getDuration(true);
             const targetFrame = clampedProgress * totalFrames;
 
-            // Move animation to frame based on scroll
             animation.goToAndStop(targetFrame, true);
         };
 
@@ -203,23 +279,18 @@ export default function LottieAnimation({
         };
     }, [isMobile, scrollSync]);
 
-    // Handle framer-motion scroll progress (only when scrollProgress MotionValue is provided)
+    // Handle framer-motion scroll progress
     useEffect(() => {
         if (isMobile) return;
         if (!scrollProgress) return;
         const unsubscribe = scrollProgress.onChange((latest) => {
             const animation = animationRef.current;
-            if (!animation) {
-                console.warn("[LottieAnimation] Animation not loaded yet");
-                return;
-            }
+            if (!animation) return;
 
             const totalFrames = animation.getDuration(true);
-            // Animate from initialFrame to finalFrame based on scroll progress
             const frameRange = finalFrame - initialFrame;
             const targetFrame = (initialFrame + latest * frameRange) * totalFrames;
 
-            // Move animation to frame based on scroll progress
             animation.goToAndStop(Math.round(targetFrame), true);
         });
 
