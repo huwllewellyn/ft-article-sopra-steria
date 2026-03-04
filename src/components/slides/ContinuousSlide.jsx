@@ -51,12 +51,16 @@ export default function ContinuousSlide({
     useEffect(() => {
         if (!appearInPlace) return;
         const el = trackRef.current;
-        const handleScroll = () => {
-            el.style.opacity = el.getBoundingClientRect().top <= 0 ? "1" : "0";
-        };
-        handleScroll();
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
+        if (!el) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                el.style.opacity = entry.isIntersecting ? "1" : "0";
+            },
+            { rootMargin: "0px 0px -100% 0px", threshold: 0 },
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
     }, [appearInPlace]);
 
     // switch phase based on scroll progress
