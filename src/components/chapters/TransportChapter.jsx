@@ -439,11 +439,7 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T9 — 12:00pm deliveries at slower pace */}
-            <StickySlide
-                appearInPlace
-                trackHeight="300vh"
-                mobileSimplify={!isMobile}
-            >
+            <StickySlide trackHeight="300vh" mobileSimplify={!isMobile}>
                 <NarrativeSlide
                     timestamp="12:00pm"
                     heading="WHEN DISRUPTION CROSSES BORDERS"

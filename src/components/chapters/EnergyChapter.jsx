@@ -619,7 +619,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S10 — 5:20pm blackouts + word reveal */}
-            <StickySlide appearInPlace mobileSimplify={false}>
+            <StickySlide mobileSimplify={false}>
                 <NarrativeSlide
                     timestamp="5:20pm"
                     heading="THE CITY IS PLUNGED INTO DARKNESS"
