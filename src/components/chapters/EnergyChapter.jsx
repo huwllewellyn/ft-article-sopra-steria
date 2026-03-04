@@ -765,7 +765,6 @@ export default function EnergyChapter() {
 
             {/* S16-S18 — 8:00pm / 8:00am (continuous video) */}
             <ContinuousSlide
-                appearInPlace
                 trackHeight="300vh"
                 flowHeight="200vh"
                 background={() => (
