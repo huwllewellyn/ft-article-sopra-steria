@@ -583,23 +583,23 @@ export default function TransportChapter() {
                         </p>
                     </EditorialBody>
                     <SlideQuote
-                        quote="Digital sovereignty sounds compelling but, in legal terms, it goes in many directions. It’s rooted in internal market law, yet the threats themselves are cross-border"
-                        name="Elaine Fahey"
-                        role="Professor of EU Law, City St George’s, University of London"
-                    />
-                </EditorialSlide>
-            </StickySlide>
-
-            {/* T16 — Editorial: Elaine Fahey quote */}
-            <StickySlide appearInPlace>
-                <EditorialSlide
-                    sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
-                    hideSectionTitle={isMobile}
-                    backgroundColor={ACCENT}
-                    headingColor={ACCENT}
-                >
-                    <SlideQuote
-                        quote="That’s the paradox of the digital era; the EU has limited powers, yet it faces limitless, transboundary risks"
+                        quote={
+                            <>
+                                <p>
+                                    Digital sovereignty sounds compelling but,
+                                    in legal terms, it goes in many directions.
+                                    It’s rooted in internal market law, yet the
+                                    threats themselves are cross-border
+                                </p>
+                                <br />
+                                <br />
+                                <p>
+                                    That’s the paradox of the digital era; the
+                                    EU has limited powers, yet it faces
+                                    limitless, transboundary risks
+                                </p>
+                            </>
+                        }
                         name="Elaine Fahey"
                         role="Professor of EU Law, City St George’s, University of London"
                     />
