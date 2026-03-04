@@ -198,9 +198,10 @@ export default function NarrativeSlide({
     mobileScale,
 }) {
     const isMobile = useIsMobile();
-    const scrollRef = useScrollVideo(scrollProgress);
+    const effectiveScrollProgress = isMobile ? null : scrollProgress;
+    const scrollRef = useScrollVideo(effectiveScrollProgress);
     const autoplayRef = useAutoplayOnView();
-    const videoRef = scrollProgress ? scrollRef : autoplayRef;
+    const videoRef = effectiveScrollProgress ? scrollRef : autoplayRef;
     const BodyWrapper = highlightText ? HighlightedBody : Body;
 
     const videoSrc = backgroundVideo
