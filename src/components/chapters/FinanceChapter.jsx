@@ -545,7 +545,7 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F14-F15 — Stores close / forensics (continuous video) */}
-            <StickySlide appearInPlace mobileSimplify={!isMobile}>
+            <StickySlide mobileSimplify={!isMobile}>
                 <NarrativeSlide
                     timestamp="3:00pm"
                     heading="FROM COMPANY BREACH TO MAJOR DISRUPTION"
