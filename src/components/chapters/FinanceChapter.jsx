@@ -487,7 +487,7 @@ export default function FinanceChapter() {
             {/* F13 — 41% data point (lottie) */}
             <StickySlide
                 trackHeight="200vh"
-                flowHeight="150vh"
+                flowHeight="200vh"
                 mobileSimplify={false}
             >
                 {({ scrollYProgress }) => (
