@@ -589,7 +589,7 @@ export default function TransportChapter() {
                                     Digital sovereignty sounds compelling but,
                                     in legal terms, it goes in many directions.
                                     It’s rooted in internal market law, yet the
-                                    threats themselves are cross-border
+                                    threats themselves are cross-border.
                                 </p>
                                 <br />
                                 <br />
