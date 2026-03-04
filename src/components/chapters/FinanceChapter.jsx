@@ -627,7 +627,11 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F20 — Editorial: Stefan quote */}
-            <StickySlide appearInPlace>
+            <StickySlide
+                appearInPlace
+                trackHeight={"200vh"}
+                flowHeight={"200vh"}
+            >
                 <EditorialSlide
                     sectionTitle="WHEN SYSTEMS CONNECT, FAILURE IS EXPONENTIAL"
                     hideSectionTitle={isMobile}
@@ -678,6 +682,7 @@ export default function FinanceChapter() {
 
             {/* F23 — Solutions data grid */}
             <StickySlide
+                appearInPlace
                 trackHeight="200vh"
                 flowHeight="200vh"
                 mobileSimplify={false}

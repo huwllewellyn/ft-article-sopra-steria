@@ -326,12 +326,7 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T5 — 9:00am GPS jamming */}
-            <StickySlide
-                appearInPlace
-                trackHeight="300vh"
-                flowHeight="200vh"
-                mobileSimplify={!isMobile}
-            >
+            <StickySlide appearInPlace>
                 <NarrativeSlide
                     timestamp="9:00am"
                     backgroundVideo={VIDEOS.airportBoard}
@@ -349,7 +344,7 @@ export default function TransportChapter() {
                 </NarrativeSlide>
             </StickySlide>
             {/* T6a — Editorial: GPS vulnerability + Lecoq quote */}
-            <StickySlide>
+            <StickySlide appearInPlace>
                 <EditorialSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                     backgroundColor={ACCENT}
@@ -395,28 +390,21 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T7 — Data grid: EU transport incidents */}
-            <StickySlide
-                flowHeight="200vh"
-                trackHeight="200vh"
-                mobileSimplify={false}
-            >
-                {({ scrollYProgress }) => (
-                    <DataGridSlide
-                        sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
-                        hideSectionTitle={isMobile}
-                        headingColor={ACCENT}
-                        backgroundColor={`repeating-linear-gradient(90deg, ${ACCENT} 0px, ${ACCENT} 2px, transparent 2px, transparent 40px), repeating-linear-gradient(0deg, ${ACCENT} 0px, ${ACCENT} 2px, #000 2px, #000 40px)`}
-                        gridColor={GRID_COLOR}
-                        scrollProgress={scrollYProgress}
-                        // mobileBackgroundImage="/videos/ch3/SOPRA_DigitalDisruption_D3_BKG.png"
-                    >
-                        <T7Content />
-                    </DataGridSlide>
-                )}
+            <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh">
+                <DataGridSlide
+                    sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
+                    hideSectionTitle={isMobile}
+                    headingColor={ACCENT}
+                    backgroundColor={`repeating-linear-gradient(90deg, ${ACCENT} 0px, ${ACCENT} 2px, transparent 2px, transparent 40px), repeating-linear-gradient(0deg, ${ACCENT} 0px, ${ACCENT} 2px, #000 2px, #000 40px)`}
+                    gridColor={GRID_COLOR}
+                    // mobileBackgroundImage="/videos/ch3/SOPRA_DigitalDisruption_D3_BKG.png"
+                >
+                    <T7Content />
+                </DataGridSlide>
             </StickySlide>
 
             {/* T8 — Editorial: Garczynski quote */}
-            <StickySlide appearInPlace>
+            <StickySlide appearInPlace flowHeight="200vh" trackHeight="200vh">
                 <EditorialSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                     hideSectionTitle={isMobile}
@@ -569,7 +557,7 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T15 — Editorial: legal perspective + inline Fahey quote */}
-            <StickySlide appearInPlace>
+            <StickySlide appearInPlace trackHeight="200vh" flowHeight="200vh">
                 <EditorialSlide
                     sectionTitle="SEEKING SECURITY IN DIGITAL SOVEREIGNTY"
                     hideSectionTitle={isMobile}
@@ -606,7 +594,7 @@ export default function TransportChapter() {
 
             {/* T17-T18 — Overtime / train delayed (continuous video) */}
             <ContinuousSlide
-                trackHeight="200vh"
+                trackHeight="300vh"
                 flowHeight="200vh"
                 background={() => (
                     <AutoplayVideo
@@ -646,11 +634,7 @@ export default function TransportChapter() {
                         </NarrativeSlide>
                     ),
                     () => (
-                        <StickySlide
-                            appearInPlace
-                            trackHeight="300vh"
-                            mobileSimplify={!isMobile}
-                        >
+                        <StickySlide appearInPlace mobileSimplify={!isMobile}>
                             <NarrativeSlide
                                 timestamp="7:30pm"
                                 backgroundVideo={VIDEOS.trainStation}

@@ -601,7 +601,7 @@ export default function EnergyChapter() {
                     </EditorialBody>
                 </EditorialSlide>
             </StickySlide>
-            <StickySlide appearInPlace>
+            <StickySlide appearInPlace flowHeight="200vh" trackHeight="200vh">
                 <EditorialSlide
                     sectionTitle="AN EVOLVING THREAT LANDSCAPE"
                     hideSectionTitle={isMobile}
@@ -765,8 +765,9 @@ export default function EnergyChapter() {
 
             {/* S16-S18 — 8:00pm / 8:00am (continuous video) */}
             <ContinuousSlide
+                appearInPlace
                 trackHeight="300vh"
-                flowHeight="300vh"
+                flowHeight="200vh"
                 background={() => (
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.escalator)}
@@ -825,6 +826,7 @@ export default function EnergyChapter() {
             <StickySlide
                 trackHeight="200vh"
                 flowHeight="200vh"
+                appearInPlace
                 mobileSimplify={false}
             >
                 <DataGridSlide
