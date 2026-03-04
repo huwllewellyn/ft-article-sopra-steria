@@ -668,7 +668,7 @@ export default function EnergyChapter() {
             </StickySlide>
 
             {/* S13 — Operating while under attack */}
-            <StickySlide>
+            <StickySlide appearInPlace>
                 <EditorialSlide sectionTitle="OPERATING WHILE UNDER ATTACK">
                     <EditorialBody>
                         <p>
@@ -739,7 +739,11 @@ export default function EnergyChapter() {
                     </StickySlide>
                 </>
             ) : (
-                <StickySlide appearInPlace>
+                <StickySlide
+                    appearInPlace
+                    flowHeight="200vh"
+                    trackHeight="200vh"
+                >
                     <EditorialSlide
                         sectionTitle="OPERATING WHILE UNDER ATTACK"
                         hideSectionTitle={isMobile}

@@ -326,7 +326,7 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T5 — 9:00am GPS jamming */}
-            <StickySlide appearInPlace>
+            <StickySlide appearInPlace mobileSimplify={false}>
                 <NarrativeSlide
                     timestamp="9:00am"
                     backgroundVideo={VIDEOS.airportBoard}
@@ -390,7 +390,11 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T7 — Data grid: EU transport incidents */}
-            <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh">
+            <StickySlide
+                trackHeight="200vh"
+                flowHeight="200vh"
+                mobileSimplify={false}
+            >
                 <DataGridSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                     hideSectionTitle={isMobile}
