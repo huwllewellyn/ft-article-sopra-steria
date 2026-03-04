@@ -831,7 +831,6 @@ export default function EnergyChapter() {
             <StickySlide
                 trackHeight="200vh"
                 flowHeight="200vh"
-                appearInPlace
                 mobileSimplify={false}
             >
                 <DataGridSlide
