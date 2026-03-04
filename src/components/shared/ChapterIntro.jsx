@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { motion } from "framer-motion";
 import { media } from "../../utils/breakpoints";
-import { glitchEffect } from "../../utils/glitchEffect";
 
 const Container = styled(motion.div)`
     display: flex;
@@ -22,8 +21,6 @@ const ChapterLabel = styled.p`
     max-width: 408px;
     background: #000;
     padding: 4px 8px;
-    ${glitchEffect}
-
     ${media.tablet(`
         font-size: 25px;
     `)}
