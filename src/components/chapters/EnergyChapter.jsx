@@ -404,6 +404,8 @@ export default function EnergyChapter() {
                             timestamp="5:10pm"
                             backgroundColor="transparent"
                             textPosition="top"
+                            backgroundVideo={VIDEOS.elevator}
+                            poster={POSTERS.elevator}
                         >
                             <p>
                                 Across town, the CTO of a prominent investment
@@ -430,8 +432,8 @@ export default function EnergyChapter() {
                                 timestamp="5:15pm"
                                 backgroundColor="transparent"
                                 textPosition="top"
-                                backgroundVideo={VIDEOS.elevator}
-                                poster={POSTERS.elevator}
+                                backgroundVideo={VIDEOS.signalLost}
+                                poster={POSTERS.signalLost}
                             >
                                 <p>
                                     Outside, the city’s skyline no longer shines
