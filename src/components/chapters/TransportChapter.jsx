@@ -592,73 +592,52 @@ export default function TransportChapter() {
                 </EditorialSlide>
             </StickySlide>
 
-            {/* T17-T18 — Overtime / train delayed (continuous video) */}
-            <ContinuousSlide
-                trackHeight="400vh"
-                flowHeight="300vh"
-                background={() => (
-                    <AutoplayVideo
-                        src={getAssetPath(VIDEOS.mapDark)}
-                        poster={getAssetPath(POSTERS.mapDark)}
-                        loop
-                        muted
-                        playsInline
-                        style={{
-                            position: "absolute",
-                            inset: 0,
-                            width: "100%",
-                            height: "100%",
-                            objectFit: "cover",
-                        }}
-                    />
-                )}
-                slides={[
-                    () => (
-                        <NarrativeSlide
-                            timestamp="6:00pm"
-                            heading="CHAOS CONTINUES INTO THE EVENING"
-                            backgroundColor="transparent"
-                            textPosition="top"
-                            accentColor={ACCENT}
-                        >
-                            <p>
-                                Drivers are told they will need to work overtime
-                                to recoup the company’s revenue losses.
-                            </p>
-                            <br />
-                            <br />
-                            <p>
-                                As the driver heads home, his usual train is
-                                delayed by two hours.
-                            </p>
-                        </NarrativeSlide>
-                    ),
-                    () => (
-                        <StickySlide appearInPlace mobileSimplify={!isMobile}>
-                            <NarrativeSlide
-                                timestamp="7:30pm"
-                                backgroundVideo={VIDEOS.trainStation}
-                                poster={POSTERS.trainStation}
-                                textPosition="top"
-                                highlightText
-                                accentColor={ACCENT}
-                            >
-                                <p>
-                                    A news alert says trains have been cancelled
-                                    or delayed owing to a coordinated attack on
-                                    wifi networks at UK train stations.
-                                </p>
-                                <br />
-                                <br />
-                                <p>
-                                    Cyber analysts believe a foreign entity is
-                                    behind travel chaos throughout the country.
-                                </p>
-                            </NarrativeSlide>
-                        </StickySlide>
-                    ),
-                ]}
-            />
+            {/* T17 — Overtime */}
+            <StickySlide appearInPlace mobileSimplify={false}>
+                <NarrativeSlide
+                    timestamp="6:00pm"
+                    heading="CHAOS CONTINUES INTO THE EVENING"
+                    backgroundVideo={VIDEOS.mapDark}
+                    poster={POSTERS.mapDark}
+                    textPosition="top"
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        Drivers are told they will need to work overtime to
+                        recoup the company’s revenue losses.
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                        As the driver heads home, his usual train is delayed by
+                        two hours.
+                    </p>
+                </NarrativeSlide>
+            </StickySlide>
+
+            {/* T18 — Train station */}
+            <StickySlide appearInPlace mobileSimplify={false}>
+                <NarrativeSlide
+                    timestamp="7:30pm"
+                    backgroundVideo={VIDEOS.trainStation}
+                    poster={POSTERS.trainStation}
+                    textPosition="top"
+                    highlightText
+                    accentColor={ACCENT}
+                >
+                    <p>
+                        A news alert says trains have been cancelled or delayed
+                        owing to a coordinated attack on wifi networks at UK
+                        train stations.
+                    </p>
+                    <br />
+                    <br />
+                    <p>
+                        Cyber analysts believe a foreign entity is behind travel
+                        chaos throughout the country.
+                    </p>
+                </NarrativeSlide>
+            </StickySlide>
 
             {/* T20 — Solutions data grid */}
             <StickySlide
