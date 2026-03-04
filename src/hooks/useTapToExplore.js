@@ -153,7 +153,7 @@ export default function useTapToExplore() {
                     introEnd &&
                     currentY >
                     introEnd.getBoundingClientRect().top + window.scrollY;
-                const offset = pastIntro ? 150 : 0;
+                const offset = 0;
                 const threshold = pastIntro ? 150 : 50;
 
                 const match = findNextStop(currentY, threshold);

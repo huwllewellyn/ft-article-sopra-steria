@@ -395,7 +395,7 @@ export default function DataGridSlide({
                         {sectionTitle}
                     </SectionHeadingBar>
                 )}
-                <ContentArea ref={contentRef} $maxWidth={maxWidth} style={hideSectionTitle ? { paddingTop: 40 } : undefined}>
+                <ContentArea ref={contentRef} $maxWidth={maxWidth} style={hideSectionTitle ? { paddingTop: 100 } : undefined}>
                     <MobileContentHeight $hasHeader={!!sectionTitle}>
                         {children}
                     </MobileContentHeight>

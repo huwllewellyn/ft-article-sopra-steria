@@ -29,13 +29,14 @@ const MobileWrapper = styled.div`
 `;
 
 function useZIndexAndAppear(ref, appearInPlace) {
+    const isMobile = useIsMobile();
     useLayoutEffect(() => {
         const el = ref.current;
         const siblings = Array.from(el.parentElement.children);
         el.style.zIndex = siblings.indexOf(el) + 1;
         if (appearInPlace) {
             el.style.opacity = "0";
-            el.style.transition = "opacity 100ms ease";
+            el.style.transition = isMobile ? "opacity 100ms ease" : "0ms";
         }
     }, [appearInPlace]);
 

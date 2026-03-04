@@ -161,6 +161,7 @@ export default function EditorialSlide({
                     isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
                 }
                 transition={{ duration: 0.4, ease: "easeOut" }}
+                style={hideSectionTitle ? { paddingTop: 100 } : undefined}
             >
                 <MobileContentHeight $hasHeader={!!sectionTitle}>
                     {children}
