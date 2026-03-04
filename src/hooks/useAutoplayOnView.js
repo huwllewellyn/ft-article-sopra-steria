@@ -12,12 +12,25 @@ const isMobile =
 export default function useAutoplayOnView() {
     const videoRef = useRef(null);
 
+    // On mobile, strip src immediately during render via ref callback
+    // to prevent the browser from fetching before the effect runs.
+    const setRef = useRef((el) => {
+        videoRef.current = el;
+        if (isMobile && el) {
+            const src = el.currentSrc || el.src;
+            if (src) {
+                el.dataset.src = src;
+                el.removeAttribute("src");
+            }
+        }
+    }).current;
+
     useEffect(() => {
         const video = videoRef.current;
         if (!video) return;
 
-        const originalSrc = video.currentSrc || video.src;
-        let loaded = true;
+        const originalSrc = video.dataset.src || video.currentSrc || video.src;
+        let loaded = !isMobile; // mobile starts unloaded (src already stripped)
         let visible = false;
 
         const unload = () => {
@@ -46,7 +59,7 @@ export default function useAutoplayOnView() {
                     unload();
                 }
             },
-            { rootMargin: isMobile ? "50%" : "100%" },
+            { rootMargin: isMobile ? "0%" : "100%" },
         );
 
         // Visibility observer — play/pause when actually on screen
@@ -71,5 +84,5 @@ export default function useAutoplayOnView() {
         };
     }, []);
 
-    return videoRef;
+    return setRef;
 }

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { media } from "../../utils/breakpoints";
 import { getAssetPath } from "../../utils/assetPath";
 import useIsMobile from "../../hooks/useIsMobile";
+import useAutoplayOnView from "../../hooks/useAutoplayOnView";
 import SectionHeadingBar from "./SectionHeadingBar";
 import LottieAnimation from "../LottieAnimation";
 import ResponsiveLottieAnimation from "../ResponsiveLottieAnimation";
@@ -224,6 +225,7 @@ export default function DataGridSlide({
     hideSectionTitle = false,
 }) {
     const isMobile = useIsMobile();
+    const videoRef = useAutoplayOnView();
     const slideRef = useRef();
     const contentRef = useRef();
     const itemsRef = useRef([]);
@@ -377,11 +379,11 @@ export default function DataGridSlide({
                 )}
                 {backgroundVideo && !lottieAnimation && (
                     <BackgroundVideo
+                        ref={videoRef}
                         src={getAssetPath(backgroundVideo)}
                         poster={poster ? getAssetPath(poster) : undefined}
                         muted
                         playsInline
-                        autoPlay
                         loop
                     />
                 )}

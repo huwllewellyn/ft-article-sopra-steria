@@ -16,6 +16,7 @@ import { useState, useRef, useEffect } from "react";
 import { getAssetPath } from "./utils/assetPath";
 import useIsMobile from "./hooks/useIsMobile";
 import useTapToExplore from "./hooks/useTapToExplore";
+import useAutoplayOnView from "./hooks/useAutoplayOnView";
 
 const AppContainer = styled.div``;
 
@@ -88,6 +89,7 @@ function App() {
     const [navVisible, setNavVisible] = useState(false);
     const chapterRefs = useRef([]);
     const isMobile = useIsMobile();
+    const heroVideoRef = useAutoplayOnView();
     useTapToExplore();
 
     // Handle tab click - scroll to chapter
@@ -129,7 +131,7 @@ function App() {
             <IntroVideoWrapper>
                 <StickyVideo>
                     <BackgroundVideo
-                        autoPlay
+                        ref={heroVideoRef}
                         loop
                         muted
                         playsInline
