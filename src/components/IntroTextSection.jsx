@@ -81,7 +81,7 @@ export default function IntroTextSection() {
     const outerRef = useRef(null);
     const isInView = useInView(outerRef, {
         once: true,
-        margin: "0px 0px -100% 0px",
+        margin: "0px 0px -101% 0px",
     });
 
     return (
@@ -91,24 +91,26 @@ export default function IntroTextSection() {
                     <TextBlock
                         initial={{ opacity: 0, y: 30 }}
                         animate={
-                            isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+                            isInView
+                                ? { opacity: 1, y: 0 }
+                                : { opacity: 0, y: 30 }
                         }
                         transition={{ duration: 0.4, ease: "easeOut" }}
                     >
                         <p>
                             <strong>That is all it takes</strong> to bring down
-                            networks, disrupt lives and cause a cascade of harm in
-                            today’s hyper-connected world.
+                            networks, disrupt lives and cause a cascade of harm
+                            in today’s hyper-connected world.
                         </p>
                         <p>
-                            Against this backdrop, what could happen if three key
-                            European industries – <strong>energy</strong>,{" "}
+                            Against this backdrop, what could happen if three
+                            key European industries – <strong>energy</strong>,{" "}
                             <strong>finance</strong> and{" "}
                             <strong>transport</strong> – came under fire?
                         </p>
                         <p>
-                            What solutions exist to protect society in this new age
-                            of digital warfare?
+                            What solutions exist to protect society in this new
+                            age of digital warfare?
                         </p>
                     </TextBlock>
                 </MobileContentHeight>
