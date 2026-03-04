@@ -344,8 +344,8 @@ export default function EnergyChapter() {
 
             {/* S3 + S4 — continuous globe video */}
             <ContinuousSlide
-                trackHeight="300vh"
-                flowHeight="200vh"
+                trackHeight="600vh"
+                flowHeight="600vh"
                 appearInPlace
                 background={({ scrollYProgress }) => (
                     <>
@@ -399,63 +399,48 @@ export default function EnergyChapter() {
                             </p>
                         </NarrativeSlide>
                     ),
+                    () => (
+                        <NarrativeSlide
+                            timestamp="5:10pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                        >
+                            <p>
+                                Across town, the CTO of a prominent investment
+                                firm is ready to leave for the day.
+                            </p>
+                            <br />
+                            <br />
+                            <p>
+                                She presses the elevator button on the 14th
+                                floor of the company’s building, but nothing
+                                happens.
+                            </p>
+                            <br />
+                            <br />
+                            <p>
+                                Moments later, the entire floor is plunged into
+                                darkness.
+                            </p>
+                        </NarrativeSlide>
+                    ),
+                    () => (
+                        <NarrativeSlide
+                            timestamp="5:15pm"
+                            backgroundColor="transparent"
+                            textPosition="top"
+                        >
+                            <p>
+                                Outside, the city’s skyline no longer shines
+                                brightly. Mobile and internet services are down.
+                            </p>
+                            <br />
+                            <br />
+                            <p>People across Oslo start to panic.</p>
+                        </NarrativeSlide>
+                    ),
                 ]}
             />
-
-            {/* S5 — 5:10pm elevator */}
-            <StickySlide
-                appearInPlace
-                trackHeight="200vh"
-                flowHeight="100vh"
-                mobileSimplify={false}
-            >
-                <NarrativeSlide
-                    timestamp="5:10pm"
-                    backgroundVideo={VIDEOS.elevator}
-                    poster={POSTERS.elevator}
-                    textPosition="top"
-                >
-                    <p>
-                        Across town, the CTO of a prominent investment firm is
-                        ready to leave for the day.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        She presses the elevator button on the 14th floor of the
-                        company’s building, but nothing happens.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        Moments later, the entire floor is plunged into
-                        darkness.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
-
-            {/* S6 — 5:15pm signal lost */}
-            <StickySlide
-                appearInPlace
-                trackHeight="200vh"
-                flowHeight="200vh"
-                mobileSimplify={false}
-            >
-                <NarrativeSlide
-                    timestamp="5:15pm"
-                    backgroundVideo={VIDEOS.signalLost}
-                    poster={POSTERS.signalLost}
-                    textPosition="top"
-                >
-                    <p>
-                        Outside, the city’s skyline no longer shines brightly.
-                        Mobile and internet services are down.
-                    </p>
-                    <br />
-                    <br />
-                    <p>People across Oslo start to panic.</p>
-                </NarrativeSlide>
-            </StickySlide>
 
             {/* S7 — Evolving threat intro */}
             <StickySlide>
