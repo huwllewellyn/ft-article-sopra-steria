@@ -48,6 +48,8 @@ export default function useAutoplayOnView() {
                 loaded = false;
             };
 
+            let shouldPlay = false;
+
             const reload = () => {
                 if (loaded) return;
                 video.src = originalSrc;
@@ -56,12 +58,27 @@ export default function useAutoplayOnView() {
                 loaded = true;
             };
 
+            const playWhenReady = () => {
+                shouldPlay = true;
+                if (video.readyState >= 2) {
+                    video.play().catch(() => { });
+                }
+            };
+
+            const onCanPlay = () => {
+                if (shouldPlay) {
+                    video.play().catch(() => { });
+                }
+            };
+            video.addEventListener("canplay", onCanPlay);
+
             const observer = new IntersectionObserver(
                 ([entry]) => {
                     if (entry.isIntersecting) {
                         reload();
-                        video.play().catch(() => { });
+                        playWhenReady();
                     } else {
+                        shouldPlay = false;
                         video.pause();
                         unload();
                     }
@@ -71,7 +88,20 @@ export default function useAutoplayOnView() {
 
             observer.observe(video);
 
-            return () => observer.disconnect();
+            // Fallback: IO can miss elements inside sticky/overflow containers.
+            requestAnimationFrame(() => {
+                const rect = video.getBoundingClientRect();
+                const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+                if (inViewport && !loaded) {
+                    reload();
+                    playWhenReady();
+                }
+            });
+
+            return () => {
+                observer.disconnect();
+                video.removeEventListener("canplay", onCanPlay);
+            };
         }
 
         // Desktop path
