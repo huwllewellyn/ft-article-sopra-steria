@@ -107,10 +107,11 @@ export default function useAutoplayOnView() {
         // Desktop path
         const originalSrc = video.currentSrc || video.src;
         let loaded = true;
-        let visible = false;
+        let shouldPlay = false;
 
         const unload = () => {
             if (!loaded) return;
+            shouldPlay = false;
             video.pause();
             video.removeAttribute("src");
             video.load();
@@ -124,11 +125,25 @@ export default function useAutoplayOnView() {
             loaded = true;
         };
 
-        const resourceObserver = new IntersectionObserver(
+        const playWhenReady = () => {
+            shouldPlay = true;
+            if (video.readyState >= 2) {
+                video.play().catch(() => { });
+            }
+        };
+
+        const onCanPlay = () => {
+            if (shouldPlay) {
+                video.play().catch(() => { });
+            }
+        };
+        video.addEventListener("canplay", onCanPlay);
+
+        const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
                     reload();
-                    if (visible) video.play().catch(() => { });
+                    playWhenReady();
                 } else {
                     unload();
                 }
@@ -136,24 +151,20 @@ export default function useAutoplayOnView() {
             { rootMargin: "100%" },
         );
 
-        const playbackObserver = new IntersectionObserver(
-            ([entry]) => {
-                visible = entry.isIntersecting;
-                if (visible && loaded) {
-                    video.play().catch(() => { });
-                } else if (loaded) {
-                    video.pause();
-                }
-            },
-            { threshold: 0.1 },
-        );
+        observer.observe(video);
 
-        resourceObserver.observe(video);
-        playbackObserver.observe(video);
+        // Fallback: IO can miss elements inside sticky/overflow containers.
+        requestAnimationFrame(() => {
+            const rect = video.getBoundingClientRect();
+            const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+            if (inViewport) {
+                playWhenReady();
+            }
+        });
 
         return () => {
-            resourceObserver.disconnect();
-            playbackObserver.disconnect();
+            observer.disconnect();
+            video.removeEventListener("canplay", onCanPlay);
         };
     }, []);
 
