@@ -59,24 +59,6 @@ const F13TextStyled = styled(motion.div)`
     `)};
 `;
 
-const F13MobileWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-`;
-
-const F13BigNumber = styled.div`
-    font-family: "Space Grotesk", sans-serif;
-    font-size: 120px;
-    font-weight: 700;
-    color: #fff;
-    text-align: left;
-    line-height: 1;
-    padding: 0 20px;
-    margin-bottom: 12px;
-`;
-
 function F13Text({ children }) {
     const ref = useRef(null);
     const isMobile = useIsMobile();
@@ -510,36 +492,27 @@ export default function FinanceChapter() {
                         hideSectionTitle={isMobile}
                         headingColor={ACCENT}
                         backgroundColor={ACCENT}
-                        mobileScale="0.7"
-                        backgroundImage={
-                            isMobile ? undefined : "/videos/ch2/41pecent.jpg"
-                        }
+                        mobileScale={isMobile ? "1.4" : "0.7"}
+                        lottieAnimation={{
+                            mobile: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D_AD.json",
+                            tablet: "/videos/ch2/SOPRA_DigitalDisruption_DP2_D_AD.json",
+                            desktop:
+                                "/videos/ch2/SOPRA_DigitalDisruption_DP2_D_AD.json",
+                        }}
                         scrollProgress={scrollYProgress}
                         maxWidth="90vw"
-                        lottieHeight="50vh"
-                        lottieTop="20vh"
+                        lottieHeight={isMobile ? "50vh" : "50vh"}
+                        lottieTop={isMobile ? "20vh" : "20vh"}
                         lottieLoop={false}
                     >
-                        {isMobile ? (
-                            <F13MobileWrapper>
-                                <F13BigNumber>41%</F13BigNumber>
-                                <F13Text>
-                                    is the approximate share of organisations
-                                    that recorded a material incident during the
-                                    past 12 months and say it was caused by a
-                                    third party, according to the World Economic
-                                    Forum&rsquo;s 2024 Cybersecurity Outlook.
-                                </F13Text>
-                            </F13MobileWrapper>
-                        ) : (
-                            <F13Text>
-                                is the approximate share of organisations that
-                                recorded a material incident during the past 12
-                                months and say it was caused by a third party,
-                                according to the World Economic Forum&rsquo;s
-                                2024 Cybersecurity Outlook.
-                            </F13Text>
-                        )}
+                        {isMobile && <div style={{ minHeight: "50vh" }} />}
+                        <F13Text>
+                            is the approximate share of organisations that
+                            recorded a material incident during the past 12
+                            months and say it was caused by a third party,
+                            according to the World Economic Forum&rsquo;s 2024
+                            Cybersecurity Outlook.
+                        </F13Text>
                     </DataGridSlide>
                 )}
             </StickySlide>
