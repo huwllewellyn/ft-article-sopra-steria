@@ -643,7 +643,11 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F21 — 7:00am the next day */}
-            <StickySlide trackHeight="300vh" mobileSimplify={!isMobile}>
+            <StickySlide
+                appearInPlace
+                trackHeight="300vh"
+                mobileSimplify={!isMobile}
+            >
                 <NarrativeSlide
                     timestamp="7:00am"
                     heading="THE NEXT DAY"
