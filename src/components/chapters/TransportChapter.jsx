@@ -609,7 +609,7 @@ export default function TransportChapter() {
             {/* T17-T18 — Overtime / train delayed (continuous video) */}
             <ContinuousSlide
                 trackHeight="200vh"
-                flowHeight="100vh"
+                flowHeight="200vh"
                 background={() => (
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.mapDark)}
@@ -647,36 +647,36 @@ export default function TransportChapter() {
                             </p>
                         </NarrativeSlide>
                     ),
+                    () => (
+                        <StickySlide
+                            appearInPlace
+                            trackHeight="300vh"
+                            mobileSimplify={!isMobile}
+                        >
+                            <NarrativeSlide
+                                timestamp="7:30pm"
+                                backgroundVideo={VIDEOS.trainStation}
+                                poster={POSTERS.trainStation}
+                                textPosition="top"
+                                highlightText
+                                accentColor={ACCENT}
+                            >
+                                <p>
+                                    A news alert says trains have been cancelled
+                                    or delayed owing to a coordinated attack on
+                                    wifi networks at UK train stations.
+                                </p>
+                                <br />
+                                <br />
+                                <p>
+                                    Cyber analysts believe a foreign entity is
+                                    behind travel chaos throughout the country.
+                                </p>
+                            </NarrativeSlide>
+                        </StickySlide>
+                    ),
                 ]}
             />
-
-            {/* T19 — 7:30pm trains cancelled */}
-            <StickySlide
-                appearInPlace
-                trackHeight="300vh"
-                mobileSimplify={!isMobile}
-            >
-                <NarrativeSlide
-                    timestamp="7:30pm"
-                    backgroundVideo={VIDEOS.trainStation}
-                    poster={POSTERS.trainStation}
-                    textPosition="top"
-                    highlightText
-                    accentColor={ACCENT}
-                >
-                    <p>
-                        A news alert says trains have been cancelled or delayed
-                        owing to a coordinated attack on wifi networks at UK
-                        train stations.
-                    </p>
-                    <br />
-                    <br />
-                    <p>
-                        Cyber analysts believe a foreign entity is behind travel
-                        chaos throughout the country.
-                    </p>
-                </NarrativeSlide>
-            </StickySlide>
 
             {/* T20 — Solutions data grid */}
             <StickySlide
