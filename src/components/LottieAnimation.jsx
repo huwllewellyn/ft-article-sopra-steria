@@ -34,6 +34,8 @@ export default function LottieAnimation({
     const isMobile = useIsMobile();
 
     useEffect(() => {
+        if (isMobile) return;
+
         const loadAnimation = async () => {
             let data;
 
@@ -122,27 +124,12 @@ export default function LottieAnimation({
         };
 
         loadAnimation();
-    }, [path, fallbackPath, loop, autoplay, renderer, scrollSync, initialFrame, preserveAspectRatio]);
+    }, [isMobile, path, fallbackPath, loop, autoplay, renderer, scrollSync, initialFrame, preserveAspectRatio]);
 
     // Autoplay lotties: play when the appear-in-place slide container reaches top of viewport
-    // On mobile (no sticky), just play immediately
     useEffect(() => {
+        if (isMobile) return;
         if (!autoplay || scrollSync || scrollProgress) return;
-
-        if (isMobile) {
-            // No sticky context on mobile — play as soon as animation is loaded
-            const check = () => {
-                const anim = animationRef.current;
-                if (anim) { anim.goToAndPlay(0); return; }
-                // Animation may not be loaded yet; poll briefly
-                const id = setInterval(() => {
-                    const a = animationRef.current;
-                    if (a) { a.goToAndPlay(0); clearInterval(id); }
-                }, 100);
-                return () => clearInterval(id);
-            };
-            return check();
-        }
 
         let trackEl = null;
         let playing = false;
@@ -178,10 +165,11 @@ export default function LottieAnimation({
         window.addEventListener("scroll", handleScroll, { passive: true });
         handleScroll();
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [autoplay, scrollSync, scrollProgress, isMobile]);
+    }, [isMobile, autoplay, scrollSync, scrollProgress]);
 
     // Handle scroll-synced animation (legacy window scroll)
     useEffect(() => {
+        if (isMobile) return;
         if (!scrollSync || !animationRef.current || !containerRef.current) {
             return;
         }
@@ -213,10 +201,11 @@ export default function LottieAnimation({
         return () => {
             window.removeEventListener("scroll", handleScroll, false);
         };
-    }, [scrollSync]);
+    }, [isMobile, scrollSync]);
 
     // Handle framer-motion scroll progress (only when scrollProgress MotionValue is provided)
     useEffect(() => {
+        if (isMobile) return;
         if (!scrollProgress) return;
         const unsubscribe = scrollProgress.onChange((latest) => {
             const animation = animationRef.current;
@@ -235,7 +224,7 @@ export default function LottieAnimation({
         });
 
         return () => unsubscribe();
-    }, [scrollProgress, initialFrame, finalFrame]);
+    }, [isMobile, scrollProgress, initialFrame, finalFrame]);
 
     return (
         <Container
