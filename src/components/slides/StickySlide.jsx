@@ -13,7 +13,13 @@ const StickyWrapper = styled.div`
 const ScrollTrack = styled.div`
     position: relative;
     height: ${(props) => props.$trackHeight};
-    margin-bottom: calc(-1 * (${(props) => props.$trackHeight} - ${(props) => props.$flowHeight || "100lvh"}));
+    margin-bottom: calc(
+        -1 *
+            (
+                ${(props) => props.$trackHeight} -
+                    ${(props) => props.$flowHeight || "100lvh"}
+            )
+    );
 `;
 
 const MobileWrapper = styled.div`
@@ -29,7 +35,7 @@ function useZIndexAndAppear(ref, appearInPlace) {
         el.style.zIndex = siblings.indexOf(el) + 1;
         if (appearInPlace) {
             el.style.opacity = "0";
-            el.style.pointerEvents = "none";
+            el.style.transition = "opacity 100ms ease";
         }
     }, [appearInPlace]);
 
@@ -38,9 +44,7 @@ function useZIndexAndAppear(ref, appearInPlace) {
         const el = ref.current;
 
         const handleScroll = () => {
-            const appeared = el.getBoundingClientRect().top <= 0;
-            el.style.opacity = appeared ? "1" : "0";
-            el.style.pointerEvents = appeared ? "auto" : "none";
+            el.style.opacity = el.getBoundingClientRect().top <= 0 ? "1" : "0";
         };
 
         handleScroll();
@@ -49,7 +53,12 @@ function useZIndexAndAppear(ref, appearInPlace) {
     }, [appearInPlace]);
 }
 
-function ScrollTrackedSlide({ children, trackHeight, flowHeight, appearInPlace }) {
+function ScrollTrackedSlide({
+    children,
+    trackHeight,
+    flowHeight,
+    appearInPlace,
+}) {
     const trackRef = useRef();
 
     const { scrollYProgress } = useScroll({
@@ -60,9 +69,16 @@ function ScrollTrackedSlide({ children, trackHeight, flowHeight, appearInPlace }
     useZIndexAndAppear(trackRef, appearInPlace);
 
     return (
-        <ScrollTrack ref={trackRef} $trackHeight={trackHeight} $flowHeight={flowHeight} data-slide>
+        <ScrollTrack
+            ref={trackRef}
+            $trackHeight={trackHeight}
+            $flowHeight={flowHeight}
+            data-slide
+        >
             <StickyWrapper>
-                {typeof children === "function" ? children({ scrollYProgress }) : children}
+                {typeof children === "function"
+                    ? children({ scrollYProgress })
+                    : children}
             </StickyWrapper>
         </ScrollTrack>
     );
@@ -87,10 +103,20 @@ function BaseStickySlide({ children, appearInPlace, flowHeight }) {
         );
     }
 
-    return <StickyWrapper ref={ref} data-slide>{children}</StickyWrapper>;
+    return (
+        <StickyWrapper ref={ref} data-slide>
+            {children}
+        </StickyWrapper>
+    );
 }
 
-export default function StickySlide({ children, appearInPlace, trackHeight, flowHeight, mobileSimplify = true }) {
+export default function StickySlide({
+    children,
+    appearInPlace,
+    trackHeight,
+    flowHeight,
+    mobileSimplify = true,
+}) {
     const isMobile = useIsMobile();
 
     const mobileRef = useRef();
@@ -105,14 +131,28 @@ export default function StickySlide({ children, appearInPlace, trackHeight, flow
     if (isMobile && mobileSimplify) {
         return (
             <MobileWrapper ref={mobileRef} data-slide>
-                {typeof children === "function" ? children({ scrollYProgress: null }) : children}
+                {typeof children === "function"
+                    ? children({ scrollYProgress: null })
+                    : children}
             </MobileWrapper>
         );
     }
 
     if (trackHeight) {
-        return <ScrollTrackedSlide trackHeight={trackHeight} flowHeight={flowHeight} appearInPlace={appearInPlace}>{children}</ScrollTrackedSlide>;
+        return (
+            <ScrollTrackedSlide
+                trackHeight={trackHeight}
+                flowHeight={flowHeight}
+                appearInPlace={appearInPlace}
+            >
+                {children}
+            </ScrollTrackedSlide>
+        );
     }
 
-    return <BaseStickySlide appearInPlace={appearInPlace} flowHeight={flowHeight}>{children}</BaseStickySlide>;
+    return (
+        <BaseStickySlide appearInPlace={appearInPlace} flowHeight={flowHeight}>
+            {children}
+        </BaseStickySlide>
+    );
 }
