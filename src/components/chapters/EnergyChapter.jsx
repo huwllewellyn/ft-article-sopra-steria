@@ -772,7 +772,7 @@ export default function EnergyChapter() {
             {/* S16-S18 — 8:00pm / 8:00am (continuous video) */}
             <ContinuousSlide
                 trackHeight="300vh"
-                flowHeight="200vh"
+                flowHeight="300vh"
                 background={() => (
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.escalator)}
