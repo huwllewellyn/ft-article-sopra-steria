@@ -525,8 +525,8 @@ export default function FinanceChapter() {
                     backgroundColor="transparent"
                     textPosition="top"
                     accentColor={ACCENT}
-                    backgroundVideo={getAssetPath(VIDEOS.ironGate)}
-                    poster={getAssetPath(POSTERS.ironGate)}
+                    backgroundVideo={VIDEOS.ironGate}
+                    poster={POSTERS.ironGate}
                 >
                     <p>
                         All of the retailer’s stores close as payments and
@@ -639,11 +639,7 @@ export default function FinanceChapter() {
             </StickySlide>
 
             {/* F21 — 7:00am the next day */}
-            <StickySlide
-                appearInPlace
-                trackHeight="300vh"
-                mobileSimplify={!isMobile}
-            >
+            <StickySlide trackHeight="300vh" mobileSimplify={!isMobile}>
                 <NarrativeSlide
                     timestamp="7:00am"
                     heading="THE NEXT DAY"
