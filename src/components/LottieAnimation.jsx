@@ -190,63 +190,50 @@ export default function LottieAnimation({
     useEffect(() => {
         if (!autoplay || scrollSync || scrollProgress) return;
 
-        if (isMobile) {
-            // On mobile, play as soon as animation is loaded and visible
-            const el = containerRef.current;
-            if (!el) return;
+        const el = containerRef.current;
+        if (!el) return;
 
-            const observer = new IntersectionObserver(
-                ([entry]) => {
-                    const anim = animationRef.current;
-                    if (!anim) return;
-                    if (entry.isIntersecting) {
-                        anim.goToAndPlay(0);
-                    } else {
-                        anim.pause();
-                    }
-                },
-                { threshold: 0.1 },
-            );
-            observer.observe(el);
-
-            return () => observer.disconnect();
-        }
-
-        let trackEl = null;
         let playing = false;
-        const handleScroll = () => {
-            const anim = animationRef.current;
-            const el = containerRef.current;
-            if (!anim || !el) return;
+        let isVisible = false;
 
-            if (!trackEl) {
-                let node = el.parentElement;
-                while (node && node !== document.body) {
-                    if (node.style.opacity !== "") {
-                        trackEl = node;
-                        break;
-                    }
-                    node = node.parentElement;
-                }
-                trackEl = trackEl || el;
-            }
-
-            const rect = trackEl.getBoundingClientRect();
-            const isVisible = rect.top <= 0 && rect.bottom > 0;
-
+        // When animation finishes loading while already visible, play it
+        const onAnimReady = () => {
             if (isVisible && !playing) {
                 playing = true;
-                anim.goToAndPlay(0);
-            } else if (!isVisible && playing) {
-                playing = false;
-                anim.pause();
+                animationRef.current.goToAndPlay(0);
             }
         };
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll();
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [isMobile, autoplay, scrollSync, scrollProgress]);
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                isVisible = entry.isIntersecting;
+                const anim = animationRef.current;
+                if (!anim) return;
+                if (isVisible && !playing) {
+                    playing = true;
+                    anim.goToAndPlay(0);
+                } else if (!isVisible && playing) {
+                    playing = false;
+                    anim.pause();
+                }
+            },
+            { threshold: 0.1 },
+        );
+        observer.observe(el);
+
+        // Poll briefly for animation readiness (loads async via fetch)
+        const check = setInterval(() => {
+            if (animationRef.current) {
+                clearInterval(check);
+                onAnimReady();
+            }
+        }, 100);
+
+        return () => {
+            observer.disconnect();
+            clearInterval(check);
+        };
+    }, [autoplay, scrollSync, scrollProgress]);
 
     // Handle scroll-synced animation (legacy window scroll)
     useEffect(() => {
