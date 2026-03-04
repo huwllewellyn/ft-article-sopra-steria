@@ -598,8 +598,8 @@ export default function TransportChapter() {
 
             {/* T17-T18 — Overtime / train delayed (continuous video) */}
             <ContinuousSlide
-                trackHeight="300vh"
-                flowHeight="200vh"
+                trackHeight="400vh"
+                flowHeight="300vh"
                 background={() => (
                     <AutoplayVideo
                         src={getAssetPath(VIDEOS.mapDark)}
