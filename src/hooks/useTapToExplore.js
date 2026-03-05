@@ -120,7 +120,7 @@ export default function useTapToExplore() {
 
             if (
                 e.target.closest(
-                    "a, button, input, select, textarea, [role='button'], video, nav, .o-header",
+                    "a, button, input, select, textarea, [role='button'], nav, .o-header",
                 )
             )
                 return;
