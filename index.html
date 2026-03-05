@@ -713,18 +713,47 @@ from the FT Group</a>
       var menuBtn = document.querySelector('a[aria-controls="o-header-drawer"]');
       if (!menuBtn) return;
 
+      function openDrawer() {
+        var drawer = document.getElementById('o-header-drawer');
+        drawer.classList.remove('o-header__drawer--closing');
+        drawer.classList.add('o-header__drawer--opening');
+        drawer.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('o-header-drawer-open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeDrawer() {
+        var drawer = document.getElementById('o-header-drawer');
+        drawer.classList.remove('o-header__drawer--opening');
+        drawer.classList.add('o-header__drawer--closing');
+        drawer.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('o-header-drawer-open');
+        document.body.style.overflow = '';
+      }
+
+      function bindDrawerEvents() {
+        var closeBtn = document.querySelector('.o-header__drawer-tools-close');
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        // Close on overlay click (the ::before pseudo-element covers the backdrop)
+        document.getElementById('o-header-drawer').addEventListener('click', function (e) {
+          if (e.target === e.currentTarget) closeDrawer();
+        });
+      }
+
       function handleDrawerClick(e) {
-        if (loaded) return;
         e.preventDefault();
         e.stopImmediatePropagation();
+        if (loaded) {
+          openDrawer();
+          return;
+        }
         loaded = true;
-        menuBtn.removeEventListener('click', handleDrawerClick, true);
 
         fetch('/drawer.html')
           .then(function (r) { return r.text(); })
           .then(function (html) {
             var drawer = document.getElementById('o-header-drawer');
-            drawer.className = 'o-header__drawer';
+            drawer.className = 'o-header__drawer o-header__drawer--closing';
             drawer.setAttribute('role', 'navigation');
             drawer.setAttribute('aria-label', 'Drawer menu');
             drawer.setAttribute('data-o-header-drawer', '');
@@ -732,14 +761,9 @@ from the FT Group</a>
             drawer.setAttribute('tabindex', '-1');
             drawer.setAttribute('data-o-header-drawer--js', 'true');
             drawer.innerHTML = html;
-
-            // Re-init the FT header component so it picks up the new drawer DOM
-            if (window.Origami && window.Origami['o-header']) {
-              window.Origami['o-header'].init(document.querySelector('[data-o-component="o-header"]'));
-            }
-
-            // Trigger click to open the drawer
-            setTimeout(function () { menuBtn.click(); }, 0);
+            bindDrawerEvents();
+            // Open after a frame so the closing state is applied first (enables CSS transition)
+            requestAnimationFrame(function () { openDrawer(); });
           });
       }
 
