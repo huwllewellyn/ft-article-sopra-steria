@@ -58,6 +58,14 @@ const Chapter = styled.div`
     color: #fff;
 `;
 
+const T7Wrapper = styled.div`
+    ${media.tablet(`
+        [data-slide] {
+            height: 100lvh;
+        }
+    `)}
+`;
+
 const HeroSection = styled.section`
     position: relative;
     min-height: 100lvh;
@@ -398,6 +406,7 @@ export default function TransportChapter() {
                 trackHeight="200vh"
                 background={`repeating-linear-gradient(90deg, ${ACCENT} 0px, ${ACCENT} 2px, transparent 2px, transparent 40px), repeating-linear-gradient(0deg, ${ACCENT} 0px, ${ACCENT} 2px, #000 2px, #000 40px)`}
             >
+                <T7Wrapper>
                 <DataGridSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                     hideSectionTitle={isMobile}
@@ -407,6 +416,7 @@ export default function TransportChapter() {
                 >
                     <T7Content />
                 </DataGridSlide>
+                </T7Wrapper>
             </StickySlide>
 
             {/* T8 — Editorial: Garczynski quote */}
