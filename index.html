@@ -718,7 +718,6 @@ from the FT Group</a>
         drawer.classList.remove('o-header__drawer--closing');
         drawer.classList.add('o-header__drawer--opening');
         drawer.setAttribute('aria-hidden', 'false');
-        document.documentElement.classList.add('o-header-drawer-open');
         document.body.style.overflow = 'hidden';
       }
 
@@ -727,14 +726,12 @@ from the FT Group</a>
         drawer.classList.remove('o-header__drawer--opening');
         drawer.classList.add('o-header__drawer--closing');
         drawer.setAttribute('aria-hidden', 'true');
-        document.documentElement.classList.remove('o-header-drawer-open');
         document.body.style.overflow = '';
       }
 
       function bindDrawerEvents() {
         var closeBtn = document.querySelector('.o-header__drawer-tools-close');
         if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-        // Close on overlay click (the ::before pseudo-element covers the backdrop)
         document.getElementById('o-header-drawer').addEventListener('click', function (e) {
           if (e.target === e.currentTarget) closeDrawer();
         });
@@ -749,7 +746,7 @@ from the FT Group</a>
         }
         loaded = true;
 
-        fetch('/drawer.html')
+        fetch('drawer.html')
           .then(function (r) { return r.text(); })
           .then(function (html) {
             var drawer = document.getElementById('o-header-drawer');
@@ -762,9 +759,9 @@ from the FT Group</a>
             drawer.setAttribute('data-o-header-drawer--js', 'true');
             drawer.innerHTML = html;
             bindDrawerEvents();
-            // Open after a frame so the closing state is applied first (enables CSS transition)
             requestAnimationFrame(function () { openDrawer(); });
-          });
+          })
+          .catch(function () { loaded = false; });
       }
 
       menuBtn.addEventListener('click', handleDrawerClick, true);
