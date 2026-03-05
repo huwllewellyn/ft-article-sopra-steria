@@ -174,7 +174,7 @@ export default function useTapToExplore() {
                             offset;
                     }
 
-                    smoothScrollTo(targetY, () => {
+                    smoothScrollTo(targetY + 10, () => {
                         scrollingRef.current = false;
                     });
                 } else {
