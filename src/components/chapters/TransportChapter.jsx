@@ -390,7 +390,12 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T7 — Data grid: EU transport incidents */}
-            <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh" background={`repeating-linear-gradient(90deg, ${ACCENT} 0px, ${ACCENT} 2px, transparent 2px, transparent 40px), repeating-linear-gradient(0deg, ${ACCENT} 0px, ${ACCENT} 2px, #000 2px, #000 40px)`}>
+            <StickySlide
+                appearInPlace
+                flowHeight="100vh"
+                trackHeight="200vh"
+                background={`repeating-linear-gradient(90deg, ${ACCENT} 0px, ${ACCENT} 2px, transparent 2px, transparent 40px), repeating-linear-gradient(0deg, ${ACCENT} 0px, ${ACCENT} 2px, #000 2px, #000 40px)`}
+            >
                 <DataGridSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                     hideSectionTitle={isMobile}
@@ -573,10 +578,9 @@ export default function TransportChapter() {
                         quote={
                             <>
                                 <p>
-                                    Digital sovereignty sounds compelling but,
-                                    in legal terms, it goes in many directions.
-                                    It’s rooted in internal market law, yet the
-                                    threats themselves are cross-border.
+                                    Digital sovereignty is rooted in internal
+                                    market law, yet the threats themselves are
+                                    cross-border.
                                 </p>
                                 <p>
                                     That’s the paradox of the digital era; the
