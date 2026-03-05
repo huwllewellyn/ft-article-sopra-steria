@@ -27,6 +27,7 @@ const MobileWrapper = styled.div`
     position: relative;
     min-height: 100lvh;
     overflow: hidden;
+    background: ${({ $bg }) => $bg || "none"};
 `;
 
 function useZIndexAndAppear(ref, appearInPlace) {
@@ -136,7 +137,7 @@ export default function StickySlide({
 
     if (isMobile && mobileSimplify) {
         return (
-            <MobileWrapper ref={mobileRef} data-slide>
+            <MobileWrapper ref={mobileRef} $bg={background} data-slide>
                 {typeof children === "function"
                     ? children({ scrollYProgress: null })
                     : children}

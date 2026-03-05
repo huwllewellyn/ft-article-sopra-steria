@@ -109,8 +109,11 @@ export default function useAutoplayOnView() {
         let loaded = true;
         let shouldPlay = false;
 
+        console.log("[desktop] setup for:", originalSrc, "readyState:", video.readyState);
+
         const unload = () => {
             if (!loaded) return;
+            console.log("[desktop] unloading:", originalSrc);
             shouldPlay = false;
             video.pause();
             video.removeAttribute("src");
@@ -120,6 +123,7 @@ export default function useAutoplayOnView() {
 
         const reload = () => {
             if (loaded) return;
+            console.log("[desktop] loading:", originalSrc);
             video.src = originalSrc;
             video.load();
             loaded = true;
@@ -127,20 +131,23 @@ export default function useAutoplayOnView() {
 
         const playWhenReady = () => {
             shouldPlay = true;
+            console.log("[desktop] playWhenReady:", originalSrc, "readyState:", video.readyState);
             if (video.readyState >= 2) {
-                video.play().catch(() => { });
+                video.play().catch((e) => console.warn("[desktop] play failed:", originalSrc, e.message));
             }
         };
 
         const onCanPlay = () => {
+            console.log("[desktop] canplay fired:", originalSrc, "shouldPlay:", shouldPlay);
             if (shouldPlay) {
-                video.play().catch(() => { });
+                video.play().catch((e) => console.warn("[desktop] play failed:", originalSrc, e.message));
             }
         };
         video.addEventListener("canplay", onCanPlay);
 
         const observer = new IntersectionObserver(
             ([entry]) => {
+                console.log("[desktop] IO:", originalSrc, "isIntersecting:", entry.isIntersecting, "ratio:", entry.intersectionRatio);
                 if (entry.isIntersecting) {
                     reload();
                     playWhenReady();
@@ -157,6 +164,7 @@ export default function useAutoplayOnView() {
         requestAnimationFrame(() => {
             const rect = video.getBoundingClientRect();
             const inViewport = rect.top < window.innerHeight && rect.bottom > 0;
+            console.log("[desktop] fallback:", originalSrc, "inViewport:", inViewport, "loaded:", loaded);
             if (inViewport) {
                 playWhenReady();
             }
