@@ -5,89 +5,101 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-  <!-- SCROLL EVENT LISTENER MONKEYPATCH (debug) — must be first script -->
+  <!-- SCROLL NUKE: block ALL scroll/wheel listeners, log what was blocked -->
   <script>
   (function () {
     var origAdd = EventTarget.prototype.addEventListener;
-    var origRemove = EventTarget.prototype.removeEventListener;
-    var listenerId = 0;
-
+    var id = 0;
     EventTarget.prototype.addEventListener = function (type, listener, options) {
       if (type === "scroll" || type === "wheel") {
-        var id = ++listenerId;
-        var stack = new Error().stack
-          .split("\n")
-          .slice(2, 6)
-          .map(function (l) { return l.trim(); })
-          .join("\n    ");
-        var target =
-          this === window
-            ? "window"
-            : this === document
-              ? "document"
-              : this.tagName
-                ? "<" + this.tagName.toLowerCase() + (this.id ? "#" + this.id : "") + (this.className ? "." + String(this.className).split(" ").join(".") : "") + ">"
-                : String(this);
-
-        console.log(
-          "%c[SCROLL-PATCH #" + id + '] addEventListener("' + type + '") on ' + target,
-          "color: #ff6b6b; font-weight: bold"
-        );
-        console.log("    Options: " + JSON.stringify(options));
-        console.log("    Stack:\n    " + stack);
-
-        var wrapped = function (event) {
-          console.log(
-            "%c[SCROLL-PATCH #" + id + '] FIRED "' + type + '" on ' + target,
-            "color: #ffa500",
-            {
-              scrollY: window.scrollY,
-              deltaY: event.deltaY,
-              target: event.target,
-              timeStamp: event.timeStamp,
-            }
-          );
-          if (typeof listener === "function") {
-            return listener.call(this, event);
-          } else if (listener && typeof listener.handleEvent === "function") {
-            return listener.handleEvent(event);
-          }
-        };
-
-        // Block scroll/wheel listeners on #react-root from FT scripts
-        if (this.id === "react-root") {
-          console.log(
-            "%c[SCROLL-PATCH #" + id + "] BLOCKED — not attaching to #react-root",
-            "color: #e74c3c; font-weight: bold"
-          );
-          return;
-        }
-
-        if (!this.__scrollPatchMap) this.__scrollPatchMap = new Map();
-        this.__scrollPatchMap.set(listener, wrapped);
-
-        return origAdd.call(this, type, wrapped, options);
+        id++;
+        var target = this === window ? "window" : this === document ? "document" : (this.tagName || "?");
+        console.log("%c[NUKE #" + id + "] BLOCKED " + type + " on " + target, "color: #e74c3c; font-weight: bold");
+        return;
       }
       return origAdd.call(this, type, listener, options);
     };
+    console.log("%c[SCROLL-NUKE] ALL scroll/wheel listeners blocked", "color: #e74c3c; font-weight: bold; font-size: 14px");
+  })();
+  </script>
 
-    EventTarget.prototype.removeEventListener = function (type, listener, options) {
-      if (
-        (type === "scroll" || type === "wheel") &&
-        this.__scrollPatchMap &&
-        this.__scrollPatchMap.has(listener)
-      ) {
-        var wrapped = this.__scrollPatchMap.get(listener);
-        this.__scrollPatchMap.delete(listener);
-        return origRemove.call(this, type, wrapped, options);
+  <!-- DOM MUTATION + LAYOUT SHIFT OBSERVER (debug) -->
+  <script>
+  (function () {
+    function init() {
+      var root = document.getElementById("react-root");
+      if (!root) { setTimeout(init, 50); return; }
+
+      var mutationCount = 0;
+      var obs = new MutationObserver(function (mutations) {
+        mutations.forEach(function (m) {
+          if (root.contains(m.target)) return;
+          mutationCount++;
+          var desc = m.type === "childList"
+            ? "added " + m.addedNodes.length + " / removed " + m.removedNodes.length + " nodes"
+            : "attr " + m.attributeName + " changed";
+          var el = m.target;
+          var cls = el.className ? "." + String(el.className).split(" ")[0] : "";
+          var tag = el.tagName
+            ? "<" + el.tagName.toLowerCase() + (el.id ? "#" + el.id : "") + cls + ">"
+            : String(el);
+          console.log(
+            "%c[DOM-PATCH #" + mutationCount + "] " + desc + " on " + tag,
+            "color: #9b59b6; font-weight: bold",
+            el
+          );
+          if (m.addedNodes.length) {
+            Array.prototype.forEach.call(m.addedNodes, function (n) {
+              if (n.nodeType === 1) {
+                var r = n.getBoundingClientRect();
+                console.log("    Added: <" + n.tagName.toLowerCase() + (n.id ? "#" + n.id : "") + "> " + Math.round(r.width) + "x" + Math.round(r.height) + "px", n);
+              }
+            });
+          }
+        });
+      });
+      obs.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ["style", "class"] });
+
+      var lastTop = null;
+      setInterval(function () {
+        var r = root.getBoundingClientRect();
+        var absTop = r.top + window.scrollY;
+        if (lastTop !== null && Math.abs(absTop - lastTop) > 1) {
+          console.warn(
+            "%c[DOM-PATCH] #react-root MOVED! " + Math.round(lastTop) + "px -> " + Math.round(absTop) + "px (delta " + Math.round(absTop - lastTop) + "px)",
+            "color: #e74c3c; font-weight: bold; font-size: 13px"
+          );
+          console.trace("Position shift");
+        }
+        lastTop = absTop;
+      }, 200);
+
+      if (window.PerformanceObserver) {
+        try {
+          new PerformanceObserver(function (list) {
+            list.getEntries().forEach(function (entry) {
+              if (!entry.hadRecentInput && entry.value > 0.01) {
+                console.warn(
+                  "%c[CLS] Layout shift: " + entry.value.toFixed(4) + " at " + Math.round(entry.startTime) + "ms",
+                  "color: #e67e22; font-weight: bold"
+                );
+                if (entry.sources) {
+                  entry.sources.forEach(function (src) {
+                    if (src.node) console.log("    Shifted:", src.node, src.previousRect, "->", src.currentRect);
+                  });
+                }
+              }
+            });
+          }).observe({ type: "layout-shift", buffered: true });
+        } catch (e) {}
       }
-      return origRemove.call(this, type, listener, options);
-    };
 
-    console.log(
-      "%c[SCROLL-PATCH] Monkeypatch active — tracking all scroll/wheel listeners",
-      "color: #4ecdc4; font-weight: bold; font-size: 14px"
-    );
+      console.log(
+        "%c[DOM-PATCH] Watching mutations, position shifts, and CLS",
+        "color: #9b59b6; font-weight: bold; font-size: 14px"
+      );
+    }
+    init();
   })();
   </script>
 

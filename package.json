@@ -11,6 +11,7 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
+    "deploy:debug": "VITE_BASE=/ft-article-sopra-steria/debug/ vite build --base /ft-article-sopra-steria/debug/ --outDir dist-debug && gh-pages -d dist-debug --dest debug",
     "compress:videos": "bash compress-videos.sh",
     "generate:posters": "bash generate-posters.sh"
   },
