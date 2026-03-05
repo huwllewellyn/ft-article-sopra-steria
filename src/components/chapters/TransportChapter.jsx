@@ -137,6 +137,8 @@ function T7Content() {
         };
     }, []);
 
+    const isMobile = useIsMobile();
+
     return (
         <>
             <DataText ref={topRef} $bg={ACCENT}>
@@ -146,7 +148,7 @@ function T7Content() {
                 ref={lottieRef}
                 style={{
                     transformOrigin: "center bottom",
-                    transform: "scale(1.1)",
+                    transform: isMobile ? "scale(1.1)" : "scale(1.5)",
                 }}
             >
                 <ResponsiveLottieAnimation
