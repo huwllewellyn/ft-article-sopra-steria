@@ -8,6 +8,7 @@ const StickyWrapper = styled.div`
     top: 0;
     height: 100lvh;
     overflow: hidden;
+    background: ${({ $bg }) => $bg || "none"};
 `;
 
 const ScrollTrack = styled.div`
@@ -61,6 +62,7 @@ function ScrollTrackedSlide({
     trackHeight,
     flowHeight,
     appearInPlace,
+    background,
 }) {
     const trackRef = useRef();
 
@@ -78,7 +80,7 @@ function ScrollTrackedSlide({
             $flowHeight={flowHeight}
             data-slide
         >
-            <StickyWrapper>
+            <StickyWrapper $bg={background}>
                 {typeof children === "function"
                     ? children({ scrollYProgress })
                     : children}
@@ -118,6 +120,7 @@ export default function StickySlide({
     appearInPlace,
     trackHeight,
     flowHeight,
+    background,
     mobileSimplify = true,
 }) {
     const isMobile = useIsMobile();
@@ -147,6 +150,7 @@ export default function StickySlide({
                 trackHeight={trackHeight}
                 flowHeight={flowHeight}
                 appearInPlace={appearInPlace}
+                background={background}
             >
                 {children}
             </ScrollTrackedSlide>

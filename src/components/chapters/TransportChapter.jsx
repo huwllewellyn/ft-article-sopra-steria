@@ -390,13 +390,12 @@ export default function TransportChapter() {
             </StickySlide>
 
             {/* T7 — Data grid: EU transport incidents */}
-            <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh">
+            <StickySlide appearInPlace flowHeight="100vh" trackHeight="200vh" background={`repeating-linear-gradient(90deg, ${ACCENT} 0px, ${ACCENT} 2px, transparent 2px, transparent 40px), repeating-linear-gradient(0deg, ${ACCENT} 0px, ${ACCENT} 2px, #000 2px, #000 40px)`}>
                 <DataGridSlide
                     sectionTitle="HACKERS EXPLOIT EMERGING VULNERABILITIES"
                     hideSectionTitle={isMobile}
                     headingColor={ACCENT}
-                    backgroundColor={`repeating-linear-gradient(90deg, ${ACCENT} 0px, ${ACCENT} 2px, transparent 2px, transparent 40px), repeating-linear-gradient(0deg, ${ACCENT} 0px, ${ACCENT} 2px, #000 2px, #000 40px)`}
-                    gridColor={GRID_COLOR}
+                    backgroundColor="transparent"
                     // mobileBackgroundImage="/videos/ch3/SOPRA_DigitalDisruption_D3_BKG.png"
                 >
                     <T7Content />
