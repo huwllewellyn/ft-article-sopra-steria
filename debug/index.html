@@ -24,6 +24,21 @@
     Object.defineProperty(document, "onscroll", { set: function() { console.log("%c[NUKE] BLOCKED document.onscroll assignment", "color: #e74c3c"); }, get: function() { return null; } });
     Object.defineProperty(window, "onwheel", { set: function() { console.log("%c[NUKE] BLOCKED window.onwheel assignment", "color: #e74c3c"); }, get: function() { return null; } });
     console.log("%c[SCROLL-NUKE] ALL scroll/wheel listeners + onscroll/onwheel blocked", "color: #e74c3c; font-weight: bold; font-size: 14px");
+
+    // Also nuke IntersectionObserver
+    var OrigIO = window.IntersectionObserver;
+    var ioId = 0;
+    window.IntersectionObserver = function (cb, opts) {
+      ioId++;
+      var myId = ioId;
+      console.log("%c[IO-NUKE #" + myId + "] IntersectionObserver created", "color: #e74c3c; font-weight: bold", opts);
+      this.observe = function (el) { console.log("%c[IO-NUKE #" + myId + "] observe() called on", "color: #e74c3c", el.tagName + (el.className ? "." + String(el.className).split(" ")[0] : "")); };
+      this.unobserve = function () {};
+      this.disconnect = function () {};
+      this.takeRecords = function () { return []; };
+    };
+    window.IntersectionObserver.prototype = OrigIO ? OrigIO.prototype : {};
+    console.log("%c[IO-NUKE] IntersectionObserver monkey-patched", "color: #e74c3c; font-weight: bold; font-size: 14px");
   })();
   </script>
 
@@ -107,10 +122,10 @@
   })();
   </script>
 
-  <script src="https://polyfill-fastly.io/"></script>
+  <!-- <script src="https://polyfill-fastly.io/"></script>
 
   <script async src="https://consent-notice.ft.com/cmp.js"></script>
-  <script src="https://www.ft.com/partnercontent/tracking/tracker.js"></script>
+  <script src="https://www.ft.com/partnercontent/tracking/tracker.js"></script> -->
 
   <meta property="og:url" content="https://www.ft.com/partnercontent/client-name/article-title.html">
   <meta property="og:type" content="article">
